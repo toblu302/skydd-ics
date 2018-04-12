@@ -1,0 +1,23 @@
+module foss_snort 1.0;
+
+require {
+	type unconfined_t;
+	type systemd_unit_file_t;
+	type NetworkManager_t;
+	type init_t;
+    type passenger_t;
+	type httpd_sys_content_t;
+	class service { status start enable stop };
+    class file { execute };
+}
+
+#============= NetworkManager_t ==============
+allow NetworkManager_t systemd_unit_file_t:service start;
+allow NetworkManager_t systemd_unit_file_t:service { status stop };
+
+#============= passenger_t ==============
+allow passenger_t httpd_sys_content_t:file execute;
+
+
+#============= unconfined_t ==============
+allow unconfined_t init_t:service enable;

@@ -1,0 +1,12 @@
+[icinga-stable-release]
+name=ICINGA (stable release for epel)
+baseurl=http://packages.icinga.org/epel/$releasever/release/
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-icinga
+[centos-sclo-rh]
+name=CentOS-7 - SCLo rh
+baseurl=http://mirror.centos.org/centos/7/sclo/$basearch/rh/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo

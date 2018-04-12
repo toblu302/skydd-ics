@@ -1,0 +1,126 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+ENV['DUMP_IP']    = '192.168.0.30'
+ENV['LOG_IP']     = '192.168.0.31'
+ENV['MONITOR_IP'] = '192.168.0.32'
+ENV['IDS_IP']     = '192.168.0.33'
+ENV['TEST_IP']    = '192.168.0.29'
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/7"
+  config.vm.synced_folder "..", "/vagrant", type: "rsync", rsync__exclude: ".git/", "rsync__args": "-a"
+  config.vm.provider "vmware_fusion" do |v|
+    v.vmx["memsize"]  = "2048"
+    v.vmx["numvcpus"] = "2"
+    v.gui             = true
+  end
+  config.vm.provider :virtualbox do |v|
+    v.memory = 2048
+    v.gui = true
+  end
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.memory = "2048"
+  end
+  config.vm.provision "shell", inline: <<-SHELL
+    # we need to install epel first
+    yum install -y epel-release
+    yum install -y perl rpm-build selinux-policy-devel pandoc texlive pdflatex mg vim
+    cd /vagrant
+    make
+    cd /vagrant/rpms
+    yum install -y foss-docs-*.noarch.rpm foss-common-*.noarch.rpm foss-httpd-*.noarch.rpm   
+  SHELL
+#################
+# dump server
+  config.vm.define "dump" do |dump|
+    dump.vm.network :private_network,
+	    #:auto_config      => false,
+	    :ip		          => ENV['DUMP_IP'],
+	    :virtualbox__ip   => "192.168.0.30/24",
+	    :libvirt__host_ip => ENV['DUMP_IP'],
+	    :libvirt__netmask => "255.255.255.0"
+    dump.vm.provision "shell", inline: <<-SHELL
+      hostnamectl set-hostname dump
+      cd /vagrant/rpms
+      yum install -y foss-traffic-capture-*.noarch.rpm
+      # restart network to start the tcpdump service
+      systemctl restart network
+      systemctl start reaper
+    SHELL
+  end
+#################
+# log server
+  config.vm.define "log" do |log|
+    log.vm.network :private_network,
+	    #:auto_config      => false,
+	    :ip		          => ENV['LOG_IP'],
+	    :virtualbox__ip   => "192.168.0.31/24",
+	    :libvirt__host_ip => ENV['LOG_IP'],
+	    :libvirt__netmask => "255.255.255.0"
+    log.vm.provision "shell", inline: <<-SHELL
+      hostnamectl set-hostname log
+      cd /vagrant/rpms
+      yum install -y foss-simple-log-server-*.noarch.rpm
+      systemctl restart rsyslog
+    SHELL
+  end
+#################
+# ids server
+  config.vm.define "ids" do |ids|
+    ids.vm.network :private_network,
+	    #:auto_config      => false,
+	    :ip		          => ENV['IDS_IP'],
+	    :virtualbox__ip   => "192.168.0.33/24",
+	    :libvirt__host_ip => ENV['LOG_IP'],
+	    :libvirt__netmask => "255.255.255.0"
+    ids.vm.provision "shell", inline: <<-SHELL
+      hostnamectl set-hostname ids
+      cd /vagrant/rpms
+      yum install -y foss-ids-repo-*.noarch.rpm
+      yum install -y foss-ids-*.x86_64.rpm
+      systemctl restart httpd
+    SHELL
+  end
+#################
+# monitor server
+  config.vm.define "monitor" do |monitor|
+    monitor.vm.network :private_network,
+	    #:auto_config      => false,
+	    :ip		          => ENV['MONITOR_IP'],
+	    :virtualbox__ip   => "192.168.0.32/24",
+	    :libvirt__host_ip => ENV['MONITOR_IP'],
+	    :libvirt__netmask => "255.255.255.0"
+    monitor.vm.provision "shell", inline: <<-SHELL
+      hostnamectl set-hostname monitor
+      cd /vagrant/rpms
+      yum install -y foss-icinga-repo-*.noarch.rpm
+      yum install -y foss-monitor-server-*.noarch.rpm
+      # first-boot requires firstboot-graphical.service
+      # this is not always enabled during vagrant testing
+      # we will manual exec the stuff anyway
+      /bin/bash /root/init_pg.sh
+      /bin/systemctl start rh-php71-php-fpm
+      /bin/systemctl restart httpd
+    SHELL
+  end
+#################
+# test server
+  config.vm.define "test" do |test|
+    test.vm.network :private_network,
+	    #:auto_config      => false,
+	    :ip		          => ENV['TEST_IP'],
+	    :virtualbox__ip   => "192.168.0.29/24",
+	    :libvirt__host_ip => ENV['TEST_IP'],
+	    :libvirt__netmask => "255.255.255.0"
+    test.vm.provision "shell", inline: <<-SHELL
+        hostnamectl set-hostname test
+        yum install -y initscripts bats
+        echo "dump_ip=#{ENV['DUMP_IP']}
+log_ip=#{ENV['LOG_IP']}
+monitor_ip=#{ENV['MONITOR_IP']}
+ids_ip=#{ENV['IDS_IP']}
+test_ip=#{ENV['TEST_IP']}" >> /vagrant/tests/vars.bash
+        bats /vagrant/tests/*.bats
+    SHELL
+  end
+end

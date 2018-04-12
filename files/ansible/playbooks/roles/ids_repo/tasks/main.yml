@@ -1,0 +1,11 @@
+---
+- name: create local repo
+  command: /bin/createrepo /root/rpm
+  chdir: /root/rpm
+- name: copy local repo conf
+  copy:
+    src: local.repo
+    dest: /etc/yum.repos.d/
+    owner: root
+    group: root
+    mode: 0644

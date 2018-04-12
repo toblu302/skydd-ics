@@ -1,0 +1,35 @@
+---
+# allow apache reading dumps
+- acl: 
+    path: /home/tcpdump
+    entity: apache
+    etype: user
+    permissions: rx
+    state: present
+
+- name: Install traffic capture selinux policy package dumper_tcpdump
+  shell: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-traffic-capture/dumper_tcpdump.pp
+
+- name: Install traffic capture selinux policy package dumper_httpd
+  shell: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-traffic-capture/dumper_httpd.pp
+
+- name: Run restore context to reload selinux
+  shell: restorecon -R -v "{{ item }}"
+  with_items:
+  - /var
+  - /etc
+  - /opt
+  - /home
+
+- name: set required sebooleans..
+  seboolean: name="{{ item }}" state=yes persistent=yes
+  with_items:
+    - httpd_enable_homedirs
+    - httpd_read_user_content
+    - httpd_unified
+
+- name: Enable reaper
+  service: name="{{ item }}" enabled=yes no_block=no
+  with_items:
+    - reaper
+

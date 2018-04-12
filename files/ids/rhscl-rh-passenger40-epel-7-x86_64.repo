@@ -1,0 +1,5 @@
+[rhscl-rh-passenger40-epel-7-x86_64]
+name=Passenger 4.0.50 - epel-7-x86_64
+baseurl=https://www.softwarecollections.org/repos/rhscl/rh-passenger40/epel-7-x86_64
+enabled=1
+gpgcheck=0

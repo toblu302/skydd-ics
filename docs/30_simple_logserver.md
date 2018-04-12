@@ -1,0 +1,191 @@
+# Logginsamlingsserver
+
+Detta kapitel beskriver en server med en särskild säkerhetsfunktion -
+att kunna spela in och spara inskickade loggmeddelanden som den har fått sig tillsänt via nätverket.
+
+Servern är en speciellt för funktionen uppsatt Linuxserver som enbart fungerar som en enkel loggserver.
+
+## Översikt
+
+Logginsamlingsservern används för att samla in loggar från andra datorer, nätverksutrustning, 
+SCADA-utrustning (PLC:er, RTUer, protokollomvandlare, med mera) som skickar dem över nätverket via 
+[syslog]-protokollet. Loggar som sparas på servern kan vid senare tillfälle inspekteras via ett 
+enkelt webbaserat gränssnitt. Det finns även möjligthet för enklare sökningar i loggarna.
+
+## Installation av loggserver
+
+Från installationsmediat går det välja vilken typ av server som skall installeras. För att sätta upp en loggserver, välj installationsalternativet "loggserver", se nedanstående bild.
+
+
+![Uppstartsmeny vid installationsstart med alternativet loggserver valt](images/installation_val_av_server.png "Uppstartsmeny vid installationsstart")
+
+För detaljerad information hur en komplett installation går till, se kapitlet [Installation].
+
+## Användning
+
+I första hand så tar loggservern emot loggmeddelanden från annan utrustning, som via nätverket
+skickar loggmeddelanden till servern. 
+
+![Översiktsbild som visar webbläsaren och sökfunktionen för loggar](images/foss-logview-pic1.png "Sökfunktionen för loggar")
+
+*OBS. Notera att servern även sparar sina egna loggmeddelanden till denna loggfil. Detta bör hållas i åtanke, ifall man letar efter innehåll i loggarna.*
+
+### Lista loggmeddelanden och innehåll i loggfiler
+
+En enkel funktion som man vill göra i loggservern är att kunna lista inkomna loggmeddelanden. Via webbgränssnittet så finns det en
+enkel funktion för detta. Genom att med muspekaren välja en av filerna till vilket loggmeddelandena sparas, samt klicka klicka på filnamnet. Se nedanstående exempel.
+
+![Översiktsbild som visar webbläsaren och sökfunktionen för loggar](images/foss-logview-pic2.png "Sökfunktionen för loggar")
+
+En ny innehållsvy visas då istället. Där listas innehållet, med en rad per loggmeddelande, i den valda filen. Se nedanstående exempel.
+
+![Översiktsbild som visar webbläsaren och listade loggmeddelanden](images/foss-logview-pic3.png "Sökfunktionen för loggar")
+
+### Ladda ned loggfiler
+
+En enkel funktion som man vill göra i loggservern är att kunna ladda ned loggmeddelanden. Via webbgränssnittet så finns det en
+enkel funktion för detta. Genom att med muspekaren välja en av filerna till vilket loggmeddelandena sparas, samt klicka klicka på filnamnet. Se nedanstående exempel.
+
+![Översiktsbild som visar webbläsaren och sökfunktionen för loggar](images/foss-logview-pic2.png "Sökfunktionen för loggar")
+
+En ny innehållsvy visas då istället. Där listas innehållet, med en rad per loggmeddelande, i den valda filen. För att hämta denna fil med loggar, 
+klicka på knappen "Ladda ned" i övre högra hörnet.
+
+![Översiktsbild som visar webbläsaren och sökfunktionen för loggar](images/foss-logview-pic3.png "Sökfunktionen för loggar")
+
+![Knappen "Ladda ner loggfil"](images/foss-logview-pic4.png "Sökfunktionen för loggar")
+
+Ett nytt fönster kommer upp som frågar hur du vill hantera filen, om den skall visas direkt i webbläsaren eller om den skall 
+sparas till disk. Se nedanstående bild:
+
+![Filväljare för att öppna eller spara loggfilen](images/foss-logview-pic5.png "Sökfunktionen för loggar")
+
+
+### Söka efter text i ett loggmeddelande
+
+En enkel funktion som loggservern har är att bland de inskickade meddelandena kunna söka efter en specifik text
+som ingår i loggmeddelandet. 
+
+På servern med den medföljande webbläsaren går det att skriva adressen <http://127.0.0.1/logs.html> 
+och via den sidan går det att söka i de existerande loggarna direkt i webläsaren. 
+
+![Översiktsbild som visar webbläsaren och sökfunktionen för loggar](images/foss-logview-pic1.png "Sökfunktionen för loggar")
+
+Själva sökfunktionen kan verka något oanvändarvänlig för en ovan person. Om sökningen matchar en 
+textsträng i ett loggmeddelande i någon av loggfilerna, så kommer filnamnet att listas i fillistningen
+nedanför sökrutan. Orsaken att det kan verka något oanvändarvänligt kan bero på, bland annat:
+
+* Sökningen listar filnamn, inte själva den textrad där sökningen träffar ett sökuttryck. 
+* Om det bara finns en fil, till exempel i början av användningen av en installerad server, så kommer fillistningen finnas
+där innan sökningen, och efter det att sökuttrycket skrivits klart och du tryckt på nyradsknappen, så kommer listningen se likadan ut.
+
+
+Bakom kulisserna på själva loggservern, så sker sökningen med hjälp av verktyget *[grep]* 
+för att kunna välja ut de loggrader som är intressanta. Detta medför att de användare som är familjära med de sökuttryck som
+*grep* medger kan skriva mer avancerade söktermer.
+
+
+## Detaljer
+
+### Loggmeddelanden via nätverket
+
+Denna server använder tjänsten [rsyslog] för att ta emot syslog-meddelanden från annan 
+nätverksansluten utrustning.
+
+Servern är konfigurerad att kunna ta emot loggar som skickas via nätverket på:
+
+* 514/UDP (klassisk syslog)
+* 514/TCP (syslog över TCP, för att inte tappa paket)
+
+För att loggmeddelanden skall tas emot av loggservern så måste de servrar, kommunikationsutrustningar, 
+ICS-utrustningar som skall skicka nätverksloggar sättas upp för detta. På respektive loggkälla så måste
+serverns IP-adress (eller domännamn, om du använder dig av DNS) konfigureras som syslog-mottagare.
+
+### Filsystemsdetaljer
+
+Alla loggmeddelanden som skickas över till loggservern sparas lokalt i filsystemet, så att
+de finns undansparande i händelse av strömavbrott eller om datorn på annat sätt startas om.
+
+Inkomna loggmeddelanden sparas vid ankomsten till servern ner i en fil som heter *messages* 
+och ligger i filkatalogen */var/log/*, det vill säga */var/log/messages*. 
+
+Loggfilen *roteras* och komprimeras ihop, dvs den sparas undan som en arkivfil, när storleken 
+överstiger 5MB. Loggservern är uppsatt med en konfiguration för att rotera loggfiler upp till
+10000 gånger innan den älsta filen arkiverade filen raderas. Dessa inställningsvärden är valda
+för att fungera väl med att en användare enkelt skall kunna ladda ner en fil i webbläsaren om
+man har gjort en sökning och funnit att en loggfil matchar ett visst sökutryck.
+
+Om loggservern installeras i en miljö där det är mycket aktivitet, och det skickas mycket 
+loggmeddelanden till loggservern, så kanske inte ovanstående inställningar i loggservern
+är så väl anpassade. Likaså kan det uppstå en krock mellan olika kravställningar
+om det finns behov eller specifika krav på att spara loggar länge, varpå det kan behövas 
+en annan ansats till arkivering och gallring av loggar behöva sättas
+upp. I dessa fall måste en mer anpassad loggkonfiguration som är i enlighet med den policy 
+eller det regelverk som gäller måste tas fram och sättas in på loggservern.
+
+### Säkerhet
+Säkerhetsmekanismen [SELinux] används för att få en bättre system- och applikationssäkerhet på 
+denna loggserver genom att låsa ner själva systeminställningarna på servern och dess viktiga 
+komponenter och hur de interagerar med systemet och systemets resurser (filsystem, programexekvering, med mera).
+
+En enkel webbserver av typen [lighttpd], är igångstartad. Som standard lyssnar den inte ut mot nätverket, så den kan inte
+nås via fjärråtkomst mot webbtjänsten.  Webbservern är vid standardinstallation enbart åtkomlig från det egna systemet
+och därmed från en webbläsare som man kör inloggad på konsolen och skrivbordet. Lighttpd är uppsatt så den dessutom är 
+nedlåst med *SELinux* på ett speciellt sätt, så att den enbart ska kunna läsa i katalogen **/var/log/** där loggfilerna ligger.
+
+## Avancerad användning
+
+Att samla in loggar och göra logganalys kan vara svårt med denna mer enkla logginsammlingsservern. Det finns mer avancerade 
+system för logginsamling som rekomenderas om ett aktivt arbete med loggar och säkerhet behövs. Några exempel på mer avancerade
+loggserverfunktioner är [greylog], [elk] och [splunk] för att implementera [SIEM], [SEM] eller [SIM]-lösningar.
+
+### Krypterade syslogmeddelanden
+För att få bättre säkerhet och garanti på att de loggar som kommer till servern så kan TLS användas för transporten. 
+
+Det går att istället för klassisk syslog även skicka loggmeddelanden krypterat. Standarderna för detta gäller för:
+
+* 6514/UDP 
+* 6514/TCP 
+
+UDP-varianten innebär att syslog skickas över en krypterad DTLS-tunnel, medans syslog över en krypterad TCP-baserad TLS-tunnel.
+
+Syslogservern är inte konfigurerad för att aktivera detta som standard. Det går dock att ställa in servern för detta. Ett steg är
+att ändra i brandväggsreglerna lokalt på servern och ta bort kommentarerna i **/etc/sysconfig/iptables** för att öppna upp dessa portar. 
+Mer arbete är dock att skapa elektroniska certifikat för servern, att aktivera rsyslog, mm. Det finns en guide på engelska på
+<http://www.rsyslog.com/doc/master/tutorials/tls.html> där det beskrivs.
+
+
+### Extern åtkomst till webben
+
+Om det finns behov av att kunna nå Nätverksinspelningsservern från en annan dator måste
+konfigurationen för webbservern ändras så att den även är åtkomlig på det externa nätverksinterface.
+Då måste kryptering och authenticering aktiveras så att den potentiellt känsliga informationen inte kan ses
+av någon obehörig.
+
+Vid första uppstarten genererades ett så kallat *dummy-cert* som finns i
+filen **/etc/pki/tls/certs/dummy.cert** och i filen **/etc/pki/tls/private/dummy.key** som kan användas i
+test-syfte. I den existerande konfigurationsfilen **/etc/lighttpd/lighttpd.conf** finns ett
+utkommenterat exempel på hur det är möjligt att aktivera en server som lyssnar på en extern address
+och använder kryptering för att skydda trafiken. 
+
+För att kunna editera filen är ett sätt att öppna en *Terminal* via menyn "Applications" och sedan skriva 
+ett kommando såsom 
+
+```
+	sudo nano /etc/lighttpd/lighttpd.conf
+```
+För att använda textredigeringsprogrammet nano (eller vilket program du föredrar) för att ändra konfigurationsfilen för lighttpd.
+
+Efter att lagt till dessa extra konfigurationsparametrar till webbservern, så behöver brandväggskonfigurationen också justeras. 
+Samma steg och kommandon behövs där. Öppna en *Terminal* och kommentera ut raden med hänvisning till *HTTPS* i filen 
+*/etc/sysconfig/iptables*. Därefter måste du ladda sedan om brandväggsreglerna med kommandot
+
+```
+	sudo iptables-restore /etc/sysconfig/iptables
+```
+
+Behöver du hjälp med hur man arbetar via terminalen eller hur man ger kommandon på kommandoraden, se då närmare
+detaljinformation i kapitlet [Terminal-åtkomst och kommandoraden].
+
+\clearpage
+

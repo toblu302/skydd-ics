@@ -1,0 +1,19 @@
+#
+# variables you can set on host:
+#
+# enable_sshd=True (default False)
+# Setting to True means sshd is started and the firewall is opened for port 22
+# 
+# expose_https=True (default False)
+# Setting this to True means that the webserver starts listening on all interfaces
+# on port 443 and the firewall is opened for it. If it is set to False it the
+# webserver only listens on the localhost interface on port 80. No https.
+#
+
+[foss:vars]
+# temporary override when developing so that one does not get locked out
+enable_sshd=True
+
+[foss]
+localhost
+
