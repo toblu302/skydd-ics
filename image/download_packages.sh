@@ -8,8 +8,9 @@ packages="$iso_root/isolinux/Packages"
 
 # Sanity
 if [ ! -f /bin/createrepo ];then
-    echo "install createrepo"
-    echo "yum install createrepo"
+    echo "ERROR: createrepo is missing"
+    echo "ERROR: run 'yum -y install createrepo'"
+    exit 1
 fi
 if [ ! -d "$packages" ]; then
     mkdir -p "$packages"
