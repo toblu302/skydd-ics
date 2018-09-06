@@ -8,7 +8,7 @@ iso=$iso_root/foss.iso
 if [ ! -e $iso_root/DVD/isolinux ]; then
     echo "You need to mount the CentOS minimal DVD and copy some essentials from it, like:"
     echo mkdir mnt
-    echo sudo mount -o loop ~gk/CentOS-7-x86_64-Minimal-1611.iso mnt
+    echo sudo mount -o loop ~/CentOS-7-x86_64-Minimal-1611.iso mnt
     echo mkdir DVD
     echo "cp -r mnt/* DVD/"
     exit 1
