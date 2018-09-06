@@ -69,9 +69,15 @@ Om installation inte slutfördes eller inte startades kan det vara så att just 
 Testa att installera på en annan dator, helst en annan modell och om möjligt en nyare årsmodell.
 
 [kickstart]: "Ett sätt att installera ett operativsystem med programvara automatiskt"
+
 [ISO-fil]: "En strukturerad fil som innehåller alla filer sammanställda till en stor sammanslagen fil, vilket är en avbildning av en CD/DVD-skiva"
+
 [boota]: "Att starta upp en dator och göra initial programladdning, vilket oftast är operativsystemet eller annat grundläggande kontrollprogram"
+
 [SCADA/ICS-miljö]: "Datormiljö som används för industriell automation."
+
 [FOSS]: "Free and Open-Source Software. Samlingsnamn för datorprogram som klassificeras som både fri (tillgänglighen är inte begränsad) och källkoden är tillgänglig för alla och envar att studera, kopiera, modifiera mm"
+
 [firefox]: "Fri webbläsare som har stor spridning i Linuxvärlden"
+
 [ISO]: https://sv.wikipedia.org/wiki/ISO-avbild "Avbild av digitalt media"
