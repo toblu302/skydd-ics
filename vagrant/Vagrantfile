@@ -123,4 +123,100 @@ test_ip=#{ENV['TEST_IP']}" >> /vagrant/tests/vars.bash
         bats /vagrant/tests/*.bats
     SHELL
   end
+#################
+# build server
+  config.vm.define "build" do |build|
+    build.vm.provision "shell", inline: <<-SHELL
+        hostnamectl set-hostname build
+	echo "
+[rhscl-httpd24-epel-7-x86_64]
+name=Apache httpd 2.4.12 - epel-7-x86_64
+baseurl=https://www.softwarecollections.org/repos/rhscl/httpd24/epel-7-x86_64
+enabled=1
+gpgcheck=0
+[rhscl-rh-passenger40-epel-7-x86_64]
+name=Passenger 4.0.50 - epel-7-x86_64
+baseurl=https://www.softwarecollections.org/repos/rhscl/rh-passenger40/epel-7-x86_64
+enabled=1
+gpgcheck=0
+[rhscl-ruby193-epel-7-x86_64]
+name=Ruby193 - epel-7-x86_64
+baseurl=https://www.softwarecollections.org/repos/rhscl/ruby193/epel-7-x86_64
+enabled=1
+gpgcheck=0
+[rhscl-v8314-epel-7-x86_64]
+name=V8 3.14.5.10 - epel-7-x86_64
+baseurl=https://www.softwarecollections.org/repos/rhscl/v8314/epel-7-x86_64
+enabled=1
+gpgcheck=0
+[icinga-stable-release]
+name=ICINGA (stable release for epel)
+baseurl=http://packages.icinga.org/epel/$releasever/release/
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-icinga
+[centos-sclo-rh]
+name=CentOS-7 - SCLo rh
+baseurl=http://mirror.centos.org/centos/7/sclo/$basearch/rh/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo
+" > /etc/yum.repos.d/build-repos.repo
+echo "
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v2.0.22 (GNU/Linux)
+
+mQENBFYM/AoBCADR9Q5cb+H5ndx+QkzNBQ88wcD+g112yvnHNlSiBMOnNEGHuKPJ
+tujZ+eWXP3K6ucJckT91WxfQ2fxPr9jQ0xpZytcHcZdTfn3vKL9+OwR0npp+qmcz
+rK8/EzVz/SWSgBQ5xT/HUvaeoVAbzBHSng0r2njnBAqABKAoTxgyRGKSCWduKD32
+7PF2ZpqeDFFhd99Ykt6ar8SlV8ToqH6F7An0ILeejINVbHUxd6+wsbpcOwQ4mGAa
+/CPXeqqLGj62ASBv36xQr34hlN/9zQMViaKkacl8zkuvwhuHf4b4VlGVCe6VILpQ
+8ytKMV/lcg7YpMfRq4KVWBjCwkvk6zg6KxaHABEBAAG0aENlbnRPUyBTb2Z0d2Fy
+ZUNvbGxlY3Rpb25zIFNJRyAoaHR0cHM6Ly93aWtpLmNlbnRvcy5vcmcvU3BlY2lh
+bEludGVyZXN0R3JvdXAvU0NMbykgPHNlY3VyaXR5QGNlbnRvcy5vcmc+iQE5BBMB
+AgAjBQJWDPwKAhsDBwsJCAcDAgEGFQgCCQoLBBYCAwECHgECF4AACgkQTrhOcfLu
+nVXNewgAg7RVclomjTY4w80XiztUuUaFlCHyR76KazdaGfx/8XckWH2GdQtwii+3
+Tg7+PT2H0Xyuj1aod+jVTPXTPVUr+rEHAjuNDY+xyAJrNljoOHiz111zs9pk7PLX
+CPwKWQLnmrcKIi8v/51L79FFsUMvhClTBdLUQ51lkCwbcXQi+bOhPvZTVbRhjoB/
+a9z0d8t65X16zEzE7fBhnVoj4xye/MPMbTH41Mv+FWVciBTuAepOLmgJ9oxODliv
+rgZa28IEWkvHQ8m9GLJ0y9mI6olh0cGFybnd5y4Ss1cMttlRGR4qthLhN2gHZpO9
+2y4WgkeVXCj1BK1fzVrDMLPbuNNCZQ==
+=UtPD
+-----END PGP PUBLIC KEY BLOCK-----
+" > /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo
+echo "
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v2.0.19 (GNU/Linux)
+
+mQGiBFKHzk4RBACSHMIFTtfw4ZsNKAA03Gf5t7ovsKWnS7kcMYleAidypqhOmkGg
+0petiYsMPYT+MOepCJFGNzwQwJhZrdLUxxMSWay4Xj0ArgpD9vbvU+gj8Tb02l+x
+SqNGP8jXMV5UnK4gZsrYGLUPvx47uNNYRIRJAGOPYTvohhnFJiG402dzlwCg4u5I
+1RdFplkp9JM6vNM9VBIAmcED/2jr7UQGsPs8YOiPkskGHLh/zXgO8SvcNAxCLgbp
+BjGcF4Iso/A2TAI/2KGJW6kBW/Paf722ltU6s/6mutdXJppgNAz5nfpEt4uZKZyu
+oSWf77179B2B/Wl1BsX/Oc3chscAgQb2pD/qPF/VYRJU+hvdQkq1zfi6cVsxyREV
+k+IwA/46nXh51CQxE29ayuy1BoIOxezvuXFUXZ8rP6aCh4KaiN9AJoy7pBieCzsq
+d7rPEeGIzBjI+yhEu8p92W6KWzL0xduWfYg9I7a2GTk8CaLX2OCLuwnKd7RVDyyZ
+yzRjWs0T5U7SRAWspLStYxMdKert9lLyQiRHtLwmlgBPqa0gh7Q+SWNpbmdhIE9w
+ZW4gU291cmNlIE1vbml0b3JpbmcgKEJ1aWxkIHNlcnZlcikgPGluZm9AaWNpbmdh
+Lm9yZz6IYAQTEQIAIAUCUofOTgIbAwYLCQgHAwIEFQIIAwQWAgMBAh4BAheAAAoJ
+EMbjGcM0QQaCgSQAnRjXdbsyqziqhmxfAKffNJYuMPwdAKCS/IRCVyQzApFBtIBQ
+1xuoym/4C7kCDQRSh85OEAgAvPwjlURCi8z6+7i60no4n16dNcSzd6AT8Kizpv2r
+9BmNBff/GNYGnHyob/DMtmO2esEuVG8w62rO9m1wzzXzjbtmtU7NZ1Tg+C+reU2I
+GNVu3SYtEVK/UTJHAhLcgry9yD99610tYPN2Fx33Efse94mXOreBfCvDsmFGSc7j
+GVNCWXpMR3jTYyGj1igYd5ztOzG63D8gPyOucTTl+RWN/G9EoGBv6sWqk5eCd1Fs
+JlWyQX4BJn3YsCZx3uj1DWL0dAl2zqcn6m1M4oj1ozW47MqM/efKOcV6VvCs9SL8
+F/NFvZcH4LKzeupCQ5jEONqcTlVlnLlIqId95Z4DI4AV9wADBQf/S6sKA4oH49tD
+Yb5xAfUyEp5ben05TzUJbXs0Z7hfRQzy9+vQbWGamWLgg3QRUVPx1e4IT+W5vEm5
+dggNTMEwlLMI7izCPDcD32B5oxNVxlfj428KGllYWCFj+edY+xKTvw/PHnn+drKs
+LE65Gwx4BPHm9EqWHIBX6aPzbgbJZZ06f6jWVBi/N7e/5n8lkxXqS23DBKemapyu
+S1i56sH7mQSMaRZP/iiOroAJemPNxv1IQkykxw2woWMmTLKLMCD/i+4DxejE50tK
+dxaOLTc4HDCsattw/RVJO6fwE414IXHMv330z4HKWJevMQ+CmQGfswvCwgeBP9n8
+PItLjBQAXIhJBBgRAgAJBQJSh85OAhsMAAoJEMbjGcM0QQaCzpAAmwUNoRyySf9p
+5G3/2UD1PMueIwOtAKDVVDXEq5LJPVg4iafNu0SRMwgP0Q==
+=icbY
+-----END PGP PUBLIC KEY BLOCK-----
+" > /etc/pki/rpm-gpg/RPM-GPG-KEY-icinga
+    yum install -y epel pandoc texlive syslinux mkisofs createrepo
+    SHELL
+  end
 end
