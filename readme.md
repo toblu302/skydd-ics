@@ -15,13 +15,39 @@ Filkatalogen **docs/** innehåller dokumentation skriven i markdown för de ensk
 
 Filkatalogen **image/** innehåller skript och konfigurationer för att skapa en avbildning som kan skrivas till en DVD eller en USB-minnessticka.
 
-Filkatalogen **pictures/** innehåller vissa bilder som används i lösningen
+Filkatalogen **pictures/** innehåller bilder som används
 
-## För att komma igång
+## Vägledning för att bygga och använda lösningen
+
 
 ## För att skapa en installationsmedia, en s.k. [ISO]-fil på en dator med CentOS 7:
-1. Starta ett terminal-fönster
-2. Skapa dokumentationen
+
+### Beroenden
+* En virtualiseringsmiljö
+  * kvm
+  * vmware
+  * virtualbox
+* Vagrant
+
+### Bygga installationsmedia
+1. Hämta källkoden
+2. Starta ett terminal-fönster
+3. cd vagrant
+4. vagrant up build
+5. vagrant ssh build
+6. sudo su -
+7. cd /vagrant/image
+8. curl -o centosdvd.iso [url till centos dvd installationsmedia]
+9. Verifiera checksumman enligt https://wiki.centos.org/TipsAndTricks/sha256sum
+10. mkdir DVD
+11. mount -o loop centosdvd.iso DVD
+12. ./download_packages.sh
+13. ./create_iso.sh
+14. den byggda iso:n finns i katalogen /vagrant/image
+
+
+FIXME XXX
+3. Skapa dokumentationen
   1. I den katalog till vilken du laddat ner filerna, byt till underkatalogen med hjälp av kommandot **cd docs**
   2. I docs-katalogen, skriv **make all** för att bygga dokumentationen som krävs innan själv installationsmediet skapas
 3. Ladda ner beroenden
