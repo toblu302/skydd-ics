@@ -219,7 +219,8 @@ PItLjBQAXIhJBBgRAgAJBQJSh85OAhsMAAoJEMbjGcM0QQaCzpAAmwUNoRyySf9p
 =icbY
 -----END PGP PUBLIC KEY BLOCK-----
 " > /etc/pki/rpm-gpg/RPM-GPG-KEY-icinga
-    yum install -y epel pandoc texlive syslinux mkisofs createrepo
+    yum clean all
+    yum install -y syslinux mkisofs createrepo
     SHELL
   end
 end
