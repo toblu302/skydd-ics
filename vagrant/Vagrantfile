@@ -24,11 +24,14 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     # we need to install epel first
     yum install -y epel-release
+    yum upgrade -y
     yum install -y perl rpm-build selinux-policy-devel pandoc texlive pdflatex mg vim
     cd /vagrant
-    make
+    make all
     cd /vagrant/rpms
     yum install -y foss-docs-*.noarch.rpm foss-common-*.noarch.rpm foss-httpd-*.noarch.rpm   
+    cd ..
+    make clean
   SHELL
 #################
 # dump server
