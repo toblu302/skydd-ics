@@ -39,11 +39,10 @@ Filkatalogen **pictures/** innehåller bilder som används
 7. cd /vagrant/image
 8. curl -o centosdvd.iso [url till centos dvd installationsmedia]
 9. Verifiera checksumman enligt https://wiki.centos.org/TipsAndTricks/sha256sum
-10. mkdir DVD
-11. mount -o loop centosdvd.iso DVD
-12. ./download_packages.sh
-13. ./create_iso.sh
-14. den byggda iso:n finns i katalogen /vagrant/image
+10. mount -o loop centosdvd.iso DVD
+11. ./download_packages.sh
+12. ./create_iso.sh
+13. den byggda iso:n finns i katalogen /vagrant/image
 
 
 FIXME XXX
