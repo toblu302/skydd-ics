@@ -220,6 +220,7 @@ PItLjBQAXIhJBBgRAgAJBQJSh85OAhsMAAoJEMbjGcM0QQaCzpAAmwUNoRyySf9p
 " > /etc/pki/rpm-gpg/RPM-GPG-KEY-icinga
     yum clean all
     yum install -y syslinux mkisofs createrepo
+    mkdir /vagrant/image/DVD
     SHELL
   end
 end
