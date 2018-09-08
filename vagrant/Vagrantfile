@@ -31,7 +31,6 @@ Vagrant.configure("2") do |config|
     cd /vagrant/rpms
     yum install -y foss-docs-*.noarch.rpm foss-common-*.noarch.rpm foss-httpd-*.noarch.rpm   
     cd ..
-    make clean
   SHELL
 #################
 # dump server
