@@ -17,7 +17,8 @@ Filkatalogen **image/** innehåller skript och konfigurationer för att skapa en
 
 Filkatalogen **pictures/** innehåller bilder som används
 
-## Vägledning för att bygga och använda lösningen
+
+# Vägledning för att bygga och använda lösningen
 
 
 ## För att skapa en installationsmedia, en s.k. [ISO]-fil på en dator med CentOS 7:
@@ -44,34 +45,15 @@ Filkatalogen **pictures/** innehåller bilder som används
 12. ./create_iso.sh
 13. den byggda iso:n finns i katalogen /vagrant/image
 
-
-FIXME XXX
-3. Skapa dokumentationen
-  1. I den katalog till vilken du laddat ner filerna, byt till underkatalogen med hjälp av kommandot **cd docs**
-  2. I docs-katalogen, skriv **make all** för att bygga dokumentationen som krävs innan själv installationsmediet skapas
-3. Ladda ner beroenden
-  1. Säkerställ att alla *repositories* som krävs är aktiverade i byggdatorn,
-      1. Lägg till repository *image/isolinux/postinstall/config/ids_server/rhscl-httpd24-epel-7-x86_64.repo*
-	  2. Lägg till repository *image/isolinux/postinstall/config/ids_server/rhscl-v8314-epel-7-x86_64.repo*
-	  3. Lägg till repository *image/isolinux/postinstall/config/ids_server/rhscl-rh-passenger40-epel-7-x86_64.repo*
-	  4. Lägg till repository *image/isolinux/postinstall/config/monitor_server/icinga2.repo*
-	  5. Lägg till publika signeringsnyckeln *image/isolinux/postinstall/config/monitor_server/RPM-GPG-KEY-icinga*
-	  6. Lägg till repository *image/isolinux/postinstall/config/ids_server/rhscl-ruby193-epel-7-x86_64.repo*
-	  7. EPEL, går att installera med **yum install epel-release**
-  2. I den katalog till vilken du laddat ner filerna, byt till underkatalogen med hjälp av kommandot **cd image**
-  3. I image-katalogen, kör det medföljande programmet **./download_packages.sh** (det här skriptet tog ca 10min att köra på en testdator)
-4. Skapa installationsmedia
-  1. I den katalog till vilken du laddat ner filerna, byt till underkatalogen med hjälp av kommandot **cd image** 
-  2. I image-katalogen, kör det medföljande programmet **./create_iso.sh**  (det här skriptet tog ca 1min att köra på en testdator)
-
-skriptet **download_packages.sh** som körs laddar ner alla programpaket som behövs i samma katalogen image/isolinux/Packages.
-
-skriptet **create_iso.sh** som körs skapar en fil med namnet **foss.iso** i samma katalog. Detta är filen med installationsprogrammet som kan brännas till DVD eller installeras på en USB-minnessticka. 
-
-Från DVD:n eller USB-enheten går det sedan att *[boota]* den aktuella datorn som installationen ska utföras på.
+### Skapa en bootbar DVD/USB
+Se den färdiga dokumentationen
 
 
-## Skapa en bootbar DVD
+## För att skapa/ändra dokumentation
+1. I den katalog till vilken du laddat ner filerna, byt till underkatalogen med hjälp av kommandot **cd docs**
+2. Ändra i de textfiler eller de bilder som ska ändras
+3. I docs-katalogen, skriv **make all** för att bygga dokumentationen och för att test förändringarna som gjorts
+
 
 # Att starta upp från installationsmediet (DVD eller USB-sticka) första gången
 
