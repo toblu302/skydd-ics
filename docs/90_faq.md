@@ -518,13 +518,10 @@ Nedan följer en detaljerad beskrivning hur detta går till:
 4. I docs-katalogen, skriv *make all* för att bygga dokumentationen som krävs innan själv installationsmediet skapas
 5. Ladda ner beroenden
 6. Säkerställ att alla repositories som krävs är aktiverade i byggdatorn,
-        1. Lägg till repository image/isolinux/postinstall/config/ids_server/rhscl-httpd24-epel-7-x86_64.repo
-        2. Lägg till repository image/isolinux/postinstall/config/ids_server/rhscl-v8314-epel-7-x86_64.repo
-        3. Lägg till repository image/isolinux/postinstall/config/ids_server/rhscl-rh-passenger40-epel-7-x86_64.repo
-        4. Lägg till repository image/isolinux/postinstall/config/monitor_server/icinga2.repo
-        5. Lägg till publika signeringsnyckeln image/isolinux/postinstall/config/monitor_server/RPM-GPG-KEY-icinga
-        6. Lägg till repository image/isolinux/postinstall/config/ids_server/rhscl-ruby193-epel-7-x86_64.repo
-        7. EPEL, går att installera med yum install epel-release
+        1. Installera centos-release-scl-rh
+        2. Lägg till repository image/isolinux/postinstall/config/monitor_server/icinga2.repo
+        3. Lägg till publika signeringsnyckeln image/isolinux/postinstall/config/monitor_server/RPM-GPG-KEY-icinga
+        4. EPEL, går att installera med yum install epel-release
 7. I den katalog till vilken du laddat ner filerna, byt till underkatalogen med hjälp av kommandot cd image
 8. I image-katalogen, kör det medföljande programmet ./download_packages.sh (det här skriptet tog ca 10min att köra på en testdator)
 9. Skapa installationsmedia

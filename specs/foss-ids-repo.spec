@@ -26,7 +26,7 @@ License:   %{license}
 Group:     %{group}
 Source0:   %{source}
 BuildArch: noarch
-Requires:  foss-common, createrepo
+Requires:  foss-common, createrepo, centos-release-scl-rh
 Requires(pre): shadow-utils
 Provides:  %{name}
 URL:       %{url}
@@ -55,8 +55,4 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-     %attr(0644, root, root)              /etc/yum.repos.d/rhscl-httpd24-epel-7-x86_64.repo
-     %attr(0644, root, root)              /etc/yum.repos.d/rhscl-ruby193-epel-7-x86_64.repo
-     %attr(0644, root, root)              /etc/yum.repos.d/rhscl-rh-passenger40-epel-7-x86_64.repo
-     %attr(0644, root, root)              /etc/yum.repos.d/rhscl-v8314-epel-7-x86_64.repo
      %attr(0644, root, root)              /root/rpm/*.rpm

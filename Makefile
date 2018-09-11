@@ -142,7 +142,6 @@ ids-repo:
 	@mkdir -p $(BUILDDIR)/foss-ids-repo
 	@mkdir -p $(BUILDDIR)/foss-ids-repo/etc/yum.repos.d
 	@mkdir -p $(BUILDDIR)/foss-ids-repo/root/rpm
-	@cp files/ids/*.repo $(BUILDDIR)/foss-ids-repo/etc/yum.repos.d/
 	@cp files/ids/*.rpm $(BUILDDIR)/foss-ids-repo/root/rpm/
 
 	@rpmbuild --quiet -bb \
