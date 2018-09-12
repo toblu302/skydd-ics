@@ -39,14 +39,14 @@ Simple server for collecting logs. Uses syslogd. Listens on UDP and TCP port 514
 
 %build
 # Build a selinux policy to allow httpd to read from the incoming log file
-cd %{_srcdir}
+cd %{_srcdir}/usr/share/selinux/packages/foss-simple-log
 make -f /usr/share/selinux/devel/Makefile
+rm -rf tmp
 
 %install
 pushd %{_srcdir}
-mkdir -p  %{buildroot}/usr/share/selinux/packages/foss-simple-log
-cp  %{_srcdir}/*.pp  %{buildroot}/usr/share/selinux/packages/foss-simple-log
 cp -r var etc usr %{buildroot}
+
 
 %pre
 
@@ -57,6 +57,7 @@ touch /opt/.foss-simple-log
 
 %clean
 rm -rf %{buildroot}
+#rm -rf %{buildroot}/usr/share/selinux/packages/foss-simple-log/tmp
 
 %postun
 rm -f /opt/.foss-simple-log
@@ -78,5 +79,8 @@ rm -f /opt/.foss-simple-log
      %attr(0644, root, root)              /etc/skel/Desktop/firefox_log.desktop
      %attr(0644, root, root)              /etc/xdg/autostart/firefox_log_autostart.desktop
 %dir %attr(0755, root, root)              /usr/share/selinux/packages/foss-simple-log
+     %attr(0644, root, root)              /usr/share/selinux/packages/foss-simple-log/logger.if
+     %attr(0644, root, root)              /usr/share/selinux/packages/foss-simple-log/logger.fc
+     %attr(0644, root, root)              /usr/share/selinux/packages/foss-simple-log/logger.te
      %attr(0644, root, root)              /usr/share/selinux/packages/foss-simple-log/logger.pp
      %attr(0600, root, root) %config(noreplace) /var/log/incoming

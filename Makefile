@@ -73,22 +73,14 @@ simplelog:
 	@mkdir -p $(PWD)/rpmbuild
 	@mkdir -p $(PWD)/rpms
 	@mkdir -p $(BUILDDIR)/foss-simplelog
-	@mkdir -p $(BUILDDIR)/foss-simplelog/etc/rsyslog.d
-	@mkdir -p $(BUILDDIR)/foss-simplelog/etc/logrotate.d
-	@mkdir -p $(BUILDDIR)/foss-simplelog/etc/skel/Desktop
-	@mkdir -p $(BUILDDIR)/foss-simplelog/etc/xdg/autostart
 	@mkdir -p $(BUILDDIR)/foss-simplelog/usr/share/selinux/packages/foss-simple-log
-	@mkdir -p $(BUILDDIR)/foss-simplelog/var/www/html/log
-	@touch $(BUILDDIR)/foss-simplelog/var/www/html/log/searching.json
+	@mkdir -p $(BUILDDIR)/foss-simplelog/var/www/html/log/
 	@mkdir -p $(BUILDDIR)/foss-simplelog/var/log
+	@touch $(BUILDDIR)/foss-simplelog/var/www/html/log/searching.json
 	@touch $(BUILDDIR)/foss-simplelog/var/log/incoming
-	@cp files/simple_log_server/rsyslog.conf $(BUILDDIR)/foss-simplelog/etc/rsyslog.d/foss.conf
-	@cp files/simple_log_server/logrotate.syslog $(BUILDDIR)/foss-simplelog/etc/logrotate.d/syslog.foss
-	@cp -rp	files/simple_log_server/log $(BUILDDIR)/foss-simplelog/var/www/html/
-	@cp files/simple_log_server/"Länk till loggvy.desktop" $(BUILDDIR)/foss-simplelog/etc/skel/Desktop/
-	@cp files/simple_log_server/firefox.desktop $(BUILDDIR)/foss-simplelog/etc/skel/Desktop/firefox_log.desktop
-	@cp files/simple_log_server/firefox_autostart.desktop $(BUILDDIR)/foss-simplelog/etc/xdg/autostart/firefox_log_autostart.desktop
-	@cp files/simple_log_server/logger.* $(BUILDDIR)/foss-simplelog/
+	@cp -rp files/simple_log_server/etc $(BUILDDIR)/foss-simplelog
+	@cp -rp	files/simple_log_server/var $(BUILDDIR)/foss-simplelog
+	@cp -rp files/simple_log_server/usr $(BUILDDIR)/foss-simplelog
 	@rpmbuild --quiet -bb \
 		--define "_topdir $(PWD)/rpmbuild" \
 		--define "_srcdir $(BUILDDIR)/foss-simplelog" \
