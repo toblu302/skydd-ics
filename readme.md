@@ -1,4 +1,4 @@
-# Samling av säkerhetslösningar byggda på öppen källkod för att skydda eller upptäcka hot i [SCADA/ICS-miljö][SCADA/ICS-miljö]
+# Samling av säkerhetslösningar byggda på öppen källkod för att skydda eller upptäcka hot i [SCADA]/[ICS]-miljö]
 
 Detta programarkiv innehåller ett antal olika säkerhetslösningar, vissa för att skapa skydd, andra för att kunna fungera som logg/larm/övervakningsservrar, i ICS/SCADA-miljöer. Dessa säkerhetslösningar bygger i grund och botten på fria och öppna programvaror (s.k. [FOSS]).
 
@@ -11,7 +11,7 @@ Lösningen består av ett installations-media varifrån du kan välja att instal
 
 ## Filstruktur
 
-Filkatalogen **docs/** innehåller dokumentation skriven i markdown för de enskilda servrarna som går att installera, samt tillhörande stöddokumentation. Från denna grunddokumentation kan motsvarande dokumentation i HTML, pdf mm skapas. En sammanställd bok, kallad bok.pdf skapas också av alla dokumentationsfilerna.
+Filkatalogen **docs/** innehåller dokumentation skriven i markdown för de enskilda servrarna som går att installera, samt tillhörande stöddokumentation. Från denna grunddokumentation kan motsvarande dokumentation i HTML, pdf m.m. skapas. En sammanställd bok, kallad bok.pdf skapas också av alla dokumentationsfilerna.
 
 Filkatalogen **image/** innehåller skript och konfigurationer för att skapa en avbildning som kan skrivas till en DVD eller en USB-minnessticka.
 
@@ -25,25 +25,29 @@ Filkatalogen **pictures/** innehåller bilder som används
 
 ### Beroenden
 * En virtualiseringsmiljö
-  * kvm
+  * [kvm]
   * vmware
-  * virtualbox
-* Vagrant
+  * [virtualbox]
+* [Vagrant]
 
 ### Bygga installationsmedia
-1. Hämta källkoden
+1. Hämta källkoden. Detta kan exempelvis göras genom att ladda ner ZIP-filen eller klona med HTTPS.
+Länk till ZIP-fil och adress för kloning finns under "Clone or download"-knappen i detta GiHub repository:
+![](/home/christian/Projects/fluffy-barnacle/pictures/klona.jpg) 
+
 2. Starta ett terminal-fönster
-3. cd vagrant
-4. vagrant up build
-5. vagrant ssh build
-6. sudo su -
-7. cd /vagrant/image
-8. curl -o centosdvd.iso [url till centos dvd installationsmedia]
+
+3. $ cd vagrant
+4. $ vagrant up build
+5. $ vagrant ssh build
+6. $ sudo su -
+7. $ cd /vagrant/image
+8. $ curl -o centosdvd.iso [url till centos dvd installationsmedia]
 9. Verifiera checksumman enligt https://wiki.centos.org/TipsAndTricks/sha256sum
-10. mount -o loop centosdvd.iso DVD
-11. ./download_packages.sh
-12. ./create_iso.sh
-13. den byggda iso:n finns i katalogen /vagrant/image
+10. $ mount -o loop centosdvd.iso DVD
+11. $ ./download_packages.sh
+12. $ ./create_iso.sh
+13. $ den byggda iso:n finns i katalogen /vagrant/image
 
 ### Skapa en bootbar DVD/USB
 Se den färdiga dokumentationen
@@ -60,9 +64,7 @@ Se den färdiga dokumentationen
 Sätt in installationsmediet (DVD eller USB) i den dator som du vill använda för att installera dessa program på. 
 **Notera att hårddisken som sitter i datorn kommer att omformatteras i det fall du väljer att påbörja en installation. All information på den hårddisken kommer att skrivas över**
 
-När man startar en dator från installationsmediet så går det att välja vilken typ av server som ska installeras. Därefter 
-startas en så kallad [kickstart]installation, där installationsförfarandet av grundläggande systemkomponenter och många installationsval är
-automatiserade.
+När man startar en dator från installationsmediet så går det att välja vilken typ av server som ska installeras. Därefter startas en så kallad [kickstart]installation, där installationsförfarandet av grundläggande systemkomponenter och många installationsval är automatiserade.
 
 ## Att starta upp datorn med de nyinstallerade tjänsterna första gången
 Efter installationen är färdig, så ombeds du att starta om datorn, denna gång för att starta upp ifrån ditt nyinstallerade system. Ta ut USB-stickan eller DVD-skivan så att datorn inte försöker starta upp därifrån. I samband med omstart så ombeds du skapa en användare med tillhörande lösenord. När detta är klart så är systemet uppstartat och användaren är inloggad. 
@@ -75,18 +77,19 @@ instruktioner för hur just den aktuella installationen används. Om du av misst
 Om installation inte slutfördes eller inte startades kan det vara så att just den datorn inte stöds utav den Linux-distribution som används.
 Testa att installera på en annan dator, helst en annan modell och om möjligt en nyare årsmodell.
 
-[Test]("Testar länk med enbart text")
+[kickstart]: https://docs.centos.org/en-US/centos/install-guide/Kickstart2/ "Ett sätt att installera ett operativsystem med programvara automatiskt"
 
-[kickstart]: "Ett sätt att installera ett operativsystem med programvara automatiskt"
+[SCADA]: https://en.wikipedia.org/wiki/SCADA "Datormiljö som används för industriell automation."
+[ICS]: https://en.wikipedia.org/wiki/Industrial_control_system "Datormiljö som används för industriell automation."
 
-[ISO-fil]: "En strukturerad fil som innehåller alla filer sammanställda till en stor sammanslagen fil, vilket är en avbildning av en CD/DVD-skiva"
+[FOSS]: https://en.wikipedia.org/wiki/Free_and_open-source_software "Free and Open-Source Software. Samlingsnamn för datorprogram som klassificeras som både fri (tillgänglighen är inte begränsad) och källkoden är tillgänglig för alla och envar att studera, kopiera, modifiera m.m."
 
-[boota]: "Att starta upp en dator och göra initial programladdning, vilket oftast är operativsystemet eller annat grundläggande kontrollprogram"
+[firefox]: https://en.wikipedia.org/wiki/Firefox "Fri webbläsare som har stor spridning i Linuxvärlden."
 
-[SCADA/ICS-miljö]: "Datormiljö som används för industriell automation."
+[ISO]: https://sv.wikipedia.org/wiki/ISO-avbild "En strukturerad fil som innehåller alla filer sammanställda till en stor sammanslagen fil, vilket är en avbildning av en CD/DVD-skiva"
 
-[FOSS]: "Free and Open-Source Software. Samlingsnamn för datorprogram som klassificeras som både fri (tillgänglighen är inte begränsad) och källkoden är tillgänglig för alla och envar att studera, kopiera, modifiera mm"
+[kvm]: https://www.linux-kvm.org/page/Main_Page "En virtualiseringsmodul i Linuxkärnan."
 
-[firefox]: "Fri webbläsare som har stor spridning i Linuxvärlden"
+[virtualbox]: https://www.virtualbox.org/ "Programvara för virtualisering."
 
-[ISO]: https://sv.wikipedia.org/wiki/ISO-avbild "Avbild av digitalt media"
+[Vagrant]: https://www.vagrantup.com "Verktyg för att konfigurera och hantera miljöer med virtuella datorer."
