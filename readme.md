@@ -75,6 +75,8 @@ instruktioner för hur just den aktuella installationen används. Om du av misst
 Om installation inte slutfördes eller inte startades kan det vara så att just den datorn inte stöds utav den Linux-distribution som används.
 Testa att installera på en annan dator, helst en annan modell och om möjligt en nyare årsmodell.
 
+[Test]("Testar länk med enbart text")
+
 [kickstart]: "Ett sätt att installera ett operativsystem med programvara automatiskt"
 
 [ISO-fil]: "En strukturerad fil som innehåller alla filer sammanställda till en stor sammanslagen fil, vilket är en avbildning av en CD/DVD-skiva"
