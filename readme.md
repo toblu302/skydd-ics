@@ -1,4 +1,4 @@
-# Samling av säkerhetslösningar byggda på öppen källkod för att skydda eller upptäcka hot i [SCADA/ICS-miljö]
+# Samling av säkerhetslösningar byggda på öppen källkod för att skydda eller upptäcka hot i [SCADA/ICS-miljö][SCADA/ICS-miljö]
 
 Detta programarkiv innehåller ett antal olika säkerhetslösningar, vissa för att skapa skydd, andra för att kunna fungera som logg/larm/övervakningsservrar, i ICS/SCADA-miljöer. Dessa säkerhetslösningar bygger i grund och botten på fria och öppna programvaror (s.k. [FOSS]).
 
