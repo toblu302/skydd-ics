@@ -37,8 +37,14 @@ Länk till ZIP-fil och adress för kloning finns under "Clone or download"-knapp
 
 2. Starta ett terminal-fönster
 
-3. $ cd vagrant
-4. $ vagrant up build
+3.
+    ```console
+    $ cd vagrant
+    ```
+4. 
+    ```console
+    $ vagrant up build
+    ```
 5. $ vagrant ssh build
 6. $ sudo su -
 7. $ cd /vagrant/image
