@@ -37,7 +37,7 @@ Länk till ZIP-fil och adress för kloning finns under "Clone or download"-knapp
 
 2. Starta ett terminal-fönster
 
-3.
+3. Gå in i vagrantmappen:
     ```console
     $ cd vagrant
     ```
