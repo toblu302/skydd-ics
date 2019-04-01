@@ -27,36 +27,60 @@ Filkatalogen **pictures/** innehåller bilder som används
 * En virtualiseringsmiljö
   * [kvm]
   * vmware
-  * [virtualbox]
+  * [virtualbox] - VBoxManage använder sig av Intel VT eller AMD-V och behöver då vara påslaget i BIOS.
 * [Vagrant]
 
 ### Bygga installationsmedia
 1. Hämta källkoden. Detta kan exempelvis göras genom att ladda ner ZIP-filen eller klona med HTTPS.
 Länk till ZIP-fil och adress för kloning finns under "Clone or download"-knappen i detta GiHub repository:
-![](/home/christian/Projects/fluffy-barnacle/pictures/klona.jpg) 
+![Download](https://github.com/romab/fluffy-barnacle/blob/docs-update/pictures/klona.jpg)
+    ```console
+    $ git clone https://github.com/romab/fluffy-barnacle.git
+    ```
 
-2. Starta ett terminal-fönster
+2. Starta ett terminal-fönster om inte redan gjort under steg 1
 
-3. Gå in i vagrantmappen:
+3. Gå in i vagrantmappen när källkoden är nedladdad/uppackad
     ```console
     $ cd vagrant
     ```
-4. 
+4. Skapa och konfigurera en gästmaskin med namnet *build* enligt filen *Vagrantfile*
     ```console
     $ vagrant up build
     ```
-5. $ vagrant ssh build
-6. $ sudo su -
-7. $ cd /vagrant/image
-8. $ curl -o centosdvd.iso [url till centos dvd installationsmedia]
+5. Anslut till den nyskapade virtuella maskinen via SSH
+    ```console
+    $ vagrant ssh build
+    ```
+6. Byt till root rättigheter
+    ```console
+    $ sudo su -
+    ```
+7. 
+    ```console
+    $ cd /vagrant/image
+    ```
+8. Välj lämplig URL på https://www.centos.org/download/ för att använda i kommandot nedan
+    ```console
+    $ curl -o centosdvd.iso [url till centos dvd installationsmedia]
+    ```
 9. Verifiera checksumman enligt https://wiki.centos.org/TipsAndTricks/sha256sum
-10. $ mount -o loop centosdvd.iso DVD
-11. $ ./download_packages.sh
-12. $ ./create_iso.sh
-13. $ den byggda iso:n finns i katalogen /vagrant/image
+10. Sätt upp ISO-filen som en enhet i filträdet
+    ```console
+    $ mount -o loop centosdvd.iso DVD
+    ```
+11. Ladda ner nödvändiga packet och beroenden
+    ```console
+    $ ./download_packages.sh
+    ```
+12. Skapa ISO-fil för installationsmedia
+    ```console
+    $ ./create_iso.sh
+    ```
+13. Den byggda iso:n (foss.iso) finns i katalogen /vagrant/image
 
 ### Skapa en bootbar DVD/USB
-Se den färdiga dokumentationen
+Se avsnitt *[8.1 Skapa installationsmedia](docs/81_skapa_installations_media.md)*  i [dokumentationen](docs/).
 
 
 ## För att skapa/ändra dokumentation
