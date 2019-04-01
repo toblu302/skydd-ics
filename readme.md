@@ -56,7 +56,7 @@ Länk till ZIP-fil och adress för kloning finns under "Clone or download"-knapp
     ```console
     $ sudo su -
     ```
-7. 
+7. Byt katalog
     ```console
     $ cd /vagrant/image
     ```
