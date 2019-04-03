@@ -96,6 +96,8 @@ Sätt in installationsmediet (DVD eller USB) i den dator som du vill använda f�
 
 När man startar en dator från installationsmediet så går det att välja vilken typ av server som ska installeras. Därefter startas en så kallad [kickstart]installation, där installationsförfarandet av grundläggande systemkomponenter och många installationsval är automatiserade.
 
+Se [dokumentationen](/docs/20_installation.md) för ytterligare information kring installation.
+
 ## Att starta upp datorn med de nyinstallerade tjänsterna första gången
 Efter installationen är färdig, så ombeds du att starta om datorn, denna gång för att starta upp ifrån ditt nyinstallerade system. Ta ut USB-stickan eller DVD-skivan så att datorn inte försöker starta upp därifrån. I samband med omstart så ombeds du skapa en användare med tillhörande lösenord. När detta är klart så är systemet uppstartat och användaren är inloggad. 
 
