@@ -24,7 +24,7 @@ Filkatalogen **pictures/** innehåller bilder som används
 ## För att skapa en installationsmedia, en s.k. [ISO]-fil på en dator med CentOS 7:
 
 ### Beroenden
-* En virtualiseringsmiljö
+* En av följande virtualiseringsmiljöer:
   * [kvm]
   * vmware
   * [virtualbox] - VBoxManage använder sig av Intel VT eller AMD-V och behöver då vara påslaget i BIOS.
