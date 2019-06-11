@@ -84,9 +84,15 @@ Se avsnitt *[8.1 Skapa installationsmedia](docs/81_skapa_installations_media.md)
 
 
 ## För att skapa/ändra dokumentation
+### Beroenden
+* [pandoc]
+* texlive
+* texlive-latex-extra
+
+### Skapa/ändra
 1. I den katalog till vilken du laddat ner filerna, byt till underkatalogen med hjälp av kommandot **cd docs**
 2. Ändra i de textfiler eller de bilder som ska ändras
-3. I docs-katalogen, skriv **make all** för att bygga dokumentationen och för att test förändringarna som gjorts
+3. I docs-katalogen, skriv **make all** för att bygga dokumentationen och för att testa förändringarna som gjorts
 
 
 # Att starta upp från installationsmediet (DVD eller USB-sticka) första gången
@@ -125,3 +131,5 @@ Testa att installera på en annan dator, helst en annan modell och om möjligt e
 [virtualbox]: https://www.virtualbox.org/ "Programvara för virtualisering."
 
 [Vagrant]: https://www.vagrantup.com "Verktyg för att konfigurera och hantera miljöer med virtuella datorer."
+
+[pandoc]: https://pandoc.org/ "Verktyg för att konvertera mellan olika textformat"
