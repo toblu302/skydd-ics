@@ -2,7 +2,7 @@
 
 Detta programarkiv innehåller ett antal olika säkerhetslösningar, vissa för att skapa skydd, andra för att kunna fungera som logg/larm/övervakningsservrar, i ICS/SCADA-miljöer. Dessa säkerhetslösningar bygger i grund och botten på fria och öppna programvaror (s.k. [FOSS]).
 
-Lösningen består av ett installations-media varifrån du kan välja att installera olika säkerhetsfunktioner på servrar. Bland de servrar du kan installera så finns exempelvis 
+Lösningen består av ett installations-media varifrån du kan välja att installera olika säkerhetsfunktioner på servrar. Bland de servrar du kan installera så finns exempelvis
 
 * en enkel logginsamlingsserver som tar emot syslog-trafik och har ett enkelt webbgränssnitt för att kunna söka efter strängar i insamlade loggar
 * en larmserver som sätts upp som mottagare och hanterare av olika larm från övervakade tjänster och utrustning
@@ -33,7 +33,7 @@ Filkatalogen **pictures/** innehåller bilder som används
 ### Bygga installationsmedia
 1. Hämta källkoden. Detta kan exempelvis göras genom att ladda ner ZIP-filen eller klona med HTTPS.
 Länk till ZIP-fil och adress för kloning finns under "Clone or download"-knappen i detta GiHub repository:
-![Download](https://github.com/romab/fluffy-barnacle/blob/docs-update/pictures/klona.jpg)
+![Download](/pictures/klona.jpg)
     ```console
     $ git clone https://github.com/romab/fluffy-barnacle.git
     ```
@@ -91,7 +91,7 @@ Se avsnitt *[8.1 Skapa installationsmedia](docs/81_skapa_installations_media.md)
 
 # Att starta upp från installationsmediet (DVD eller USB-sticka) första gången
 
-Sätt in installationsmediet (DVD eller USB) i den dator som du vill använda för att installera dessa program på. 
+Sätt in installationsmediet (DVD eller USB) i den dator som du vill använda för att installera dessa program på.
 **Notera att hårddisken som sitter i datorn kommer att omformatteras i det fall du väljer att påbörja en installation. All information på den hårddisken kommer att skrivas över**
 
 När man startar en dator från installationsmediet så går det att välja vilken typ av server som ska installeras. Därefter startas en så kallad [kickstart]installation, där installationsförfarandet av grundläggande systemkomponenter och många installationsval är automatiserade.
@@ -99,9 +99,9 @@ När man startar en dator från installationsmediet så går det att välja vilk
 Se [dokumentationen](/docs/20_installation.md) för ytterligare information kring installation.
 
 ## Att starta upp datorn med de nyinstallerade tjänsterna första gången
-Efter installationen är färdig, så ombeds du att starta om datorn, denna gång för att starta upp ifrån ditt nyinstallerade system. Ta ut USB-stickan eller DVD-skivan så att datorn inte försöker starta upp därifrån. I samband med omstart så ombeds du skapa en användare med tillhörande lösenord. När detta är klart så är systemet uppstartat och användaren är inloggad. 
+Efter installationen är färdig, så ombeds du att starta om datorn, denna gång för att starta upp ifrån ditt nyinstallerade system. Ta ut USB-stickan eller DVD-skivan så att datorn inte försöker starta upp därifrån. I samband med omstart så ombeds du skapa en användare med tillhörande lösenord. När detta är klart så är systemet uppstartat och användaren är inloggad.
 
-Om installationen gått enligt plan, så är webläsaren [firefox] automatiskt startad. Startsidan för webbläsaren innehåller ytterliggare 
+Om installationen gått enligt plan, så är webläsaren [firefox] automatiskt startad. Startsidan för webbläsaren innehåller ytterliggare
 instruktioner för hur just den aktuella installationen används. Om du av misstag stänger ned webbläsaren, starta den på nytt via menyn "Application" -> "Favorites" -> "Firefox".
 
 # Om något fel inträffar
