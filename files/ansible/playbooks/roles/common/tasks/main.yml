@@ -17,7 +17,7 @@
   when: s.stat.exists == false
 
 - name: install common default firewall rules
-  template: src=iptables.j2 dest=/etc/sysconfig/{{ item }}
+  template: src=etc/sysconfig/iptables.j2 dest=/etc/sysconfig/{{ item }}
   with_items:
     - "iptables"
     - "ip6tables"
