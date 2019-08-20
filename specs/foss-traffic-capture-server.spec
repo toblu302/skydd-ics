@@ -26,7 +26,7 @@ License:   %{license}
 Group:     %{group}
 Source0:   %{source}
 BuildArch: noarch
-Requires:  foss-httpd, foss-common, foss-docs, tcpdump, wireshark, ngrep, perl-URI-Encode, perl-IO-Zlib, perl-Net-DNS
+Requires:  foss-httpd, foss-common, foss-docs, tcpdump, wireshark, ngrep, perl-URI-Encode, perl-IO-Zlib, perl-Net-DNS, python-inotify
 Requires(pre): shadow-utils
 Provides:  %{name}
 URL:       %{url}
