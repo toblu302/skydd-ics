@@ -84,7 +84,7 @@ rm -f /opt/.foss-common
      %attr(0644, root, root) /opt/ansible/playbooks/roles/common/defaults/main.yml
      %attr(0644, root, root) /opt/ansible/playbooks/roles/common/tasks/main.yml
 %dir %attr(0755, root, root) /opt/ansible/playbooks/roles/common/templates
-     %attr(0644, root, root) /opt/ansible/playbooks/roles/common/templates/iptables.j2
+     %attr(0644, root, root) /opt/ansible/playbooks/roles/common/templates/etc/sysconfig/iptables.j2
      %attr(0644, root, root) /opt/ansible/playbooks/roles/ids/tasks/main.yml
      %attr(0644, root, root) /opt/ansible/playbooks/roles/ids_repo/tasks/main.yml
      %attr(0644, root, root) /opt/ansible/playbooks/roles/ids_repo/files/*
