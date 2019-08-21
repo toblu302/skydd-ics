@@ -51,14 +51,14 @@ cp -r root etc usr %{buildroot}
 %pre
 
 %post
-touch /opt/.foss-monitor
-# run ansible with provided inventory which could have beeen changed by the user
-/usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/monitor.yml > /root/ansible-run-$$
-
 if [ $1 -eq 1 ]; then
     #install
     /bin/systemctl enable first-boot.service
+else
+    # run ansible with provided inventory which could have beeen changed by the user
+    /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/monitor.yml > /root/ansible-run-$$
 fi
+touch /opt/.foss-monitor
 
 %clean
 rm -rf %{buildroot}

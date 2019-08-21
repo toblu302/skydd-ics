@@ -4,15 +4,18 @@
 
 - name: Run restore context to reload selinux
   shell: restorecon -R -v "{{ item }}"
-  with_items:
+  loop:
   - /etc
   - /var
   - /usr
 
 # apache talks to postgres over a localhost socket (maybe should be a unix domain socket?)
 - name: set required sebooleans..
-  seboolean: name="{{ item }}" state=yes persistent=yes
-  with_items:
+  seboolean:
+    name: "{{ item }}"
+    state: yes
+    persistent: yes
+  loop:
     - httpd_can_network_connect
     - httpd_can_network_connect_db
 
@@ -23,13 +26,24 @@
     append: yes
 
 - name: Fix permissions on files now that the icinga user exists
-  file: dest=/etc/icinga2/conf.d owner=icinga group=icinga mode=0640 recurse=yes
+  file:
+    dest: /etc/icinga2/conf.d
+    owner: icinga
+    group: icinga
+    mode: 0640
+    recurse: yes
 - name: Fix permissions on dir
-  file: dest=/etc/icinga2/conf.d owner=icinga group=icinga mode=0755
+  file:
+    dest: /etc/icinga2/conf.d
+    owner: icinga
+    group: icinga
+    mode: 0755
 
 - name: Enable icinga services
-  service: name="{{ item }}" enabled=yes
-  with_items:
+  service:
+    name: "{{ item }}"
+    enabled: yes
+  loop:
     - icinga2
     - httpd
     - rh-php71-php-fpm
@@ -37,4 +51,8 @@
   shell: /bin/timedatectl | /bin/awk '/Time zone:/{print $3}'
   register: time_zone
 - name: set time zone in php.ini
-  ini_file: path=/etc/php.ini section=Date option=date.timezone value={{ time_zone.stdout }}
+  ini_file:
+    path: /etc/php.ini
+    section: Date
+    option: date.timezone
+    value: "{{ time_zone.stdout }}"

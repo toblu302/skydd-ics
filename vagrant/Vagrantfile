@@ -31,12 +31,14 @@ Vagrant.configure("2") do |config|
     cd /vagrant/rpms
     yum install -y foss-docs-*.noarch.rpm foss-common-*.noarch.rpm foss-httpd-*.noarch.rpm   
     cd ..
+    /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/foss.yml
+
   SHELL
 #################
 # dump server
   config.vm.define "dump" do |dump|
     dump.vm.network :private_network,
-	    #:auto_config      => false,
+	    :auto_config      => false,
 	    :ip		          => ENV['DUMP_IP'],
 	    :virtualbox__ip   => "192.168.0.30/24",
 	    :libvirt__host_ip => ENV['DUMP_IP'],
@@ -45,9 +47,9 @@ Vagrant.configure("2") do |config|
       hostnamectl set-hostname dump
       cd /vagrant/rpms
       yum install -y foss-traffic-capture-*.noarch.rpm
+      /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/traffic.yml
       # restart network to start the tcpdump service
       systemctl restart network
-      systemctl start reaper
     SHELL
   end
 #################
@@ -63,7 +65,7 @@ Vagrant.configure("2") do |config|
       hostnamectl set-hostname log
       cd /vagrant/rpms
       yum install -y foss-simple-log-server-*.noarch.rpm
-      systemctl restart rsyslog
+      /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/simple_log.yml
     SHELL
   end
 #################
@@ -80,7 +82,7 @@ Vagrant.configure("2") do |config|
       cd /vagrant/rpms
       yum install -y foss-ids-repo-*.noarch.rpm
       yum install -y foss-ids-*.x86_64.rpm
-      systemctl restart httpd
+      /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/ids-repo.yml
     SHELL
   end
 #################
@@ -97,12 +99,13 @@ Vagrant.configure("2") do |config|
       cd /vagrant/rpms
       yum install -y foss-icinga-repo-*.noarch.rpm
       yum install -y foss-monitor-server-*.noarch.rpm
-      # first-boot requires firstboot-graphical.service
-      # this is not always enabled during vagrant testing
-      # we will manual exec the stuff anyway
-      /bin/bash /root/init_pg.sh
-      /bin/systemctl start rh-php71-php-fpm
-      /bin/systemctl restart httpd
+      /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/monitor.yml
+      ## first-boot requires firstboot-graphical.service
+      ## this is not always enabled during vagrant testing
+      ## we will manual exec the stuff anyway
+      #/bin/bash /root/init_pg.sh
+      #/bin/systemctl start rh-php71-php-fpm
+      #/bin/systemctl restart httpd
     SHELL
   end
 #################
@@ -219,8 +222,11 @@ PItLjBQAXIhJBBgRAgAJBQJSh85OAhsMAAoJEMbjGcM0QQaCzpAAmwUNoRyySf9p
 -----END PGP PUBLIC KEY BLOCK-----
 " > /etc/pki/rpm-gpg/RPM-GPG-KEY-icinga
     yum clean all
-    yum install -y syslinux mkisofs createrepo
+    yum install -y syslinux mkisofs createrepo grub2-efi-x64-modules dosfstools genisoimage repotrack
     mkdir /vagrant/image/DVD
+    cd /vagrant
+    make clean
+    make all
     SHELL
   end
 end

@@ -44,8 +44,10 @@ cp -r etc root %{buildroot}
 %post
 touch /opt/.foss-ids-repo
 
-# run ansible with provided inventory which could have beeen changed by the user
-/usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/ids-repo.yml > /root/ansible-run-$$
+if [ $1 -en 1 ];then
+    # run ansible with provided inventory which could have beeen changed by the user
+    /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/ids-repo.yml > /root/ansible-run-$$
+fi
 
 %postun
 rm -f /opt/.foss-ids-repo

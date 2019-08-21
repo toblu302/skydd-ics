@@ -1,6 +1,6 @@
 ---
 # allow apache reading dumps
-- acl: 
+- acl:
     path: /home/tcpdump
     entity: apache
     etype: user
@@ -15,21 +15,27 @@
 
 - name: Run restore context to reload selinux
   shell: restorecon -R -v "{{ item }}"
-  with_items:
-  - /var
-  - /etc
-  - /opt
-  - /home
+  loop:
+    - /var
+    - /etc
+    - /opt
+    - /home
 
 - name: set required sebooleans..
-  seboolean: name="{{ item }}" state=yes persistent=yes
-  with_items:
+  seboolean:
+    name: "{{ item }}"
+    state: yes
+    persistent: yes
+  loop:
     - httpd_enable_homedirs
     - httpd_read_user_content
     - httpd_unified
 
 - name: Enable reaper
-  service: name="{{ item }}" enabled=yes no_block=no
-  with_items:
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
+    started: yes
+    no_block: no
+  loop:
     - reaper
-
