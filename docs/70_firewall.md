@@ -1,75 +1,73 @@
 # Brandvägg
-Den här guiden förutsättet att installationen utförs på en dator med minst två stycken nätverkskort, men det går att göra en installation på en dator som enbart har ett nätverkskort. En sådan mer avancerad brandväggsinstallation förutsätter att personen som installerar systemet har mer förkunskaper om nätverk samt att datorn konfigureras tillsammans med en switch som kan hantera virtuella lan och har stöd för trunkar.
+Den här guiden förutsätter att installationen utförs på en dator med minst två nätverkskort, men det går att göra en installation på en dator som enbart har ett nätverkskort. En sådan mer avancerad brandväggsinstallation förutsätter att personen som installerar systemet har mer förkunskaper om nätverk samt att datorn konfigureras tillsammans med en switch som kan hantera virtuella lan och har stöd för trunkar.
 
 ## Översikt
-Det går går att välja mellan väldigt många olika brandväggar på marknaden, både helhetslösningar där brandväggen är en hårdvaruprodukt med integrerad mjukvara från leverantören. Ofta brukar mjukvaran kallas för *firmware* i de fall då produkten är en hårdvara.  
-Det finns brandväggar som ska placeras i nätverket där de ofta även fungerar som routrar mellan olika nätverkssegment, men även brandväggar som är installerade på klienter och fungerar som skydd för den aktuella dator som brandväggen är installerad på.  
-  
-Den här guiden använder beskriver hur det går till att bygga en brandvägg vars syfte är att skydda olika nätverk. Det sker genom regeleverk som enbart tillåter den typ av kommunikation som den är konfigurerad för.  
+Det går att välja mellan väldigt många olika brandväggar på marknaden, bland annat helhetslösningar där brandväggen är en hårdvaruprodukt med integrerad mjukvara från leverantören. Ofta brukar mjukvaran kallas för *firmware* i de fall då produkten är en hårdvara. Det finns brandväggar som ska placeras i nätverket där de ofta även fungerar som routrar mellan olika nätverkssegment, men även brandväggar som är installerade på klienter och fungerar som skydd för den aktuella dator som brandväggen är installerad på.  
 
-Den produkt som är vald heter [pfSense] och kan installeras på en fysisk dator för att skydda fysiska nätverk eller virtuell dator när virtuella nätverk ska skyddas. pfSense är gratis att använda men det går att köpa support på produkten om så önskas. Det finns enbart en version av brandväggsprogramvaran och **inte** limiterad gratisvariant och fullskalig betalversion. Dock så erbjuder pfSense en version som är specialanpassad för deras hårdvara som de säljer. Det innebär att den är optimerad för den aktuella hårdvaran men det är samma brandväggsfunktionalitet.
+Den här guiden beskriver hur det går till att bygga en brandvägg vars syfte är att skydda olika nätverk. Det sker genom regelverk som enbart tillåter den typ av kommunikation som den är konfigurerad för.  
 
-## Val av programvaruversion 
-pfSense finns för flera olika typer av plattformar, den här guiden kommer att fokusera på 64bitars versionen, om det finns behov av en annan plattform så finns det dokumentation på pfSense sida på engelska. Förutom val av plattform så måste installationstyp väljas och det går att välja mellan  
+Den produkt som är vald heter [pfSense] och kan installeras på en fysisk dator för att skydda fysiska nätverk eller virtuell dator när virtuella nätverk ska skyddas. pfSense är gratis att använda men det går att köpa support till produkten. Det finns enbart en version av brandväggsprogramvaran och **inte** limiterad gratisvariant och fullskalig betalversion. Dock erbjuder pfSense en version som är specialanpassad för den hårdvara de säljer. Det innebär att den är optimerad för den aktuella hårdvaran men har samma brandväggsfunktion.
 
-  * CD-rom installation  
-  * USB installation  
-  * Compact Flash installation  
-Den här guiden kommer att använda sig CD-rom och USB installation, om brandväggen som ska installeras har Compact Flash kort för lagringen så finns det engelsk dokumentation på pfSense sida.
+## Val av programvaruversion
+pfSense finns för flera olika typer av plattformar, den här guiden kommer att fokusera på 64-bitars versionen, om det finns behov av en annan plattform finns det dokumentation på pfSense sida på engelska. Förutom val av plattform måste installationstyp väljas och det går att välja mellan:
+
+  * CD-rominstallation.
+  * USB installation.
+  * Compact Flash installation.
+
+Den här guiden kommer att använda sig av CD-rom- och USB-installation. Om brandväggen som ska installeras har Compact Flash-kort för lagringen finns det engelsk dokumentation på pfSense sida.
 
 ### Hämta programvaran
-På <https://www.pfsense.org/download/> går det att ladda ner programvaran och det bör göras enligt följande procedur  
-  
-  1. Klicka på ***Install*** versionen under rubriken *Latest Stable Version*  
-  2. Välj *AMD64 (64-bit)* i rullistmenyn  
-  3. Välj *Live CD with Installer* i den nya rullistmeny  
-  4. Ladda ner checksumman för installationen, *SHA256 checksum*-länken  
-  5. Ladda ner själva installtionsmediet från en av länkarna under rubriken *Hosting by* i tabellen längst ner
-  
+På <https://www.pfsense.org/download/> går det att ladda ner programvaran och det bör göras enligt följande procedur:
+
+  1. Klicka på ***Install*** versionen under rubriken *Latest Stable Version*.
+  2. Välj *AMD64 (64-bit)* i rullistmenyn.
+  3. Välj *Live CD with Installer* i den nya rullistmenyn.
+  4. Ladda ner checksumman för installationen, *SHA256 checksum*-länken.
+  5. Ladda ner själva installationsmediet från en av länkarna under rubriken *Hosting by* i tabellen längst ner.
+
 ### Verifiera programvaran
-Innan installationen kan påbörjas så måste den nedladdade versionen verifieras. Detta för att veta att korrrekt version av programvaran har blivit nedladdad.  
-Om verifikationen inte stämmer har något gått fel och installationen får inte fortskrida.
+Innan installationen kan påbörjas måste den nedladdade versionen verifieras. Detta för att veta att korrekt version av programvaran har blivit nedladdad. Om verifikationen inte stämmer har något gått fel och installationen får inte fortsätta.
 
 ### Packa upp den komprimerade installationsfilen
-Innan installationsmediet kan brännas på skiva eller flyttas till en USB-sticka så måste den packas upp.
+Innan installationsmediet kan brännas på skiva eller flyttas till en USB-sticka måste den packas upp.
 
 #### Packa upp med Linux
 Filen måste packas upp. Följ nedanstående instruktion för att packa upp filen under operativsystemet Linux.
 
-I en terminal
-
-  * Kör kommandot *gunzip pfSense-LiveCD-2.2.5-RELEASE-amd64.iso.gz*
-  
+Kör följande kommando i en terminal:
+```
+  gunzip pfSense-LiveCD-2.2.5-RELEASE-amd64.iso.gz
+```
 Filen är nu uppackad till en imagefil av typen ISO.
 
 #### Packa upp med Mac OS X
 Filen måste packas upp. Följ nedanstående instruktion för att packa upp filen under operativsystemet MacOSX.
 
-I en terminal
-
-  * Kör kommandot *gunzip pfSense-LiveCD-2.2.5-RELEASE-amd64.iso.gz*
-  
+Kör följande kommando i en terminal:
+```
+  gunzip pfSense-LiveCD-2.2.5-RELEASE-amd64.iso.gz
+```
 Filen är nu uppackad till en imagefil av typen ISO.
 
 #### Packa upp med Windows
 Filen måste packas upp. Följ nedanstående instruktion för att packa upp filen under operativsystemet Windows.
 
-Använd exempelvis programmet 7-zip för att öppna upp och verifiera innehållet ifrån nedladdningen.
+Använd exempelvis programmet 7-zip för att öppna upp och verifiera innehållet från nedladdningen.
 
-![Steg 1 - Öppna 7-zip för att avkomprimera och packa upp en nedladdad pfsense-fil](images/7zip-pic1.png "7zip för att avkomprimera och packa upp en nedladdad pfsense-fil")
+![Steg 1. Öppna 7-zip för att avkomprimera och packa upp en nedladdad pfsense-fil.](images/7zip-pic1.png "7zip för att avkomprimera och packa upp en nedladdad pfsense-fil.")
 
-Klicka på "Packa upp" och när den nya frågerutan för "Packa upp" visas på skärmen, klicka på "OK" om alla inställningar och förval är acceptabla.
+Klicka på "Packa upp" och när den nya frågerutan för "Packa upp" visas på skärmen, klicka på "OK" om alla inställningar och förval är godtagbara.
 
-![Steg 2 - Öppna 7-zip för att avkomprimera och packa upp en nedladdad pfsense-fil](images/7zip-pic2.png "7zip för att avkomprimera och packa upp en nedladdad pfsense-fil")
-   
-  
-Filen är nu uppackad till en imagefil av typen ISO!
+![Steg 2. Öppna 7-zip för att avkomprimera och packa upp en nedladdad pfsense-fil.](images/7zip-pic2.png "7zip för att avkomprimera och packa upp en nedladdad pfsense-fil.")
+
+Filen är nu uppackad till en imagefil av typen ISO.
 
 ### Skapa installationsmedia
-Skapa installationsmediet enligt [instruktionerna](## Skapa installationsmedia)  
+Skapa installationsmediet enligt [instruktionerna](## Skapa installationsmedia).//TODO: Referensen fungerar inte  
 
 ### Installera pfSense
-  
+
   * Starta datorn från det nyskapade mediet
 
 Datorn kommer att starta en välkomstmeny där det finns flera val, det första valet väljs automatiskt om inget annat val görs inom den tid som räknar ner.  
@@ -77,7 +75,7 @@ Datorn kommer att starta en välkomstmeny där det finns flera val, det första 
 ![Uppstartsmeny](images/installation_fw_1.png "Uppstartsmeny")
 
 Välj första menyvalet ***1. Boot Multi User [Enter]*** genom att trycka på enter/retur-knappen eller vänta på att tiden löper ut.
- 
+
 Datorn kommer nu att starta en textbaserad installation där det finns flera olika val som visas i bilden nedan.
 
 ![Installationsmeny](images/installation_fw_2.png "Installationsmeny")
@@ -115,7 +113,7 @@ Välj ***< Reboot >*** genom att tryck på *enter/retur* när det valet är mark
 När datorn nu startas upp så kommer brandväggsprogramvaran pfSense vara installerad. Som standard är den förkonfigurerat med följande kontoinformation
 
   * Användarnamn: admin
-  * Lösenord: pfsense 
+  * Lösenord: pfsense
 
 
 ### Konfigurera pfSense
@@ -142,7 +140,7 @@ En informationsruta för det support avtal som kan tecknas visas. Klicka på ***
 
 ![Information om support](images/konfiguration_fw_5.png "Information om support")
 
-Nu är det dags att fylla i grundläggande infomration för den aktuella installationen enligt följande. 
+Nu är det dags att fylla i grundläggande infomration för den aktuella installationen enligt följande.
 
   * *Hostname:* det datornamn som ska användas
   * *Domain:* domänamnet som ska användas
@@ -154,7 +152,7 @@ Klicka på ***Next*** för att förtsätta.
 
 ![Servernamn och DNS](images/konfiguration_fw_6.png "Servernamn och DNS")
 
-I den här rutan ska tidsinställningar konfigureras: 
+I den här rutan ska tidsinställningar konfigureras:
 
   * *Time server hostname:* den tidsserver som ska användas för att synkronisera tiden emot.
   * *Timezone:* Det tidzon som ska användas
@@ -168,16 +166,16 @@ Nu är det dags att konfigurera WAN-sidan av brandväggen.
 
 #### Typ av WAN
   * *SelectedType:* är typen av anslutning, exempelvis statisk ip adress eller dynamiskt tilldelad
-  
+
 #### Generell konfiguration
   * *MAC Address:* kan lämnas tom, men det går att välja egen MACadress för nätverkskortet
   * *MTU:* kan lämnas tom, men bör fyllas i om nätverket har speciella krav på MTU
   * *MSS:* kan lämnas tom, men bör fyllas i om nätverket har speciella krav på MSS
-  
+
 #### Statisk IP
   * *IP Address:* Den ipadress som ska användas vid statisk ip konfiguration
   * *Upstream Gateway:* Den gatewayadress som ska användas vid statisk ip konfiguration
-  
+
 #### Dynamisk IP
   * *DHCP Hostname:* kan lämnas tom om inte nätverket kräver klientidentifikation vid DHCP
 
@@ -187,7 +185,7 @@ Nu är det dags att konfigurera WAN-sidan av brandväggen.
   * *PPPoE Service name:* Fylls i om servicenamn används av PPPoE
   * *PPPoE Dial on demand:* Bockas för om anslutningen bara ska kopplas upp när nätverksanslutningen ska användas
   * *PPPoE Idle timeout:* Den tidsfördröjning som sker innnan anslutningen stängs
-   
+
 #### PPTP
   * *PPTP Username:* Användarnamn när PPTP används
   * *PPTP Password:* Lösenord när PPTP används
@@ -200,7 +198,7 @@ Nu är det dags att konfigurera WAN-sidan av brandväggen.
   * *Block RFC1918 Private Networks* Denna ska bockas för om WAN är mot Internet, används wan mot internätverk så kan det finnas behov av att tillåta privata adresser på brandväggens WANanslutinig
 #### Ej ännu utgivna IPadresser
   * *Block bogon networks:* användas förr i tiden för att att blockera trafik från ej ännu utgivna IP-nätverk. Idag är i princip alla ipadresser tilldelade och behövet av att stoppa ej utgivna adresser finns inte. Ska specifika adresser blockeras så är det bättre att gör det i brandväggsreglerna.
-  
+
 ![WAN konfiguration](images/konfiguration_fw_8.png "WAN konfiguration")
 
 LAN sidan konfigureras genom att sätta en IPadress och den subnätmask som ska användas. Om standardvärdet är ok så ät det bara att klicka vidare på **Next**
@@ -210,7 +208,7 @@ LAN sidan konfigureras genom att sätta en IPadress och den subnätmask som ska 
 Sätt ett nytt säkert lösenord
 
   * *Admin Password:* Det nya säkra lösenordet som ska användas
-  * *Admin Password AGAIN:* Det nya säkra lösenordet fylls i igen för att verifiera att det inte skrivs fel första gången 
+  * *Admin Password AGAIN:* Det nya säkra lösenordet fylls i igen för att verifiera att det inte skrivs fel första gången
 
 ![Byte av standardlösenord](images/konfiguration_fw_10.png "Byte av standardlösenord")
 
@@ -237,7 +235,7 @@ pfSense har en dashboard (statussida) som visas efter inlogging. Längst upp så
   * *Diagnostics* menyn är till för att komma åt diagnostikverktyg
   * *Gold* är en länk till pfSense sida för information om betalversionen
   * *Help* menyn är till för att hitta till hjälpdokumentation
-  
+
 
 ![pfSense basmeny](images/use_fw_1.png "pfSense basmeny")
 
@@ -272,7 +270,7 @@ För att lägga till en ny brandväggsregel så går det att klicka på ***+-iko
 En ny sida visas där en brandväggsregel kan skrivas med följande konfiguration
 
   * *Action* Vad som ska ske
-    * *Pass* innebär att trafiken enligt regeln ska få passera 
+    * *Pass* innebär att trafiken enligt regeln ska få passera
 	* *Block* innebär att trafiken enligt regeln ska blockeras
 	* *Reject* innebär att trafiken enligt regeln ska blockeras men en typ av notifikation till avsändaren skickas att det är blockerat
   * *Disabled* bockas för om regeln inte ska vara aktiverad
@@ -296,7 +294,7 @@ En ny sida visas där en brandväggsregel kan skrivas med följande konfiguratio
 	* *to:* är den sista porten i det nummerspann som tillåts
   * *Log* Checkrutan bockas för om traffik som matchar regeln ska loggas
   * *Description* En kort text som beskriver regeln syfte. Kan användas för att få spårbarhet till varför den aktuella regeln finns. Exempelvis så kan en referans till ett ärendehanterigssytem skrivas in här.
-  
+
 Regeln kan efter dessa inställningar sparas men det går även att gör mer avancerade inställningar om det finns behov för det.
 
 ![Brandväggsregelkonfiguration](images/use_fw_4.png "Brandväggsregelkonfiguration")
@@ -306,6 +304,6 @@ När en regel har sparats så måste den även appliseras genom att klicka på k
 ![Aktivera brandväggsregel](images/use_fw_5.png "Aktivera brandväggsregel")
 
 
-Regler kan sedan vidare byggas upp för att tillåta den trafik som har behov av att 
+Regler kan sedan vidare byggas upp för att tillåta den trafik som har behov av att
 
 \clearpage

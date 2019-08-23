@@ -9,11 +9,10 @@ av installationsmediet från en distributionsserver eller, om du är en avancera
 
 Nedanstående flödesdiagram visar grafiskt översiktligt de olika stegen som behövs för att hämta programvaran, utföra de olika momenten för att installera och konfigurerar servern samt börja använda den. Vi har i själva paketeringen förenklat och automatiserat för att så få steg som möjligt skall behövas för att komma igång.
 
-//TODO: Tanken från SvK var att ISO:n skulle finnas för nedladdning på energisakerhetsportalen. Det gör den dock inte. Schemat behöver uppdateras när metod för distribution har beslutats
-
 ![Flödesdiagram för att installera och använda programvaran](images/foss-flowchart.png "Flödesdiagram för att installera och använda programvaran.")
 
 //TODO: Ersätt alla skall med ska i flödesschemat
+//TODO: Tanken från SvK var att ISO:n skulle finnas för nedladdning på energisakerhetsportalen. Det gör den dock inte. Schemat behöver uppdateras när metod för distribution har beslutats
 
 Första steget med att installera en server är att ha tillgång till själva installationsfilen, vanligtvis en så kallad [iso]-fil.
 Information om var och hur installations-filen kan hämtas finns på [energisakerhetsportalen]. //TODO: Uppdatera när distributionsmetod är beslutad
@@ -100,108 +99,100 @@ Väl tillbaka i den första menyn måste även nätverksinställningar ställas 
 
 En meny kommer fram där det finns flera flikar att välja på beroende på vilken konfiguration som behöver utföras för att servern ska fungera i det nätverket där den ska användas.
 
-  16. I fliken **Inställning för IPv4** går det att sätta IPv4 adresser.
+  16. I fliken **Inställning för IPv4** går det att sätta IPv4 adresser. Om du ska använda DHCP kan du låta programmet göra inställningen automatiskt vilket är det förvalda alternativet. Om i stället en fast IP-adress ska användas ska metod ändras till *Manuell* enligt bilden nedan, en del installationstyper kräver att det åtminstone är konfigurerat med en så kallad link-local-adress.
 
-Antingen kan automatisk vara påslagen om DHCP används, då behövs det ingen konfiguration eftersom det är förvalt  
+![IP konfiguration.](images/installation_val_av_nat_ipv4.png "IP konfiguration.")
 
-  17. Om en fast IP-address ska användas så ska metod ändras till *Manuell* enligt bilden nedan, endel installationstyper kräver att det åtminstonde är konfigurerat med en s.k. *link-local* address.
+I tabellen **Adresser** ska du skriva in information om IP-adressen enligt följande:  
 
-![IP konfiguration](images/installation_val_av_nat_ipv4.png "IP konfiguration")
+A. **Adress** sätts till den IP-adress som ska användas.  
+B. **Nätmask** sätts till den nätmask som ska användas i det aktuella nätverket.  
+C. **Gateway** sätts till den *gateway/default route* som behövs om kommunikation ska ske till andra IP-nätverk än det lokala för den aktuella nätmasken.
 
-I tabellen **Adresser** ska sedan ip-address information skrivas in enligt följande  
+Om DNS används skrivs namnservrarnas IP-adresser in i rutan **DNS-servrar**.  
+När alla val är klara avslutar du med att klicka på **Spara**-knappen.
 
-  A. **Adress** sätts till den ipaddress som ska användas
-  B. **Nätmask** sätts till den nätmask som ska användas i det aktuella nätverket
-  C. **Gateway** sätts till den *gateway* / *default route* som behövs om kommunikation ska ske till andra ipnätverks än det lokala för den aktuella nätmasken
+  17. I fliken **Allmänt** kan du välja om den aktuella konfigurationen ska vara aktiverad efter uppstart. Klicka därefter på knappen **Spara**.
 
-Om DNS används så skrivs namnservrarnas ipaddresser in i rutan **DNS-servrar**  
-När alla val är klara så avslutas det med att klicka på **SPARA** knappen
+Markera checkrutan som heter *Anslut automatiskt till detta nätverk när det är tillgängligt* enligt bilden nedan om du vill att konfigurationen som är satt ska vara aktiv när datorn startar.
 
+![IP-konfiguration.](images/installation_val_av_nat_ipv4_enable.png "Aktivera IP konfiguration.")
 
-  18. I fliken **Allmänt** går det att välja om den aktuella konfiguration ska vara aktiverad efter uppstart. Klicka därefter på knappen *spara*.
+Om den aktuella datorn har flera nätverkskort behöver du konfigurera alla nätverkskort om all nätverksfunktionalitet ska vara aktiverad vid uppstart.
 
-Markera checkrutan som heter *Anslut automatiskt till detta nätverk när det är tillgängligt* enligt bilden nedan om konfigurationen som är satt ska vara aktiv när datorn startar.
-
-![IP konfiguration](images/installation_val_av_nat_ipv4_enable.png "Aktivera IP konfiguration")
-
-Om den aktuella datorn har flera nätverkskort så behöver konfiguration av all nätverkskort ske om alla ska ha nätverksfunktionalitet aktiverat vid uppstart
-
-
-När alla val för ipkonfigurationen är klara så avslutans konfiguratione genom att klicka på knappen **KLAR** i övre högra hörnet  
-
+När alla val för IP-konfigurationen är klara avslutar du konfigurationen genom att klicka på knappen KLAR i övre högra hörnet.
 
 Nu är alla val gjorda och installationen kan påbörjas.  
 
-**OM DET FINNS NÅGON DATA LAGRAD PÅ HÅRDDISKEN SOM ÄR VALD FÖR INSTALLATIONEN SÅ KOMMER DEN ATT SKRIVAS ÖVER OCH DET ÄR INTE MÖJLIGT ATT ÅNGRA ELLER ÅTERSKAPA DET**
+**OM DET FINNS NÅGON DATA LAGRAD PÅ HÅRDDISKEN SOM ÄR VALD FÖR INSTALLATIONEN KOMMER DEN ATT SKRIVAS ÖVER OCH DET ÄR INTE MÖJLIGT ATT ÅNGRA ELLER ÅTERSKAPA DEN.**
 
-Klicka på **Starta installationen** för att installera den valda servern  
+Klicka på **Starta installationen** för att installera den valda servern.
 
-Installationen kommer nu att starta och en ny meny kommer att visas enligt bilden nedan
+Installationen kommer nu att starta och en ny meny kommer att visas enligt bilden nedan.
 
-![Installationsförfarandet](images/installation_val_av_paborjad.png "Installationsförfarandet")
+![Installationsförfarandet.](images/installation_val_av_paborjad.png "Installationsförfarandet.")
 
-Det finns två menyval i den här vyn och den ena knappen går inte att trycka på.  
-Det är knappen för att sätta root-lösenordet, dvs säga lösenordet för att få högsta behörighet på datorn. Lösenordet är hårkodat till *toor* under installationen men kommer att ändras till ett slumpmässigt valt lösenord under installationens slutfas. Det sker med kommandot *pwgen -1 48* vilket skapar ett slumpat lösenord på 48 tecken. För att få högre behörighet eller ändra root-lösenordet så kan kommanot *sudo* användas enligt de instruktioner som beskriver hur terminalen fungerar efter att installationen är slutförd.  
+Det finns två menyval i den här vyn och den ena knappen går det inte att trycka på.  
+Det är knappen för att sätta root-lösenordet, det vill säga lösenordet för att få högsta behörighet på datorn. Lösenordet är hårdkodat till *toor* under installationen men kommer att ändras till ett slumpmässigt valt lösenord under installationens slutfas. Det sker med kommandot *pwgen -1 48* vilket skapar ett slumpat lösenord på 48 tecken. För att få högre behörighet eller ändra root-lösenordet kan kommandot *sudo* användas enligt de instruktioner som beskriver hur terminalen fungerar efter att installationen är slutförd.  
 
-Det andra menyvalet är till för att skapa användarkonton, det ska **inte** göras i det här skedet utan sker efter att installationen är slutförd.  
+Det andra menyvalet är till för att skapa användarkonton, det ska **inte** göras i det här skedet utan görs efter att installationen är slutförd.  
+//NOTE: Går det att gråa ut det alternativet?
 
-Nu är det bara att vänta på att installationen slutförs.  
-När den är klar så kommer en knapp med texten *Starta om* visas enligt bilden nedan.  
+Nu är det bara att vänta på att installationen slutförs. När den är klar kommer en knapp med texten **Starta om** visas enligt bilden nedan.  
 
-![Installation slutförd](images/installation_val_av_slutfort.png "Installation slutförd")
+![Installation slutförd.](images/installation_val_av_slutfort.png "Installation slutförd.")
 
-Kicka på knappen starta om och ta bort installtionsmediet när datorn har startat om så att inte installationsmeny startar igen.  
+Klicka på **Starta om** och ta bort installationsmediet (till exempel dvd-skivan) när datorn har startat om så att inte installationsmenyn startar igen.  
 
+När datorn har startat om kommer den att visa några grafiska fönster där du måste göra de sista valen.  
+//NOTE: Refererar detta till de val av språk och användarkonton som berskivs nedan? I sådant fall är detta stycke överflödigt.
 
-När datorn kommer att ha startar om så kommer den att visa några grafiska fönster där de sista valen måste göras.  
+En boot-meny visas en kort stund där olika varianter av avancerad uppstart kan utföras. Dessa avancerade ändringar ligger dock utanför det installationsförfarande som den här dokumentationen beskriver. Menyn kommer att försvinna och en ny välkomstmeny kommer att komma fram enligt bilden nedan.  
 
-När datorn startats om så kommer en bootmeny visas en kort stund där olika varianter av avancerad
-uppstart kan utföras. Dessa avancerade ändringar ligger dock utanför det installationsförfarande som
-den här dokumentationen dokumentationen beskriver. Menyn kommer att försvinna och en ny välkomstmeny kommer att komma fram enligt bilden nedan.  
-
-![Val av språk](images/installation_post_sprak.png "Val av språk")
+![Val av språk.](images/installation_post_sprak.png "Val av språk.")
 
 I det första steget kan språkvalet än en gång konfigureras, svenska är förvalt och det går bra att klicka på **Nästa** för att fortsätta.
 
-I denna meny går det att välja tangentbordstyp.
+I denna meny går det också att välja tangentbordstyp.
 
-![Val av tangentbord](images/installation_post_tangentbord.png "Val av tangentbord")
+![Val av tangentbord.](images/installation_post_tangentbord.png "Val av tangentbord.")
 
-Svenskt [qwerty] tangentbord är förvalt och det går bra att klicka på **Nästa** för att fortsätta.  
+Svenskt [qwerty]-tangentbord är förvalt och det går bra att klicka på **Nästa** för att fortsätta.  
 
 Nu är det dags att skapa ett användarkonto för att kunna använda servern.  
 
-![Kontokonfiguration](images/installation_post_konto.png "Kontokonfiguration")
+![Kontokonfiguration.](images/installation_post_konto.png "Kontokonfiguration.")
 
-Fyll i samtliga rutor för att skapa ett konto och tillhörande lösenord  
+Fyll i samtliga rutor för att skapa ett konto och tillhörande lösenord.
 
-  * **Fullständigt namn** är det beskrivande namnet för konto som skaps
-  * **Användarnamn** är det namnet som används vid inlogging till servern
-  * **Lösenord** är det lösenordet som används för att logga in med det valda användarnamnet. Lösenorder ska vara svårgissat och slumpat med komplexitet samt kvantitativt så ingen obehörig kan gissa sig till lösneordet eller både manuellt och programatiskt kunna pröva sig fram till korrekt lösenord
-  * **Confirm password** Samma lösenord som matades in i *Lösenordsrutan* ska fyllas i här för att försöka verifera att det valda lösenordet inte har stavats fel.
-Efter kontovalen är gjorda går det bra att klicka på **Nästa** för att fortsätta  
+  * **Fullständigt namn** är det beskrivande namnet för konto som skapas
+  * **Användarnamn** är det namnet som används vid inloggning till servern.
+  * **Lösenord** är det lösenordet som används för att logga in med det valda användarnamnet. Lösenordet ska vara avancerat och slumpat så att ingen obehörig kan gissa sig till det eller vare sig manuellt eller maskinellt kunna pröva sig fram till korrekt lösenord.
+  * **Confirm password** Här ska du fylla i samma lösenord som du matade in i *Lösenordsrutan* för att säkerställa att det valda lösenordet inte har stavats fel.
 
-I den nya menyn går det att välja lokaltion enligt bilden nedan  
+Klicka på **Nästa** för att fortsätta.  
 
-![Konfiguration av tidszon](images/installation_post_lokalation.png "Konfiguration av tidszon")
+I den nya menyn går det att välja tidszon enligt bilden nedan:  
+
+![Konfiguration av tidszon.](images/installation_post_lokalation.png "Konfiguration av tidszon.")
 
 Stockholm är förvalt och det är det enda valet som går att välja om Sverige ska väljas. Det här valet är främst till för att sätta den tidszon som ska användas.
 
 Det går bra att klicka på **Nästa** för att fortsätta.  
 
-Om datorn är konfigurerad med åtkomst till Internet så går det att koppla den till molntjänster enligt bilden nedan.
+Om datorn är konfigurerad med åtkomst till Internet går det att koppla den till molntjänster enligt bilden nedan.
 
-![Molntjänster](images/installation_post_moln.png "Molntjänster")
+![Molntjänster.](images/installation_post_moln.png "Molntjänster.")
 
-Här behövs inga molntjänster och det går bra att klicka på **Nästa**
+Här behövs inga molntjänster och det går bra att klicka på **Nästa**.
 
 Installationen är nu klar.
 
-![Slutför konfigurationen](images/installation_post_klar.png "Slutför konfigurationen")
+![Slutför konfigurationen.](images/installation_post_klar.png "Slutför konfigurationen.")
 
-Starta den aktuella server som nu är färdiginstallerad genom att klicka på knappen **Start using CentOS Linux**  
+Starta den aktuella server, som nu är färdiginstallerad, genom att klicka på knappen **Start using CentOS Linux**.  
 
-Nu är allt klart och det går att börja använda eller ytterliggare konfigurera den aktuella serverinstallationen enligt vidare instruktioner för aktuell installation.
+Nu är allt klart och det går att börja använda eller ytterligare konfigurera den aktuella serverinstallationen enligt vidare instruktioner för aktuell installation.
 Den användare som skapades är redan inloggad.  
 
 [iso]: https://sv.wikipedia.org/wiki/ISO-avbild "En strukturerad fil som innehåller alla filer sammanställda till en stor sammanslagen fil, vilket är en avbildning av en CD/DVD-skiva"

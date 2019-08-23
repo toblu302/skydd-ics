@@ -9,7 +9,7 @@ Det programpaket som tagits fram – paketering av mjukvara som kan installeras 
 
 Eftersom detta programpaket är värdefullt även för andra branscher än elbranschen har Myndigheten för samhällsskydd och beredskap (MSB) valt att ansvara för förvaltning och spridning till motsvarande målgrupper inom övriga branscher i Sverige. Målsättningen är att höja säkerhetsnivån hos de bolag som av ekonomiska eller andra skäl saknar möjlighet att på annat vis skaffa tekniska skyddsmekanismer.
 
-![Relationsdiagram mellan olika viktiga begrepp](images/itsecarch-metamodell.png "Relationsdiagram mellan olika viktiga begrepp.")
+![Relationsdiagram mellan olika viktiga begrepp.](images/itsecarch-metamodell.png "Relationsdiagram mellan olika viktiga begrepp.")
 
 Detta dokument beskriver hur man installerar och använder de ingående komponenterna, samt deras syfte och funktionalitet.
 
