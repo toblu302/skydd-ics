@@ -1,7 +1,8 @@
 ---
 - name: create local repo
   command: /bin/createrepo /root/rpm
-  chdir: /root/rpm
+  args:
+    chdir: /root/rpm
 - name: copy local repo conf
   copy:
     src: local.repo
