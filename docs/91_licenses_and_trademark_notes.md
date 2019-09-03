@@ -1,37 +1,34 @@
 # Licensiering och tillgång till programvaran
 
-Detta kapitel beskriver licenskrav, licensformer och andra formella saker som 
-behövs nämnas för att uppfylla olika krav som ställs för att kunna förpacka och
+Detta kapitel beskriver licenskrav, licensformer och andra formella saker som
+behövs för att uppfylla olika krav som ställs för att kunna förpacka och
 tillhandahålla dessa programpaket.
 
 ### Programpaket som inte tillåter distribution
 
-För de fall då vi inte kunnat avgöra licensformen eller där licensformen inte tillåter direkt återdistribution av programvaran,
-så har vi textbeskrivningar i distributionen som beskriver hur en användare själv kan
+När vi inte kunnat avgöra licensformen eller där licensformen inte tillåter direkt återdistribution av programvaran, finns textbeskrivningar i distributionen som beskriver hur en användare själv kan
 hämta dessa moduler eller programpaket och installera i denna modul, vilket är
 acceptabelt enligt licensmodellerna.
 
 ## Licenser
 
-En central licens som förekommer i de flesta programpaket som ingår i vår programdistribution är 
-Gnu Public License (GPL) version 2 samt version 3. Dessa licenser finns närmare beskriven här: [gnulicens]
+En central licens som förekommer i de flesta programpaket som ingår i vår programdistribution är Gnu Public License (GPL) version 2 samt version 3. Dessa licenser finns närmare beskrivna här: [gnulicens].
 
 ### Efterlevnad av GPL-krav
 
-För att efterleva de krav som Gnu Public Licenses (GPL)  och varianter därav (tex LGPL) 
-har, främst krav på tillgänglighet av källkoden så kommer denna att göras tillgänglig för allmänheten 
-genom distribution via publika kanaler, tex GitHub och via länkar på energisäkerhetsportalen.
+För att följa de krav som Gnu Public Licenses (GPL) och varianter därav (t.ex. LGPL)
+har, främst krav på tillgänglighet av källkoden, kommer denna att göras tillgänglig för allmänheten genom distribution via publika kanaler, till exempel GitHub och via länkar på energisäkerhetsportalen. //TODO: Bli sannolikt informationssakerhet.se
 
 ## Egenutvecklad kod
 
-Paketeringen innehåller mer än enbart programvara skapad av andra parter. De skript och de 
-program som vi utvecklat som en del av detta projekt är släppt under GPL-licens, vilket innebär 
-att vem som helst får ta del av, modifiera, vidaredistribuera källkoden så länge de vidareför dessa licenskrav 
+Paketeringen innehåller mer än enbart programvara skapad av andra parter. De skript och de
+program som vi utvecklat som en del av detta projekt är släppt under GPL-licens, vilket innebär
+att vem som helst får ta del av, modifiera och vidaredistribuera källkoden så länge de vidareför dessa licenskrav
 i ytterligare led mot andra personer och parter.
 
 ## Egenutvecklad dokumentation
 
-Den dokumentation som är framtagen för detta projekt (exempelvis denna text) är släppt fritt tillgängling under 
+Den dokumentation som är framtagen för detta projekt (exempelvis denna text) är fritt tillgänglig under
 [Creative Commons](https://creativecommons.org/licenses/by/4.0/legalcode) Attribution 4.0 International.
 
 Denna licens ger fria möjligheter att vidaredistribuera och att använda dokumentationen.
@@ -42,42 +39,42 @@ Nedan redovisas och listas olika programpaket och programdistributioner med till
 
 ### Centos Linux
 
-CenOS och dess olika beståndsdelar består till stor del av operativsystemets kärna (Linuxkärnan), systemkommandon och verktyg, kodbibliotek, konfigurationsfiler, subsystem och applikationer. Merparten, om inte alla dessa, är licensierade under GPL. Förutom att programvarulicensen är GPL, så finns följande tillägg rörande just namnet CentOS:
+CenOS och dess olika beståndsdelar består till stor del av operativsystemets kärna (Linuxkärnan), systemkommandon och verktyg, kodbibliotek, konfigurationsfiler, subsystem och applikationer. Merparten, om inte alla dessa, är licensierade under GPL. Förutom att programvarulicensen är GPL, finns följande tillägg rörande just namnet CentOS:
 
 Från [centoslicens]
 
 ```
-	You may use the Word Mark, but not the Logos, to truthfully describe 
+	You may use the Word Mark, but not the Logos, to truthfully describe
 	the origin of the software that you are providing but not the software
 	itself, where what you are distributing is modified official CentOS
-	source code or is a build compiled from modified official CentOS 
+	source code or is a build compiled from modified official CentOS
 	source code.
 
-	You may say, for example: “This software is derived from the source code 
-	for the CentOS distribution.” However, you may not say that the software 
+	You may say, for example: “This software is derived from the source code
+	for the CentOS distribution.” However, you may not say that the software
 	is CentOS.
 ```
 
 ### Icinga
 
-Larm- och övervakningsprogramvaran Icinga ingår i paketeringen. Icinga är licensierad enligt 
-GPL version 2, vilket innebär enligt Icingalicensen:
+Larm- och övervakningsprogramvaran Icinga ingår i paketeringen. Icinga är licensierad enligt
+GPL version 2, vilket enligt Icingalicensen innebär:
 
 ```
-	All Icinga software is open source and licensed under GPL version 2 
+	All Icinga software is open source and licensed under GPL version 2
 	(Icinga Web 1 under GPLv3). So it is free (as in beer and as in speech) to use,
 	distribute and modify.
 ```
 
 ### Snort
 
-Snort ägs av Cisco. Programvaran är [GPL]-licensierad. De såkallade Community Snort Rules är licensierade enligt en 
-speciell icke-kommersiell licens. Snorts olika licenser finns närmare beskriven på [snortlicens]
+Snort ägs av Cisco och består av två huvudkomponenter. Dessa är detekteringsprogramvaran och en uppsättning regler. Reglerna är uppdelade i Community Snort Rules och Proprietary Snort Rules.  
+Detekteringsprogramvaran och Community Snort Rules är [GPL]-licensierad enligt version 2.  Proprietary Snort Rules är licensierade enligt en speciell icke-kommersiell licens. Snorts olika licenser finns närmare beskrivna på [snortlicens].
 
 ### Quickdraw
-Quickdraw är en samling av protokollbeskrivningar, regler och IDS/IPS-specifika beskrivningar av ICS/SCADA-protokoll.
-Samlingen är framtagen av företaget DigitalBond och är släppt under s.k. MIT-licens, vilket ger stora friheter
-att nyttja, ändra och vidaredistribuera reglerna. För mer detaljerad information, se [quickdrawlicense].
+Quickdraw är en samling protokollbeskrivningar, regler och IDS/IPS-specifika beskrivningar av ICS/SCADA-protokoll.
+Samlingen är framtagen av företaget DigitalBond och är släppt under så kallad MIT-licens, vilket ger stora friheter
+att använda, ändra och vidaredistribuera reglerna. För mer detaljerad information, se [quickdrawlicense].
 ```
 	The MIT License (MIT)
 
@@ -103,38 +100,38 @@ att nyttja, ändra och vidaredistribuera reglerna. För mer detaljerad informati
 ```
 
 
-### EmergingThreats 
+### EmergingThreats
 
-EmergingThreats SCADA-regler är en samling av protokollbeskrivningar, regler och IDS/IPS-specifika beskrivningar av ICS/SCADA-protokoll.
-Samlingen är framtagen av företaget Emerging Threats Inc och är släppt under s.k. MIT-licens, vilket ger stora friheter
-att nyttja, ändra och vidaredistribuera reglerna. För mer detaljerad information, se [emergingthreats].
+EmergingThreats SCADA-regler är en samling protokollbeskrivningar, regler och IDS/IPS-specifika beskrivningar av ICS/SCADA-protokoll.
+Samlingen är framtagen av företaget Emerging Threats Inc och är släppt under så kallad MIT-licens, vilket ger stora friheter
+att använda, ändra och vidaredistribuera reglerna. För mer detaljerad information, se [emergingthreats].
 
 ```
     Copyright (c) 2003-2015, Emerging Threats
     All rights reserved.
-  
-    Redistribution and use in source and binary forms, with or without modification, 
+
+    Redistribution and use in source and binary forms, with or without modification,
     are permitted provided that the following conditions are met:
-  
-    * Redistributions of source code must retain the above copyright notice, 
+
+    * Redistributions of source code must retain the above copyright notice,
       this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright notice, 
-      this list of conditions and the following disclaimer in the documentation 
+    * Redistributions in binary form must reproduce the above copyright notice,
+      this list of conditions and the following disclaimer in the documentation
       and/or other materials provided with the distribution.
-    * Neither the name of the nor the names of its contributors may be used to 
-      endorse or promote products derived from this software without specific prior 
+    * Neither the name of the nor the names of its contributors may be used to
+      endorse or promote products derived from this software without specific prior
       written permission.
-  
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS 
-    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
-    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE 
-    FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
-    DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
-    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
-    OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE 
-    USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS
+    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
+    FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+    DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+    OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+    USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
 
 ### Snorby
@@ -160,44 +157,44 @@ Det medför därmed inga problem att vidaredistribuera snorbykomponenten i platt
 	You should have received a copy of the GNU General Public License
 	along with Snorby.  If not, see <http://www.gnu.org/licenses/>.
 
-	Neither the names of Licensor, nor the names of any contributors to 
-	the Original Work, nor any of their trademarks or service marks, may 
-	be used to endorse or promote products derived from this Original Work 
-	without express prior permission of the Licensor. No license is granted 
-	to the trademarks of Licensor even if such marks are included in the 
-	Original Work. 
+	Neither the names of Licensor, nor the names of any contributors to
+	the Original Work, nor any of their trademarks or service marks, may
+	be used to endorse or promote products derived from this Original Work
+	without express prior permission of the Licensor. No license is granted
+	to the trademarks of Licensor even if such marks are included in the
+	Original Work.
 
-	The above copyright notice and this permission notice shall be included 
+	The above copyright notice and this permission notice shall be included
 	in all copies or substantial portions of the Software. Not limited to but
 	including the Software's footer, Web URL and Author Names.
 
 	**Notice**
-	The snorby source code is 100% free and open source however we use highcharts 
-	for metrics and reporting. Please make sure you review the 
-	[highcharts](http://www.highcharts.com) licensing in detail 
-	[here](http://www.highcharts.com/license). The license above 
-	only applies to snorby source code (contact the Dustin Willis 
+	The snorby source code is 100% free and open source however we use highcharts
+	for metrics and reporting. Please make sure you review the
+	[highcharts](http://www.highcharts.com) licensing in detail
+	[here](http://www.highcharts.com/license). The license above
+	only applies to snorby source code (contact the Dustin Willis
 	Webber if you have futher questions).
 ```
 
-För mer information, se [snorbylicens]. 
+För mer information, se [snorbylicens].
 
 Snorby innehåller en komponent kallad "highcharts" som är licensierad enligt Creative Common
 Attribution Non-commercial. För mer information, se [CCBYNC3]
 
 ### Barnyard
 
-Programvaran Barnyard som ingår som en komponent i IDS-lösningen Snort är licensierad enligt GPL2. 
-Det medför därmed inga problem att vidaredistribuera Barnyardkomponenten i plattformen. 
+Programvaran Barnyard som ingår som en komponent i IDS-lösningen Snort är licensierad enligt GPL2.
+Det medför därmed inga problem att vidaredistribuera Barnyardkomponenten i plattformen.
 
-För mer information, se [barnyardlicens]
+För mer information, se [barnyardlicens].
 
 ### Tcpdump
 
-Vi har använt oss av programvaran tcpdump för att kunna spela in nätverkstrafik. 
-Tcpdump använder sig av en s.k. *3-clause BSD license*, vilket är en väldigt
-öppen och flexibel mjukvarulicens. 
+Vi har använt oss av programvaran tcpdump för att kunna spela in nätverkstrafik.
+Tcpdump använder sig av en så kallad *3-clause BSD license*, vilket är en väldigt
+öppen och flexibel mjukvarulicens.
 
-För detaljinformation om programvarans licensbestämmelser se [tcpdumplicens].
+För detaljinformation om programvarans licensbestämmelser, se [tcpdumplicens].
 
 \clearpage
