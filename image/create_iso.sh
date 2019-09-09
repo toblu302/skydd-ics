@@ -100,5 +100,7 @@ cp -rp ${iso_root}/EFI ${iso_dir}
 # Make the iso image hybrid, allows cd and usb installtions
 /usr/bin/isohybrid --uefi ${iso_root}/${iso}
 
+/bin/implantisomd5 ${iso_root}/${iso}
+
 # Remove the generated CP850 file
 rm ${iso_root}/isolinux/isolinux.cfg

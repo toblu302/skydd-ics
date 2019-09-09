@@ -252,7 +252,7 @@ PItLjBQAXIhJBBgRAgAJBQJSh85OAhsMAAoJEMbjGcM0QQaCzpAAmwUNoRyySf9p
 -----END PGP PUBLIC KEY BLOCK-----
 " > /etc/pki/rpm-gpg/RPM-GPG-KEY-icinga
     yum clean all
-    yum install -y syslinux mkisofs createrepo grub2-efi-x64-modules dosfstools genisoimage repotrack
+    yum install -y syslinux mkisofs isomd5sum createrepo grub2-efi-x64-modules dosfstools genisoimage repotrack
     mkdir /vagrant/image/DVD
     cd /vagrant
     make clean
