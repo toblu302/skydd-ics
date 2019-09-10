@@ -4,4 +4,3 @@
   with_items:
     - "iptables"
     - "ip6tables"
-
