@@ -1,4 +1,4 @@
-# Ordlista 
+# Ordlista
 
 
 +-------------------------------+-------------------------------------------------+
@@ -8,15 +8,15 @@
 +-------------------------------+-------------------------------------------------+
 | **Antagonistiska angrepp**    | Antagonistiska angrepp är en form av aktörsdrivna hot. |
 +-------------------------------+-------------------------------------------------+
-| **Apache**                    | Populär webbserver med avancerad funktionalitet |
+| **Apache**                    | Populär webbserver med avancerad funktionalitet. |
 +-------------------------------+-------------------------------------------------+
-|**Attackvektor**               | En attack vektor är en väg eller sätt på vilket en antagonist kan få genomföra skadliga attacker mot sårbarheter. Angreppsvägar gör det möjligt för exempelvis hackare att utnyttja sårbarheter i ett system vilket även inkluderar sårbarheter som den mänskliga faktorn. |
+|**Attackvektor**               | En attackvektor är en väg eller sätt på vilket en antagonist kan få genomföra skadliga attacker mot sårbarheter. Angreppsvägar gör det möjligt för exempelvis hackare att utnyttja sårbarheter i ett system vilket även inkluderar sårbarheter som den mänskliga faktorn. |
 +-------------------------------+-------------------------------------------------+
-| **Attackyta**                 | Den yta (antal sårbarheter) som exponeras för en antagonnist. |
+| **Attackyta**                 | Den yta (antal sårbarheter) som exponeras för en antagonist. |
 +-------------------------------+-------------------------------------------------+
 | **Autentisering**	            | Kontroll av uppgiven identitet. |
 +-------------------------------+-------------------------------------------------+
-| **Avsiktligt skadlig kod**	| (eng. *malicious code*, *hostile code* eller *[malware]*) är en fackterm och ett samlingsnamn på en mängd säkerhetsproblem som är förknippade med program som består av, eller innehåller, avsiktligt skadliga program- och programdelar. |
+| **Avsiktligt skadlig kod**	| (Eng. *malicious code*, *hostile code* eller *[malware]*.) En fackterm och ett samlingsnamn på en mängd säkerhetsproblem som är förknippade med program som består av, eller innehåller, avsiktligt skadliga program- och programdelar. |
 +-------------------------------+-------------------------------------------------+
 
 +-------------------------------+-------------------------------------------------+
@@ -174,7 +174,7 @@
 +-------------------------------+-------------------------------------------------+
 | **pfsense**		            | Avancerad brandvägg byggd på öppen källkod, med grafiskt användargränssnitt. För mer info se [pfSense] hemsida. |
 +-------------------------------+-------------------------------------------------+
-| **ping**                      | kommando som skickar nätverkspaketet *ICMP echo request* till en annan nätutrustning, för att se ifall denna utrustning fungerar och är åtkomlig via nätverket. Om utrustningen fungrar så skickar den tillbaka *ICMP echo reply*. | 
+| **ping**                      | kommando som skickar nätverkspaketet *ICMP echo request* till en annan nätutrustning, för att se ifall denna utrustning fungerar och är åtkomlig via nätverket. Om utrustningen fungrar så skickar den tillbaka *ICMP echo reply*. |
 +-------------------------------+-------------------------------------------------+
 | **PLC**			            | *[Programmable Logic Controller]*. Specialhårdvara, ofta ett inbyggt system med nätverksåtkomst, som sköter kontrolloopar och datainsamling för automationsutrustning. Har ofta digitala och analoga utgångar för att styra exempelvis motorer eller pumpar, eller ingångar för att ta in värden från givare. |
 +-------------------------------+-------------------------------------------------+
@@ -202,7 +202,7 @@
 +-------------------------------+-------------------------------------------------+
 | **RTU**			            | Förkortningen *[RTU]* står för *Remote Terminal Unit*. En RTU är ett enklare inbyggt system för inhämtning av värden eller styrning av fältutrustning.  Enligt den traditionella definitionen av en RTU så är de till skillnad från en *PLC* enklare och har inte möjlighet att köra egen styrprogramvara, kontrolloopar eller autonom styrning. Moderna RTUer har dock suddat ut gränserna mellan RTU och PLC då RTU-utrustning blir mer avancerad och får mer möjligheter att agera på händelser, att styra kontrollen eller agera autonomt. |
 +-------------------------------+-------------------------------------------------+
-			
+
 +----------------------------------------+-------------------------------------------------+
 | S                                      |  Förklaring                                     |
 +========================================+=================================================+
@@ -252,7 +252,7 @@
 +----------------------------------------+-------------------------------------------------+
 | **Syslog**		                     | En sprid standard som definierar protokoll, dataformat och tillämpning för att skicka loggmeddelanden. För mer information, se [syslog] |
 +----------------------------------------+-------------------------------------------------+
-| **systemd**                            | Central kontroll- och konfigurationstjänst i Linux-systemet. Ersättare till programmet *init*. Många systemuppsättningar och systemändringar sker via system-tjänstens olika delar. | 
+| **systemd**                            | Central kontroll- och konfigurationstjänst i Linux-systemet. Ersättare till programmet *init*. Många systemuppsättningar och systemändringar sker via system-tjänstens olika delar. |
 +----------------------------------------+-------------------------------------------------+
 | **Systemintegritet**                   | (eng. *system integrity*). Att tillståndet för ett IT-system hålls inom de driftskriterier och tekniska specifikationer som systemet är avsett att operera under. Att dessa förutsättningar bibehålls under tid. |
 +----------------------------------------+-------------------------------------------------+

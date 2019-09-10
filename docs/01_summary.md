@@ -1,6 +1,6 @@
 # Sammanfattning
 
-//TODO: Kom ihåg at tlägga in juristernas ”feriskrivning etc”. kör sedan språkgraniskning i 2 steg.
+//TODO: Kom ihåg att lägga in juristernas ”friskrivning etc”. kör sedan språkgranskning i 2 steg.
 
 Detta dokument beskriver ett antal IT-säkerhetskomponenter, deras syfte, installation och användning. Dessa är ursprungligen anpassade för användning hos elbolag i Sverige i deras SCADA- och industriella kontrollsystemsmiljöer, men kan användas även av företag i andra samhällsviktiga branscher med liknande miljöer. Komponenterna är tänkta att fungera som byggklossar för att skapa en nivå av grundskydd. Dokumentationen är på svenska och installationen är förenklad och automatiserad. För att förenkla användningen har de olika funktionerna försetts med integrerade grafiska användargränssnitt. All dokumentation finns även tillgänglig i de installerade servrarna.
 

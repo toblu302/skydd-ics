@@ -17,7 +17,7 @@ En central licens som förekommer i de flesta programpaket som ingår i vår pro
 ### Efterlevnad av GPL-krav
 
 För att följa de krav som Gnu Public Licenses (GPL) och varianter därav (t.ex. LGPL)
-har, främst krav på tillgänglighet av källkoden, kommer denna att göras tillgänglig för allmänheten genom distribution via publika kanaler, till exempel GitHub och via länkar på energisäkerhetsportalen. //TODO: Bli sannolikt informationssakerhet.se
+har, främst krav på tillgänglighet av källkoden, kommer denna att göras tillgänglig för allmänheten genom distribution via publika kanaler, till exempel GitHub och via länkar på energisäkerhetsportalen. //TODO: Blir sannolikt informationssakerhet.se
 
 ## Egenutvecklad kod
 
@@ -68,8 +68,8 @@ GPL version 2, vilket enligt Icingalicensen innebär:
 
 ### Snort
 
-Snort ägs av Cisco och består av två huvudkomponenter. Dessa är detekteringsprogramvaran och en uppsättning regler. Reglerna är uppdelade i Community Snort Rules och Proprietary Snort Rules.  
-Detekteringsprogramvaran och Community Snort Rules är [GPL]-licensierad enligt version 2.  Proprietary Snort Rules är licensierade enligt en speciell icke-kommersiell licens. Snorts olika licenser finns närmare beskrivna på [snortlicens].
+Snort ägs av Cisco och består av två huvudkomponenter. Dessa är detekteringsprogramvaran och en uppsättning regler. Reglerna är uppdelade i *Community Snort Rules* och *Proprietary Snort Rules*.  
+Detekteringsprogramvaran och *Community Snort Rules* är [GPL]-licensierad enligt version 2.  *Proprietary Snort Rules* är licensierade enligt en speciell icke-kommersiell licens. Snorts olika licenser finns närmare beskrivna på [snortlicens].
 
 ### Quickdraw
 Quickdraw är en samling protokollbeskrivningar, regler och IDS/IPS-specifika beskrivningar av ICS/SCADA-protokoll.
