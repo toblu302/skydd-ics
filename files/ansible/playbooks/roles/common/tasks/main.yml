@@ -3,7 +3,7 @@
   systemd:
     name: sshd
     enabled: no
-  when: not enable_sshd
+  when: not enable_sshd|bool
 
 - name: Disable firewalld (because we use iptables instead)
   systemd:
@@ -13,13 +13,14 @@
 # No matter what we always want to open up port 514 if the simple_log rpm is installed
 # ..even if we are right now running ansible from %post of foss-traffic
 #
-- stat:
+- name: check if /opt/.foss-simple-log exist
+  stat:
     path: /opt/.foss-simple-log
   register: s
 - name: set simple_log to true when it is installed
   set_fact:
     simple_log: true
-  when: s.stat.exists == false
+  when: not s.stat.exists
 
 - name: install common default firewall rules
   template:
@@ -42,6 +43,13 @@
     - httpd
   ignore_errors: yes
 
+- name: get all home dirs
+  find:
+    paths: /home
+  register: home_dirs
 - name: Make sure all currently installed .desktop-files are on all users desktop
-  shell: for i in $(find /home -name Desktop -type d); do cp /etc/skel/Desktop/* $i; done
-  ignore_errors: true
+  copy:
+    src: /etc/skel/Desktop/
+    dest: "{{ item }}"
+  loop:
+    - home_dirs

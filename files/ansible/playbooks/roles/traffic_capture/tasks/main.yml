@@ -1,25 +1,30 @@
 ---
 # allow apache reading dumps
-- acl:
+- name: set acl on dir
+  acl:
     path: /home/tcpdump
     entity: apache
     etype: user
     permissions: rx
     state: present
 
+- name: check if dumper_tcpdup.pp exist
+  stat:
+    path: /usr/share/selinux/packages/foss-traffic-capture/dumper_tcpdump.pp
+  register: s
 - name: Install traffic capture selinux policy package dumper_tcpdump
-  shell: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-traffic-capture/dumper_tcpdump.pp
+  command: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-traffic-capture/dumper_tcpdump.pp
+  notify: restorecon
+  when: s.stat.exists
 
+- name: check if dumper_httpd.pp exist
+  stat:
+    path: /usr/share/selinux/packages/foss-traffic-capture/dumper_httpd.pp
+  register: t
 - name: Install traffic capture selinux policy package dumper_httpd
-  shell: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-traffic-capture/dumper_httpd.pp
-
-- name: Run restore context to reload selinux
-  shell: restorecon -R -v "{{ item }}"
-  loop:
-    - /var
-    - /etc
-    - /opt
-    - /home
+  command: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-traffic-capture/dumper_httpd.pp
+  notify: restorecon
+  when: t.stat.exists
 
 - name: set required sebooleans..
   seboolean:

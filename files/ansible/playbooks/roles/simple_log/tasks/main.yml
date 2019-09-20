@@ -3,18 +3,22 @@
 # reading incoming* files and the SELinux rules will not allow apache to read anything else.
 # This might be ok since all messages from other hosts that we collect end up in it which is what
 # we are interested in.
-- acl:
+- name: create apache acl for incomminf logs
+  acl:
     path: /var/log/incoming
     entity: apache
     etype: user
     permissions: r
     state: present
 
+- name: check if logger.pp exist
+  stat:
+    path: /usr/share/selinux/packages/foss-simple-log/logger.pp
+  register: s
 - name: Install simple log selinux policy package logger.pp
-  shell: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-simple-log/logger.pp
-
-- name: Run restore context to reload selinux
-  shell: restorecon -R -v /var
+  command: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-simple-log/logger.pp
+  notify: restorecon
+  when: s.stat.exists
 
 - name: Enable rsyslog
   service:

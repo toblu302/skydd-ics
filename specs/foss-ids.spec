@@ -82,7 +82,7 @@ fi
 sed -i 's/Listen 80/Listen 81/g' /opt/rh/httpd24/root/etc/httpd/conf/httpd.conf
 
 # run ansible with provided inventory which could have beeen changed by the user
-#/usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/ids.yml > /root/ansible-run-$$
+#/usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/ids.yml > /root/ansible-run-$$
 
 # set correct selinux labels
 /sbin/restorecon -R /var /etc /usr

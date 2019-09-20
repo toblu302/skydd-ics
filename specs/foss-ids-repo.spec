@@ -46,7 +46,7 @@ touch /opt/.foss-ids-repo
 
 if [ $1 -en 1 ];then
     # run ansible with provided inventory which could have beeen changed by the user
-    /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/ids-repo.yml > /root/ansible-run-$$
+    /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/ids-repo.yml > /root/ansible-run-$$
 fi
 
 %postun
