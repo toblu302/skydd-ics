@@ -153,7 +153,7 @@ Vagrant.configure("2") do |config|
     end
     test.vm.provision "shell", inline: <<-SHELL
         hostnamectl set-hostname test
-        yum install -y initscripts bats
+        yum install -y initscripts bats ansible-lint
         echo "dump_ip=#{ENV['DUMP_IP']}
 log_ip=#{ENV['LOG_IP']}
 monitor_ip=#{ENV['MONITOR_IP']}
