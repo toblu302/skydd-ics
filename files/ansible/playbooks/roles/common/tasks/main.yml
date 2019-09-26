@@ -20,7 +20,7 @@
 - name: set simple_log to true when it is installed
   set_fact:
     simple_log: true
-  when: not s.stat.exists
+  when: s.stat.exists
 
 - name: install common default firewall rules
   template:
