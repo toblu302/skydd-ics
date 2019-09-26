@@ -103,6 +103,8 @@ Vagrant.configure("2") do |config|
     ids.vm.provision "shell", inline: <<-SHELL
       hostnamectl set-hostname ids
       cd /vagrant/rpms
+      rpm --import /vagrant/files/monitor_server/RPM-GPG-KEY-CentOS-SIG-SCLo
+      yum install -y /vagrant/files/ids/snort-2.9.7.6-1.centos7.x86_64.rpm
       yum install -y foss-ids-repo-*.noarch.rpm
       yum install -y foss-ids-*.x86_64.rpm
       /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/ids-repo.yml
