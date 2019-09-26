@@ -3,7 +3,7 @@
   find:
     paths: /root/rpm
     patterns: '*.*'
-    register: found_files
+  register: found_files
 - name: create local repo
   command: /bin/createrepo /root/rpm
   args:
