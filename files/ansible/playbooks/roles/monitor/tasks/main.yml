@@ -57,7 +57,9 @@
     path: /etc/php.ini
   register: t
 - name: Get current time zone
-  shell: /bin/timedatectl | /bin/awk '/Time zone:/{print $3}'
+  shell: |
+    set -o pipefail
+    /bin/timedatectl | /bin/awk '/Time zone:/{print $3}'
   register: time_zone
   when: t.stat.exists
 - name: set time zone in php.ini
