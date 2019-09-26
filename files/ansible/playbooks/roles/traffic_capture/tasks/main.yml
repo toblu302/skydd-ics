@@ -38,9 +38,7 @@
 
 - name: Enable reaper
   systemd:
-    name: "{{ item }}"
+    name: reaper
     enabled: yes
-    started: yes
+    state: started
     no_block: no
-  loop:
-    - reaper
