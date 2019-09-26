@@ -7,7 +7,7 @@
   command: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-monitor/icinga.pp
   when: s.stat.exists
 - name: Run restore context to reload selinux
-  command: /usr/bin/restorecon -R -v "{{ item }}"
+  command: /sbin/restorecon -R -v "{{ item }}"
   loop:
     - /etc
     - /var
