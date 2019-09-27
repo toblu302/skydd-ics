@@ -107,6 +107,7 @@ Vagrant.configure("2") do |config|
       yum install -y foss-ids-repo-*.noarch.rpm
       yum install -y foss-ids-*.x86_64.rpm
       /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/ids-repo.yml
+      /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/ids.yml
     SHELL
   end
 #################
