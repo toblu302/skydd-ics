@@ -62,7 +62,7 @@ if [ $? != 0 ]; then
    echo "SYNTAX ERROR: ${i}"
    exit 1
 fi
-for i in $(ls ls ../files/ansible/playbooks); do
+for i in $(ls ../files/ansible/playbooks); do
     ansible-lint ls ../files/ansible/playbooks/${i}
    if [ $? != 0 ]; then
        echo "SYNTAX ERROR: ${i}"
