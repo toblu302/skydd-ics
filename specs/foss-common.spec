@@ -59,7 +59,7 @@ if [ $1 -eq 1 ];then
         fi
 else
     # run ansible with provided inventory which could have beeen changed by the user
-    /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/foss.yml
+    /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/foss.yml
 fi
 touch /opt/.foss-common
 
@@ -73,7 +73,7 @@ rm -f /opt/.foss-common
 %defattr(-,root,root)
      %attr(0644, root, root) /boot/splash.png
 %dir %attr(0755, root, root) /opt/ansible
-     %attr(0644, root, root) %config(noreplace) /opt/ansible/inventory
+     %attr(0644, root, root) %config(noreplace) /opt/ansible/inventory.yml
 %dir %attr(0755, root, root) /opt/ansible/playbooks
      %attr(0644, root, root) /opt/ansible/playbooks/foss.yml
      %attr(0644, root, root) /opt/ansible/playbooks/ids.yml
@@ -99,11 +99,15 @@ rm -f /opt/.foss-common
 %dir %attr(0755, root, root) /opt/ansible/playbooks/roles/httpd/tasks
      %attr(0644, root, root) /opt/ansible/playbooks/roles/httpd/tasks/main.yml
 %dir %attr(0755, root, root) /opt/ansible/playbooks/roles/simple_log
+%dir %attr(0755, root, root) /opt/ansible/playbooks/roles/simple_log/handlers
+     %attr(0644, root, root) /opt/ansible/playbooks/roles/simple_log/handlers/main.yml
 %dir %attr(0755, root, root) /opt/ansible/playbooks/roles/simple_log/tasks
      %attr(0644, root, root) /opt/ansible/playbooks/roles/simple_log/tasks/main.yml
 %dir %attr(0755, root, root) /opt/ansible/playbooks/roles/traffic_capture
 %dir %attr(0755, root, root) /opt/ansible/playbooks/roles/traffic_capture/tasks
      %attr(0644, root, root) /opt/ansible/playbooks/roles/traffic_capture/tasks/main.yml
+%dir %attr(0755, root, root) /opt/ansible/playbooks/roles/traffic_capture/handlers
+     %attr(0644, root, root) /opt/ansible/playbooks/roles/traffic_capture/handlers/main.yml
      %attr(0644, root, root) /opt/ansible/playbooks/httpd.yml
      %attr(0644, root, root) /opt/ansible/playbooks/monitor.yml
      %attr(0644, root, root) /opt/ansible/playbooks/roles/monitor/tasks/main.yml

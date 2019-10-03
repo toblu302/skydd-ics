@@ -56,7 +56,7 @@ cp -r opt var usr etc home %{buildroot}
 touch /opt/.foss-traffic
 if [ $1 -ne 1 ];then
     # run ansible with provided inventory which could have beeen changed by the user
-    /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/traffic.yml > /root/ansible-run-$$
+    /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/traffic.yml > /root/ansible-run-$$
 fi
 
 %clean

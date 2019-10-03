@@ -8,6 +8,7 @@ ENV['TEST_IP']    = '192.168.0.29'
 
 Vagrant.configure("2") do |config|
   config.vm.box = "centos/7"
+  config.vm.box_version = "<=1801.02"
   config.vm.synced_folder "..", "/vagrant", type: "rsync", rsync__exclude: ".git/", "rsync__args": "-a"
   config.vm.provider "vmware_fusion" do |v|
     v.vmx["memsize"]  = "2048"
@@ -21,18 +22,20 @@ Vagrant.configure("2") do |config|
   config.vm.provider :libvirt do |libvirt|
     libvirt.memory = "2048"
   end
+  config.vm.provision "file", source: "RPM-GPG-KEY-EPEL-7", destination: "/home/vagrant/RPM-GPG-KEY-EPEL-7"
   config.vm.provision "shell", inline: <<-SHELL
     # we need to install epel first
     rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+    cp /home/vagrant/RPM-GPG-KEY-EPEL-7 /etc/pki/rpm-gpg
+    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
     yum install -y epel-release
-    yum upgrade -y
     yum install -y perl rpm-build selinux-policy-devel pandoc texlive pdflatex mg vim
     cd /vagrant
     make all
     cd /vagrant/rpms
     yum install -y foss-docs-*.noarch.rpm foss-common-*.noarch.rpm foss-httpd-*.noarch.rpm   
     cd ..
-    /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/foss.yml
+    /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/foss.yml
 
   SHELL
 #################
@@ -54,7 +57,7 @@ Vagrant.configure("2") do |config|
       hostnamectl set-hostname dump
       cd /vagrant/rpms
       yum install -y foss-traffic-capture-*.noarch.rpm
-      /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/traffic.yml
+      /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/traffic.yml
       # restart network to start the tcpdump service
       systemctl restart network
     SHELL
@@ -78,7 +81,7 @@ Vagrant.configure("2") do |config|
       hostnamectl set-hostname log
       cd /vagrant/rpms
       yum install -y foss-simple-log-server-*.noarch.rpm
-      /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/simple_log.yml
+      /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/simple_log.yml
     SHELL
   end
 #################
@@ -99,9 +102,12 @@ Vagrant.configure("2") do |config|
     ids.vm.provision "shell", inline: <<-SHELL
       hostnamectl set-hostname ids
       cd /vagrant/rpms
+      rpm --import /vagrant/files/monitor_server/RPM-GPG-KEY-CentOS-SIG-SCLo
+      yum install -y /vagrant/files/ids/snort-2.9.7.6-1.centos7.x86_64.rpm
       yum install -y foss-ids-repo-*.noarch.rpm
       yum install -y foss-ids-*.x86_64.rpm
-      /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/ids-repo.yml
+      /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/ids-repo.yml
+      /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/ids.yml
     SHELL
   end
 #################
@@ -124,7 +130,7 @@ Vagrant.configure("2") do |config|
       cd /vagrant/rpms
       yum install -y foss-icinga-repo-*.noarch.rpm
       yum install -y foss-monitor-server-*.noarch.rpm
-      /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/monitor.yml
+      /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/monitor.yml
       ## first-boot requires firstboot-graphical.service
       ## this is not always enabled during vagrant testing
       ## we will manual exec the stuff anyway
@@ -150,7 +156,7 @@ Vagrant.configure("2") do |config|
     end
     test.vm.provision "shell", inline: <<-SHELL
         hostnamectl set-hostname test
-        yum install -y initscripts bats
+        yum install -y initscripts bats ansible-lint
         echo "dump_ip=#{ENV['DUMP_IP']}
 log_ip=#{ENV['LOG_IP']}
 monitor_ip=#{ENV['MONITOR_IP']}

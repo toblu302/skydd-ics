@@ -54,7 +54,7 @@ cp -r var etc usr %{buildroot}
 touch /opt/.foss-simple-log
 if [ $1 -ne 1 ];then
     # run ansible with provided inventory which could have beeen changed by the user
-    /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/simple_log.yml > /root/ansible-run-$$
+    /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/simple_log.yml > /root/ansible-run-$$
 fi
 
 %clean

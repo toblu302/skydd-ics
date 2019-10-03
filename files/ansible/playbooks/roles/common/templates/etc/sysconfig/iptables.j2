@@ -13,7 +13,7 @@
 
 -A INPUT -i lo -j ACCEPT
 
-{% if enable_sshd %}
+{% if enable_sshd|bool %}
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
 {% endif %}
 
