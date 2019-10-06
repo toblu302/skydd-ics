@@ -85,6 +85,11 @@ label foss4
   kernel vmlinuz
   append initrd=initrd.img inst.ks=hd:LABEL=FOSS:/ks/ks4.cfg inst.stage2=hd:LABEL=FOSS quiet
 
+label foss13
+  menu label Installera nätverksinspelningsserver och IDS-server
+  kernel vmlinuz
+  append initrd=initrd.img inst.ks=hd:LABEL=FOSS:/ks/ks12.cfg inst.stage2=hd:LABEL=FOSS quiet
+
 menu separator # insert an empty line
 
 # utilities submenu
