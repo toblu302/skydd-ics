@@ -12,7 +12,7 @@ Som regel är ett nätverksgränssnitt aktiverat i samband med att servern insta
 
 ![Menyval för att slå på nätverksgränssnitt.](images/networkmanager_turnoff.png "Menyval för att slå på nätverksgränssnitt.")
 
-Om IDS-systemet upptäcker trafik som den enligt uppsatt regelverk, sparas information om detta i en
+Om IDS-systemet upptäcker trafik enligt uppsatt regelverk, sparas information om detta i en
 databas. Dessa varningar kan sedan studeras, kommenteras och klassificeras med en webbläsare.
 
 ![Detaljer för händelse.](images/ids_alert_1.png "Snorby alert note.")
