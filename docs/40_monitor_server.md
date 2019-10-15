@@ -7,7 +7,7 @@
 Om en tjänst eller server inte är åtkomlig för Icinga visas det visuellt i gränssnittet.
 Det går även att få notifikationer via exempelvis e-post och/eller sms när en tjänst eller server inte är åtkomlig för Icinga.
 
-I den paketerade lösningen finns det ett skapat exempelskript för att skicka sms till en SMSGateway.
+I den paketerade lösningen finns det ett skapat exempelskript för att skicka sms till en SMS Gateway.
 
 ## Användning
 
