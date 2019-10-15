@@ -9,14 +9,14 @@ Nedan beskrivs på ett mer övergripande sätt de olika typer av tjänster och s
 
 ## Logginsamlingsserver
 
-Den här servertypen är till för att samla in loggar (spårdata) från andra datorer. En loggserver är mycket användbar både för felsökning och vid incidenthantering., dessutom kan en dedikerad, extern loggserver krävas för att ingen ska kunna missbruka en server. Det går att lösa genom att vanliga
+Den här servertypen är till för att samla in loggar (spårdata) från andra datorer. En loggserver är mycket användbar både för felsökning och vid incidenthantering. Dessutom kan en dedikerad, extern loggserver krävas för att ingen ska kunna missbruka en server. Det går att lösa genom att vanliga
 serveradministratörer inte får åtkomst till den centrala loggservern.
 
 ![Principskiss loggserver.](images/overview-logserver.png "Översikt och principskiss för en loggserver.")
 //TODO: Ska inte vara bindestreck i loggserver i illustrationen.
 
 En enkel loggserver klarar att ta emot och samla in loggar från andra system. Den ser också till att loggmeddelanden finns tillgängliga över tid
-genom att spara ner dem på disk. För vissa ändamål kan det krävas en mer avancerat server för att kunna ha bättre
+genom att spara ner dem på disk. För vissa ändamål kan det krävas en mer avancerad server för att kunna ha bättre
 kontroll av de händelser som sker i en miljö. Dock är den här servertypen en mycket bra start ifall det inte finns någon central loggserver.
 
 
