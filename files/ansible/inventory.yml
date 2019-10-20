@@ -1,0 +1,8 @@
+---
+all:
+  children:
+    foss:
+      hosts:
+        localhost:
+  vars:
+    enable_sshd: True
