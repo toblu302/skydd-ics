@@ -216,4 +216,13 @@ kommandot:
  	      sudo iptables-restore /etc/sysconfig/iptables
 ```
 
+### Undantag av nätverkskort för inspelning
+
+För att undanta ett nätverkskort från att användas måste det undantas network manager som är den tjänst som startar funktionen. Det görs enklast genom att i konfigurationsfilen för nätverkskort skriva följande:
+
+> NM_CONTROL=no
+i filen
+
+`/etc/sysconfig/network-scripts/ifcfg-"interfacenamn"`
+	      
 \clearpage
