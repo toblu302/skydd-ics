@@ -188,4 +188,13 @@ hänvisning till *HTTPS* i **/etc/sysconfig/iptables** och ladda sedan om brandv
 
 För information om hur terminalen används eller hur man kör kommandon se kapitlet [Terminal-åtkomst och kommandoraden].
 
+### Undantag av nätverkskort för IDS
+
+För att undanta ett nätverkskort från att användas måste det undantas network manager som är den tjänst som startar funktionen. Det görs enklast genom att i konfigurationsfilen för nätverkskort skriva följande:
+
+> NM_CONTROL=no
+i filen
+
+`/etc/sysconfig/network-scripts/ifcfg-"interfacenamn"`
+
 \clearpage
