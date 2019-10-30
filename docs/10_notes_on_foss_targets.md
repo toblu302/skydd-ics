@@ -13,6 +13,7 @@ Den här servertypen är till för att samla in loggar (spårdata) från andra d
 serveradministratörer inte får åtkomst till den centrala loggservern.
 
 ![Principskiss loggserver.](images/overview-logserver.png "Översikt och principskiss för en loggserver.")
+
 //TODO: Ska inte vara bindestreck i loggserver i illustrationen.
 
 En enkel loggserver klarar att ta emot och samla in loggar från andra system. Den ser också till att loggmeddelanden finns tillgängliga över tid
@@ -25,6 +26,7 @@ kontroll av de händelser som sker i en miljö. Dock är den här servertypen en
 Den här servertypen är till för att på ett enkelt sätt kunna spela in nätverkstrafik och spara information om den. För att spela in trafik så kopplar man in en nätverkskabel till den nätverksport där inspelning ska ske. För att relevant trafik ska komma till den aktuella porten behövs antingen en nätverkstapp eller en switch som är konfigurerad med en så kallad *monitoreringsport* eller *SPAN-port*.
 
 ![Principskiss nätverksinspelningsserver.](images/overview-networkrecorder1.png "Översikt och principskiss för en nätverksinspelningsserver.")
+
 //TODO: Ska inte vara bindestreck i koncernnät i illustrationen ovan.
 
 
@@ -35,6 +37,7 @@ de tjänster som finns på dem. Den kan till exempel upptäcka och larma om att 
 håller på att ta slut och att lasten på servern (hur nedtyngd servern är) är för hög.
 
 ![Principskiss larmserver.](images/overview-alarmserver.png "Översikt och principskiss för en övervaknings- och larmserver.")
+
 //TODO: Ska stå: Larm- och övervakningsserver i ill. ovan.
 
 Installationen av servern i sig är automatisk, men för att funktionen ska kunna vara verkningsfull, krävs att den konfigureras mot den miljö som ska övervakas.
@@ -45,6 +48,7 @@ Den här servertypen är till för att kunna agera på beteenden i nätverk geno
 Servern ansluts på en sådan nättopologisk plats att den kan se nätverkstrafik där det finns behov av larm vid onormala beteenden.
 
 ![Principskiss intrångsdetekteringssystem.](images/overview-ids2.png "Översikt och principskiss för en IDS.")
+
 //TODO: Skriv ihop Koncernnät i ill. ovan.
 
 ## Brandvägg för SCADA- och ICS-miljö

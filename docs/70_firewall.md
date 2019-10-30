@@ -64,7 +64,9 @@ Klicka på "Packa upp" och när den nya frågerutan för "Packa upp" visas på s
 Filen är nu uppackad till en imagefil av typen ISO.
 
 ### Skapa installationsmedia
-Skapa installationsmediet enligt [instruktionerna](## Skapa installationsmedia).//TODO: Referensen fungerar inte  
+Skapa installationsmediet enligt [instruktionerna](## Skapa installationsmedia).
+
+//TODO: Referensen fungerar inte  
 
 ### Installera pfSense
 

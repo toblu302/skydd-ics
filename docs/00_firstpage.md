@@ -1,7 +1,5 @@
-% Dokumentation till projektet "Skydd för ICS/SCADA byggt på öppen källkod"
-% Robert Malmgren (rom@romab.com);Gabriel Kihlman (gk@romab.com);Tobias Norrbom (tobbe@romab.com)
-% Version 1.1
-
+% Installations- och användarmanual till BAS5
+% Skydd för ICS/SCADA byggt på öppen källkod
 
 ---
 title: Säkerhetsfunktioner för ICS/SCADA-miljöer med hjälp av fria och öppna källkodsprogram

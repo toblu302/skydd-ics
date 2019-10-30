@@ -107,6 +107,7 @@ automations- och processnätverk. Ytterligare anslutningspunkter kan vara i nät
 mellan den egna organisationen och omvärlden, till exempel mot partneranslutningar eller mot Internet.
 
 ![Principskiss intrångsdetekteringssystem.](images/overview-ids2.png "Översikt och principskiss för en IDS.")
+
 //TODO: koncernnät ska inte avstavas i illustrationen ovan.
 
 Placeringen kan dock ha en avsevärd inverkan på hur mycket nätverkstrafik, och därmed potentiella angrepp eller

@@ -5,10 +5,11 @@
 Detta dokument beskriver ett antal IT-säkerhetskomponenter, deras syfte, installation och användning. Dessa är ursprungligen anpassade för användning hos elbolag i Sverige i deras SCADA- och industriella kontrollsystemsmiljöer, men kan användas även av företag i andra samhällsviktiga branscher med liknande miljöer. Komponenterna är tänkta att fungera som byggklossar för att skapa en nivå av grundskydd. Dokumentationen är på svenska och installationen är förenklad och automatiserad. För att förenkla användningen har de olika funktionerna försetts med integrerade grafiska användargränssnitt. All dokumentation finns även tillgänglig i de installerade servrarna.
 
 De säkerhetsfunktioner som tillhandahålls i programform är:
-* loggserver
-* larmserver
-* nätverksanalysnod
-* intrångsdetekteringssystem
+
+  * loggserver
+  * larmserver
+  * nätverksanalysnod
+  * intrångsdetekteringssystem
 
 Vidare finns det även dokumentation som beskriver andra säkerhetsfunktioner som inte
 tillhandahålls i den här paketeringen. En sådan funktion är en brandvägg, [pfsense],

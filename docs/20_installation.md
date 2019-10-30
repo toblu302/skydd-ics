@@ -44,6 +44,7 @@ Vid uppstart från mediet kommer en meny att visas med de olika installationstyp
 Datorn kommer nu att ladda installationen och efter en liten stund kommer nedanstående meny att visas där installationsspecifika val kan göras.
 
 ![Konfigurationsval under installationen, övre delen](images/installation_val_av_sprak.png "Konfigurationsval under installationen, övre delen.")
+
 //NOTE: Annan ikon för KDUMP vid testinstallation. Uppdatera bilder?
   3. Under rubriken **LOKALISERING** är svenska förvalt, men det är möjligt att ändra till ett annat språk om så önskas.  
 
@@ -145,7 +146,7 @@ Nu är det bara att vänta på att installationen slutförs. När den är klar k
 Klicka på **Starta om** och ta bort installationsmediet (till exempel dvd-skivan) när datorn har startat om så att inte installationsmenyn startar igen.  
 
 När datorn har startat om kommer den att visa några grafiska fönster där du måste göra de sista valen.  
-//NOTE: Refererar detta till de val av språk och användarkonton som berskivs nedan? I sådant fall är detta stycke överflödigt.
+//NOTE: Refererar detta till de val av språk och användarkonton som beskrivs nedan? I sådant fall är detta stycke överflödigt.
 
 En boot-meny visas en kort stund där olika varianter av avancerad uppstart kan utföras. Dessa avancerade ändringar ligger dock utanför det installationsförfarande som den här dokumentationen beskriver. Menyn kommer att försvinna och en ny välkomstmeny kommer att komma fram enligt bilden nedan.  
 

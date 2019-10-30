@@ -19,7 +19,7 @@ rör denna programvaruuppsättning.
         * [Varför har man valt denna Linuxversion?]
         * [Varför använder ni två olika operativsystem?]
     * Installation
-        * [Vilka hårdvarukrav ställs på den utrustning som skall användas?]
+        * [Vilka hårdvarukrav ställs på den utrustning som ska användas?]
         * [Hur hanterar programvaran att min dator har flera nätverkskort och Ethernetanslutningar?]
         * [Servern jag installerat hittar ingen nätverksadress. Vad kan vara fel?]
         * [Kan jag köra flera av funktionerna på en och samma server?]
