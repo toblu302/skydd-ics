@@ -52,8 +52,9 @@ Det här kapitlet går närmare in på hur man använder sig av nätinspelningss
 
 En användabar funktion är att kunna söka efter textsträngar i den nätverkstrafik som spelats in.
 
-Genom att starta webbläsaren och gå till URL <http://127.0.0.1/sok.html> går det att söka i de
+Genom att starta webbläsaren och gå till URL <http://127.0.0.1/dump> går det att söka i de
 existerande nätverksdumparna direkt på servern. Hur denna sökfunktion ser ut går att se på nästa bild.
+//NOTE: Klipp bort URL-delen från bilden.
 
 ![Sökning i inspelad nätverkstrafik.](images/trafikvy-sok.png "Sökning i inspelad nätverkstrafik.")
 
@@ -109,9 +110,8 @@ Nedanstående bild visar när filen med den inspelade nätverkstrafiken är inl�
 
 ![Detaljbild när verktyget Wireshark har avkodat nätverkstrafik.](images/wireshark-overview-pic1.png "Wireshark detaljvy.")
 
-*Det bör noteras att den version av Wireshark som finns tillgänglig för CentOS är 1.10. Den senaste versionen av Wireshark,
-som precis släppts men ännu inte är tillgänglig som en del av centos standardpaket är version 2.0. Denna version har en del förbättringar i stödet för att avkoda protokoll, inte minst vad det gäller möjligheten att avkoda Siemens S7-protokoll.*  
-//NOTE: Stämmer detta fortfarande?
+*Det bör noteras att den version av Wireshark som finns tillgänglig för CentOS är 1.x. Den senaste versionen av Wireshark,
+är inte tillgänglig som en del av CentOS supporterade standardpaket. Senare versioner har en del förbättringar i stödet för att avkoda protokoll, inte minst vad det gäller möjligheten att avkoda Siemens S7-protokoll.*  
 
 ## Detaljbeskrivning
 
@@ -224,5 +224,5 @@ För att undanta ett nätverkskort från att användas måste det undantas netwo
 i filen
 
 `/etc/sysconfig/network-scripts/ifcfg-"interfacenamn"`
-	      
+
 \clearpage

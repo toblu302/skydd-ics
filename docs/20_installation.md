@@ -15,7 +15,7 @@ Nedanstående flödesdiagram visar grafiskt översiktligt de olika stegen som be
 //TODO: Tanken från SvK var att ISO:n skulle finnas för nedladdning på energisakerhetsportalen. Det gör den dock inte. Schemat behöver uppdateras när metod för distribution har beslutats
 
 Första steget med att installera en server är att ha tillgång till själva installationsfilen, vanligtvis en så kallad [iso]-fil.
-Information om var och hur installations-filen kan hämtas finns på [energisakerhetsportalen]. //TODO: Uppdatera när distributionsmetod är beslutad
+Information om var och hur installations-filen kan hämtas finns på https://www.informationssakerhet.se/.  
 
 För att installera en server måste datorn startas upp från antingen DVD:n eller USB-stickan. Om du inte använder en fysisk server kan det räcka med alternativet att direkt starta den virtuella servern från ISO-filen.
 
@@ -45,7 +45,6 @@ Datorn kommer nu att ladda installationen och efter en liten stund kommer nedans
 
 ![Konfigurationsval under installationen, övre delen](images/installation_val_av_sprak.png "Konfigurationsval under installationen, övre delen.")
 
-//NOTE: Annan ikon för KDUMP vid testinstallation. Uppdatera bilder?
   3. Under rubriken **LOKALISERING** är svenska förvalt, men det är möjligt att ändra till ett annat språk om så önskas.  
 
   4. Under rubriken **PROGRAMVARA** är det också förvalt, dessa val ska **inte** ändras.
@@ -137,7 +136,6 @@ Det finns två menyval i den här vyn och den ena knappen går det inte att tryc
 Det är knappen för att sätta root-lösenordet, det vill säga lösenordet för att få högsta behörighet på datorn. Lösenordet är hårdkodat till *toor* under installationen men kommer att ändras till ett slumpmässigt valt lösenord under installationens slutfas. Det sker med kommandot *pwgen -1 48* vilket skapar ett slumpat lösenord på 48 tecken. För att få högre behörighet eller ändra root-lösenordet kan kommandot *sudo* användas enligt de instruktioner som beskriver hur terminalen fungerar efter att installationen är slutförd.  
 
 Det andra menyvalet är till för att skapa användarkonton, det ska **inte** göras i det här skedet utan görs efter att installationen är slutförd.  
-//NOTE: Går det att gråa ut det alternativet?
 
 Nu är det bara att vänta på att installationen slutförs. När den är klar kommer en knapp med texten **Starta om** visas enligt bilden nedan.  
 

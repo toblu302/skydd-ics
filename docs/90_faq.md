@@ -88,7 +88,7 @@ Det kan bero på att tiden inte är korrekt mellan det system som genererar larm
 En lösning är att försöka ställa in klockan till korrekt tid samt att sätta tidszonen till UTC-tidzon.
 
 ### Jag har precis installerat en server, men jag kan inte nå webbgränssnittet. Vad är fel?
-
+Webbgränssnittet gå bara att få åtkomst till från konsolen.
 
 ### Vad är skillnaden mellan den här paketeringen och Security Onion?
 
@@ -471,7 +471,7 @@ För mer dokumentation och information om hur man gör systemåterställning ell
 ### Var finns källkoden till alla programmoduler och paket?
 
 Källkoden till alla paket kommer att vara tillgänglig. Sök via Energisäkerhetsportalen i första hand
-eller via Github i andra hand. //NOTE: Sannolikt blir det via informationssakerhet.se
+eller via Github i andra hand. //Det blir på GitHub. Komplettera med länk.
 
 ### Jag vill skapa en egen installationsfil utifrån källkoden, hur gör jag?
 

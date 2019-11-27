@@ -14,8 +14,6 @@ serveradministratörer inte får åtkomst till den centrala loggservern.
 
 ![Principskiss loggserver.](images/overview-logserver.png "Översikt och principskiss för en loggserver.")
 
-//TODO: Ska inte vara bindestreck i loggserver i illustrationen.
-
 En enkel loggserver klarar att ta emot och samla in loggar från andra system. Den ser också till att loggmeddelanden finns tillgängliga över tid
 genom att spara ner dem på disk. För vissa ändamål kan det krävas en mer avancerad server för att kunna ha bättre
 kontroll av de händelser som sker i en miljö. Dock är den här servertypen en mycket bra start ifall det inte finns någon central loggserver.
@@ -27,8 +25,16 @@ Den här servertypen är till för att på ett enkelt sätt kunna spela in nätv
 
 ![Principskiss nätverksinspelningsserver.](images/overview-networkrecorder1.png "Översikt och principskiss för en nätverksinspelningsserver.")
 
-//TODO: Ska inte vara bindestreck i koncernnät i illustrationen ovan.
+## IDS-server
 
+Den här servertypen är till för att kunna agera på beteenden i nätverk genom att lyssna på och analysera nätverkstrafik för att hitta signaturer eller mönster som tyder på intrång, policyöverträdelser, med mera.
+Servern ansluts på en sådan nättopologisk plats att den kan se nätverkstrafik där det finns behov av larm vid onormala beteenden.
+
+![Principskiss intrångsdetekteringssystem.](images/overview-ids2.png "Översikt och principskiss för en IDS.")
+
+## Nätverksinspelningsserver och IDS-server
+
+Den här servertypen är en kombination av nätverksinspelningsserver och IDS-server. Den innehåller samtliga funktioner som finns i de båda servertyperna. För dokumentation se respektive avsnitt för de ingående servertyperna.  
 
 ## Larmserver
 
@@ -38,18 +44,7 @@ håller på att ta slut och att lasten på servern (hur nedtyngd servern är) ä
 
 ![Principskiss larmserver.](images/overview-alarmserver.png "Översikt och principskiss för en övervaknings- och larmserver.")
 
-//TODO: Ska stå: Larm- och övervakningsserver i ill. ovan.
-
 Installationen av servern i sig är automatisk, men för att funktionen ska kunna vara verkningsfull, krävs att den konfigureras mot den miljö som ska övervakas.
-
-## IDS-server
-
-Den här servertypen är till för att kunna agera på beteenden i nätverk genom att lyssna på och analysera nätverkstrafik för att hitta signaturer eller mönster som tyder på intrång, policyöverträdelser, med mera.
-Servern ansluts på en sådan nättopologisk plats att den kan se nätverkstrafik där det finns behov av larm vid onormala beteenden.
-
-![Principskiss intrångsdetekteringssystem.](images/overview-ids2.png "Översikt och principskiss för en IDS.")
-
-//TODO: Skriv ihop Koncernnät i ill. ovan.
 
 ## Brandvägg för SCADA- och ICS-miljö
 

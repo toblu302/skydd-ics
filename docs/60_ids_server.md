@@ -65,7 +65,7 @@ uppdateras automatiskt var 10:e minut.
 
 ![Snorby Dashboard.](images/ids_dashboard_busy.png "Snorby dashboard.")
 
-Om siffrorna inte uppdateras kan det bero på att ett jobb har lagts upp för en uppdatering och den justerade tiden för uppdatering//TODO: Saknas ord här.
+I vissa fall kan det hända att värdena inte uppdateras.
 Den problematiken går att lösa genom att gå till "Administration", "Worker & Job Queue", radera *SensorCache-jobbet* och sen lägga till ett sådant jobb igen.
 
 ### Vyer i Snorby
@@ -107,8 +107,6 @@ automations- och processnätverk. Ytterligare anslutningspunkter kan vara i nät
 mellan den egna organisationen och omvärlden, till exempel mot partneranslutningar eller mot Internet.
 
 ![Principskiss intrångsdetekteringssystem.](images/overview-ids2.png "Översikt och principskiss för en IDS.")
-
-//TODO: koncernnät ska inte avstavas i illustrationen ovan.
 
 Placeringen kan dock ha en avsevärd inverkan på hur mycket nätverkstrafik, och därmed potentiella angrepp eller
 trafik med mönster som matchar regelverket, som kan infångas. Placeras ett IDS-system på Internet så kan det

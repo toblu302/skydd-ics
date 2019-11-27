@@ -120,7 +120,6 @@ För att få notifikationer via sms måste filen */etc/icinga2/conf.d/users.conf
     pager = "nummer"  
 ```
 där *nummer* är ett korrekt mottagarnummer inklusive landskod.  
-//NOTE: Exempel på syntax för nummer?
 
 Dessutom ska den regel som får trigga en notifikation konfigureras ytterligare enligt följande:  
 

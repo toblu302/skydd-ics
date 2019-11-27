@@ -60,9 +60,9 @@ Länk till ZIP-fil och adress för kloning finns under "Clone or download"-knapp
     ```console
     $ cd /vagrant/image
     ```
-8. Välj lämplig URL på https://www.centos.org/download/ för att använda i kommandot nedan
+8. Välj lämplig URL på http://isoredirect.centos.org/centos/7/isos/x86_64/ för att använda i kommandot nedan. Det är en CentOS 7 iso av typen minimal som ska användas.
     ```console
-    $ curl -o centosdvd.iso [url till centos dvd installationsmedia]
+    $ curl -o centosdvd.iso [url till centos minimal installationsmedia]
     ```
 9. Verifiera checksumman enligt https://wiki.centos.org/TipsAndTricks/sha256sum
 10. Sätt upp ISO-filen som en enhet i filträdet

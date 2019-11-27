@@ -17,7 +17,7 @@ En central licens som förekommer i de flesta programpaket som ingår i vår pro
 ### Efterlevnad av GPL-krav
 
 För att följa de krav som Gnu Public Licenses (GPL) och varianter därav (t.ex. LGPL)
-har, främst krav på tillgänglighet av källkoden, kommer denna att göras tillgänglig för allmänheten genom distribution via publika kanaler, till exempel GitHub och via länkar på energisäkerhetsportalen. //TODO: Blir sannolikt informationssakerhet.se
+har, främst krav på tillgänglighet av källkoden, kommer denna att göras tillgänglig för allmänheten genom distribution via publika kanaler, till exempel GitHub och via länkar på informationssakerhet.se.
 
 ## Egenutvecklad kod
 
@@ -196,5 +196,7 @@ Tcpdump använder sig av en så kallad *3-clause BSD license*, vilket är en vä
 öppen och flexibel mjukvarulicens.
 
 För detaljinformation om programvarans licensbestämmelser, se [tcpdumplicens].
+
+//TODO: Referera till OSA då deras ikoner används i illustrationer.
 
 \clearpage

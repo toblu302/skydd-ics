@@ -66,8 +66,6 @@ Filen är nu uppackad till en imagefil av typen ISO.
 ### Skapa installationsmedia
 Skapa installationsmediet enligt [instruktionerna](## Skapa installationsmedia).
 
-//TODO: Referensen fungerar inte  
-
 ### Installera pfSense
 
   * Starta datorn från det nyskapade mediet
