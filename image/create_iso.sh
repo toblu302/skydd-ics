@@ -90,6 +90,7 @@ mv -f ${iso_root}/efiboot.img ${iso_dir}/isolinux
 # Convert isolinux.cfg.utf8 to code page 850
 /usr/bin/iconv -f utf8 -t CP850 -o ${iso_root}/isolinux/isolinux.cfg ${iso_root}/isolinux/isolinux.cfg.utf8
 cp -rp ${iso_root}/isolinux/* ${iso_dir}
+cp -rp ${iso_root}/isolinux/isolinux.cfg ${iso_dir}/isolinux
 cp -rp ${iso_root}/EFI/BOOT/grub.cfg ${iso_dir}
 cp -rp ${iso_root}/EFI ${iso_dir}
 
