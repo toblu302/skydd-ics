@@ -5,8 +5,14 @@
     enabled: yes
     state: started
 
+- name: check if foss_httpd.pp exist
+  stat:
+    path: /usr/share/selinux/packages/foss-httpd/foss_httpd.pp
+  register: s
 - name: Install selinux policy package foss_httpd.pp
-  shell: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-httpd/foss_httpd.pp
+  command: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-httpd/foss_httpd.pp
+  when: s.stat.exists
 
 - name: Run restore context to reload selinux
-  shell: restorecon -R -v /var
+  command: /usr/bin/restorecon -R -v /var
+  when: s.stat.exists

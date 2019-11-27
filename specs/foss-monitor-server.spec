@@ -56,7 +56,7 @@ if [ $1 -eq 1 ]; then
     /bin/systemctl enable first-boot.service
 else
     # run ansible with provided inventory which could have beeen changed by the user
-    /usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/monitor.yml > /root/ansible-run-$$
+    /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/monitor.yml > /root/ansible-run-$$
 fi
 touch /opt/.foss-monitor
 

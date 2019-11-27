@@ -37,8 +37,13 @@
   file:
     path: /etc/snort/.mariadb_snortpw
     mode: 0600
+- name: check if foss_snort.pp exist
+  stat:
+    path: /usr/share/selinux/packages/foss-ids/foss_snort.pp
+  register: s
 - name: Install selinux policy to allow NetWorkManager to start a snort service
-  shell: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-ids/foss_snort.pp
+  command: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-ids/foss_snort.pp
+  when: s.stat.exists
 - name: enable services
   systemd:
     name: "{{ item }}"

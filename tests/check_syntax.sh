@@ -56,4 +56,18 @@ for i in `find .. -name "*.sh"`; do
    fi
 done
 
+echo "[ check ansible syntax ]"
+ansible-lint ../files/ansible/inventory.yml
+if [ $? != 0 ]; then
+   echo "SYNTAX ERROR: ${i}"
+   exit 1
+fi
+for i in $(ls ../files/ansible/playbooks); do
+    ansible-lint ls ../files/ansible/playbooks/${i}
+   if [ $? != 0 ]; then
+       echo "SYNTAX ERROR: ${i}"
+       exit 1
+   fi
+done
+
 echo "[ done ]"
