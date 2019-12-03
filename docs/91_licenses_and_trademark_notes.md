@@ -22,7 +22,7 @@ har, främst krav på tillgänglighet av källkoden, kommer denna att göras til
 ## Egenutvecklad kod
 
 Paketeringen innehåller mer än enbart programvara skapad av andra parter. De skript och de
-program som vi utvecklat som en del av detta projekt är släppt under GPL-licens, vilket innebär
+program som vi utvecklat som en del av detta projekt är släppt under GPL-licens //TODO: Ange GPL version//, vilket innebär
 att vem som helst får ta del av, modifiera och vidaredistribuera källkoden så länge de vidareför dessa licenskrav
 i ytterligare led mot andra personer och parter.
 

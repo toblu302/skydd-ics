@@ -1,7 +1,7 @@
 # Introduktion
 
 ## Förord
-BAS5 är en samling mjukvaruverktyg som underlättar för operatörer av industriella informations- och styrsystem att ha en ändamålsenlig informationssäkerhet. Målgrupp för BAS5 är de operatörer som i en del av sitt kontinuerliga säkerhetsarbete behöver ett tekniskt verktyg med låg finansiell och kunskapsmässig tröskel.
+Skyddspaket ICD/SCADA är en samling mjukvaruverktyg som underlättar för operatörer av industriella informations- och styrsystem att ha en ändamålsenlig informationssäkerhet. Målgrupp för skyddspaketet är de operatörer som i en del av sitt kontinuerliga säkerhetsarbete behöver ett tekniskt verktyg med låg finansiell och kunskapsmässig tröskel.
 
 Avsikten med paketet är att det ska användas som ett instegsprogram för lärande och behovsprövning hos operatörer som i en del av sitt kontinuerliga säkerhetsarbete behöver ett tekniskt verktyg med låg finansiell och kunskapsmässig tröskel. Efter utvärdering kan behovsbilden av mer potenta verktyg och eller analysstöd värderas.
 
