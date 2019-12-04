@@ -12,7 +12,7 @@ Nedanstående flödesdiagram visar grafiskt översiktligt de olika stegen som be
 ![Flödesdiagram för att installera och använda programvaran](images/spics-flowchart.png "Flödesdiagram för att installera och använda programvaran.")
 
 Första steget med att installera en server är att ha tillgång till själva installationsfilen, vanligtvis en så kallad [iso]-fil.
-Information om var och hur installations-filen kan hämtas finns på https://www.informationssakerhet.se/.  
+Information om var och hur installations-filen kan hämtas finns på <https://www.informationssakerhet.se>.  
 
 För att installera en server måste datorn startas upp från antingen DVD:n eller USB-stickan. Om du inte använder en fysisk server kan det räcka med alternativet att direkt starta den virtuella servern från ISO-filen.
 

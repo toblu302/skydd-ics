@@ -106,46 +106,58 @@ att använda, ändra och vidaredistribuera reglerna. För mer detaljerad informa
 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 	SOFTWARE.
 ```
+https://github.com/digitalbond/Quickdraw-Snort  
+https://github.com/digitalbond/Quickdraw-Snort/blob/master/LICENSE
 
+### Emerging Threats
 
-### EmergingThreats
-
-EmergingThreats SCADA-regler är en samling protokollbeskrivningar, regler och IDS/IPS-specifika beskrivningar av ICS/SCADA-protokoll.
-Samlingen är framtagen av företaget Emerging Threats Inc och är släppt under så kallad MIT-licens, vilket ger stora friheter
-att använda, ändra och vidaredistribuera reglerna. För mer detaljerad information, se [emergingthreats].
+Emerging Threats SCADA-regler är en samling protokollbeskrivningar, regler och IDS/IPS-specifika beskrivningar av ICS/SCADA-protokoll.
+Samlingen är framtagen av företaget Emerging Threats Inc. Emerging Threats regler kan lyda under 2 olika licenser, GPL version 2 eller BSD.
+För mer detaljerad information, se [emergingthreats].
 
 ```
-    Copyright (c) 2003-2015, Emerging Threats
-    All rights reserved.
+	Emerging Threats
 
-    Redistribution and use in source and binary forms, with or without modification,
-    are permitted provided that the following conditions are met:
+	This distribution may contain rules under two different licenses.
 
-    * Redistributions of source code must retain the above copyright notice,
-      this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright notice,
-      this list of conditions and the following disclaimer in the documentation
-      and/or other materials provided with the distribution.
-    * Neither the name of the nor the names of its contributors may be used to
-      endorse or promote products derived from this software without specific prior
-      written permission.
+	Rules with sids 1 through 3464, and 100000000 through 100000908 are under the GPLv2.
+	A copy of that license is available at http://www.gnu.org/licenses/gpl-2.0.html
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS
-    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
-    FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-    DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-    OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
-    USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	Rules with sids 2000000 through 2799999 are from Emerging Threats and are covered under the BSD License
+	as follows:
+
+	Copyright (c) 2003-2019, Emerging Threats
+	All rights reserved.
+
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+	following conditions are met:
+
+	* Redistributions of source code must retain the above copyright notice,
+	  this list of conditions and the following disclaimer.
+	* Redistributions in binary form must reproduce the above copyright notice,
+	  this list of conditions and the following disclaimer in the documentation
+	  and/or other materials provided with the distribution.
+	* Neither the name of the nor the names of its contributors may be used to
+	  endorse or promote products derived from this software without specific prior
+	  written permission.
+
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+	DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+	SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+	SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+	WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+	USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
+<https://rules.emergingthreats.net/open/snort-2.9.0/rules/LICENSE>  
+<https://opensource.org/licenses/BSD-3-Clause>  
+<https://en.wikipedia.org/wiki/BSD_licenses>
 
 ### Snorby
 
-Programvaran *Snorby* som ingår som en komponent i IDS-lösningen Snort är licensierad enligt GPL2.
-Det medför därmed inga problem att vidaredistribuera snorbykomponenten i plattformen.
+Programvaran *Snorby* som ingår som en komponent i IDS-lösningen Snort är licensierad enligt GPL version 3.
+Det medför därmed inga problem att vidaredistribuera snorbykomponenten i plattformen.  
+För mer information, se [snorbylicens].
 
 ```
 	Snorby - All About Simplicity.
@@ -184,18 +196,25 @@ Det medför därmed inga problem att vidaredistribuera snorbykomponenten i platt
 	only applies to snorby source code (contact the Dustin Willis
 	Webber if you have futher questions).
 ```
+<https://github.com/Snorby/snorby>  
+<https://github.com/Snorby/snorby/blob/master/LICENSE>
 
-För mer information, se [snorbylicens].
 
 Snorby innehåller en komponent kallad "highcharts" som är licensierad enligt Creative Common
-Attribution Non-commercial. För mer information, se [CCBYNC3]
+Attribution Non-commercial. För mer information, se [CCBYNC3]  
+<https://www.highcharts.com/>  
+<https://www.highcharts.com/license>  
+//TODO: Kan vi verkligen använda denna komponent?
+(https://shop.highsoft.com/faq#Non-Commercial-0)
 
 ### Barnyard
 
 Programvaran Barnyard som ingår som en komponent i IDS-lösningen Snort är licensierad enligt GPL2.
 Det medför därmed inga problem att vidaredistribuera Barnyardkomponenten i plattformen.
 
-För mer information, se [barnyardlicens].
+För mer information, se [barnyardlicens].  
+<https://github.com/firnsy/barnyard2>
+<https://github.com/firnsy/barnyard2/blob/master/LICENSE>
 
 ### Tcpdump
 
@@ -203,7 +222,9 @@ Vi har använt oss av programvaran tcpdump för att kunna spela in nätverkstraf
 Tcpdump använder sig av en så kallad *3-clause BSD license*, vilket är en väldigt
 öppen och flexibel mjukvarulicens.
 
-För detaljinformation om programvarans licensbestämmelser, se [tcpdumplicens].
+För detaljinformation om programvarans licensbestämmelser, se [tcpdumplicens].  
+<http://www.tcpdump.org/>  
+<http://www.tcpdump.org/license.html>  
 
 ### OSA ikoner
 
