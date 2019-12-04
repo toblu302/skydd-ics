@@ -1,4 +1,4 @@
-% Installations- och användarmanual till BAS5
+% Installations- och användarmanual till Skyddspaket ICS/SCADA
 % Skydd för ICS/SCADA byggt på öppen källkod
 
 ---

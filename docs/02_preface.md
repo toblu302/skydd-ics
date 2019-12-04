@@ -1,7 +1,7 @@
 # Introduktion
 
 ## Förord
-BAS5 är en samling mjukvaruverktyg som underlättar för operatörer av industriella informations- och styrsystem att ha en ändamålsenlig informationssäkerhet. Målgrupp för BAS5 är de operatörer som i en del av sitt kontinuerliga säkerhetsarbete behöver ett tekniskt verktyg med låg finansiell och kunskapsmässig tröskel.
+Skyddspaket ICD/SCADA är en samling mjukvaruverktyg som underlättar för operatörer av industriella informations- och styrsystem att ha en ändamålsenlig informationssäkerhet. Målgrupp för skyddspaketet är de operatörer som i en del av sitt kontinuerliga säkerhetsarbete behöver ett tekniskt verktyg med låg finansiell och kunskapsmässig tröskel.
 
 Avsikten med paketet är att det ska användas som ett instegsprogram för lärande och behovsprövning hos operatörer som i en del av sitt kontinuerliga säkerhetsarbete behöver ett tekniskt verktyg med låg finansiell och kunskapsmässig tröskel. Efter utvärdering kan behovsbilden av mer potenta verktyg och eller analysstöd värderas.
 
@@ -25,5 +25,13 @@ Eftersom detta programpaket är värdefullt även för andra branscher än elbra
 ![Relationsdiagram mellan olika viktiga begrepp.](images/itsecarch-metamodell.png "Relationsdiagram mellan olika viktiga begrepp.")
 
 Detta dokument beskriver hur man installerar och använder de ingående komponenterna, samt deras syfte och funktionalitet.
+
+## Begränsningar av garantier och ansvar
+MSB påtar sig inget ansvar för eventuella skador på användarens hårdvara, mjukvara eller data som kan uppstå till följd av nedladdning, installation och användning av Skyddspaket ICS/SCADA.
+Paketet levereras med de ingående delpaketen som är programvaror baserade på öppen källkod. Det åligger den som installerar att försäkra sig om att funktion, konfiguration etc. är den förväntade. Det åligger även användaren att använda de ingående komponenterna i enlighet med dessa komponenters licenser.
+
+MSB avser hålla programvaran uppdaterad med nya versioner i viss omfattning. Uppdaterade versioner kan hämtas på samma sätt som ursprunglig version. Det åligger användaren att själv kontrollera om nya uppdateringar finns och bedöma om uppdatering till ny version är nödvändig. 
+
+MSB tillför dokumentation och ett samlat installationsmedium. MSB tar inget ansvar för programmens kompabilitet med existerande program och system hos användaren eller mellan de ingående komponenterna i paketet. Det åligger användaren att tillse att de system, brandväggar och andra säkerhetsfunktioner som finns inte kommer i konflikt med varandra. MSB tar inget ansvar för de säkerhetsfunktioner som organisationen har i sina system eller andra funktioner som påverkas av detta direkt eller indirekt. MSB tar inget ansvar för eventuella problem som uppstår i användarens system till följd av installationsprocessen av skyddspaketet.
 
 \clearpage
