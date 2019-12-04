@@ -140,8 +140,7 @@ Nu är det bara att vänta på att installationen slutförs. När den är klar k
 
 Klicka på **Starta om** och ta bort installationsmediet (till exempel dvd-skivan) när datorn har startat om så att inte installationsmenyn startar igen.  
 
-När datorn har startat om kommer den att visa några grafiska fönster där du måste göra de sista valen.  
-//NOTE: Refererar detta till de val av språk och användarkonton som beskrivs nedan? I sådant fall är detta stycke överflödigt.
+När datorn har startat om kommer den att visa några grafiska fönster där du måste göra de sista valen. Klicka på **SLUTFÖR KONFIGURATIONEN**.
 
 En boot-meny visas en kort stund där olika varianter av avancerad uppstart kan utföras. Dessa avancerade ändringar ligger dock utanför det installationsförfarande som den här dokumentationen beskriver. Menyn kommer att försvinna och en ny välkomstmeny kommer att komma fram enligt bilden nedan.  
 
