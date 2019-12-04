@@ -12,12 +12,12 @@ acceptabelt enligt licensmodellerna.
 
 ## Licenser
 
-En central licens som förekommer i de flesta programpaket som ingår i vår programdistribution är Gnu Public License (GPL) version 2 samt version 3. Dessa licenser finns närmare beskrivna här: [gnulicens].
+En central licens som förekommer i de flesta programpaket som ingår i denna programdistribution är Gnu Public License (GPL) version 2 samt version 3. Dessa licenser finns närmare beskrivna här: [gnulicens].
 
 ### Efterlevnad av GPL-krav
 
 För att följa de krav som Gnu Public Licenses (GPL) och varianter därav (t.ex. LGPL)
-har, främst krav på tillgänglighet av källkoden, kommer denna att göras tillgänglig för allmänheten genom distribution via publika kanaler, till exempel GitHub och via länkar på informationssakerhet.se.
+har, främst krav på tillgänglighet av källkoden, kommer denna att göras tillgänglig för allmänheten genom distribution via publika kanaler, till exempel [GitHub](https://github.com/CS-CY/skydd-ics) och via länkar på [informationssakerhet.se](https://www.informationssakerhet.se).
 
 ## Egenutvecklad kod
 
@@ -54,22 +54,30 @@ Från [centoslicens]
 	for the CentOS distribution.” However, you may not say that the software
 	is CentOS.
 ```
+<https://www.centos.org/>
+
 
 ### Icinga
 
 Larm- och övervakningsprogramvaran Icinga ingår i paketeringen. Icinga är licensierad enligt
-GPL version 2, vilket enligt Icingalicensen innebär:
+GPL version 2.
+```
+	License  
+	Icinga 2 and the Icinga 2 documentation are licensed under the terms
+	of the GNU General Public License Version 2. You will find a copy of
+	this license in the LICENSE file included in the source package.
+```
 
-```
-	All Icinga software is open source and licensed under GPL version 2
-	(Icinga Web 1 under GPLv3). So it is free (as in beer and as in speech) to use,
-	distribute and modify.
-```
+För det grafiska gränssittet används icingaweb2 som även den är licenserad enligt GPL verision 2.
+<https://icinga.com/>  
+<https://icinga.com/docs/icinga2/latest/#license>  
+<https://github.com/Icinga/icinga2/blob/master/COPYING>
+<https://github.com/Icinga/icingaweb2/blob/master/COPYING>
 
 ### Snort
-
 Snort ägs av Cisco och består av två huvudkomponenter. Dessa är detekteringsprogramvaran och en uppsättning regler. Reglerna är uppdelade i *Community Snort Rules* och *Proprietary Snort Rules*.  
 Detekteringsprogramvaran och *Community Snort Rules* är [GPL]-licensierad enligt version 2.  *Proprietary Snort Rules* är licensierade enligt en speciell icke-kommersiell licens. Snorts olika licenser finns närmare beskrivna på [snortlicens].
+//TODO: Synka med kommentarer från RÄTTS.
 
 ### Quickdraw
 Quickdraw är en samling protokollbeskrivningar, regler och IDS/IPS-specifika beskrivningar av ICS/SCADA-protokoll.
@@ -197,6 +205,9 @@ Tcpdump använder sig av en så kallad *3-clause BSD license*, vilket är en vä
 
 För detaljinformation om programvarans licensbestämmelser, se [tcpdumplicens].
 
-//TODO: Referera till OSA då deras ikoner används i illustrationer.
+### OSA ikoner
+
+Flera av diagrammen i dokumentationen använder sig av ikoner från OSA [Icon Library](https://www.opensecurityarchitecture.org/cms/library/icon-library). OSA tillhandahåller ikonerna och övrigt material på <https://www.opensecurityarchitecture.org> enligt 	[Creative Commons](https://creativecommons.org/licenses/by-sa/3.0/) share-alike.
+För mer information se [OSA-licens](https://www.opensecurityarchitecture.org/cms/about/license-terms).
 
 \clearpage

@@ -54,7 +54,6 @@ En användabar funktion är att kunna söka efter textsträngar i den nätverkst
 
 Genom att starta webbläsaren och gå till URL <http://127.0.0.1/dump> går det att söka i de
 existerande nätverksdumparna direkt på servern. Hur denna sökfunktion ser ut går att se på nästa bild.
-//NOTE: Klipp bort URL-delen från bilden.
 
 ![Sökning i inspelad nätverkstrafik.](images/trafikvy-sok.png "Sökning i inspelad nätverkstrafik.")
 
