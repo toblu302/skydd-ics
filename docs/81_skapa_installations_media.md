@@ -59,11 +59,11 @@ Efteråt så kommer ISOn att brännas på skivan.
 Här beskrivs hur man skapar en boot-bar USB-sticka med operativsystem på en dator med operativsystemet Windows. Exemplet är verifierat med Windows 7 men borde även fungera med andra versioner av operativsystemet också.
 
 Det finns flera sätt att skapa en boot-bar USB-sticka. Ett sätt är att ladda ner Rufus från <URL: http://rufus.akeo.ie/>:
-1. Välj ut FOSS-ison på disk i stället för grundvalet "FreeDOS" (se bild).
+1. Välj ut skydd-ics-ison på disk i stället för grundvalet "FreeDOS" (se bild).
 2. Klicka *Start*.
 3. Välj "DD-avbild" i rutan som kommer upp.
 
-Rufus är gratis, öppen källkod. Den versionen som vi verifierat fungerar är "rufus-2.9.exe" som har SHA56-checksumman: 346e869f0c2b22ada8ccd2516a5c8917b17cbb09bf16d33e74d9559e611753ad.
+Rufus är gratis, öppen källkod. Den versionen som vi verifierat fungerar är "rufus-2.9.exe" som har SHA256-checksumman: 346e869f0c2b22ada8ccd2516a5c8917b17cbb09bf16d33e74d9559e611753ad.
 
 ![Rufus.](images/rufus.png "Verktyget Rufus.")
 
@@ -86,15 +86,15 @@ ett steg med utökade administratörsbehörigheter.
       USB-minnet anslutet och när det inte är det - för att se skillnaden på listan.*
 
  3. Avmontera stickan med kommandot: ```diskutil unmountDisk /dev/disk3```.
- 4. Skriv ISO-filen till USB-stickan: ```sudo dd if=./foss.iso of=/dev/disk3 bs=10m```.  
-  a. Eftersom filen foss.iso är väldigt stor kommer det här kommandot ta relativt lång stund, kring fem minuter eller mer. Hur lång tid det tar beror bland annat på typen av USB-minne, eftersom det finns olika snabba sådana.  
+ 4. Skriv ISO-filen till USB-stickan: ```sudo dd if=./skydd-ics.iso of=/dev/disk3 bs=10m```.  
+  a. Eftersom filen skydd-ics.iso är väldigt stor kommer det här kommandot ta relativt lång stund, kring fem minuter eller mer. Hur lång tid det tar beror bland annat på typen av USB-minne, eftersom det finns olika snabba sådana.  
 
   b. Du kommer få en fråga om att ange lösenord för att köra kommandot "sudo". Detta är ditt vanliga lösenord som du anger för inloggning till systemet.
 
     Om allt har gått enligt plan, skall du ha sett text liknande nedanstående i terminalfönstret:
 
 ```
-	bash-3.2$ sudo dd if=./foss.iso of=/dev/disk3 bs=10m
+	bash-3.2$ sudo dd if=./skydd-ics.iso of=/dev/disk3 bs=10m
 	132+1 records in
 	132+1 records out
 	1391460352 bytes transferred in 475.954652 secs (2923515 bytes/sec)

@@ -77,7 +77,7 @@ Länk till ZIP-fil och adress för kloning finns under "Clone or download"-knapp
     ```console
     $ ./create_iso.sh
     ```
-13. Den byggda iso:n (foss.iso) finns i katalogen /vagrant/image
+13. Den byggda iso:n (skydd-ics.iso) finns i katalogen /vagrant/image
 
 ### Skapa en bootbar DVD/USB
 Se avsnitt *[8.1 Skapa installationsmedia](docs/81_skapa_installations_media.md)*  i [dokumentationen](docs/).

@@ -507,7 +507,7 @@ Nedan följer en detaljerad beskrivning av hur detta går till:
 
 Skriptet *download_packages.sh* som körs, laddar ner alla programpaket som behövs i samma katalogen *image/isolinux/Packages*.
 
-Skriptet *create_iso.sh* som körs skapar en fil med namnet foss.iso i samma katalog. Detta är filen med installationsprogrammet som kan brännas till DVD eller installeras på en USB-minnessticka.
+Skriptet *create_iso.sh* som körs skapar en fil med namnet **skydd-ics.iso** i samma katalog. Detta är filen med installationsprogrammet som kan brännas till DVD eller installeras på en USB-minnessticka.
 
 Från DVD:n eller USB-enheten går det sedan att boota den aktuella datorn som installationen ska utföras på.
 
