@@ -62,7 +62,7 @@ done
 /usr/bin/iconv -f utf8 -t CP850 -o $iso_root/isolinux/isolinux.cfg $iso_root/isolinux/isolinux.cfg.utf8
 
 # Create iso image
-/bin/mkisofs -input-charset utf-8 -o $iso -b isolinux.bin -c boot.cat -no-emul-boot -V 'FOSS' -boot-load-size 4 -boot-info-table -R -J -v -T $iso_root/isolinux
+/bin/mkisofs -input-charset utf-8 -o $iso -b isolinux.bin -c boot.cat -no-emul-boot -V 'skydd-ics' -boot-load-size 4 -boot-info-table -R -J -v -T $iso_root/isolinux
 
 # Make the iso image hybrid, allows cd and usb installtions
 /usr/bin/isohybrid $iso
