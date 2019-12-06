@@ -2,7 +2,7 @@
 set -e
 
 iso_root=$(dirname $0)
-iso=$iso_root/foss.iso
+iso=$iso_root/skydd-ics.iso
 
 # Sanity checks
 if [ ! -e $iso_root/DVD/isolinux ]; then
@@ -53,7 +53,7 @@ cp -f $iso_root/../rpms/* $iso_root/isolinux/Packages/
 createrepo -g comps.xml $iso_root/isolinux/
 
 # copy from CentOS minimal DVD
-for i in initrd.img isolinux.bin memtest vesamenu.c32 vmlinuz; do 
+for i in initrd.img isolinux.bin memtest vesamenu.c32 vmlinuz; do
     [[ -e isolinux/$i ]] || cp $iso_root/DVD/isolinux/$i $iso_root/isolinux/
 done
 [[ -e isolinux/LiveOS ]] || cp -r $iso_root/DVD/LiveOS $iso_root/isolinux/
