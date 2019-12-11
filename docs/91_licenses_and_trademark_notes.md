@@ -76,7 +76,7 @@ För det grafiska gränssittet används icingaweb2 som även den är licenserad 
 
 ### Snort
 Snort ägs av Cisco och består av två huvudkomponenter. Dessa är detekteringsprogramvaran och en uppsättning regler. Reglerna är uppdelade i *Community Snort Rules* och *Proprietary Snort Rules*.  
-Detekteringsprogramvaran och *Community Snort Rules* är [GPL]-licensierad enligt version 2.  *Proprietary Snort Rules* är licensierade enligt en speciell icke-kommersiell licens. Snorts olika licenser finns närmare beskrivna på [snortlicens].
+Detekteringsprogramvaran och *Community Snort Rules* är [GPL]-licensierad enligt version 2. *Proprietary Snort Rules* är licensierade enligt en speciell icke-kommersiell licens. Snorts olika licenser finns närmare beskrivna på [snortlicens].
 //TODO: Synka med kommentarer från RÄTTS.
 
 ### Quickdraw
@@ -206,8 +206,8 @@ Däremot så gäller andra licensformer vid användande. Läs mer om licenser f�
 <https://shop.highsoft.com/highcharts>  
 <https://www.highcharts.com/license>  
 <https://shop.highsoft.com/faq>  
-Om det är så att du behöver köpa en licens men av någon anledning inte har möjlighet till det går det att antingen [deaktivera highcharts](/docs/60_ids_server.md#deaktivera-highcharts) eller deaktivera Snorby.
 
+Om det är så att du behöver köpa en licens men av någon anledning inte har möjlighet till det går det att antingen deaktivera highcharts eller deaktivera Snorby. Se avsnittet *Viktigt att veta om Snorby och Highcharts* i kapitlet *IDS server* i dokumentationen för hur det går till.
 
 ### Barnyard
 
