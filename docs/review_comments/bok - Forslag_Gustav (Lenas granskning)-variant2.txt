@@ -1,1649 +1,0 @@
-﻿Installations- och användarmanual  till BAS - 5
-Skydd för ICS/SCADA byggt på öppen källkod
-
-Förord
-Bla bla…
-Under 2015 initierade Svenska kraftnät - inom ramen för deras säkerhetshöjande arbete inom den svenska elbranschen – ett projekt för att skapa ett antal säkerhetskomponenter baserade på öppen källkod, d.v.s. fria att använda utan kostnad. Primära målgruppen var  svenska elbolag som av ekonomiska eller andra skäl saknar möjlighet att skaffa tekniska skyddsmekanismer. Dessa skulle då kunna skaffa sig ett grundskydd i sina ICS- och SCADA-miljöer samt få tillgång till verktyg för att enkelt och snabbt komma igång med säkerhetshöjande åtgärder.
-Då detta programpaket som Svenska kraftnät skapat är av värde även för andra branscher utöver elbranschen så har Myndigheten för samhällsskydd och beredskap (MSB) valt att ansvara för förvaltning och spridning till motsvarande målgrupper i övriga branscher i Sverige, med målsättningen att höja säkerhetsnivån hos de  bolag som av ekonomiska eller andra skäl saknar möjlighet att på annat vis skaffa tekniska skyddsmekanismer
-Bla bla…
-BAS5 är en samling mjukvaruverktyg som underlättar för operatörer av industriella informations- och styrsystem att ha en ändamålsenlig informationssäkerhet. Målgrupp för BAS5 är de operatörer som i en del av sitt kontinuerliga säkerhetsarbete behöver ett tekniskt verktyg med låg finansiell och kunskapsmässig tröskel.
-Programvarorna som ingår paketet baseras på öppen källkod och finns således tillgängliga för nerladdning var och en för sig. MSB står för paketering, tillgängliggörande och uppdatering och tillför ingen väsentlig funktionalitet.
-Avsikten med paketet är att det ska användas som ett instegsprogram för lärande och behovsprövning hos operatörer som i en del av sitt kontinuerliga säkerhetsarbete behöver ett tekniskt verktyg med låg finansiell och kunskapsmässig tröskel. Efter utvärdering kan behovsbilden av mer potenta verktyg och eller analysstöd värderas.
-Även leverantörer av programvaror eller tjänster kan använda verktygen som instegsprogram.
-Programmen/paketet levereras som det är. Det åligger den som installerar att försäkra sig om att funktion, konfiguration etc är den förväntade. 
-MSB avser hålla programvaran uppdaterad med nya versioner i viss omfattning. Uppdaterade versioner kan hämtas på samma sätt som ursprunglig version. Det åligger användaren att själv bedöma om uppdatering till ny version är nödvändig[O1]. 
-
-
-
-
-
-
-
-
-Innehållsförteckning
-Förord	1
-Sammanfattning	7
-Introduktion	8
-Bakgrund	8
-Några kommentarer om hårdvara och hårdvarukrav	10
-Hårdvaruarkitektur	10
-Fysisk eller virtuell hårdvara	10
-32- och 64-bitars hårdvara	10
-Primärminnesutrymme	10
-Lagringsutrymme	10
-CD och DVD eller USB-masslagring	11
-Nätverksanslutning	11
-Sammanställning av de olika servertyperna	11
-Logginsamlingsserver	11
-Nätverksinspelningsserver	12
-Larmserver	13
-IDS-server	14
-Brandvägg för SCADA- och ICS-miljö	15
-Placering av de olika säkerhetslösningarna	17
-Installation	20
-Installera en server	20
-Installationsförfarande	22
-Logginsamlingsserver	39
-Översikt	39
-Installation av loggserver	40
-Användning	40
-Lista loggmeddelanden och innehåll i loggfiler	41
-Ladda ned loggfiler	43
-Söka efter text i ett loggmeddelande	46
-Detaljer	47
-Loggmeddelanden via nätverket	47
-Filsystemsdetaljer	48
-Säkerhet	48
-Avancerad användning	49
-Krypterade syslogmeddelanden	49
-Extern åtkomst till webben	49
-Övervakningsserver för att monitorera datorer och tjänster	50
-Översikt	50
-Användning	50
-Detaljer	51
-Säkerhet	51
-Webbservern Apache	53
-Konfiguration	53
-Anpassa konfigurationsfiler till målmiljön	53
-Lägga till maskiner för övervakning	53
-Lägga till sms-notifikationer	54
-Avancerat, nästa steg	55
-Extern åtkomst till övervakningsgränssnittet	55
-Nätverksinspelningsserver	56
-Översikt	56
-Installation av nätverksinspelningsserver	56
-Nödvändiga inställningar	57
-Användning	57
-Sökning i inspelad nätverkstrafik	58
-Analys av inspelad nätverkstrafik med Chaosreader	59
-Analys av inspelad nätverkstrafik med Wireshark	61
-Detaljbeskrivning	65
-Vart inspelad nätverkstrafik sparas	65
-Hur hanteras gamla nätverksinspelningar?	66
-Säkerhet för att skydda systemet från angrepp och fel i inspelningsfunktionen	66
-Säkerhet för att skydda systemet vid läsning av inspelad trafik	66
-Avancerat, nästa steg	66
-Åtkomst till webbgränssnitt via nätverket	66
-IDS server	67
-Översikt	67
-Installation av IDS server	69
-Nödvändiga inställningar	69
-Användning	70
-Snorby	71
-Vyer i Snorby	71
-Placering	74
-Detaljer	75
-Avancerat, nästa steg	76
-Anslutningsmetod	76
-Att lägga till nya regler	76
-Extern åtkomst till webben	77
-Brandvägg	77
-Översikt	77
-Val av programvaruversion	78
-Hämta programvaran	78
-Verifiera programvaran	78
-Packa upp den komprimerade installationsfilen	79
-Skapa installationsmedia	80
-Installera pfSense	80
-Konfigurera pfSense	85
-Använda pfSense	94
-Skapa installationsmedia	101
-Ladda ner iso	101
-Skapa en iso	102
-Olika installationsmedier	102
-Bränna ISO på DVD-skiva	102
-Skapa en boot-bar USB-sticka	103
-Verifiera media	106
-Terminal-åtkomst och kommandoraden	108
-Översikt	108
-Användning	110
-Få hjälp i systemet	111
-Högre rättigheter	112
-Textredigeringsprogram	113
-NANO	113
-VIM	114
-Emacs	114
-FAQ: Vanliga frågor och svar	114
-Bakgrund och översiktsfrågor	116
-Varför har SvK/MSB tagit fram dessa verktyg?	116
-Vem är målgruppen för att använda dessa verktyg?	116
-Hur kommer dessa verktyg underhållas?	116
-Detaljfrågor	116
-Jag har satt upp allt, men får inga larm i övervakningsservern, vad kan ha hänt?	116
-Jag har precis installerat en server, men jag kan inte nå webbgränssnittet. Vad är fel?	117
-Vad är skillnaden mellan den här paketeringen och Security Onion?	117
-Finns det skillnader i paketeringen av de olika funktionerna?	117
-Vilka hårdvarukrav ställs på den utrustning som ska användas?	117
-Vilken version och distribution av Linux används?	117
-Varför har man valt denna Linux?	117
-Varför har ni två olika operativsystem?	118
-Hur hanterar programvaran att min dator har flera nätverkskort och Ethernetanslutningar?	118
-Servern jag installerat hittar ingen nätverksadress. Vad kan vara fel?	118
-Hur stänger jag av en server?	119
-Texten är så liten på skärmen, kan jag ändra teckenstorlek?	120
-Hur gör jag för att sätta webbläsaren i fullskärmsläge?	120
-Upplösningen på skärmen är låg. Kan jag ändra till en högre upplösning?	121
-Kan jag uppdatera systemet?	125
-Har servrarna stöd för IPv6?	125
-Kan jag köra flera av funktionerna på en och samma server?	126
-Åtkomst till webbgränssnitt via nätverket	126
-Kan jag söka efter en textsträng i alla loggar?	127
-När jag listar innehållet i en logg, kan jag söka efter en textsträng då?	127
-Vilka regler aktiverade i IDS-lösningen?	127
-Finns det andra SCADA-regler, som inte är medpaketerade?	127
-Hur ser regelverket ut, finns det något exempel på hur IDS-reglerna är utformade?	127
-IDS-lösningen larmar väldigt mycket, varför gör den det?	129
-IDS-lösningen larmar väldigt mycket, kan jag göra något åt det?	129
-Förutom snort, finns det andra moduler på IDS-systemet jag kan använda mig av?	129
-Förutom tcpdump, finns det andra moduler på nätverksinspelnings-systemet jag kan använda mig av?	129
-Snorby dashboard summeringen uppdateras inte	129
-Hur hanteras diskutrymmet på nätinspelningsservern?	129
-Hur kan jag spara undan nätverksinspelningar från nätverksinspelningsservern?	130
-Hur har lösningen säkrats upp?	130
-SELinux omnämns hela tiden, hur har ni använt det?	130
-Kan jag använda övervakningsservern för att övervaka de andra servrarna som ingår i den paketerade lösningen?	130
-Kan jag använda övervakningsservern för att övervaka ICS/SCADA-utrustning?	131
-Kan jag använda övervakningsservern för att övervaka annan infrastrukturutrustning, såsom exempelvis kylsystem eller enheter för avbrottsfri ström?	131
-Servern har vill inte starta operativsystemet. Finns det något jag kan göra?	131
-Vart finns källkoden till alla programmoduler och paket?	134
-Jag vill skapa en egen installations-fil utifrån källkoden, hur gör jag?	134
-Licensiering och tillgång till programvaran	136
-Programpaket som inte tillåter distribution	136
-Licenser	136
-Efterlevnad av GPL-krav	136
-Egenutvecklad kod	136
-Egenutvecklad dokumentation	136
-Distribution	136
-Centos Linux	137
-Icinga	137
-Snort	137
-Quickdraw	137
-EmergingThreats	138
-Snorby	139
-Barnyard	140
-Tcpdump	140
-Ordlista	140
-Referenser	153
-Bilaga Byggdetaljer för IDS-Server	157
-Snort	157
-Snort-regler	158
-Barnyard2	158
-Snorby	159
-Databasen	160
-Systemd	160
-
-
-Sammanfattning[BK2]
-Detta dokument beskriver ett antal IT-säkerhetskomponenter, deras syfte, installation och användning. Dessa är ursprungligen anpassade för användning hos elbolag i Sverige i deras SCADA- och industriella kontrollsystemsmiljöer, men kan användas även av företag i andra samhällsviktiga branscher med liknande miljöer. Komponenterna är tänkta att fungera som byggklossar för att skapa en nivå av grundskydd. Dokumentationen är på svenska och installationen är förenklad och automatiserad. För att förenkla användningen har de olika funktionerna försetts med integrerade grafiska användargränssnitt. All dokumentation finns även online i de installerade servrarna.
-De säkerhetsfunktioner som tillhandahålls i programform är:
-• loggserver
-• larmserver
-• nätverksanalysnod
-• intrångsdetekteringssystem.
-Vidare finns det även dokumentation som beskriver andra säkerhetsfunktioner som inte tillhandahålls i den här paketeringen. En sådan funktion är en brandvägg, pfsense, baserad på öppen källkod.
-Var och en av funktionerna och verktygen finns närmare beskrivna i var sitt kapitel i dokumentet. Här beskrivs vilken funktionalitet som erbjuds, hur installation av verktygen utförs, hur verktygen används, med mera.
-I kapitlet Några kommentarer om hårdvara och hårdvarukrav beskrivs i närmare detalj kraven på den hårdvara, där verktygen kan installeras, som kan användas. Den hårdvara som har använts är standardkomponenter, så kallad COTS-utrustning, i form av PC-servrar, PC-nätverkskort, etc.
-I kapitlet Licensiering och tillgång till programvaran beskrivs licenser för programvarornas användande/nyttjande och möjlighet till ändringar, för de olika modulerna som använts. Många av licenserna är så kallade öppna licenser som tillåter att vem som helst har rätt att använda programmen kostnadsfritt och ta del av källkod, göra ändringar samt även kunna vidaredistribuera programmen. Se detta kapitel eller de individuella programpaketen för specifika frågor rörande licenser.
-I slutet av dokumentet finns en sammanställning av vanliga frågor och svar (ibland kallat FAQ, frequently asked questions).
-Som bilagor till dokumentet finns detaljbeskrivningar för hur de olika programpaketen har kompilerats, konfigurerats och ändrats för att kunna bygga [O3]i den skapade miljön.
-
-Introduktion
-Bakgrund
-Under 2015 initierade Svenska kraftnät, inom ramen för sitt säkerhetshöjande arbete inom den svenska elbranschen, ett projekt för att skapa ett antal säkerhetskomponenter baserade på öppen källkod, alltså fria att använda utan kostnad. Primära målgruppen var svenska elbolag som av ekonomiska eller andra skäl saknar möjlighet att skaffa tekniska skyddsmekanismer. Dessa skulle då kunna skaffa sig ett grundskydd i sina ICS- och SCADA-miljöer samt få tillgång till verktyg för att enkelt och snabbt komma igång med säkerhetshöjande åtgärder. Svenska kraftnät gav 2014 ut en vägledning om IT-sakerhetsarkitektur. I denna beskrivs ett antal säkerhetskomponenter, säkerhetskontroller och funktionaliteter som bör finnas i en IT-miljö för att hålla en viss nivå av grundskydd. Relationsdiagrammet nedan visar vad IT-säkerhetsarkitektur är för något och hur det i sin tur relaterar till, och i vissa fall styr, andra delar av IT.
-
-De programpaket [O4]som tagits fram – paketering av mjukvara som kan installeras på en PC-server – är tänkta att underlätta för svenska elbolag att upprätta och förvalta en IT-säkerhetsarkitektur, såsom den beskrivs i vägledningen från 2014, med fokus på säkerhetskontroller, det vill säga olika säkerhetsmekanismer och tekniska skydd. 
-Eftersom detta programpaket är värdefullt även för andra branscher än elbranschen har Myndigheten för samhällsskydd och beredskap (MSB) valt att ansvara för förvaltning och spridning till motsvarande målgrupper inom övriga branscher i Sverige. Målsättningen är att höja säkerhetsnivån hos de bolag som av ekonomiska eller andra skäl saknar möjlighet att på annat vis skaffa tekniska skyddsmekanismer.
-Relationsdiagram mellan olika viktiga begrepp.
-Detta dokument beskriver hur man installerar och använder de ingående komponenterna, samt deras syfte och funktionalitet.
-Några kommentarer om hårdvara och hårdvarukrav
-Detta kapitel beskriver kort några av de förutsättningar som krävs för att kunna använda funktionerna och att sätta upp servrar.
-En av tankarna är att man ska kunna installera programmen på såväl gammal utrustning som på nyköpt. Det ska fungera lika bra att kunna bygga en budgetlösning med sina gamla datorer som att införskaffa nya servrar.
-Hårdvaruarkitektur
-För de hårdvaruarkitekturer vi stödjer (Intel, AMD) finns det ett antal grundläggande hårdvarukrav rörande prestanda, storlek med mera framtagna. Dessa egenskaper, miniminivåer samt rekommenderade nivåer finns närmare beskrivna i detta dokument.
-Som regel är dock den hårdvara som är tänkt målmiljö en Intelbaserad dator av PC-typ av modernt snitt. Mer information om arkitekturkrav beskrivs i följande kapitel. 
-Fysisk eller virtuell hårdvara
-Programvarudistributionen har installerats och testats på både virtuell och fysisk hårdvara. 
-Många av de paket och funktioner som levereras i detta installationspaket har funktioner, till exempel nätverksinspelningsfunktion, som fungerar bäst på fysisk hårdvara eftersom de kräver åtkomst till Ethernet-portar på ett sådant sätt som kan vara problematiskt i en virtuell miljö. En del andra funktioner och uppsättningarna av programvarudistributionen, såsom enkel loggserver, fungerar lika bra på virtuell som fysisk hårdvara.
-32- och 64-bitars hårdvara
-Intel har haft 64-bitarsversioner av sina CPU:er sedan i början av 2000 (2003 närmare bestämt). Likaså finns det 32-bitars och 64-bitarsversioner av det operativsystem, Linux, som vi har valt att använda i projektet. Modern hård- och mjukvara är bättre anpassad till att använda 64-bitarsersionerna. Vi har också valt att dra en gräns för hur gammal hårdvara vi kan stödja. Därför har vi valt att bara skapa 64-bitarsversioner av de programpaket som vi tagit fram.
-Primärminnesutrymme
-De paketerade systemen kräver 1GB RAM-minne för att fungera. Mer minne är dock att rekommendera, gärna 4 eller 8GB.
-Lagringsutrymme
-Det går att installera systemet på så små diskar som 20GB men eftersom de flesta system bygger på att samla in data är det rekommenderat att ha betydligt mycket mer i lagringsutrymme. Vilken storlek som behövs avgörs av hur mycket data det är tänkt att samla in i de olika systemen.
-CD och DVD eller USB-masslagring
-Det går att används såväl DVD och USB-minnen för att skapa en installationsdisk. Denna installationsdisk används sedan för att installera systemet på en hårddisk för permanent användning av programvaran. För installation på en virtuell dator går det bra att använda ISO-filen direkt i det virtualiseringsprogram som används.
-Nätverksanslutning
-Alla komponenter (loggserver, IDS-server, larmserver, nätverksinspelningsserver, brandvägg) kräver nätverksanslutningar för att vara användbara i verkliga scenarion, detta eftersom de oftast har ett behov av att behöver inhämta trafik eller få saker skickade till sig via nätverket.[O5]
-Testerna har utförts med virtuell och fysisk hårdvara där Ethernetkort har använts. Testerna gjordes  mot Ethernetkopplingar med 10Mbit- och 100Mbit-anslutningar.
-
-Sammanställning av de olika servertyperna
-Det här är en sammanställning av de olika varianter av servrar som går att installera med hjälp av de guider och instruktioner för de olika avbilderna av installationsmedia som skapats.[O6]
-Alla installationsmoment är gjorda så att själva installationen är så automatiserad som möjligt. För de installationer där manuell konfiguration behövs är det antingen av säkerhetsrelaterade skäl eller av den enkla anledningen att det måste ske en anpassning till den aktuella nätverksmiljön.
-Nedan beskrivs på ett mer övergripande sätt de olika typer av tjänster och servrar som ingår.
-Logginsamlingsserver
-Den här servertypen är till för att samla in loggar (spårdata) från andra datorer. En loggserver är mycket användbar både för felsökning och vid incidenthantering, dessutom kan en dedikerad[O7], extern loggserver krävas för att ingen ska kunna missbruka en server. Det går att lösa genom att vanliga serveradministratörer inte får åtkomst till den centrala loggservern.
-
-Principskiss loggserver[O8].
-En enkel loggserver klarar att ta emot och samla in loggar från andra system. Den ser också till att loggmeddelanden finns tillgängliga över tid genom att spara ner dem på disk. För vissa ändamål kan det krävas en mer avancerat server för att kunna ha bättre kontroll av de händelser som sker i en miljö. Dock är den här servertypen en mycket bra start ifall det inte finns någon central loggserver.
-Nätverksinspelningsserver
-Den här servertypen är till för att på ett enkelt sätt kunna spela in nätverkstrafik och spara information om den. För att spela in trafik kopplar man in en nätverkskabel till den nätverksport där inspelning ska ske. För att relevant trafik ska komma till den aktuella porten behövs antingen en nätverkstapp eller en switch som är konfigurerad med en så kallad monitoreringsport eller SPAN-port.
-
-Principskiss nätverksinspelningsserver[O9].
-Larmserver
-Den här servertypen är till för att kunna övervaka andra servar, andra infrastrukturkomponenter samt de tjänster som finns på dem. Den kan till exempel upptäcka och larma om att lagringsutrymmet håller på att ta slut och att lasten på servern (hur nedtyngd servern är) är för hög.
-
-Principskiss larmserver[O10].
-Installationen av servern i sig är automatisk, men för att funktionen ska kunna vara verkningsfull, krävs att den konfigureras mot den miljö som ska övervakas.
-IDS-server
-Den här servertypen är till för att kunna agera på beteenden i nätverk genom att lyssna på och analysera nätverkstrafik för att hitta signaturer eller mönster som tyder på intrång, policyöverträdelser, med mera. Servern ansluts på en sådan nättopologisk [O11]plats att den kan se nätverkstrafik där det finns behov av larm vid onormala beteenden.
-
-Principskiss intrångsdetekteringssystem.
-Brandvägg för SCADA- och ICS-miljö[O12]
-Den brandvägg som valts heter pfsense. Den är en mogen och beprövad lösning som sedan tidigare har en färdig paketering. Pfsense har också många säkerhetsfunktioner, exempelvis inbyggt stöd för skydd mot överlastningsattacker, loggning av trafik, möjlighet att sätta i klustrat högtillgänglighetsläge, normalisering (tvätt) av överförda nätverkspaket, med mera.
-Eftersom Pfsense sedan tidigare har en paketering har den inte ompaketerats. För den här servertypen har dock en installation- och användarguide på svenska framställts. Nedanstående bild visar hur en brandvägg fungerar i princip. I datorsammanhang och i IT-säkerhetssammanhang är en brandvägg en kontrollfunktion med filtrerings- och spårbarhetsmöjlighet som styr datortrafik som passerar mellan olika nätverk. Bilden visar att viss typ av trafik, den gröna pilen, släpps igenom brandväggen medan den brandgula pilen visar trafik som blockeras från att passera brandväggen. Förekomsten av blockerad eller genomsläppt trafik kan loggas och därmed bli spårdata som går att analysera, sammanställa och ta fram rapporter eller statistik från.
-
-Principskiss brandvägg.
-Nästa bild visar att en brandvägg kan bestå av flera anslutningspunkter. Vissa mer okontrollerade nät finns på en sida och ett internt nätverk – i detta fall ett processkontrollnät finns på den andra sidan som här kallas "insidan" och ett eller flera så kallade DMZ-nät som sitter i den demilitariserade zonen.
-
-Principskiss brandvägg – uppdelning av in- och utsida samt DMZ-nät.
-I geografiskt utspridda organisationer, till exempel elbolag med lokalkontor, olika anläggningar för distribution och produktion, med mera, kan det finnas behov av att installera flera interna brandväggar för att dela upp nätverket i mindre delar som har åtkomstbegränsningar från varandra. Nästa bild visar översiktligt behovet av att dela in ett koncernnät i olika delar, där de olika process-, ICS- eller SCADA-miljöerna är utseparerade från det sammanhållande koncernnätet. Detta för att skydda processnäten från obehörig åtkomst eller misstag med it-teknik som kan påverka tillgänglighet och produktion.
-
-Principskiss brandvägg – användning av flera interna brandväggar för olika nät.
-Notera att eftersom Pfsense inte ompaketerats hämtas själva installationsfilen ner från tillverkaren på adress pfsensedl.
-Placering av de olika säkerhetslösningarna
-Det finns många alternativ på var i ett nät en komponent kan vara placerad. Vad som är rätt beror på hur det aktuella nätverket ser ut. Ibland kan det även vara bra att gör en ny design på nätverket för att uppnå bättre säkerhet. För att visa hur de olika komponenterna skulle kunna ge en bättre kontroll och säkerhet utan att påverka den aktuella designen används i exemplet nedan en fiktiv nätverksmiljö som inte är designad utifrån säkerheten. 
-
-Enkel nätverksdesign.
-Med en nätverksmiljö som den ovanstående beskrivna är det möjligt att med relativt små medel, till exempel de gratisverktyg som erbjuds i den här paketeringen, bygga in säkerhetskomponenter som kan förbättra säkerheten och kontrollen i nätverket avsevärt.
-
-Enkel nätverksdesign med skydd.
-Kostnaden för att uppnå det förstärka skyddet, med hjälp av de extra komponenterna och de extra skydd som dessa kan ge, bör ställas i relation till arbetsinsatser och investeringar. Om man till exempel lyckas återanvända en redan existerande dator, om gammal hårdvara återanvänds, och till detta lägger någon dag eller en veckas arbete, kan det i många fall vara en god investering som kan ge en mycket bra utdelning.
-
-Installation
-Detta kapitel beskriver närmare hur man installerar och sätter upp en server utifrån den programvara som skapats i projektet.
-Det finns olika sätt för att installera en av de olika typer av servrar som finns tillgängliga. Antingen laddar du ner skivavbildningen, iso-filen, av installationsmediet från en distributionsserver eller, om du är en avancerad användare, så bygger du en egen avbild från källkoden som också distribueras. Brandväggen som använts inom projektet går i stället att ladda ner från brandväggsprojektet pfsens egen webbplats.
-Installera en server
-Nedanstående flödesdiagram visar grafiskt översiktligt de olika stegen som behövs för att hämta programvaran, utföra de olika momenten för att installera och konfigurerar servern samt börja använda den. Vi har i själva paketeringen förenklat och automatiserat för att så få steg som möjligt ska behövas för att komma igång.
-
-Flödesdiagram[O13] för att installera och använda programvaran.
-Första steget med att installera en server är att ha tillgång till själva installationsfilen, vanligtvis en så kallad iso-fil. Information om var och hur installations-filen kan hämtas finns på energisakerhetsportalen.
-För att installera en server måste datorn startas upp från antingen DVD:n eller USB-stickan. Om du inte använder en fysisk server, kan det räcka med alternativet att direkt starta den virtuella servern från ISO-filen.
-Om du behöver omvandla den hämtade filen till en USB-sticka eller en DVD-skiva, varifrån installationen görs, följ instruktionerna för det som finns i kapitlet Skapa installationsmedia.
-För att starta datorn från de valda mediet kan det räcka med att starta den direkt med mediet istoppat i CD/DVD-läsaren eller i USB-anslutningen. Om du stöter på problem, kan det bero på en mängd olika saker, exempelvis att
-• datorn du försöker installera på är inställd att inte stödja att starta ifrån annat än hårddisken
-• datorn inte vill starta från ett osäkert lagringmedia.
-Sådana här inställningar kan justeras så att systemet i stället startas från den nya temporära startdisken. Ibland kan man behöva konfigurera datorns inställningar för BIOS eller UEFI. Hur detta görs skiljer sig från tillverkare till tillverkare och datorserie från datorserie. Se instruktioner från aktuell leverantör av datorn hur detta ska göras.
-Installationsförfarande
-OBS! I nedanstående beskrivning är det enbart hårddiskinställningarna som måste sättas upp i första steget. Övriga inställningar går att ändra sedan.
-Vid uppstart från mediet kommer en meny att visas med de olika installationstyperna enligt bilden nedan.
-
-Uppstartsmeny vid installationsstart.
-1. Med tangentbordets piltangenter går det att stega till den servertyp som ska installeras.
-2. Efter att vald servertyp är markerad, tryck på knappen enter/return.
-Datorn kommer nu att ladda installationen och efter en liten stund kommer nedanstående meny att visas där installationsspecifika val kan göras.
-
-Konfigurationsval under installationen, övre delen.
-3. Under rubriken LOKALISERING är svenska förvalt, men det är möjligt att ändra till ett annat språk om så önskas.
-4. Under rubriken PROGRAMVARA är det också förvalt, dessa val ska inte ändras.
-Beroende på den aktuella datorn och skärmens upplösning som används kan hela bilden visas eller vara rullbar.
-5. Längst ner finns rubriken SYSTEM och där måste val göras för att installationen ska kunna fortgå.
-
-Konfigurationsval under installationen, undre delen.
-Som bilden visar, är alternativet "installationsmål" markerat med ett frågetecken och en text om att de förinställda parametrarna som satts för installationen i övrigt inte gäller för detta alternativ. Installationsmålet är den eller de hårddiskar som ska användas som system- och startdisk när systemet väl installerats klart. För dessa hårddiskar måste du manuellt gå in i installationverktyget och ändra vissa inställningar för hur du vill använda disken.
-OBS. Vi har valt detta alternativ – att installationen stannar och ber om manuella handgrepp av två orsaker. 1. För att ge användaren en chans att bestämma hur systemets diskar ska vara uppsatta. 2. För att ge användaren en chans att ångra sig ifall det visar sig att något fel uppstått, exempelvis att installationen håller på att utföras på fel dator eller mot fel disk.
-6. Klicka på INSTALLATIONSMÅL. Menyn i bilden nedan kommer då att visas.
-
-Val av hårdisk som installation ska ske på.
-7. Välj den hårdisk som installationen ska ske på. I exemplet på bilden så finns det en hårdisk i en virtuall dator som är vald.
-8. Välj klar uppe i högra hörnet om partitioneringen ska ske automatiskt.
-För en mer avancerad installation kan en manuell partitionering vara ett bättre alternativ. Dock är det konfigurationsvalet utanför vad som beskrivs i den här installationsguiden.
-9. Om hårddisken inte är tom måste det bekräftas att all data skrivs över genom att klicka på knappen Återvinn utrymme. Om det görs kommer tidigare data att skrivas över och den informationen kommer inte att kunna återskapas
-
-Radera hårdiskutrymme.
-Efter att du valt återvinn utrymme, kommer det dyka upp ytterligare en dialogruta, som ser ut som nedanstående exempelbild
-
-Töm hårdisken.
-10. Välj Ta bort alla för att kunna göra en ny installation på hårddisken.
-11. Välj sedan Återvinn utrymme.
-Nu är valet för att sätta upp hårdisken för installation klar. Du kommer därefter tillbaka till huvudmenyn.
-Väl tillbaka i den första menyn måste även nätverksinställningar ställas in innan installationen kan påbörjas.
-12. Välj menyn NÄTVERK & VÄRDNAMN.
-
-Nätverkskonfiguration.
-13. I den här menyn måste nätverkskortet aktiveras genom att du klickar på av-knappen. Nätverkskortet blir nu aktiverat men IP-adressen måste också konfigureras.
-OBS! Den här menysidan kan se annorlunda ut än den förevisade bilden, främst om ett nätverkskort saknas i datorn eller om en nätverkssladd inte är ansluten. Om den är annorlunda, felsök för att hitta felet så att du kan avsluta nätverksinställningarna.
-14. Om datorn tillhör en specifik domän ska du skriva domännamnet tillsammans med datorns egna namn i rutan Värdnamn.
-15. Klicka på knappen Konfigurera för att konfigurera IP-adresser.
-En meny kommer fram där det finns flera flikar att välja på beroende på vilken konfiguration som behöver utföras för att servern ska fungera i det nätverk där den ska användas.[O14]
-16. I fliken Inställning för IPv4 går det att sätta IPv4 adresser.
-Antingen kan automatisk vara påslagen om DHCP används, då behövs det ingen konfiguration eftersom det är förvalt[O15]
-17. Om du ska använda en fast IP-adress ska du ändra till Manuell metod enligt bilden nedan. En del installationstyper kräver att det åtminstone är konfigurerat med en så kallad link-local-adress.[O16]
-
-IP-konfiguration.
-I tabellen Adresser ska du skriva in information om IP-adressen enligt följande:
-A. Adress sätts till den IP-adress som ska användas B. Nätmask sätts till den nätmask som ska användas i det aktuella nätverket C. Gateway sätts till den gateway/default route som behövs om kommunikation ska ske till andra IP-nätverk än det lokala för den aktuella nätmasken.
-Om DNS används skrivs namnservrarnas IP-adresser in i rutan DNS-servrar.
-När alla val är klara avslutar du med att klicka på SPARA-knappen.
-18. I fliken Allmänt kan du välja om den aktuella konfigurationen ska vara aktiverad efter uppstart. Klicka därefter på knappen spara.
-Markera checkrutan som heter Anslut automatiskt till detta nätverk när det är tillgängligt enligt bilden nedan om du vill att konfigurationen som är satt ska vara aktiv när datorn startar.
-
-IP-konfiguration.
-Om den aktuella datorn har flera nätverkskort behöver du konfigurera alla nätverkskort om all nätverksfunktionalitet ska vara aktiverad vid uppstart.
-När alla val för IP-konfigurationen är klara avslutar du konfigurationen genom att klicka på knappen KLAR i övre högra hörnet.
-Nu är alla val gjorda och installationen kan påbörjas.
-OM DET FINNS NÅGON DATA LAGRAD PÅ HÅRDDISKEN SOM ÄR VALD FÖR INSTALLATIONEN KOMMER DEN ATT SKRIVAS ÖVER OCH DET ÄR INTE MÖJLIGT ATT ÅNGRA ELLER ÅTERSKAPA DEN.
-Klicka på Starta installationen för att installera den valda servern.
-Installationen kommer nu att starta och en ny meny kommer att visas enligt bilden nedan.
-
-Installationsförfarandet.
-Det finns två menyval i den här vyn och den ena knappen går det inte att trycka på.
-Det är knappen för att sätta root-lösenordet, det vill säga lösenordet för att få högsta behörighet på datorn. Lösenordet är hårdkodat till toor under installationen men kommer att ändras till ett slumpmässigt valt lösenord under installationens slutfas. Det sker med kommandot pwgen -1 48 vilket skapar ett slumpat lösenord på 48 tecken. För att få högre behörighet eller ändra root-lösenordet kan kommanot sudo användas enligt de instruktioner som beskriver hur terminalen fungerar efter att installationen är slutförd.
-Det andra menyvalet är till för att skapa användarkonton, det ska inte göras i det här skedet utan görs efter att installationen är slutförd.
-Nu är det bara att vänta på att installationen slutförs. När den är klar kommer en knapp med texten Starta om visas enligt bilden nedan.
-
-Installation slutförd.
-Kicka på Starta om och ta bort installationsmediet (till exempel dvd-skivan) när datorn har startat om så att inte installationsmenyn startar igen.
-När datorn har startat om kommer den att visa några grafiska fönster där du måste göra de sista valen[O17].
-En boot-meny visas en kort stund där olika varianter av avancerad uppstart kan utföras. Dessa avancerade ändringar ligger dock utanför det installationsförfarande som den här dokumentationen beskriver. Menyn kommer att försvinna och en ny välkomstmeny kommer att komma fram enligt bilden nedan.
-
-Val av språk.
-I det första steget kan språkvalet än en gång konfigureras, svenska är förvalt och det går bra att klicka på Nästa för att fortsätta.
-I denna meny går det också att välja tangentbordstyp.
-
-Val av tangentbord.
-Svenskt qwerty-tangentbord är förvalt och det går bra att klicka på Nästa för att fortsätta.
-Nu är det dags att skapa ett användarkonto för att kunna använda servern.
-
-Kontokonfiguration.
-Fyll i samtliga rutor för att skapa ett konto och tillhörande lösenord.
-• Fullständigt namn är det beskrivande namnet för konto som skapas.
-• Användarnamn är det namnet som används vid inloggning till servern.
-• Lösenord är det lösenordet som används för att logga in med det valda användarnamnet. Lösenorder ska vara avancerat och slumpat så att ingen obehörig kan gissa sig till det eller vare sig manuellt eller maskinellt kunna pröva sig fram till korrekt lösenord.
-• Confirm password Här ska du fylla i samma lösenord som du matade in i Lösenordsrutan för att säkerställa att det valda lösenordet inte har stavats fel. 
-• Klicka på Nästa för att fortsätta.
-I den nya menyn går det att välja tidszon enligt bilden nedan:
-
-Konfiguration av tidszon.
-Stockholm är förvalt och det är det enda valet som går att välja om Sverige ska väljas. Det här valet är främst till för att sätta den tidszon som ska användas.
-Det går bra att klicka på Nästa för att fortsätta.
-Om datorn är konfigurerad med åtkomst till Internet går det att koppla den till molntjänster enligt bilden nedan.
-
-Molntjänster.
-Här behövs inga molntjänster och det går bra att klicka på Nästa.
-Installationen är nu klar.
-
-Slutför konfigurationen.
-Starta den aktuella servern, som nu är färdiginstallerad, genom att klicka på knappen Start using CentOS Linux.
-Nu är allt klart och det går att börja använda eller ytterligare konfigurera den aktuella serverinstallationen enligt vidare instruktioner för aktuell installation. Den användare som skapades är redan inloggad.
-
-Logginsamlingsserver
-Detta kapitel beskriver en server med en särskild säkerhetsfunktion – att kunna spela in och spara inskickade loggmeddelanden som den har fått sig tillsänt via nätverket.
-Servern är en för funktionen speciellt uppsatt Linuxserver som enbart fungerar som en enkel loggserver.
-Översikt
-Logginsamlingsservern används för att samla in loggar från andra datorer, nätverksutrustning, SCADA-utrustning (PLC:er, RTUer, protokollomvandlare, med mera) och skickar dem [O18]över nätverket via syslog-protokollet. Loggar som sparas på servern kan vid senare tillfälle inspekteras via ett enkelt webbaserat gränssnitt. Det går även att göra enklare sökningar i loggarna.
-Installation av loggserver
-Från installationsmediet går det att välja vilken typ av server som ska installeras. För att sätta upp en loggserver, välj installationsalternativet ”loggserver”, se nedanstående bild.
-
-Uppstartsmeny vid installationsstart med alternativet loggserver valt.
-I kapitlet Installation finns detaljerad information om hur en komplett installation går till.
-Användning
-I första hand tar loggservern emot loggmeddelanden från annan utrustning, som via nätverket skickar loggmeddelanden till servern.
-
-Översiktsbild som visar webbläsaren och sökfunktionen för loggar.
-OBS! Notera att servern även sparar sina egna loggmeddelanden till denna loggfil. Detta bör hållas i åtanke när man letar efter innehåll i loggarna.
-Lista loggmeddelanden och innehåll i loggfiler
-Via webbgränssnittet går det enkelt att lista inkomna loggmeddelanden. Det gör man genom att med muspekaren välja en av filerna till vilket loggmeddelandena sparas, samt klicka på filnamnet.  [O19]Se exemplet nedan.
-
-Översiktsbild som visar webbläsaren och sökfunktionen för loggar.
-En ny innehållsvy visas då. Där listas innehållet, med en rad per loggmeddelande i den valda filen. Se exemplet nedan.
-
-Översiktsbild som visar webbläsaren och listade loggmeddelanden.
-Ladda ned loggfiler
-Via webbgränssnittet går det enkelt att ladda ned loggmeddelanden. Det gör man genom att med muspekaren välja en av filerna till vilket loggmeddelandena sparas, samt klicka på filnamnet. Se exemplet nedan.
-
-Översiktsbild som visar webbläsaren och sökfunktionen för loggar.
-En ny innehållsvy visas då. Där listas innehållet, med en rad per loggmeddelande, i den valda filen. För att hämta filen med loggar, klicka på knappen ”Ladda ned” i övre högra hörnet.
-
-Översiktsbild som visar webbläsaren och sökfunktionen för loggar.
-
-Knappen ”Ladda ner loggfil”.
-Ett nytt fönster kommer upp som frågar hur du vill hantera filen, om den ska visas direkt i webbläsaren eller om den ska sparas till disk. Se nedanstående bild.[O20]
-
-Filväljare för att öppna eller spara loggfilen.
-Söka efter text i ett loggmeddelande
-I loggservern går det också enkelt att söka efter en specifik text bland de inskickade meddelandena.
-På servern med den medföljande webbläsaren går det att skriva adressen http://127.0.0.1/logs.html och via den sidan söka i de existerande loggarna direkt i webläsaren.
-
-Översiktsbild som visar webbläsaren och sökfunktionen för loggar.
-Själva sökfunktionen kanske inte uppfattas så användarvänlig för en ovan person. Om sökningen matchar en textsträng i ett loggmeddelande i någon av loggfilerna, kommer filnamnet att listas nedanför sökrutan. Att funktionen kan verka något oanvändarvänlig kan bland annat bero på att:
-• sökningen listar filnamn, inte själva den textrad där sökningen träffar ett sökuttryck
-• om det bara finns en fil, till exempel i början av användningen av en installerad server, kommer fillistningen finnas där före sökningen, och efter det att sökuttrycket skrivits klart och du tryckt på nyradsknappen, kommer listningen se likadan ut.
-Bakom kulisserna på själva loggservern, sker sökningen med hjälp av verktyget grep för att kunna välja ut de loggrader som är intressanta. Detta medför att de användare som är familjära med de sökuttryck som grep medger kan skriva mer avancerade söktermer.
-Detaljer
-Loggmeddelanden via nätverket
-Denna server använder tjänsten rsyslog för att ta emot syslog-meddelanden från annan nätverksansluten utrustning.
-Servern är konfigurerad att kunna ta emot loggar som skickas via nätverket på:
-• 514/UDP (klassisk syslog)
-• 514/TCP (syslog över TCP, för att inte tappa paket)
-För att loggmeddelanden ska tas emot av loggservern måste de servrar, kommunikationsutrustningar, ICS-utrustningar som ska skicka nätverksloggar sättas upp för detta. På respektive loggkälla måste serverns IP-adress (eller domännamn, om du använder dig av DNS) konfigureras som syslog-mottagare.
-Filsystemsdetaljer
-Alla loggmeddelanden som skickas över till loggservern sparas lokalt i filsystemet, så att de finns undansparande i händelse av strömavbrott eller om datorn på annat sätt startas om.
-Inkomna loggmeddelanden sparas vid ankomsten till servern ner i en fil som heter messages och ligger i filkatalogen /var/log/, det vill säga /var/log/messages.
-Loggfilen roteras och komprimeras ihop, det vill säga den sparas undan som en arkivfil, när storleken överstiger 5MB. Loggservern är uppsatt med en konfiguration för att rotera loggfiler upp till 10 000 gånger innan den äldsta arkiverade filen raderas. Dessa inställningsvärden är valda för att fungera väl med att en användare enkelt ska kunna ladda ner en fil i webbläsaren om man har gjort en sökning och funnit att en loggfil matchar ett visst sökutryck.
-Om loggservern installeras i en miljö där det är mycket aktivitet, och det skickas mycket loggmeddelanden till loggservern, kanske inte ovanstående inställningar i loggservern är så väl anpassade. På samma sätt kan det uppstå en krock mellan olika kravställningar om det finns behov eller specifika krav på att spara loggar länge. Då kan det behövas en annan typ av arkivering och gallring av loggar kan behöva sättas upp. I dessa fall måste en mer anpassad loggkonfiguration, som är i enlighet med den policy eller det regelverk som gäller, tas fram och sättas in på loggservern.
-Säkerhet
-Säkerhetsmekanismen SELinux används för att få en bättre system- och applikationssäkerhet på denna loggserver genom att låsa ner själva systeminställningarna och dess viktiga komponenter och hur de interagerar med systemet och systemets resurser (filsystem, programexekvering, med mera) på servern.
-En enkel webbserver av typen lighttpd, är startad. Som standard lyssnar den inte ut mot nätverket, så den kan inte nås via fjärråtkomst mot webbtjänsten. Webbservern är vid standardinstallation enbart åtkomlig från det egna systemet och därmed från en webbläsare som man kör inloggad på konsolen och skrivbordet. Lighttpd är uppsatt så den dessutom är nedlåst med SELinux på ett speciellt sätt, så att den enbart ska kunna läsa i katalogen /var/log/ där loggfilerna ligger.
-Avancerad användning
-Att samla in loggar och göra logganalys kan vara svårt med denna förhållandevis enkla logginsamlingsservern. Det finns mer avancerade system för logginsamling om ett aktivt arbete med loggar och säkerhet behövs. Några exempel på mer avancerade loggserverfunktioner är greylog, elk och splunk för att implementera SIEM, SEM eller SIM-lösningar.
-Krypterade syslogmeddelanden
-För att få bättre säkerhet och garanti på att de loggar som kommer till servern [O21]så kan TLS användas för transporten.
-Det går att i stället för klassisk syslog även skicka loggmeddelanden krypterat. Standarderna för detta gäller för:
-• 6514/UDP
-• 6514/TCP
-UDP-varianten innebär att syslog skickas över en krypterad DTLS-tunnel, medan TCP-baserad syslog skickas över en krypterad TLS-tunnel.
-Syslogservern är inte konfigurerad för att aktivera detta som standard. Det går dock att ställa in servern för detta. Ett steg är att ändra i brandväggsreglerna lokalt på servern och ta bort kommentarerna i /etc/sysconfig/iptables för att öppna upp dessa portar. För att skapa elektroniska certifikat för servern, och aktivera rsyslog med mera krävs dock mer arbete. Här finns en engelskspråkig guide där det beskrivs hur man gör: http://www.rsyslog.com/doc/master/tutorials/tls.html.
-Extern åtkomst till webben
-Om det finns behov av att kunna nå nätverksinspelningsservern från en annan dator måste konfigurationen för webbservern ändras så att den även är åtkomlig på det externa nätverksgränssnittet. Då måste kryptering och autentisering aktiveras så att den potentiellt känsliga informationen inte kan ses av någon obehörig.
-Vid första uppstarten genererades ett så kallat dummy-cert som finns i filen /etc/pki/tls/certs/dummy.cert och i filen /etc/pki/tls/private/dummy.key som kan användas för tester. I den existerande konfigurationsfilen /etc/lighttpd/lighttpd.conf finns ett utkommenterat exempel på hur det är möjligt att aktivera en server som lyssnar på en extern adress och använder kryptering för att skydda trafiken.
-Ett sätt att editera filen är att öppna en Terminal via menyn "Applications" och sedan skriva önskvärt kommando. För att till exempel använda textredigeringsprogrammet nano för att ändra konfigurationsfilen för lighttpd skriver du:
-    sudo nano /etc/lighttpd/lighttpd.conf
-Efter att lagt till dessa extra konfigurationsparametrar till webbservern, behöver brandväggskonfigurationen också justeras. Samma steg och kommandon behövs där. Öppna en Terminal och kommentera ut raden [O22]med hänvisning till HTTPS i filen /etc/sysconfig/iptables. Därefter måste du ladda om brandväggsreglerna med kommandot:
-    sudo iptables-restore /etc/sysconfig/iptables
-Läs kapitlet Terminal-åtkomst och kommandoraden om du behöver hjälp med hur man arbetar via terminalen eller hur man ger kommandon på kommandoraden.
-
-Övervakningsserver för att monitorera datorer och tjänster
-Översikt
-Övervakningsservern kan användas för att samla in driftinformation från tjänster och servrar. Det sker genom att olika typer av anslutningar mot den aktuella tjänsten som övervakas, exempelvis kan ping användas. Verktyget icinga används för att monitorera alla tjänster som är konfigurerade att bli övervakade, resultatet visualiseras i ett webbaserat modernt gränssnitt.
-Om en tjänst eller server inte är åtkomlig för Icinga visas det visuellt i gränssnittet. Det går även att få notifikationer via exempelvis e-post och/eller sms när en tjänst eller server inte är åtkomlig för Icinga.
-I den paketerade lösningen finns det ett skapat exempelskript för att skicka sms till en SMSgateway[O23].
-Användning
-På den server där övervakningstjänsten är installerad går det att med en webbläsare på http://127.0.0.1/icingaweb2 logga in och se aktuell status av de tjänster och datorer som övervakas enligt de regelverk som är konfigurerade.
-
-Logga in.
-Installationen kräver dock ytterligare konfiguration innan övervakning av tjänster och servrar kan övervakas med Icinga. Själva Icinga-servern är förkonfigurerad att övervaka sig själv direkt efter installationen.
-Detaljer
-Säkerhet
-Icinga-projektet har ännu inte färdigutvecklat stöd för SELinux. Därför följer det med en av enkel SELinux-profil i denna installation. Denna SELinux-policy är satt för att ge bättre säkerhet i systemet. Den medföljande profilen kan behöva modifieras för vissa typer av ändamål än det som installationen är testad för, till exempel mer avancerade övervakningsagenter.
-Icinga använder en databasmotor för lagring av information. Den databasmotor som är installerad heter PostgreSQL.
-Det finns två stycken databaser konfigurerade i den:
-• En för Icingas övervakning.
-• En för det webbaserade gränssittet, som är en separat programvara skild från själva övervakningsdelen.
-De två databaserna har slumpmässigt satta lösenord som Icinga och webbgränssnittet använder för åtkomst till databasen. Lösenorden för just databasåtkomst är därmed unika för den aktuella installationen.
-För att logga in i webbgränssnittet används det förkonfigurerade användarkontot:
-    admin
-Med lösenordet:
-    p_slumptal_p
-Efter första inloggningen rekommenderas det starkt att byta ut lösenordet till ett nytt starkt lösenord. Lösenordsbytet kan ske i webbgränssnittet enligt följande:
-
-Byta lösenord.
-1. Klicka på System.
-2. Klicka på Authorization.
-3. Klicka på Users.
-4. Klicka på Editera-ikonen.
-5. Skriv in det nya säkra lösenordet och välj spara.
-Webbservern Apache
-Webbservern som används heter Apache, det är den webbserver som Icinga har bäst stöd för. Apache är dessutom en bra webbserver som anses vara väldigt säker. Själva koden för det grafiska gränssnittet bygger på PHP vilket är ett programmeringsspråk som har haft väldigt många säkerhetsrelaterade problem under många år. Därför bör man inte exponera det grafiska gränssnittet till andra än betrodda och då med stark kryptering över TLS eller tunnlat med SSH.
-Konfiguration
-Efter installationen av servern är Icinga och det webbaserade administrationsgränssnittet färdigkonfigurerade och Icinga övervakar datorn där den är installerad. För att övervaka andra maskiner och för att få notifikationer behövs ytterligare konfiguration som är specifik för den aktuella miljön som ska övervakas. Icinga har fullständig dokumentation på http://docs.icinga.org/icinga2/latest/doc/module/icinga2/toc. Här beskrivs samtliga funktionaliteter för att anpassa övervakningen till den miljö som behöver övervakas. Dokumentationen finns för närvarande enbart på engelska.
-Anpassa konfigurationsfiler till målmiljön
-Icinga kan konfigureras med en texteditor i en terminal. Terminalen startas i applikationsmenyn i det vänstra övre hörnet. Programmet ”Terminal” finns i undermenyn ”Utilities”. Ytterliggare information om hur terminalen används och hur filer kan editeras finns i kapitlet Terminal-åtkomst och kommandoraden.
-För att editera konfigurationsfilerna behövs högre rättigheter i systemet än vad användarkontot i det grafiska gränssnittet har som standard. Det går att få dessa högre rättigheter i terminalen genom att skriva kommandot ”sudo su”. Med de högre rättigheterna så kan allt i systemet påverkas så var extra försiktig innan någon fil ändras.
-Själva konfigurationen av Icinga finns i katalogen /etc/icinga2 som går att komma till med kommandot cd /etc/icinga2. Konfigurationen görs i textfiler och de flesta av konfigurationsfilerna finns i katalogen /etc/icinga2/conf.d.
-Lägga till maskiner för övervakning
-Ändra i filen /etc/icinga2/conf.d/host.conf för att lägga till eller ta bort övervakningsfunktioner. Om du lägger till följande kommando:
-    object Host "valfritt_namn" {
-        import "generic-host"
-        address = "ipnummer"
-        vars.http_vhost["http"] = {
-        http_uri = "/"
-      }
-      vars.http_ssl = true
-    }
-kommer programmet kontrollera att maskinen med IP-numret (IP-nummer ska vara ett korrekt IP-nummer[O24]) är nåbar med ping och om den har en åtkomlig webbserver som använder SSL/TLS. Så här är kommandot uppbyggt:
-• import "generic-host" importerar en mall från filen "/etc/icinga2/conf.d/templates.conf" som gör ping-försök mot den konfigurerade servern
-• address är själva IP-adressen till maskinen som ska övervakas
-• vars.http_vhost... gör så att anslutningsförsök sker mot maskinens webbserver
-• vars.http_ssl = true säger att anslutningsförsök till webbservern ska ske med SSL/TLS.
-Det går att lägga till fler typer av övervakningsmetoder. Exempelvis kan SNMP användas för att hämta information från ett system. Det går att lägga till flera så kallade object i filen så att fler maskiner kan övervakas.
-Efter att ändringar gjorts i konfigurationsfilen måste icinga startas om för att ändringarna ska börja fungera. Öppna ett terminalfönster (för information om hur man kör kommandon och använder terminalfönstret, se Terminal-åtkomst och kommandoraden), och kör kommandot:
-    sudo systemctl restart icinga2
-Lägga till sms-notifikationer
-En vanlig metod för att få larm från övervakningssystem är att skicka larmen via sms-meddelanden till en övervakningsansvarigs mobiltelefon.
-Installationen är förkonfigurerad för att göra det enklare att få notifikation med sms. Det följer med ett script/program för integration mot Beepsend som är en av flera möjliga leverantörer för sms-tjänster. Det är även möjligt att ansluta ett GSM-modem direkt till servern och skicka alla sms via det. Ett lokalt modem är den bästa lösningen om monitoreringsservern är placerad i en miljö utan kommunikationsmöjligheter till Internet.
-För att få notifikationer via sms måste filen /etc/icinga2/conf.d/users.conf modifieras. Om enbart det fördefinierade användarkontot icingaadmin används så ska variabeln pager skrivas in på en ny rad i objektet som är inom måsvingarna({}), exempelvis:
-    pager = "nummer"  
-där nummer är ett korrekt mottagarnummer inklusive landskod.
-Dessutom ska den regel som får trigga en notifikation konfigureras ytteriggare enligt följande:
-    vars.notification["pager"] = {
-        groups = [ "icingaadmins" ]
-    }
-Genom denna konfiguration kommer alla användare med nummer konfigurerat under variabeln pager i /etc/icinga2/conf.d/hosts.conf få en notifikation via sms om objektet som övervakas inte är åtkomligt.
-Programmet som skickar sms måste också konfigureras med kontouppgifter från den leverantör som är vald om sms inte skickas med ett lokalt anslutet modem. Ifall det fördefinierade skriptet för Beepsend används måste tre variabler sättas till korrekta värden i skriptet /etc/icinga2/scripts/beepsend.pl.
-• From-variablen sätts till avsändarnummer eller alfanumeriskt nummer,
-exempelvis: my $from = '123456789'
-• beepConnection-variablen sätts till den kundspecifika anslutning som ska användas,
-exempelvis: my $beepConnection = 'company_ab'
-• beepToken-variabeln sätt till den token(lösenord/nyckel) som erhålls av beepsend,
-exempelvis: my $beepToken = '1234567890abcdef1234567890abcdef1234567890abcdef'
-Efter att ändringar gjorts i konfigurationsfilen måste icinga startas om för att ändringarna ska börja fungera. Öppna ett terminalfönster (för information om hur man kör kommandon och använder terminalfönstret, se Terminal-åtkomst och kommandoraden), och kör kommandot:
-        sudo systemctl restart icinga2
-Avancerat, nästa steg
-Icinga har stöd för flera övervakningsservrar som kan integrera med varandra och övervaka olika delar i ett nätverk, det medför att lösningen lämpar sig bra i en segmenterad nätverksmiljö som är byggt enligt exempelvis en zonmodell med tydliga separationer där kommunikation mellan olika zoner eller zoninstanser är kontrollerade. Det går att konfigurera flera så kallade satelliter i olika zoner för att inte behöva bygga ett platt övervakningsnätverk där en övervakningsserver tillåts kommunicera med alla servrar i ett större nätverk. Med satelliter går det att enbart tillåta kommunikation mellan sateliter och den centrala Icingaservern och låta en satellit övervaka en zon eller zoninstans.
-Extern åtkomst till övervakningsgränssnittet
-Installationen är konfigurerad för att enbart tillåta åtkomst till webbadministrationsgränssnittet från den lokala datorn där Icinga är installerad. För att få åtkomst till gränssnittet från en annan dator kan antingen lokala eller centrala användarkonton konfigureras i linuxservern och SSH installeras för att ge dessa användare möjlighet att tunnla [O25]webbgränssnittet över SSH-protokollet.
-Det går även att konfigurera Apache med TLS för att ge extern direktåtkomst till webbgränssnittet.
-För extern åtkomst behöver även brandväggen justeras för att tillåta externa att nå tjänster. Öppna en Terminal och kommentera ut raden med hänvisning till HTTPS eller SSH i /etc/sysconfig/iptables med högre rättigheter och ladda sedan om brandväggsreglerna med kommandot sudo iptables-restore /etc/sysconfig/iptables.
-
-Nätverksinspelningsserver
-Detta kapitel beskriver en server med en särskild säkerhetsfunktion – att kunna spela in och spara nätverkstrafik som den ser via de nätverksanslutningar den har. Servern är en för funktionen speciellt uppsatt Linuxserver som enbart fungerar som nätverksövervakare.
-Det här kapitlet går närmare in i hur tjänsten installeras, hur man använder nätverksinspelningarna, ger förslag på hur detta kan användas för att förbättra säkerheten i ett SCADA/ICS-nät, med mera.
-Översikt
-Nätverksinspelningsservern är en tjänst som används för att spara nätverkstrafik från alla nätverksgränssnitt som servern är ansluten till, det sker med hjälp av NetworkManager. Det går att tänka på den som en eller flera övervakningskameror som är riktade mot ett visst objekt eller nätverk. När det händer något på nätverket, spelas det in och sparas på serverns hårddisk.
-Den inspelade nätverkstrafiken har flera möjliga användningsområden:
-• Vid felsökning av system, applikationer eller nätverk går det att undersöka inspelad trafikdata.
-• Vid en IT-incident går det att gå tillbaka i tid och undersöka olika händelser, genom att analysera nätverksinspelningen som gjorts vid den aktuella tidpunkten för att se om det går att hitta någon relevant trafik i relation till incidenten.
-• Vid prestandaproblem går det att se vilka nättjänster som använder nätet, hur mycket nätverket används, etc.
-Installation av nätverksinspelningsserver
-Installationen är till största delen automatiserad och enbart ett fåtal steg måste utföras för att få en fullt fungerande nätverksinspelningsserver.
-1. Starta datorn från installationsmediet som skapats enligt Skapa installationsmedia.
-2. Installera nätverksinspelningsservern genom att följa instruktionerna i Installation.
-Under installationen av nätverksinpelningsservern går det att konfigurera nätverkskortet direkt med en [link-local] adress för att inte behöva göra den inställningen enligt instruktionerna i kapitlet Nödvändiga inställningar. Dessutom går det att konfigurera nätverksinställningarna att automatiskt aktivera nätverkskortet vid uppstart som det beskrivs i installationsguiden. Om båda inställningarna [O26]görs behövs kapitlet Nödvändiga inställningar utföras.
-Notera att beroende på var servern placeras kan mängden data som sparas bli mycket stor. Välj därför en större installationsdisk än vad som är normalt för en server. På så sätt kan trafikdata sparas så länge som möjligt. När disken blir 80 procent full börjar de äldsta inspelningarna automatiskt raderas.
-Det går att montera en till disk för sparande av trafikdata. Men observera då att de existerande SELinux-reglerna är inställda så att tcpdump enbart kan skriva i /home/tcpdump/.
-Nödvändiga inställningar
-Efter en installation behöver de nätverkskort där trafik ska dumpas aktiveras i NetworkManager. Det görs enklast genom menyn uppe i högra hörnet.
-
-NetworkManager ikon
-Det räcker att ställa in Link-Local Only på det önskade nätverkskortet för att det ska fungera. Sätt inte ut en IP-adress på nätverkskortet eftersom det av säkerhetsskäl är bra att maskinen inte är nåbar från andra nätverk.
-
-NetworkManager interface.
-Användning
-Det här kapitlet går närmare in på hur man använder sig av nätinspelningsserverns olika möjligheter.
-Sökning i inspelad nätverkstrafik
-En användbar funktion är att kunna söka efter textsträngar i den nätverkstrafik som spelats in.
-Genom att starta webbläsaren och gå till URL http://127.0.0.1/sok.html går det att söka i de existerande nätverksdumparna direkt på servern. Hur denna sökfunktion ser ut går att se på nästa bild.
-
-Sökning i inspelad nätverkstrafik.
-Bakom kulisserna använder sig sökfunktionen av verktyget ngrep, ett program för att kunna tolka innehållet i nätverksinspelningar, för att kunna välja ut de dumpar som är intressanta.
-
-Sökning i inspelad nätverkstrafik, utan att träffa på sökt information.
-Analys av inspelad nätverkstrafik med Chaosreader
-När en inspelad trafikdump valts ut, går det att antingen packa upp den direkt på servern med hjälp av verktyget Chaosreader som kan förstå nätverkstrafik, eller titta på den med webbläsare.
-Nedanstående bild visar hur det ser ut i webbläsaren när man får upp en lista över filer med inspelad nätverkstrafik. På bilden klickar vi på knappen ”packa upp” för att ta upp och visa filinnehållet i verktyget Chaosreader.
-
-Klicka på knappen ”packa upp” för att titta på en trafikinspelning med hjälp av verktyget Chaosreader.
-Nästa bild visar hur det ser ut i webbläsaren när Chaosreader har analyserat den inspelade nätverkstrafiken och visar upp en lista över trafikdata och nätverksströmmar.
-
-Översiktsbild i verktyget Chaosreader.
-Nästa bild visar en detaljvy när verktyget Chaosreader har avkodat nätverkstrafiken och visar upp den i webbläsaren. I exemplet ser vi hur en HTTP-ström har avkodats och vi ser den blåa frågan och den röda färgen som är satt på svaret.
-
-Detaljbild när verktyget Chaosreader har avkodat nätverkstrafik.
-Det går också att hämta hem hela trafikdumpen och använda andra verktyg på en lokal dator, till exempel Wireshark, [O27]för att göra en annan analys.
-Analys av inspelad nätverkstrafik med Wireshark
-En annan metod för att avkoda inspelad nätverkstrafik är att använda verktyget Wireshark, som har stöd för att tolka många olika nätverksprotokoll på detaljnivå. Verktyget Wireshark medföljer paketeringen.
-Nästföljande bild visar var i menyerna man hittar verktyget Wireshark.
-
-Detaljbild över när verktyget Wireshark ska startas.
-Nedanstående bild visar när verktyget Wireshark har startats igång och använts för att avkoda nätverkstrafik.
-
-Detaljbild över när verktyget Wireshark har startat.
-Nedanstående bild visar filväljaren. Notera den röda rektangeln som visar var någonstans i filträdet som filerna finns undansparade, det vill säga /home/tcpdump/. Du måste gå runt i filträdet för att komma dit och lista filerna.
-
-Detaljbild över när verktyget Wireshark ska ladda en inspelningsfil.
-Nedanstående bild visar när filen med den inspelade nätverkstrafiken är inläst i verktyget Wireshark. Här kan nätverkstrafiken analyseras i detalj.
-
-Detaljbild när verktyget Wireshark har avkodat nätverkstrafik.
-Det bör noteras att den version av Wireshark som finns tillgänglig för CentOS är 1.10. Den senaste versionen av Wireshark, som precis släppts [O28]men ännu inte är tillgänglig som en del av centos standardpaket är version 2.0. Denna version har en del förbättringar i stödet för att avkoda protokoll, inte minst vad det gäller möjligheten att avkoda Siemens S7-protokoll.
-Detaljbeskrivning
-Denna server använder verktyget tcpdump för att spela in trafik på de nätverksgränssnitt som är uppe enligt NetworkManager. När NetworkManager märker att ett gränssnitt är uppe triggas ett event som i sin tur får Systemd att starta en tcpdump-instans på det gränssnitt som kom upp.
-En konsekvens av detta är att en inspelning avslutas, och sparas ner till en färdig fil, i samband med att nätverksgränssnittet stängs ner, exempelvis när man kopplar ur en nätverkskabel. Detta kan vara bra att känna till om man direkt vill kunna analysera senast inspelad trafik.
-Var inspelad nätverkstrafik sparas
-De inspelade nätverkstrafik-dumparna hamnar i filkatalogen /home/tcpdump/. För att filstorlekar som ska öppnas i analysverktyg ska ha en hanterbar storlek är inspelningsfunktionen satt att hacka upp inspelad nätverkstrafik i filer av fix storlek. Det innebär i praktiken att inspelningsfiler roteras [O29]automatiskt när de blir 100MB stora.
-Namnet på loggarna följer mönstret
-    gränssnitt-datum-och-tid-när-gränssnittet-kom-upp.pcap 
-och när de roteras adderas en siffra till namnet.
-Till exempel skulle en fil som heter eno77744-2016-01-01.pcap bli eno77744-2016-01-01.pcap1.
-Hur gamla nätverksinspelningar hanteras
-Ett skript som vi utvecklat och som används för att bättre kontrollera insamlade filer vid namn reaper.py körs vid start och ansvarar för att partitionen där dumparna läggs alltid har plats över för att kunna rotera en dump. Blir hårddisken full, tar reaper-skriptet bort de äldsta filerna automatiskt. Det innebär att denna server ska kunna stå igång i flera år utan att någon behöver logga in och rensa bort gamla dump-filer på grund av att hårdisken blivit full.
-Säkerhet för att skydda systemet från angrepp och fel i inspelningsfunktionen
-Säkerhetsmekanismen SELinux, som är ett sätt att med hårda säkerhetsinställningar styra ett exekverande program, [O30]används för att låsa ner tcpdump så att detta inte kan skriva någon annanstans än just under filkatalogen /home/tcpdump. Detta är ett sätt att kunna försäkra sig mot att eventuella gömda eller framtida säkerhetshål i tcpdump kan missbrukas och bli till säkerhetsproblem mot själva servertjänsten.
-Säkerhet för att skydda systemet vid läsning av inspelad trafik
-En webbserver, lighttpd, är igång och nedlåst med SELinux så att den enbart ska kunna läsa i /var/www och i /home/tcpdump där de inspelade nätverksdumparna ligger.
-Avancerat, nästa steg
-Om servern ska spela in en stor mängd trafik kan det vara möjligt att tcpdump inte räcker till. Då är det bättre att byta till Netsniff-NG som följer med installationen. Om netsniff ska användas är det möjligt att ändra i skriptet som startar tcpdump i /etc/NetworkManager/dispatcher.d/99-tcpdump.
-Önskas en "live" bild av trafiken kan man installera ntop. Med det verktyget kan man lättare få en bild av nätverkstrafiken vid tillfället. Samma project har även flera andra verktyg som kompletterar och som ibland kan ersätta de verktyg som är installerad på denna server.
-Åtkomst till webbgränssnitt via nätverket
-Som standard går webbgränssnittet enbart att nå via den egna datorn, via lokalt ansluten skärm och tangentbord. När servern kommer igång startar det grafiska gränssnittet lokalt. Via denna grafiska miljö kan man via en lokalt startad webbläsare komma åt gränssnittet. Det går alltså inte att nå webbtjänsten direkt via nätverket. Orsaken till detta är att standardinstallationen ska vara så säkert uppsatt som möjligt.
-Om det finns behov av att kunna nå nätverksinspelningsservern från en annan dator måste konfigurationen för webbservern ändras så att den även är åtkomlig på det externa nätverksgränssnittet. För att hindra att den potentiellt känsliga trafiken ska kunna ses av någon obehörig, eller att serven kan nås, och loggas in i, av någon obehörig måste kryptering av webbtrafiken samt autentisering av åtkomst till webbsidan aktiveras. 
-Vid första uppstarten av systemet genererades för installationen unika så kallade ”dummy-cert” för webbservern. Dessa certifikat finns sparade i filerna /etc/pki/tls/certs/dummy.cert och /etc/pki/tls/private/dummy.key. Dessa certifikat kan användas i test-syfte. Om du vill testa att aktivera nätverksåtkomst till webbtjänsten kan du undersöka den existerande konfigurationsfilen /etc/lighttpd/lighttpd.conf. Där finns ett utkommenterat exempel på hur det är möjligt att aktivera en server som dels lyssnar på en extern adress, dels använder kryptering för att skydda trafiken. För att kunna redigera filen, ta bort kommenteringen och kanske sätta en annan IP-adress, starta programmet Terminal via menyn ”Applications”. I det öppnade terminalfönstret skriver du sedan kommandot:
-          sudo nano /etc/lighttpd/lighttpd.conf
-Nano är namnet på ett textredigeringsprogram som medföljer. Använd nano, vi eller mg efter önskemål. För hjälp att förstå hur man använder textredigeringsprogram eller hur man använder sig av terminalprogrammet, se närmare detaljinformation i kapitlet Terminal-åtkomst och kommandoraden.
-Förutom att aktivera nätåtkomst till webbserverdelen samt aktivera TLS-kryptering, måste du också öppna brandväggen. Liksom för redigeringen av webbserverkonfigurationen ovan, finns det redan utkommenterade brandväggsinställningar för att underlätta för öppnandet av brandväggsportar och åtkomst till webbservern. Starta programmet Terminal från menyn ”Applications”. Ta bort kommentarstecknet för raden med hänvisning till HTTPS i filen /etc/sysconfig/iptables. Gör det med ett textredigeringsprogram enligt nedanstående exempel:
-          sudo nano /etc/sysconfig/iptables
-När brandväggsreglerna är ändrade och nedsparade, laddar du om brandväggsreglerna med kommandot:
-          sudo iptables-restore /etc/sysconfig/iptables
-
-IDS server
-Översikt
-IDS står för Intrusion Detection Service, intrångsdetektering, vilket är en övervakningsfunktion med fokus på säkerhet som reagerar på mönster som tyder på att ett intrångsförsök gjorts eller att ett intrång lyckats. IDS-servern används för att automatiskt undersöka all trafik på de nätverksgränssnitt som är aktiva, och den söker efter otillåten nätverkstrafik eller misstänkt nätverkstrafik.
-Som regel är ett nätverksgränssnitt aktiverat i samband med att servern installerats. Detta nätverksgränssnitt kan ändras och det går att aktivera andra gränssnitt med hjälp av systemverktyget NetworkManager.
-
-Menyval för att slå på nätverksgränssnitt.
-Om IDS-systemet upptäcker trafik som den enligt uppsatt regelverk, sparas information om detta i en databas. Dessa varningar kan sedan studeras, kommenteras och klassificeras med en webbläsare.
-
-Detaljer för händelse.
-Installation av IDS server
-Installationen är till största del automatiserad och enbart ett fåtal steg måste utföras för att det ska vara möjligt att börja använda IDS-servern.
-1. Starta datorn från installationsmediet som skapats enligt Skapa installationsmedia.
-2. Installera nätverksinspelningsservern genom att följa instruktionerna i Installation.
-Under installationen av nätverksinpelningsserver går det att konfigurera nätverkskortet direkt med en [link-local]-adress för att inte behöva göra den inställningen enligt instruktionerna i kapitlet Nödvändiga inställningar
-Dessutom går det att konfigurera nätverksinställningarna att automatiskt aktivera nätverkskortet vid uppstart som det beskrivs i installationsguiden. Om båda inställningarna görs behövs nätverkskonfiguration i kapitlet Nödvändiga inställningar inte utföras.
-Nödvändiga inställningar
-Efter en installation behöver de nätverkskort där trafik ska övervakas aktiveras i NetworkManager. Det görs enklast genom menyn uppe i högra hörnet.
-
-NetworkManager-ikon.
-Det räcker att ställa in Link-Local Only på det önskade nätverkskortet för att det ska fungera. Sätt helst inte en IP-adress på nätverkskortet eftersom det av säkerhetsskäl är bra att maskinen inte är nåbar från andra nätverk.
-
-NetworkManager-gränssnitt.
-För att säkerställa att allt är korrekt uppsatt finns enkla regler i /etc/snort/rules/community.rules som loggar om en vanlig ping ses. Med andra ord räcker det att generera en händelse som ska synas genom att sända ett ping på nätverket där IDS-servern är inkopplad. När det är verifierat kan reglerna kommenteras ut eller raderas helt för att inte generera onödiga händelser.
-Användning
-Denna installation använder sig av Snort, Barnyard2 och Snorby. Snorby är en webbapplikation där man kan studera de rapporter som Snort har larmat om och sedan kommentera dessa.
-Som standard är Snorby enbart tillgängligt på den lokala maskinen och inte över nätverket. På http://127.0.0.1:81/ går det att logga in med de kontonuppgifter enligt nedan som följer med en Snorby-installation. Första gången en användare använder gränssnittet via en webbläsare kommer det att ta en liten stund för programmet att automatiskt konfigureras färdigt.
-• Användarnamn: snorby@example.com
-• Lösenord: snorby
-OBS: Kontot måste givetvis ändras till ett med ett säkert lösenord som inte är känt av andra.
-Snorby
-Nedanstående skärmbild är förstasidan i Snorby efter inloggning. Förstasidan ger en bra översikt över antalet händelser som skett över tid både med grafer och med vissa nyckeltal. Siffrorna som visas uppdateras automatiskt var 10:e minut.
-
-Snorby Dashboard.
-Om siffrorna inte uppdateras kan det bero på att ett jobb har lagts upp för en uppdatering och den justerade tiden för uppdatering[O31]. Den problematiken går att lösa genom att gå till ”Administration”, ”Worker & Job Queue”, radera SensorCache-jobbet och sen lägga till ett sådant jobb igen.
-Vyer i Snorby
-I snorbys översiktsvy går det se en mängd olika saker. Det går även att titta på insamlat data genom att välja olika flikar, exempelvis:
-• Signatures-fliken visar vilka regler som träffat mest procentuellt.
-• Sources-fliken visar vilken IP-adress det är som orsakat de flesta händelserna.
-• Destinations-fliken visar vilken IP-adress det är som blir mest attackerad.
-• Sensors-fliken är mest intressant om flera sensorer används vilket vi inte beskriver i denna guide.
-• Severities och Protocols delar upp händelserna i allvarlighetsgrader och nätverksprotokoll.
-I nästa skärmbild visas ett cirkeldiagram som beskiver fördelningen över hur de olika reglerna med signaturer har blivit träffade. Diagrammet beskriver i procent hur olika regler har matchat de nätverkspaket som inhämtats.
-
-Fördelning av signaturträffar.
-Nästa skärmbild visar ett annat cirkeldiagram som beskriver fördelningen mellan de olika käll-IP-adresser som förekommer bland den nätverkstrafik som fångats upp. Den här vyn ger snabbt en översikt över vilken eller vilka som är de värsta IP-adresserna som är upphov till IDS-larm.
-
-Källa till händelser.
-Nedanstående lista är ett exempel på hur Event-sidan kan se ut om attacker utförs mot ICS/SCADA-system. Bland reglerna som larmar syns att någon försökt skicka Modbus-trafik och DNP3-trafik in mot nätet:
-
-IDS-regler som matchat attacker mot ICS/SCADA-system.
-Placering
-För att fungera på rätt sätt måste IDS-servern anslutas till ett nätverk. En IDS-server bör nättopologiskt placeras på platser i nätverk där det behövs insyn i vad som pågår i nätverket. Det vill säga, inkopplingen i nätet kommer att påverka vad sensorn kan se och analysera. Inkoppling måste ske efter viss eftertanke och planering. Det här avsnittet handlar om detta.
-En slutsats efter planeringen kan vara att man vill ha flera IDS-system anslutna till nätverket, placerade på olika platser. En IDS kan vara placerad på kontorsnätet/koncernnätet, andra IDS kan vara placerade på automations- och processnätverk. Ytterliggare anslutningspunkter kan vara i nät som sitter i perimetern mellan den egna organisationen och omvärlden, till exempel mot partneranslutningar eller mot Internet.
-
-Principskiss intrångsdetekteringssystem[O32].
-Placeringen kan dock ha en avsevärd inverkan på hur mycket nätverkstrafik, och därmed potentiella angrepp eller trafik med mönster som matchar regelverket, som kan infångas. Placeras ett IDS-system på Internet så kan det exempelvis leda till att en mängd trafik är skräp eller attacker som inte är relevanta, inte avser att riktas mot organisationen, med mera.
-Resultatet av IDS-systemets infångande och analys beror förutom själva den nätverksmässiga anslutningen också på hur IDS:en är uppsatt och vilka regler och filter som är aktiverade i den. De snort-regler som bör vara aktiverade är sannolikt väldigt annorlunda beroende på om IDS-servern är inkopplad i ICS/SCADA-nätverket, mellan kontorsnätet och ICS/SCADA-nätet eller direkt efter brandväggen ut mot Internet.
-Detaljer
-För att analysera nätverkstrafiken används Snort som är ett välkänt program för analys. Dess rapporter importeras sedan av Barnyard2 till en MySQL-databas. Därefter används en webbapplikation som heter Snorby för att studera och gruppera rapporterna.
-Snorby körs av en modul till webbservern som heter Passenger vilket är en Ruby Applikationsserver.
-SELinux används för hindra att en sårbarhet i någon av de installerade komponenterna kan utnyttjas för att ta kontroll över systemet.
-Avancerat, nästa steg
-För att webbapplikationen ska kunna utnyttjas maximalt bör rapporterna studeras och Snort-reglerna anpassas efter den verksamhet som bedrivs. Snort-reglerna finns i katalogen /etc/snort/rules/ på systemet.
-I den här installation är IDS/SCADA-regler från https://github.com/digitalbond/quickdraw/ installerade. De kan behöva justeras för att passa en specifik miljö. Reglerna använder bland annat variabler för servrar och klienter som bör sättas i snort.conf för att de ska larma vid rätt händelser.
-Reglerna utvecklades ursprungligen av Digital Bond och på deras hemsida finns det några fler regler med en annan licensiering som kompletterar de ovanstående reglerna: https://www.digitalbond.com/tools/quickdraw/.
-Anslutningsmetod
-IDS-systemet kan vara anslutet mot nätverket på ett av flera sätt. Genom att sitta på port i en hub, där all trafik skickas till alla nätverksportar. Nätverksutrustning av hub-typ är inte speciellt vanligt förekommande nuförtiden, men skulle kunna förekomma i vissa äldre automations[O33]- och processnätverk.
-I modernare nätverk av typen Ethernet brukar man använda så kallade switchar. Dessa skickar inte ut alla nätverkspaket på alla portar, utan har mer intelligens om vilken utrustning som sitter ansluten till vilken port, och skickar därför bara ut relevant trafik till relevanta anslutningsportar. De flesta mer kapabla och avancerade switchar brukar ha möjlighet att sätta en anslutningsport i så kallat ”span” eller ”speglingsläge”, vilket gör att trafik från en, flera eller alla portar skickas vidare till denna speciella span- eller speglingsport. Denna inställning används för felsökning eller för olika typer av säkerhetsutrustning.
-En tredje anslutningsmetod är att inte koppla in IDS-systemet till en switch, utan att använda en nätverks-tap, för att via en speciell anslutning kunna hämta ut trafikdata. Det finns flera fördelar med att använda tap:ar i stället för att ansluta via switchportar, bland annat att man minskar risken att data går förlorad och att nätverkspaket inte förvanskas eller påverkas av switch-utrustningen.
-Att lägga till nya regler
-Det finns även lite mer allmänna regler för att upptäcka elakheter som går att ladda ner från https://snort.org. Dock behövs det en registrering (som är kostnadsfri) för att få komma åt dessa, vilket är anledning till att de inte finns med i denna installation.
-Oavsett vilka regler som laddas ner ska dessa installeras i Snort under /etc/snort/rules/ och inkluderas i /etc/snort/snort.conf. Efter en omstart av Snort (dvs. inaktiva/aktivera nätverkskortet i NetworkManager) ska de nya reglerna vara aktiva. Snorby kan enbart visa regler som ligger direkt i regelfiler i /etc/snort/rules/.
-Under /usr/local/bin/ finns ett perl-program, create-sidmap.pl vilket bör köras efter att man lagt till regler eller ändrat beskrivningarna i regler. Den skapar en mappnings-fil mellan regel-identifieringsnummret (SID) och regelmeddelandet.
-# perl create-sidmap.pl /etc/snort/rules/ \
-         /etc/snort/andra_regler > /etc/snort/rules/sid-msg.map
-Extern åtkomst till webben
-Om det finns behov av att kunna nå IDS-servern från en annan dator måste konfigurationen för webbservern ändras så att den även är åtkomlig på det externa nätverksgränssnittet. Då måste kryptering och autentisering aktiveras så att den potentiellt känsliga trafiken inte kan ses av någon obehörig. Snorbys användernamn och lösenord måste även de ändras för att förhindra att känslig information om vilka regler som är laddade går att få reda på.
-Brandväggen måste också justeras. Samma sak där, öppna en Terminal och kommentera ut raden med hänvisning till HTTPS i /etc/sysconfig/iptables och ladda sedan om brandväggsreglerna med kommandot:
-    sudo iptables-restore /etc/sysconfig/iptables
-För information om hur terminalen används eller hur man kör kommandon se kapitlet Terminal-åtkomst och kommandoraden.
-
-Brandvägg
-Den här guiden förutsätter att installationen utförs på en dator med minst två nätverkskort, men det går att göra en installation på en dator som enbart har ett nätverkskort. En sådan mer avancerad brandväggsinstallation förutsätter att personen som installerar systemet har mer förkunskaper om nätverk samt att datorn konfigureras tillsammans med en switch som kan hantera virtuella lan och har stöd för trunkar.
-Översikt
-Det går att välja mellan väldigt många olika brandväggar på marknaden, bland annat helhetslösningar där brandväggen är en hårdvaruprodukt med integrerad mjukvara från leverantören. Ofta brukar mjukvaran kallas för firmware i de fall då produkten är en hårdvara. Det finns brandväggar som ska placeras i nätverket där de ofta även fungerar som routrar mellan olika nätverkssegment, men även brandväggar som är installerade på klienter och fungerar som skydd för den aktuella dator som brandväggen är installerad på.
-Den här guiden beskriver hur det går till att bygga en brandvägg vars syfte är att skydda olika nätverk. Det sker genom regelverk som enbart tillåter den typ av kommunikation som den är konfigurerad för.
-Den produkt som är vald heter pfSense och kan installeras på en fysisk dator för att skydda fysiska nätverk eller virtuell dator när virtuella nätverk ska skyddas. pfSense är gratis att använda men det går att köpa support till produkten. Det finns enbart en version av brandväggsprogramvaran och inte limiterad gratisvariant och fullskalig betalversion. Dock erbjuder pfSense en version som är specialanpassad för den hårdvara de säljer. Det innebär att den är optimerad för den aktuella hårdvaran, men har är samma brandväggsfunktion.
-Val av programvaruversion
-pfSense finns för flera olika typer av plattformar, den här guiden kommer att fokusera på 64-bitars versionen, om det finns behov av en annan plattform finns det dokumentation på pfSense sida på engelska. Förutom val av plattform måste installationstyp väljas och det går att välja mellan:
-• CD-rominstallation.
-
-• USB-installation
-
-• Compact Flash-installation.
-
-Den här guiden kommer att använda sig av CD-rom- och USB-installation, om den brandvägg som ska installeras har Compact Flash-kort för lagringen finns det engelsk dokumentation på pfSense sida.
-Hämta programvaran
-På https://www.pfsense.org/download/ går det att ladda ner programvaran och det bör göras enligt följande procedur:
-1. Klicka på Install-versionen under rubriken Latest Stable Version.
-
-2. Välj AMD64 (64-bit) i rullistmenyn.
-
-3. Välj Live CD with Installer i den nya rullistmenyn.
-
-4. Ladda ner checksumman för installationen, SHA256 checksum-länken.
-
-5. Ladda ner själva installationsmediet från en av länkarna under rubriken Hosting by i tabellen längst ner.
-Verifiera programvaran
-Innan installationen kan påbörjas måste den nedladdade versionen verifieras. Detta för att veta att korrekt version av programvaran har blivit nedladdad. Om verifikationen inte stämmer har något gått fel och installationen får inte fortsätta.
-Packa upp den komprimerade installationsfilen
-Innan installationsmediet kan brännas på skiva eller flyttas till en USB-sticka måste den packas upp.
-Packa upp med Linux
-Filen måste packas upp. Följ nedanstående instruktion för att packa upp filen under operativsystemet Linux.
-I en terminal:
-• Kör kommandot gunzip pfSense-LiveCD-2.2.5-RELEASE-amd64.iso.gz.
-Filen är nu uppackad till en imagefil av typen ISO.
-Packa upp med Mac OS X
-Filen måste packas upp. Följ nedanstående instruktion för att packa upp filen under operativsystemet MacOSX.
-I en terminal:
-• Kör kommandot gunzip pfSense-LiveCD-2.2.5-RELEASE-amd64.iso.gz.
-Filen är nu uppackad till en imagefil av typen ISO.
-Packa upp med Windows
-Filen måste packas upp. Följ nedanstående instruktion för att packa upp filen under operativsystemet Windows.
-Använd exempelvis programmet 7-zip för att öppna upp och verifiera innehållet från nedladdningen.
-
-Steg 1. Öppna 7-zip för att avkomprimera och packa upp en nedladdad pfsense-fil.
-Klicka på ”Packa upp” och när den nya frågerutan för ”Packa upp” visas på skärmen, klicka på ”OK” om alla inställningar och förval är godtagbara.
-
-Steg 2. Öppna 7-zip för att avkomprimera och packa upp en nedladdad pfsense-fil.
-Filen är nu uppackad till en imagefil av typen ISO.
-Skapa installationsmedia
-Skapa installationsmediet enligt instruktionerna.
-Installera pfSense
-• Starta datorn från det nyskapade mediet
-Datorn kommer att starta en välkomstmeny där det finns flera val, det första valet väljs automatiskt om inget annat val görs inom den tid som räknas ner.
-
-Uppstartsmeny.
-Välj första menyvalet 1. Boot Multi User [Enter] genom att trycka på enter/retur-knappen eller vänta på att tiden löper ut.
-Datorn kommer nu att starta en textbaserad installation där det finns flera olika val som visas i bilden nedan.
-
-Installationsmeny.
-Välj val 99) Install pfSenese to a hard drive, etc genom att skriva 99 och tryck på enter/retur
-Installationen kommer nu att försöka hitta rätt konfiguration för skärm och tangentbord. Det går att välja < Accept these Settings > genom att stega ner med piltangenten och tryck på enter/retur.
-
-Skärm och tangentbordskonfiguration.
-I nästa meny går det att välja vilken typ av installation som ska göras. Välj < Quick/Easy Install > genom att trycka enter/retur.
-
-Val av installationstyp.
-Nu kommer en fråga om du verkligen är säker på ditt val. Här måste du acceptera att installation kommer att vara automatisk och inga frågor kommer att ställas. Det innebär att den första hårdisken kommer att raderas, och detta går inte att ångra. Den säger även att du kan göra installationen manuell om du behöver ha större kontroll.
-Tryck enter/retur på < OK > när OK-knappen är markerad för att fortsätta installationen.
-
-Bekräfta vald installation.
-Installationen kommer direkt att fortskrida enligt bilden nedan.
-
-Installationsprocess.
-Det kommer att dyka upp en förfrågan efter en stund (fast det står i bekräftelserutan att inga frågor kommer ställas) där val av kärnmodul ska göras. Välj < Standard Kernel > genom att trycka på enter/retur när den är markerad.
-
-Val av operativsystemskärna.
-Installationen färdigställs och en sista meny kommer fram som säger att datorn ska startas om, men att installationsmediet måste tas bort efter [O34]omstarten.
-Välj < Reboot > genom att trycka på enter/retur när det valet är markerat.
-
-Starta om datorn efter installationen.
-När datorn nu startas upp kommer brandväggsprogramvaran pfSense vara installerad. Som standard är den för-konfigurerad med följande kontoinformation:
-• Användarnamn: admin
-• Lösenord: pfsense
-Konfigurera pfSense
-När pfsense är installerat behövs ytterligare konfiguration för att brandväggen ska vara produktionsduglig. Den första startbilden som visas när datorn startar upp är en meny med flera möjliga val samt IP-konfiguration på det nätverkskort som finns på datorn.
-Om det finns minst två nätverkskort kommer det ena vara konfigurerat för WAN, det vill säga utsidan på brandväggen. Det andra nätverkskortet kommer att vara insidan och det är den sidan där konfigurationen kan göras ifrån, via ett webbaserat gränssnitt.
-
-Uppstartsmeny.
-Titta i konsollen vilket nätverkskort som har LAN och koppla in en dator på det nätverkskortet, datorn kommer då att få en IP-adress dynamiskt i IP-spannet 192.168.1.2-254. För att logga in till gränssnittet ska en webläsare öppnas och adressen http://192.168.1.1 skrivas in.
-
-Aktuell IP-information.
-Använd en webbläsare för att komma till webkonfigurationen. Logga in där med det fördefinierade lösenordet.
-
-Inloggingsprompt.
-Väl inloggad kommer en konfigurationsguide att starta. Klicka på Next.
-
-Installationsguide.
-En informationsruta för det supportavtal som kan tecknas visas. Klicka på Next.
-
-Information om support.
-Nu är det dags att fylla i grundläggande information för den aktuella installationen enligt följande:
-• Hostname: det datornamn som ska användas.
-• Domain: domänamnet som ska användas.
-• Primary DNS Server: den primära dnsservern som kan användas om behov av extern dns behövs.
-• Secondary DNS Server: den sekundära dnsservern som kan användas om behov av extern dns behövs.
-• Checkrutan ska klickas i om dnskonfiguration ska överskridas av DHCP/PP på WANsidan.
-Klicka på Next för att fortsätta.
-
-Servernamn och DNS.
-I den här rutan ska tidsinställningar konfigureras:
-• Time server hostname: den tidsserver som ska användas för att synkronisera tiden mot.
-• Timezone: Den tidzon som ska användas.
-Klicka på Next för att fortsätta.
-
-Tidssynkronisering.
-Nu är det dags att konfigurera WAN-sidan av brandväggen.
-Typ av WAN
-• SelectedType: är typen av anslutning, exempelvis statisk IP-adress eller dynamiskt tilldelad.
-Generell konfiguration
-• MAC Address: kan lämnas tom, men det går att välja egen MAC-adress för nätverkskortet.
-• MTU: kan lämnas tom, men bör fyllas i om nätverket har speciella krav på MTU.
-• MSS: kan lämnas tom, men bör fyllas i om nätverket har speciella krav på MSS.
-Statisk IP
-• IP Address: Den IP-adress som ska användas vid statisk IP-konfiguration.
-• Upstream Gateway: Den gatewayadress som ska användas vid statisk IP-konfiguration.
-Dynamisk IP
-• DHCP Hostname: kan lämnas tom om inte nätverket kräver klientidentifikation vid DHCP.
-PPPoE
-• PPPoE Username: Användarnamn när PPPoE används.
-• PPPoE PasswordDen: Lösenord när PPPoE används.
-• PPPoE Service name: Fylls i om servicenamn används av PPPoE.
-• PPPoE Dial on demand: Bockas för om anslutningen bara ska kopplas upp när nätverksanslutningen ska användas.
-• PPPoE Idle timeout: Den tidsfördröjning som sker innan anslutningen stängs.
-PPTP
-• PPTP Username: Användarnamn när PPTP används.
-• PPTP Password: Lösenord när PPTP används.
-• PPTP Local IP Address: Lokala IP-adressen för PPTP.
-• PPTP Remote IP Address: Fjärr-IP-adressen för PPTP.
-• PPTP Dial on demand: Bocka för om anslutningen ska ringas upp vid behov.
-• PPTP Idle timeout: Den tidsfördröjning som sker innan anslutningen stängs.
-Privata IP-adresser
-• Block RFC1918 Private Networks: Denna ska bockas för om WAN används mot Internet, används WAN mot internätverk kan det finnas behov av att tillåta privata adresser på brandväggens WAN-anslutning #### Ej ännu utgivna IP-adresser.[O35]
-• Block bogon networks: användes förr i tiden för att blockera trafik från ej ännu utgivna IP-nätverk. Idag är i princip alla IP-adresser tilldelade och behovet av att stoppa ej utgivna adresser finns inte. Ska specifika adresser blockeras är det bättre att göra det med hjälp av brandväggsreglerna.
-
-WAN-konfiguration.
-LAN-sidan konfigureras genom att ange en IP-adress och den subnätmask som ska användas. Om standardvärdet är okej är det bara att klicka vidare på Next.
-
-LAN-konfiguration.
-Sätt ett nytt säkert lösenord
-• Admin Password: Det nya säkra lösenordet som ska användas.
-• Admin Password AGAIN: Det nya säkra lösenordet fylls i igen för att säkerställa att det inte skrevs fel första gången.
-
-Byte av standardlösenord.
-Nu är baskonfigurationen klar. Ladda om sidan genom att klicka på Reload-knappen och vänta tills processen är klar.
-
-Ladda om pfSense.
-Klicka på Click here to continue on to pfSense webConfiguratior som pilen pekar enligt bilden nedan för att komma till första sidan.
-
-Börja använda pfSense.
-Använda pfSense
-pfSense har en dashboard (statussida) som visas efter inloggning. Längst upp finns det en meny där alla inställningsmöjligheter finns.
-• pfSense-logotypen är en länk till själva statussidan.
-• Systemmenyn används för att göra systeminställningar.
-• Nätverksmenyn används bland annat för att konfigurera nätverkskort och virtuella LAN.
-
-• Firewall-menyn är till för att konfigurera brandväggsregler.
-• Services-menyn är till för att konfigurera nätverkstjänster.
-• VPN-menyn är till för att konfigurera VPN anslutningar.
-• Status-menyn är till för att se aktuell status för olika typerna av tjänster. Från denna meny går det att komma till loggvyn.
-• Diagnostics-menyn är till för att komma åt diagnostikverktyg.
-• Gold är en länk till pfSense sida för information om betalversionen.
-• Help-menyn är till för att hitta till hjälpdokumentation.
-
-pfSense basmeny.
-Konfigurera ett betrott certifikat
-Efter installationen av pfSense går det att konfigurera brandväggen direkt i konsollen och med en webbläsare samt med protokollet SSH. Konsolen och själva brandväggen måste ha fysiskt skydd mot angrepp. För att skydda mot hot via de andra nätverksbaserade åtkomstsätten behövs ytterligare konfiguration.
-SSH är säkert redan efter installation men användare måste verifiera fingeravtrycket innan det går att få åtkomst till det över osäkra nätverk.
-Det webbaserade gränssnittet är åtkomligt över http på port 80 vilket är ett klartextprotokoll som inte bör användas efter initial konfiguration där konfigurationsdatorn är direktkopplad till brandväggen. Under det förfarandet så kan ett certifikat installeras för att ansluta krypterat med HTTPs.
-Ett certifikat kan skapas på brandväggen och sedan går det att skapa en signeringsförfrågan för att få ett certifikat som är betrott enligt följande.
-• Välj System – Cert Manager i menyn.
-• Välj Certificates tabben.
-• Välj klicka på +-knappen.
-
-Skapa certifikat.
-Skapa en brandväggsregel
-Som standard tillåter pfSense inte att nätverkstrafik passerar WAN-nätverkskortet. Det måste tillåtas manuellt.
-Klicka på menyn Firewall och undermenyn Rules för att komma till sidan för regelkonfiguration.
-
-Brandväggsregel översikt.
-Denny vy visar de regler som finns för WAN-porten. Andra nätverk såsom LAN finns under en egen flik på samma menysida.
-För att lägga till en ny brandväggsregel går det att klicka på +-ikon-knappen som den röda pilen på bilden nedan pekar på.
-
-Skapa en brandväggsregel.
-En ny sida visas där en brandväggsregel kan skrivas med följande konfiguration:
-• Action, vad som ska ske.
-– Pass innebär att trafiken enligt regeln ska få passera.
-– Block innebär att trafiken enligt regeln ska blockeras.
-– Reject innebär att trafiken enligt regeln ska blockeras men att ett meddelande om att trafiken blockerats skickas till avsändaren.
-• Disabled bockas för om regeln inte ska vara aktiverad.
-• Interface/gränssnitt det nätverkskort/gränssnitt som regeln gäller för.
-• TCP/IP Version, vilken eller vilka IP-versioner som regeln gäller för.
-– IPv4 gäller enbart IPv4 trafik
-– IPv6 gäller enbart IPv6 trafik
-– IPv4+IPv6 gäller både IPv4 och IPv6
-• Protocol, vilket eller vilka protokoll regeln gäller för, vanligtvis används främst:
-– TCP
-– UDP
-– TCP och UDP
-• Source, inställning för att begränsa eller negotiera [O36]avsändare.
-– Type: är typen av avsändare.
-– Adress: är IP-information från ansändare.
-• Destination, inställning för att konfigurera destination eller negotiera [O37]destination.
-– Type: är typen av mottagare.
-– Adress: är IP-information från mottagare.
-• Destination port range är vilken eller vilka nätverksportar som ska tillåtas enligt regeln.
-– From: är första porten i det nummerspann som tillåts.
-– To: är den sista porten i det nummerspann som tillåts.
-• Log, checkrutan bockas för om trafik som matchar regeln ska loggas.
-• Description, en kort text som beskriver regelns syfte. Kan användas för att få spårbarhet till varför den aktuella regeln finns. Exempelvis kan en referens till ett ärendehanteringssystem skrivas in här.
-Regeln kan efter dessa inställningar sparas men det går även att göra mer avancerade inställningar om det finns behov för det.
-
-Brandväggsregelkonfiguration.
-När en regel har sparats måste den även appliseras. Det gör du genom att klicka på knappen Apply changes som visas efter att regeln sparats.
-
-Aktivera brandväggsregel.
-Regler kan sedan byggas vidare för att tillåta den trafik som har behov av att[O38]
-
-Skapa installationsmedia
-För att skapa installationsmedia måste man först ladda ner en färdigbyggd iso-fil eller bygga en ny.
-Ladda ner iso
-En iso-fil kan laddas ner enligt de anvisningar som finns för den specifika programvaran som behövs. När den väl är nedladdad måste även den nedladdade filen verifieras för att säkerställa att korrekt fil laddats ner och att den inte är korrupt. För att verifiera installationsmedia kan vägledningen för att verifiera media följas i kapitlet [Verifiera installationsmedia].
-Skapa en iso
-För att skapa en iso-fil måste de rekommendationer för det aktuella bygget följas.
-Olika installationsmedier
-När en skivavbild har skapats eller laddats ner kan denna brännas på en DVD-skiva eller överföras till en USB-enhet på ett sådant sätt att den blir boot-bar. Det är även möjligt att använda den så kallade avbilden [O39]för att installera programvaran i en virtuell dator utan att skapa en DVD eller USB-sticka.
-Bränna ISO på DVD-skiva
-DVD-skivan måste brännas på ett speciellt sätt för att bli boot-bar. Hur den nedladdade eller skapade iso-filen kan brännas beskrivs i avsnittet nedan:
-Windows
-Här beskrivs hur man skapar en boot-bar CD/DVD-skiva på en dator med operativsystemet Windows. Exemplet är verifierat med Windows 7 men borde även fungera med andra versioner av operativsystemet.
-En ISO-fil, även kallad en skivavbildning, är en fil som är en kopia av en hel CD eller DVD med data. När du bränner en CD eller DVD från en ISO-fil har den nya skivan samma mappar, filer och egenskaper som originalskivan. Det vanligaste sättet att få tag i en ISO-fil är att hämta den från en webbplats. Du kan till exempel hämta och sedan använda en ISO-fil när du vill uppdatera datorns programvara.
-Du kan bränna en skivavbildningsfil, som ofta har filnamnstillägget .iso eller .img, på en inspelningsbar CD eller DVD med Windows-verktyget för bränning av skivavbildningar. Om den kan brännas på en inspelningsbar CD-, DVD- eller Blu-ray-skiva beror på vilken typ av brännare du använder, skivavbildningsfilens storlek och på vilken typ av enhet du ska använda skivan.
-Följande steg är hämtade från Microsofts instruktion för CD-bränning:
-1. Sätt i en inspelningsbar CD-, DVD- eller Blu-ray-skiva i CD-/DVD-brännaren.
-2. Öppna datorn genom att klicka på Start-knappen och sedan klicka på Dator.
-3. Leta reda på skivavbildningsfilen i Utforskaren och dubbelklicka sedan på den.
-4. Om du har fler än en brännare klickar du på den brännare du vill använda i listan Diskbrännare i Windows-verktyget för bränning av skivavbildningar.
-5. (Valfritt) Om du vill kontrollera att skivavbildningen har bränts korrekt på skivan markerar du kryssrutan Kontrollera skivan efter bränning.
-6. Om det är viktigt med hög integritet för skivavbildningsfilen (om skivavbildningsfilen till exempel innehåller en uppdatering för inbyggd programvara) bör du markera den här kryssrutan.
-7. Klicka på Bränn när du vill bränna skivan.
-Mac OS X
-Här beskrivs hur man skapar en CD- eller DVD-skiva på en dator med operativsystemet Mac OS X. Exemplet är verifierat med OS X El Capitan men borde även fungera med andra versioner.
-1. Markera iso-filen i finder.
-2. I file-menyn välj Bränn iso-filen.
-Linux
-Eftersom det finns väldigt många olika typer av Linuxinstallationer är det svårt att ge en generisk instruktion som fungerar på alla typer av installationer. Här beskrivs hur man gör på en Fedora/RedHat/CentOS-Linux som använder den grafiska miljön Gnome. Den kan stämma även för andra system som använder Gnome-miljön. Texten är hämtad från Fedora-projektets instruktion för CD-bränning.
-GNOME är en grafisk installation som är ganska vanlig och om programvaran "CD/DVD creator" för att bränna DVD:er är installerad görs det enligt följande:
-CD/DVD Creator är skivbränningsprogrammet som är integrerat med GNOME.
-1. Högerklicka på den ISO-fil som ska brännas och välj *bränn till skiva*. En dialogruta öppnas.
-2. Klicka på bränn-knappen. CD/DVD Creator kommer be att en tom skiva ska stoppas in. Efteråt kommer ISO:n att brännas på skivan.
-Skapa en boot-bar USB-sticka
-Windows
-Här beskrivs hur man skapar en boot-bar USB-sticka med operativsystem på en dator med operativsystemet Windows. Exemplet är verifierat med Windows 7 men borde även fungera med andra versioner av operativsystemet också.
-Det finns flera sätt att skapa en boot-bar USB-sticka. Ett sätt är att ladda ner Rufus från <URL: http://rufus.akeo.ie/>:
-1. Välj ut FOSS-ison på disk i stället för grundvalet "FreeDOS" (se bild).
-2. Klicka på Start. 
-3. Välj "DD-avbild" i rutan som kommer upp. 
-Rufus är gratis och bygger på öppen källkod. Den versionen som vi verifierat fungerar är "rufus-2.9.exe" som har SHA56-checksumman: 346e869f0c2b22ada8ccd2516a5c8917b17cbb09bf16d33e74d9559e611753ad.
-
-Rufus.
-Mac OS X
-Här beskrivs hur man skapar en boot-bar USB-sticka med operativsystem på en dator med operativsystemet Mac OS X. Exemplet är verifierat med OS X El Capitan men borde även fungera med andra versioner av operativsystemet.
-Nedanstående beskrivning är avsett för en vanlig användare av Mac OS X, där användaren inte har fullständiga administratörsrättigheter. Detta innebär i praktiken att vissa steg måste utföras med hjälp av kommandot "sudo" för att temporärt utföra ett steg med utökade administratörsbehörigheter.
-1. Stoppa in en USB-sticka och öppna ett terminalfönster (programmet "Terminal").
-2. Skriv "diskutil list" och notera vad USB-stickan heter. Till exempel: "/dev/disk3".
-  OBS! Var noggrann med att skriva upp rätt namn på stickan, så att ingen annan disk blir påverkad av misstag. Är du osäker på vad USB-stickan får för namn, kan du testa att använda kommandot "diskutil list" ett par gånger – både med USB-minnet anslutet och när det inte är det – för att se skillnaden på listan.
-3. Avmontera stickan med kommandot: "diskutil unmountDisk /dev/disk3".
-4. Skriv ISO-filen till USB-stickan: "sudo dd if=./foss.iso of=/dev/disk3 bs=10m".
-a. Eftersom filen foss.iso är väldigt stor kommer det här kommandot ta relativt lång tid, kring fem minuter eller mer. Hur lång tid det tar beror bland annat på typen av USB-minne, eftersom det finns olika snabba sådana.
-b. Du kommer få en fråga om att ange lösenord för att köra kommandot "sudo". Detta är ditt vanliga lösenord som du anger för inloggning till systemet.
-  Om allt har gått enligt plan, ska du ha sett [O40]text liknande nedanstående i terminalfönstret:
-    bash-3.2$ sudo dd if=./foss.iso of=/dev/disk3 bs=10m
-    132+1 records in
-    132+1 records out
-    1391460352 bytes transferred in 475.954652 secs (2923515 bytes/sec)
-    bash-3.2$
-5. Avmontera USB-stickan ordentligt, så att operativsystemet anser att USB-minnet är redo att avlägsnas från datorn, med kommandot: "diskutil eject /dev/disk3"
-Linux
-Här beskrivs hur man skapar en boot-bar USB-sticka med operativsystem på en dator med operativsystemet Linux.
-1. Anslut USB-minnesstickan [O41]till en USB-port.
-2. Öppna ett terminal-fönster.
-3. Skriv kommandot "mount", notera om disken monterats automatiskt och vad den heter i så fall.
-4. Avmontera USB-stickan med kommandot: "umount /dev/sdX" noterad under punkt 3.
-5. Skriv ISO-filen till USB-minnet: "sudo dd if=./filnamn.iso of=/dev/sdX".
-
-Verifiera media
-All data som laddas ner från en obetrodd källa bör verifieras för att få en garanti på att det är korrekt version som har laddats ner. Ibland går det att ladda ner kod över TLS vilket ger en garanti på att det som laddas ned vekligen kommer från rätt källa. I många fall laddas programvara ned över klartextprotokoll och då finns en risk att det nedladdade blir manipulerat. För att undvika det använder många TLS på den sida där de presenterar data och där visar de även en eller flera kryptografiska checksummor som sedan kan verifieras när själva filen har laddats ner från exempelvis ett öppet bibliotek som hanterar lagring och bandbreddstillgången.
-Verifiera i Linux
-Öppna en terminal och skriv kommandona:
-1. sha256sum pfSense-LiveCD-2.2.5-RELEASE-amd64.iso.gz
-2. cat pfSense-LiveCD-2.2.5-RELEASE-amd64.iso.gz.sha256
-Säkerställ att resultatet i de båda kommandona har samma långa textsträng.
-
-Verifiera SHA256 i Linux.
-Verifiera i Mac OS X
-Öppna en terminal och skriv kommandona:
-1. shasum -a 256 pfSense-LiveCD-2.2.5-RELEASE-amd64.iso.gz
-2. cat pfSense-LiveCD-2.2.5-RELEASE-amd64.iso.gz.sha256
-Säkerställ att resultatet i de båda kommandona har samma långa textsträng.
-
-Verifiera SHA256 i OS X.
-Verifiera i Windows
-Windows har tyvärr inte som standard lika enkla sätt för att verifiera kryptografiska checksummor som Mac OS X och Linux. För att verifiera i Windows måste du först ladda ned programvara för checksummeuträkning.
-1. Ladda ner Get-FileHash.ps1 från Microsoft.
-2. Starta en kommandotolk.
-a. Välj start/kör.
-b. Skriv cmd och tryck enter/retur. Då öppnas en kommandotolk där skriver du följande:
-3. powershell -ExecutionPolicy Bypass
-4. . .\Get-FileHash.ps1
-5. Get-FileHash -Path filsökväg -Algorithm SHA256 | Format-List
-6. Jämför checksumman i resultat med den som nedladdningssidan visar.
-
-Verifiera SHA256 i Windows.
-Terminalåtkomst och kommandoraden
-Ett annat sätt att arbeta med systemet, än via det grafiska gränssnittet och de vyer som vi förberett, är via den traditionella kommandoraden som görs tillgänglig via ett terminalfönster. Via terminalfönstret och kommandoraden går det att kontrollera systemet, systemets inställningar samt köra applikationer.
-För viss typ av åtkomst, såsom att utföra vissa systemförändringar, är det bästa sättet att arbeta via just terminalen och kommandoraden.
-Översikt
-Terminal, ibland kallat terminalfönster eller terminalemulator, är ett program för att ge kommandoradsåtkomst till systemet och som finns för dig som användare via menyn Applications -> Utilities -> Terminal. Bilden nedan visar grafiskt var i menyerna man hittar terminal-alternativet:
-
-Menyval för att starta ett terminalfönster med kommandoradsåtkomst.
-Programet ger kommandoradsåtkomst via en textbaserad vy. Med hjälp av denna vy och via kommandoraden, går det att nå och använda många av de program som följer med operativsystemet, men som inte är direkt åtkomliga via det grafiska användargränssnittet. Det går till exempel att skapa eller redigera filer och att automatisera olika programsteg via att skriva så kallade "skript".
-Bilden nedan visar hur ett terminalfönster ser ut och hur en kommandoradsprompt ser ut:
-
-Ett terminalfönster med kommandoradsåtkomst.
-Via terminalfönstret kan man även utföra sådana göromål som att programmera och kompilera egna program. Terminalen i Linux kan liknas med kommandotolken i Windows, men den har fler funktioner. Windows motsvarighet till en Linuxterminal är Powershell som också finns i moderna Windowsinstallationer.
-Användning
-Via terminalen kan man köra ett antal program eller systemkommandon som gör att man får bättre kontroll på det installerade systemet.
-Terminalen kan användas för att få högre rättigheter i operativsystemet för att på så sätt ändra i program som ägs av andra användare i systemet än den grafiskt inloggade personen som enbart kan ändra, skapa och exekvera [O42]egna program eller filer och inte alla de program och filer som följer med operativsystemet. Den aktuella installationen använder flera program/tjänster som ägs av olika typer av systemanvändare i operativsystemet för att uppnå en bättre säkerhet.
-Främsta anledningen till att använda terminalen är för att göra ytterligare konfiguration eller anpassning i den aktuella installationen. Terminalen kan även användas för bland annat felsökning eller för att byta IP-adress på datorn.
-Få hjälp i systemet
-Utöver att använda denna dokumentation, finns det några andra sätt att få hjälp med hur man kan använda systemet:
-1. Använda man-kommandot.
-2. Besöka CentOS webbaserade dokumentation.
-3. Använda Google för att söka efter annan dokumentation rörande CentOS, Linux, pfSense, Snort med mera.
-För att använda den medföljande systemdokumentationen, använd man-kommandot i ett terminalfönster. Ett enkelt sätt att börja är att söka dokumentation om man-kommandot själv, genom att helt enkelt skriva man man. Det ger en lång lista med information. Skrolla framåt i dokumentationen genom att trycka på mellanslag. Om du vill avbryta listningen, skriv bokstaven ”q”, som i quit, och du återgår till kommandotolken.
-Nedanstående bild visar hur man ger kommandot "man man":
-
-Ett terminalfönster med kommandot man man.
-Nedanstående bild visar hur fönstret blir när man skrivit man-kommandot och den visar resultatet av manualsidan:
-
-Ett terminalfönster med kommandot man man.
-Dokumentationen som finns tillgänglig på CentOS webbplats är omfattande och finns tillgänglig på flera olika språk, inklusive svenska.
-Vart och ett av de programpaket som ingår i denna paketering av säkerhetsprogram har även webbplatser där det finns dokumentation, bloggar, källkod eller annan bakgrundsinformation.
-Högre rättigheter
-Normal användning av systemet och dess medföljande applikationer är att en användare automatiskt loggas in och den grafiska miljön starta upp. Denna användare har en begränsad åtkomst i systemet. Det gör att en mängd saker inte är åtkomliga eller, om de är åtkomliga, inte går att ändra av användaren. Till exempel går det normalt inte att skriva i vissa inställningsfiler som tillhör systemet och som innehåller systeminställningar. För att kunna göra sådana förändringar behöver användaren temporärt få utökade behörigheter i systemet.
-För att få högre rättigheter i det installerade systemet kan man använda kommandot sudo. Det kan antigen skrivas framför ett kommando som skrivs i terminalen för att utföra en funktion som kräver högre rättigheter eller för att byta till en annan användare, root, som är det konto som har de högsta rättigheterna i operativsystemet. För att bli root-användare kan man använda kommandot:
-    sudo su
-En förfrågan efter den aktuella användarens lösenord kommer att ställas när sudo används och om rätt lösenord skrivs in kommer kommandot att ske med högsta behörighet.
-Nedanstående bild visar hur fönstret blir när man använder kommandot sudo:
-
-Ett terminalfönster med kommandot sudo.
-Textredigeringsprogram
-I systemet finns det flera textredigeringsprogram, så kallade texteditorer, installerade och tillgängliga att välja mellan. Med hjälp av dessa editorer kan en fil skapas eller ändras. Exempelvis är programmen VI (även VIM som har fler funktioner än den enklare varianten VI), Emacs (mg) och nano installerade. Det går även att installera ytterligare texteditor om någon annan editor behövs. Personer som är vana med att arbeta i Unixmiljöer kan med största sannolikhet använda antingen vim eller emacs, de som inte är vana med någon av dessa två brukar kunna komma igång snabbare med nano eftersom den exempelvis har visuell beskrivning av de vanligaste kommandona. Nano visar visuellt hur programmet kan stängas av eller hur en fil sparas, vilket varken VIM eller Emacs gör eftersom dessa förutsätter att användaren kan de kommandon som ska användas.
-NANO
-För att redigera en fil med nano i terminalen så används kommandot nano /sök_väg/till/filen, kommandot avslutas med enter. När en fil har blivit vald för att redigeras finns det hjälptext längst ner i terminalfönstret. Alla funktioner såsom spara eller stäng visas med exempelvis ^X där ^ syftar på control(ctrl) knappen och bokstaven till den tangent som ska tryckas ner samtidigt. För att navigera runt i textdokumentet används piltangenterna.
-VIM
-VIM finns installerat och kan användas. För dokumentation om hur VIM kan användas finns det i en inbyggd dokumentation som kan visas genom kommandot man vim i ett terminalfönster.
-Emacs
-Tiny Emacs-like editor (mg) finns installerat och kan användas för att redigera text och filer. För dokumentation om hur man använder mg, går det att använda den medföljande dokumentation på servern som kan visas genom kommandot man mg i ett terminalfönster.
-
-FAQ: Vanliga frågor och svar
-Detta är en sammanställning av vanliga frågor och svar som rör denna programvaruuppsättning.
-1. Bakgrund och översiktsfrågor
-– Varför har SvK/MSB tagit fram dessa verktyg?
-– Vem är målgruppen för att använda dessa verktyg?
-– Hur kommer dessa verktyg underhållas?
-2. Detaljfrågor
-– Kända problem
-• Jag har satt upp allt, men får inga larm i övervakningsservern, vad kan ha hänt?
-• Jag har precis installerat en server, men jag kan inte nå webbgränssnittet. Vad är fel?
-– Paketering
-• Vad är skillnaden mellan den här paketeringen och Security Onion?
-• Finns det skillnader i paketeringen av de olika funktionerna?
-– Operativsystem
-• Vilken version och distribution av Linux används?
-• Varför har man valt denna Linuxversion?
-• Varför använder ni två olika operativsystem?
-– Installation
-• Vilka hårdvarukrav ställs på den utrustning som ska användas?
-• Hur hanterar programvaran att min dator har flera nätverkskort och Ethernetanslutningar?
-• Servern jag installerat hittar ingen nätverksadress. Vad kan vara fel?
-• Kan jag köra flera av funktionerna på en och samma server?
-– Systemadministration och avancerad användning
-• Hur kommer jag åt webbgränssnittet via nätverket?
-• Kan jag uppdatera systemet?
-• Har servrarna stöd för IPv6?
-• Servern vill inte starta operativsystemet. Finns det något jag kan göra?
-– Källkod och byggmiljö
-• Var finns källkoden till alla programmoduler och paket?
-• Jag vill skapa en egen installationsfil utifrån källkoden, hur gör jag?
-– Användning
-• Hur stänger jag av en server?
-• Texten är så liten på skärmen, kan jag ändra teckenstorlek?
-• Hur gör jag för att sätta webbläsaren i fullskärmsläge?
-• Upplösningen på skärmen är låg. Kan jag ändra till en högre upplösning?
-– Säkerhet
-• Hur har lösningen säkrats upp?
-• SELinux omnämns hela tiden, hur har ni använt det?
-– IDS
-• Vilka regler är aktiverade i IDS-lösningen?
-• Finns det andra SCADA-regler som inte är medpaketerade?
-• Hur ser regelverket ut, finns det något exempel på hur IDS-reglerna är utformade?
-• IDS-lösningen larmar väldigt mycket, varför gör den det?
-• IDS-lösningen larmar väldigt mycket, kan jag göra något åt det?
-• Vad är skillnaden mellan den här paketeringen och Security Onion?
-• Förutom snort, finns det andra moduler på IDS-systemet jag kan använda mig av?
-• Snorby dashboard-summeringen uppdateras inte.
-– Loggservern
-• Kan jag söka efter en textsträng i alla loggar?
-• När jag listar innehållet i en logg, kan jag söka efter en textsträng då?
-– Nätverksinspelning
-• Förutom tcpdump, finns det andra moduler på nätverksinspelnings-systemet jag kan använda mig av?
-• Hur hanteras diskutrymmet på nätinspelningsservern?
-• Hur kan jag spara undan nätverksinspelningar från nätverksinspelningsservern?
-– Övervaknings- och larmserver
-• Kan jag använda övervakningsservern för att övervaka de andra servrarna som ingår i den paketerade lösningen?
-• Kan jag använda övervakningsservern för att övervaka ICS/SCADA-utrustning?
-• [Kan jag använda övervakningsservern för att övervaka annan infrasrukturutrustning, såsom exempelvis kylsystem eller avbrottsfri ström?][O43]
-Bakgrund och översiktsfrågor
-Varför har SvK/MSB tagit fram dessa verktyg?
-Verktygen har tagits fram för att det finns ett behov av standardverktyg, som inte kostar pengar och som kan ingå i ett grundskydd, för svenska elbolag, och i förlängningen för bolag även i andra samhällviktiga branscher.
-Vem är målgruppen för att använda dessa verktyg?
-IT-säkerhetsansvariga, IT-ansvariga, processingenjörer, driftchefer med flera som vill förändra och förbättre IT-miljöer i de industriella automationslösningar som förekommer på svenska bolag i samhällsviktiga branscher.
-Hur kommer dessa verktyg underhållas?
-Allt släpps som öppen källkod, och bygger till stora delar på öppen källkod. Det innebär bland annat:
-• Att många av de ingående komponenterna redan har befintliga grupper, enskilda personer, organisationer eller företag som står bakom och underhåller dem
-• Att all nyutvecklad källkod finns tillgänglig för allmänheten. Det gör det möjligt för vem som helst att granska, förändra, förbättre, underhålla eller på annat sätt arbeta med filer och information som tagits fram under projektet.
-• Att det är fritt fram för enskilda personer eller företag att ta på sig en roll för att underhålla verktygen.
-Detaljfrågor
-Jag har satt upp allt, men får inga larm i övervakningsservern, vad kan ha hänt?
-Det kan bero på att tiden inte är korrekt mellan det system som genererar larmet och larm/övervakningsservern.
-En lösning är att försöka ställa in klockan till korrekt tid samt att sätta tidszonen till UTC-tidzon.
-Jag har precis installerat en server, men jag kan inte nå webbgränssnittet. Vad är fel?
-Vad är skillnaden mellan den här paketeringen och Security Onion?
-Security Onion är en annan paketering av nätverksövervakningsverktyg. Nedan görs en kort sammanfattning av några skillnader mellan dessa två paket.
-Dt finns följande fördelar med de paketerade verktygen som ingår i denna dokumenterade lösning jämfört med SecurityOnion:
-• Utförlig dokumentation som hjälper till för att en användare ska kunna komma igång.
-• All dokumentation är på svenska.
-• Modernt operativsystem.
-• Särskild fokus på att få ett härdat grundsystem.
-• Särskild fokus på att säkra upp användningen av de applikationer som används.
-• Speciella säkerhetsfunktioner installerade (SELlinux-policies anpassade för ändamålet).
-• Anpassade funktioner för ICS/SCADA-användning.
-• Bifogade IDS-regler för ICS/SCADA.
-Finns det skillnader i paketeringen av de olika funktionerna?
-Många grundfunktioner och grundläggande program delas och används av alla programpaketen. Det finns dock vissa skillnader i hur de olika servrarna sedan installeras och vilka programpaket som installeras.
-Till exempel används den väldigt enkla webbservern lighttpd för nätverksinspelning- och loggservern. Detta för att minska attackyta och komplexitet. För larmservern (icinga) och intrångsdetekteringsservern (snort) används i stället webbservern Apache. Apache används för att dessa servrar kräver extramoduler och mer avancerad funktionalitet från webbservern.
-Vilka hårdvarukrav ställs på den utrustning som ska användas?
-De krav som finns på den hårdvara som ska användas som plattform för installation av dessa programpaket finns närmare beskrivna i kapitlet Några kommentarer om hårdvara och hårdvarukrav.
-Vilken version och distribution av Linux används?
-Som bas för de paketeringen har CentOS 7 använts.
-Varför har man valt denna Linux?
-Valet av Centos är baserat på flera kriterier:
-• Det är en mogen plattform.
-• Den är en fri plattform, för vilken man inte behöver köpa supportkontrakt eller teckna licenser och få därtill hörande kostnader.
-• Det finns en relaterade kommersiell variant, RedHat Enterprise Linux, som de som har stora behov av supportkontrakt kan använda i stället. Det är bara att flytta över alla programpaket och uppsättningar till RHEL-miljön.
-• De flesta relevanta programpaket fanns redan porterade till plattformen, därför gick det att använda programpaket i stället för att bygga de från källkodsform.
-• Säkerhetsmekanismen SELinux finns i CentOS/RedHat. Det är en funktion vi använt i paketeringen
-Varför använder ni två olika operativsystem?
-Den plattform som vi valt använder sig av CentOS Linux version 7. Alla programmodulerna vi själva utformat bygger på detta. Brandväggen pfSense som vi också inkluderat, men som är ett färdigt paket som vi inte själva bygger utan bara dokumenterar, är baserat på operativsystemet FreeBSD.
-Hur hanterar programvaran att min dator har flera nätverkskort och Ethernetanslutningar?
-Såsom vi byggt och paketerat de olika lösningarna, till exempel nätverksinspelningsserver eller IDS-lösning, ska de fungera automatiskt med flera nätverkskort och nätverksanslutningar.
-Servern jag installerat hittar ingen nätverksadress. Vad kan vara fel?
-Detta fel kan uppstå om man glömmer att sätta IP-adresser när systemet installeras. Likaså kan felet uppstå om man glömmer att klicka i valet ”anslut automatiskt till detta nätverk när det är tillgängligt” i samband med installation. Hur denna inställningsruta ser ut kan du se i nedanstående bild:
-
-Aktivera IP-konfiguration.
-Hur stänger jag av en server?
-Längst upp i det övre högra hörnet på det grafiska användargränssnittet finns det en knapp för att visa en meny med diverse kommandon som berör användaren eller systemet. Ta fram den menyn och välj alternativet ”Stäng av”.
-
-Logga ut och stänga av CentOS.
-Texten är så liten på skärmen, kan jag ändra teckenstorlek?
-Ja, teckenstorleken i webbläsaren går att ändra. Genom att trycka på ctrl-'+' (kontrolltangenten samt '+' samtidigt) ökas teckenstorleken. För att minska teckenstorleken, tryck ctrl-'-' (kontrolltangenten samt '-' samtidigt).
-Hur gör jag för att sätta webbläsaren i fullskärmsläge?
-Om du har startat webbläsaren, kan du trycka F11 (funktionstangent nr 11), vilket ställer om webbläsaren Firefox mellan att vara i fullskärmsläge eller inte.
-Upplösningen på skärmen är låg. Kan jag ändra till en högre upplösning?
-Ja, det går enkelt att ändra upplösningen på den grafiska miljön genom att ändra i systeminställningarna. I applikationsmenyn, välj ”Systemverktyg” och sedan ”Settings”, se nästa bild.
-
-Välj Settings i systemverktygsmenyn i applikationsmenyn.
-När fönstret för ”Settings” visas, välj alternativet ”Skärmar”, se nästa bild.
-
-Välj ”Settings” i applikationsmenyn.
-Fönstret för ”Skärmar” visas. Där går det att ändra flera inställningar, bland annat upplösning i en rullmeny.
-
-Välj ”Settings” i applikationsmenyn.
-Från rullmenyn för "upplösning", välj en upplösning som bör fungera med det grafikkort som finns i datorn.
-
-Välj ”Settings” i applikationsmenyn.
-Om valet av den nya grafikupplösningen fungerar, kommer ett nytt fönster att bli synligt på skärmen. I det här fönstret finns en kontrollfråga för att se om den valda skärmupplösningen fungerar. Om du ser frågan på skärmen och är nöjd med upplösningen, välj alternativet ”Behåll denna konfiguration”.
-
-Välj ”Settings” i applikationsmenyn.
-Kan jag uppdatera systemet?
-Ja, genom att köra kommandot yum update med högsta behörighet på systemet kan du uppdatera de programpaket som finns installerade. Det innebär att du i ett terminalfönster kör kommandot:
-    sudo yum update
-Om du är osäker på hur man gör detta, se detaljbeskrivning i kapitlet Terminal-åtkomst och kommandoraden.
-För att detta ska fungera, krävs dock att servern har åtkomst till en fungerande DNS och att den har internetåtkomst.
-Har servrarna stöd för IPv6?
-Ja, operativsystemet CentOS har stöd för IPv6. De flesta funktionerna som används i denna paketering har också inbyggt grundstöd för IPv6. Exempelvis kan loggservern ta emot loggar skickade via IPv6 och nätverksinspelningsservern spela in IPv6-trafik.
-För att IPv6 ska fungera korrekt, kan du behöva sätta en IPv6-adress på nätverkskorten som är aktiverade i servern via NetworkManager.
-Kan jag köra flera av funktionerna på en och samma server?
-Nej, varje funktion (loggserver, larmserver, övervakningsserver, nätverksinspelningsserver, brandvägg) kräver en anpassad och dedikerad [O44]installation.
-Kan jag komma åt webbgränssnitt via nätverket?
-För paketen nätverksinspelningsserver och loggserver går det att ändra inställningarna så att det går att få fjärråtkomst till systemen. Läs i nedanstående beskrivning hur man gör.
-Som standard går webbgränssnittet enbart att nå via den egna datorn, lokalt ansluten skärm och tangentbord. När servern kommer igång startar det grafiska gränssnittet lokalt. Via denna grafiska miljö kan man via en lokalt startad webbläsare komma åt gränssnittet. Det går alltså inte att nå webbtjänsten direkt via nätverket. Orsaken till detta är att standardinstallationen ska vara så säkert uppsatt som möjlig.
-Om det finns behov av att kunna nå nätverksinspelningsservern från en annan dator måste konfigurationen för webbservern ändras så att den även är åtkomlig på det externa nätverksgränssnittet. Då måste kryptering av webbtrafiken samt autentisering av åtkomst till webbsidan aktiveras. Detta behövs för att hindra att den potentiellt känsliga trafiken kan ses av någon obehörig, eller att serven kan nås av, och loggas in i, av någon obehörig.
-Vid första uppstarten av systemet genererades för installationen unika så kallat ”dummy-cert” för webbservern. Dessa certifikat finns sparade i filerna /etc/pki/tls/certs/dummy.cert och /etc/pki/tls/private/dummy.key. Dessa certifikat kan användas i test-syfte. Om du vill testa att aktivera nätverksåtkomst till webbtjänsten kan du undersöka den existerande konfigurationsfilen /etc/lighttpd/lighttpd.conf. Där finns ett utkommenterat exempel på hur det är möjligt att aktivera en server som dels lyssnar på en extern adress, dels använder kryptering för att skydda trafiken. För att kunna redigera filen, för att ta bort kommenteringen och kanske sätta en annan IP-adress, starta programmet Terminal via menyn "Applications". I det öppnade terminalfönstret skriv kommandot:
-              sudo nano /etc/lighttpd/lighttpd.conf
-Där nano är namnet på ett textredigeringsprogram som medföljer. Använd nano, vi eller mg efter önskemål. För hjälp att förstå hur man använder textredigeringsprogram eller hur man använder sig av terminalprogrammet, se närmare detaljinformation i kapitlet Terminal-åtkomst och kommandoraden.
-Förutom att aktivera nätåtkomst till webbserverdelen samt aktivera TLS-kryptering, måste också brandväggen öppnas. Liksom för redigeringen av webbserverkonfigurationen ovan, finns det redan utkommenterade brandväggsinställningar för att underlätta för öppnandet av brandväggsportar och åtkomst till webbservern. Starta programmet Terminal från menyn ”Applications”. Ta bort kommentarstecknet för raden med hänvisning till HTTPS i filen /etc/sysconfig/iptables. Gör det med textredigeringsprogram enligt nedanstående exempel:
-              sudo nano /etc/sysconfig/iptables
-När brandväggsreglerna är ändrade och nedsparade, ladda sedan om brandväggsreglerna med kommandot:
-              sudo iptables-restore /etc/sysconfig/iptables
-Kan jag söka efter en textsträng i alla loggar?
-Genom att skriva in ett sökuttryck på förstasidan (http://127.0.0.1/sok.html) kan du söka efter om en textsträng förekommer i någon av de sparade loggfilerna.
-När jag listar innehållet i en logg, kan jag söka efter en textsträng då?
-Webbläsaren Firefox har en inbyggd sökfunktion som du kan använda för att söka efter en text på en webbsida genom att trycka ctrl-f (Kontrolltangenten + F). Detta ger en sökruta nere i vänstra hörnet
-Vilka regler aktiverade i IDS-lösningen?
-Som standard i denna paketering av en IDS-sensor och medföljande grafiskt gränssnitt är följande IDS-regler aktiverade:
-• Snort:s community-regler.
-• Digital Bonds Quickdraw SCADA-regler.
-• Extra regler för Siemens S7.
-• Enkel regel för icmp echo, för att möjliggöra testning med ”ping”.
-Dessa är installerade för att göra lösningen användbar i en SCADA/ICS-miljö.
-Det bör dock noteras att med denna mängd regler och signaturer som är ett smörgåsbord av beskrivningar av olika nätverksattacker, kommer många signaturer eller attackmönster inte att vara aktuella för den IT-miljö som de installeras i.
-Finns det andra SCADA-regler, som inte är medpaketerade?
-Exempelvis finns Emerging Threats SCADA-regler. De är inte medpaketerade, då vi inte hunnit göra extra testning med dessa regler. De kan dock hämtas hem från EmergingThreats webbplats och läggas till i IDS-sensorn.
-Hur ser regelverket ut, finns det något exempel på hur IDS-reglerna är utformade?
-Följande exempelregler är framtagna för att användas i SvK:s demonstrator för att visa att det går att skriva regler för att upptäcka att styrkommandon skickas till PLC-utrustningen från andra IP-adresser än den kontrollrumsdator som normalt ska skicka styrkommandon.
-I exemplet finns två IP-adresser fördefinierade:
-• IP-adressen för PLC-utrustningen.
-• IP-adressområdet (nätet) för kontrollrummet.
-Följande snort-regler larmar för olika typer av ändringar i PLC eller tillgång.
-Notera att raderna är brutna i detta dokument, men att de normalt syns som enstaka långa rader.
-ipvar SVKDEMO_KONTROLLRUM 10.10.10.0/24
-ipvar SVKDEMO_PLC 10.10.10.10
-
-# Alert on gateopen cmd from unauthorized client
-alert tcp !$SVKDEMO_KONTROLLRUM any -> $SVKDEMO_PLC 102 \
-(msg: "S7 Communication from Unauthorized Client";sid:1111305;priority:1;rev:1;)
-
-# write var, open gate
-alert tcp !$SVKDEMO_KONTROLLRUM any -> $SVKDEMO_PLC 102 \
-(content: "|03 00|"; within: 200; pcre: \
-"/\x32\x01\x00\x00\x02\x06\x00\x12\x00\x05\x05\x01\x12\x0e\xb2\xff\x00\x00\x00\x52
- \x78\x04\x1f\x0f\x40\x00\x00\x11\xff\x03\x00\x01\x01/";\
-msg: "S7 Write Open Gate from Unauthorized Client";sid:1111306;priority:1;rev:1;)
-
-# write var, close gate
-alert tcp !$SVKDEMO_KONTROLLRUM any -> $SVKDEMO_PLC 102 \
-(content: "|03 00|"; within: 200; pcre: \
-"/\x32\x01\x00\x00\x02\x06\x00\x12\x00\x05\x05\x01\x12\x0e\xb2\xff\x00\x00\x00\x52
- \x78\x04\x1f\x0f\x40\x00\x00\x11\xff\x03\x00\x01\x00/";\
-msg: "S7 Write Close Gate from Unauthorized Client";sid:1111307;priority:1;rev:1;)
-
-# write var, open generator
-alert tcp !$SVKDEMO_KONTROLLRUM any -> $SVKDEMO_PLC 102 \
-(content: "|03 00|"; within: 200; pcre: \
-"/\x32\x01\x00\x00\x02\x03\x00\x12\x00\x05\x05\x01\x12\x0e\xb2\xff\x00\x00\x00\x52
- \xea\x2d\xb0\xd9\x40\x00\x00\x10\xff\x03\x00\x01\x01/";\
-msg: "S7 Write Open Generator from Unauthorized Client";sid:1111308;priority:1;rev:1;)
-
-# write var, close generator
-alert tcp !$SVKDEMO_KONTROLLRUM any -> $SVKDEMO_PLC 102 \
-(content: "|03 00|"; within: 200; pcre: \
-"/\x32\x01\x00\x00\x02\x02\x00\x12\x00\x05\x05\x01\x12\x0e\xb2\xff\x00\x00\x00\x52
- \xea\x2d\xb0\xd9\x40\x00\x00\x10\xff\x03\x00\x01\x00/";\
-msg: "S7 Write Close Generator from Unauthorized Client";sid:1111309;priority:1;rev:1;)
-IDS-lösningen larmar väldigt mycket, varför gör den det?
-De regler som kallas för ”snort community rules” är väldigt många och resulterar ofta i larm. Särskilt om du sätter IDS-sensorn på ett nätverk med mycket trafik, det vill säga inte sätter den på ett processnät utan på ett kontorsnät eller ut mot internet.
-IDS-lösningen larmar väldigt mycket, kan jag göra något åt det?
-Under katalogen /etc/snort/rules/ finns alla regler som används av Snort. Öppna dem och kommentera ut de regler du tycker larmar för mycket eller inte är rätt för din miljö. Det gör du med den så kallade brädgården #.
-Förutom snort, finns det andra moduler på IDS-systemet jag kan använda mig av?
-Förutom Snort kan du installera Suricata från http://suricata-ids.org/ och konfigurera Barnyard2 så att den läser från Suricata i stället.
-Förutom tcpdump, finns det andra moduler på nätverksinspelningssystemet jag kan använda mig av?
-Wireshark är ett annat verktyg för att titta på nätverkstrafik. Det har ett grafiskt gränssnitt, men rekommenderas inte för att titta på okänd trafik.
-Snorby dashboardsummeringen uppdateras inte
-Om det är så att siffrorna aldrig uppdateras kan det bero på ett par olika saker:
-• Att klockan inte är rätt inställd .
-• Att det finns saker i Snorbys cache som är fel.
-Ett sätt att tillfälligt lösa det är att rensa Snorbys cache i MySQL:
-$ sudo -i
-$ mysql -uroot -p$(</root/.mariadb_pass)
-mariadb> use snorby;
-mariadb> truncate table caches;
-Gå till Dashboarden, välj meny Administration, ”Workers & Job Queue” och radera Cache-jobbet och skapa sedan ett nytt.
-En annan lösning är att försöka ställa klockan på rätt tid samt att sätta tidszonen till UTC-tidzon.
-Hur hanteras diskutrymmet på nätinspelningsservern?
-På nätverksinspelningsservern finns ett speciellt serverprogram kallat ”reaper.py” installerat. Det håller reda på att disken inte fylls av den inspelade trafiken. Programmet kontrollerar diskutrymmet i samband med att nya filer skapas i filsystemet där den inspelade nätverkstrafiken sparas. Som standard så ser den till att det ska finnas cirka 20 procent ledigt diskutrymme innan den börjar radera de äldsta inspelningarna.
-Hur kan jag spara undan nätverksinspelningar från nätverksinspelningsservern?
-I webbgränssnittet för servern finns det möjlighet att välja ”2ladda ner pcap-fil”. Denna pcap-fil innehåller inspelad trafik. För att hålla nere filstorleken delar servern upp inspelad trafik i flera filer. Välj en eller flera filer att ladda ner och analysera med andra verktyg, exempelvis Wireshark 2, på en lokal dator.
-Hur har lösningen säkrats upp?
-Operativsystemet och de olika applikationerna som vi använder har härdats för att ha så liten exponering som möjligt. Det innebär bland annat att vi började installationen från en minimal operativsystemsinstallation till vilken vi lagt till programpaket. Detta för att inte ha med onödiga tjänster och funktioner.
-De olika programmen som används i systemet har också fått egna användare, för att minska möjligheten för ett program att påverka andra delar av systemet.
-En annan säkerhetsbarriär som använts är SELinux. De olika tjänster som vi använder i systemet har fått SELinux-policyer som begränsar de körande programmens åtkomst till olika delar i systemet.
-SELinux omnämns hela tiden, hur har ni använt det?
-Vi har utvecklat SELinux-profiler för de olika modulerna vi kör. Till exempel webbservrar som visar upp resultat eller runt program som hämtar in information från nätverket, exempelvis tcpdump.
-SELinux är satt i så kallat enforcing-läge, vilket medför att alla överträdelser mot SELinux-policyn automatiskt innebär att det program som gör överträdelsen stängs ner av operativsystemet.
-Kan jag använda övervakningsservern för att övervaka de andra servrarna som ingår i den paketerade lösningen?
-Ja, men det förutsätter några saker:
-1. Att servern som ska övervakas sitter på en nätverksport som går att nå (dvs. inte via en span-port eller via en nätverkstapp[O45]). Detta gäller framför allt för nätverksinspelningsservern eller IDS-servern.
-2. Att servern som ska övervakas har en IP-adress
-3. Att servern är tillgänglig via ”ping” (dvs. ICMP) och att brandväggsreglerna har som standard att tillåta att servrarna blir ping:ade.
-Kan jag använda övervakningsservern för att övervaka ICS/SCADA-utrustning?
-Ja, men det förutsätter några saker:
-1. Att ICS/SCADA-utrustningen som ska övervakas sitter på ett nätverk som går att nå.
-2. Att ICS/SCADA-utrustningen som ska övervakas har en IP-adress.
-3. Att ICS/SCADA-utrustningen är tillgänglig via ”ping” (dvs. ICMP). Kontrollera att utrustningen har stöd för ping.
-Om mer avancerad övervakning önskas, exempelvis via SNMP, kan övervakningsservern även konfigureras att göra det.
-Kan jag använda övervakningsservern för att övervaka annan infrastrukturutrustning, såsom exempelvis kylsystem eller enheter för avbrottsfri ström?
-Ja, men det förutsätter någras saker:
-1. Att infrastrukturutrustningen som ska övervakas sitter på ett nätverk som går att nå.
-2. Att infrastrukturutrustningen som ska övervakas har en IP-adress.
-3. Att infrastrukturutrustningen är tillgänglig via ”ping” (dvs. ICMP). Kontrollera att utrustningen har stöd för ping.
-Om mer avancerad övervakning önskas, exempelvis via SNMP, kan övervakningsservern även konfigureras att göra det.
-Servern vill inte starta operativsystemet. Finns det något jag kan göra?
-Starta upp servern på det installationsmedia som användes, till exempel en USB-sticka eller DVD-skiva. Men i stället för att utföra en installation, välj alternativet ”felsökning” i menyn som visas i samband med att systemet startar. Se bilden nedan:
-
-Välj ”Felsökning” i menyn som visas vid systemstart.
-Från felsökningsmenyn, välj ”Rescue a CentOS system” för att starta upp systemet i ett speciellt felsökningsläge. Se bilden nedan:
-
-Välj ”Rescue a CentOS system” i felsökningsmenyn.
-Därefter startas ett nytt program upp, varifrån en speciell återställningsmiljö är tillgänglig där man kan försöka läsa ut existerande filer eller verkställa vissa felsöknings- och felavhjälpningskommandon.
-
-Rescue-meny.
-För mer dokumentation och information om hur man gör systemåterställning eller akut administration hänvisar vi till RedHats egen dokumentation: https://www.centos.org/docs/5/html/Installation_Guide-en-US/ch-rescuemode.html
-Var finns källkoden till alla programmoduler och paket?
-Källkoden till alla paket kommer att vara tillgänglig. Sök via Energisäkerhetsportalen i första hand eller via Github i andra hand.
-Jag vill skapa en egen installationsfil utifrån källkoden, hur gör jag?
-Hämta hem den kompletta källkoden med alla filer som ingår i paketeringen. Det finns ett relativt kort och enkelt skript kallat create_iso.sh i paketet. Filen är ett så kallat shellskript som är en sammansättning av kommandon. Kommandona i skriptet automatiserar ett antal steg för att färdigställa ett antal moduler, exempelvis dokumentationen, och sedan skapa ett filsystem med allt nödvändigt innehåll.
-För att lyckas bygga installationsfilen, måste ett antal förutsättningar uppfyllas:
-• Detta shellskript kräver en Linux-miljö, sannolikt ett CentOS 7-system, för att kunna fungera korrekt.
-• Dokumentationen måste kunna skapas. För detta krävs pandoc eller om Makefilen i dokumentationskatalogen ändras, ett annat verktyg för att förvandla dokumentation skriven i markdown till pdf, html med mera.
-• För att kunna hämta RPM-paketen som behövs till installationen behövs internetåtkomst.
-
-Nedan följer en detaljerad beskrivning av hur detta går till:
-1. Starta ett terminalfönster (Om du är osäker på hur man gör detta, se detaljbeskrivning i kapitlet Terminalåtkomst och kommandoraden)
-2. Skapa dokumentationen.
-3. I den katalog du laddat ner filerna till, byt till underkatalogen med hjälp av kommandot cd docs.
-4. I docs-katalogen, skriv make all för att bygga dokumentationen som krävs innan själva installationsmediet skapas.
-5. Ladda ner beroenden.
-6. Säkerställ att alla repositories [O46]som krävs är aktiverade i byggdatorn, 1. Lägg till repository image/isolinux/postinstall/config/ids_server/rhscl-httpd24-epel-7-x86_64.repo 2. Lägg till repository: image/isolinux/postinstall/config/ids_server/rhscl-v8314-epel-7-x86_64.repo 3. Lägg till repository image/isolinux/postinstall/config/ids_server/rhscl-rh-passenger40-epel-7-x86_64.repo 4. Lägg till repository: image/isolinux/postinstall/config/monitor_server/icinga2.repo 5. Lägg till publika signeringsnyckeln image/isolinux/postinstall/config/monitor_server/RPM-GPG-KEY-icinga 6. Lägg till repository: image/isolinux/postinstall/config/ids_server/rhscl-ruby193-epel-7-x86_64.repo 7. EPEL, går att installera med yum install epel-release.
-7. I den katalog du laddat ner filerna till, byt till underkatalogen med hjälp av kommandot cd image.
-8. I image-katalogen, kör det medföljande programmet ./download_packages.sh (det här skriptet tog cirka 10 minuter att köra på en testdator).
-9. Skapa installationsmedia.
-10. I den katalog du laddat ner filerna till, byt till underkatalogen med hjälp av kommandot cd image.
-11. I image-katalogen, kör det medföljande programmet ./create_iso.sh (det här skriptet tog cirka minuter att köra på en testdator).
-Skriptet download_packages.sh som körs, laddar ner alla programpaket som behövs i katalogen image/isolinux/Packages.
-Skriptet create_iso.sh som körs skapar en fil med namnet foss.iso i samma katalog. Detta är filen med installationsprogrammet som kan brännas till DVD eller installeras på en USB-minnessticka.
-Från DVD:n eller USB-enheten går det sedan att boota den aktuella datorn som installationen ska utföras på.
-
-Licensiering och tillgång till programvaran
-Detta kapitel beskriver licenskrav, licensformer och andra formella saker som behövs för att uppfylla olika krav som ställs för att kunna förpacka och tillhandahålla dessa programpaket.
-Programpaket som inte tillåter distribution
-När vi inte kunnat avgöra licensformen eller där licensformen inte tillåter direkt återdistribution av programvaran, finns textbeskrivningar i distributionen som beskriver hur en användare själv kan hämta dessa moduler eller programpaket och installera i denna modul, vilket är acceptabelt enligt licensmodellerna.
-Licenser
-En central licens som förekommer i de flesta programpaket som ingår i vår programdistribution är Gnu Public License (GPL) version 2 samt version 3. Dessa licenser finns närmare beskrivna här: gnulicens.
-Efterlevnad av GPL-krav
-För att följa de krav som Gnu Public Licenses (GPL) och varianter därav (t.ex. LGPL) har, främst krav på tillgänglighet av källkoden, kommer denna att göras tillgänglig för allmänheten genom distribution via publika kanaler, till exempel GitHub och via länkar på energisäkerhetsportalen.
-Egenutvecklad kod
-Paketeringen innehåller mer än enbart programvara skapad av andra parter. De skript och de program som vi utvecklat som en del av detta projekt är släppt under GPL-licens, vilket innebär att vem som helst får ta del av, modifiera och vidaredistribuera källkoden så länge de vidareför dessa licenskrav i ytterligare led mot andra personer och parter.
-Egenutvecklad dokumentation
-Den dokumentation som är framtagen för detta projekt (exempelvis denna text) är fritt tillgänglig under Creative Commons Attribution 4.0 International.
-Denna licens ger fria möjligheter att vidaredistribuera och att använda dokumentationen.
-Distribution
-Nedan redovisas och listas olika programpaket och programdistributioner med tillhörande licenser.
-Centos Linux
-CenOS och dess olika beståndsdelar består till stor del av operativsystemets kärna (Linuxkärnan), systemkommandon och verktyg, kodbibliotek, konfigurationsfiler, subsystem och applikationer. Merparten, om inte alla dessa, är licensierade under GPL. Förutom att programvarulicensen är GPL, finns följande tillägg rörande just namnet CentOS:
-Från centoslicens
-    You may use the Word Mark, but not the Logos, to truthfully describe 
-    the origin of the software that you are providing but not the software
-    itself, where what you are distributing is modified official CentOS
-    source code or is a build compiled from modified official CentOS 
-    source code.
-
-    You may say, for example: “This software is derived from the source code 
-    for the CentOS distribution.” However, you may not say that the software 
-    is CentOS.
-Icinga
-Larm- och övervakningsprogramvaran Icinga ingår i paketeringen. Icinga är licensierad enligt GPL version 2, vilket enligt Icingalicensen innebär:
-    All Icinga software is open source and licensed under GPL version 2 
-    (Icinga Web 1 under GPLv3). So it is free (as in beer and as in speech) to use,
-    distribute and modify[O47].
-Snort
-Snort ägs av Cisco. Programvaran är [GPL]-licensierad. De så kallade Community Snort Rules är licensierade enligt en speciell icke-kommersiell licens. Snorts olika licenser finns närmare beskrivna på snortlicens.
-Quickdraw
-Quickdraw är en samling protokollbeskrivningar, regler och IDS/IPS-specifika beskrivningar av ICS/SCADA-protokoll. Samlingen är framtagen av företaget DigitalBond och är släppt under så kallad MIT-licens, vilket ger stora friheter att använda, ändra och vidaredistribuera reglerna. För mer detaljerad information, se quickdrawlicense.
-    The MIT License (MIT)
-
-    Copyright (c) 2015 Digital Bond
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
-EmergingThreats
-EmergingThreats SCADA-regler är en samling protokollbeskrivningar, regler och IDS/IPS-specifika beskrivningar av ICS/SCADA-protokoll. Samlingen är framtagen av företaget Emerging Threats Inc och är släppt under så kallad MIT-licens, vilket ger stora friheter att använda, ändra och vidaredistribuera reglerna. För mer detaljerad information, se emergingthreats.
-    Copyright (c) 2003-2015, Emerging Threats
-    All rights reserved.
-  
-    Redistribution and use in source and binary forms, with or without modification, 
-    are permitted provided that the following conditions are met:
-  
-    * Redistributions of source code must retain the above copyright notice, 
-      this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright notice, 
-      this list of conditions and the following disclaimer in the documentation 
-      and/or other materials provided with the distribution.
-    * Neither the name of the nor the names of its contributors may be used to 
-      endorse or promote products derived from this software without specific prior 
-      written permission.
-  
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS 
-    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
-    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE 
-    FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
-    DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
-    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
-    OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE 
-    USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
-Snorby
-Programvaran Snorby som ingår som en komponent i IDS-lösningen Snort är licensierad enligt GPL2. Det medför därmed inga problem att vidaredistribuera snorbykomponenten i plattformen.
-    Snorby - All About Simplicity.
-
-    Copyright (c) 2013 Threat Stack, Inc (support@threatstack.com)
-
-    Snorby is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    Snorby is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with Snorby.  If not, see <http://www.gnu.org/licenses/>.
-
-    Neither the names of Licensor, nor the names of any contributors to 
-    the Original Work, nor any of their trademarks or service marks, may 
-    be used to endorse or promote products derived from this Original Work 
-    without express prior permission of the Licensor. No license is granted 
-    to the trademarks of Licensor even if such marks are included in the 
-    Original Work. 
-
-    The above copyright notice and this permission notice shall be included 
-    in all copies or substantial portions of the Software. Not limited to but
-    including the Software's footer, Web URL and Author Names.
-
-    **Notice**
-    The snorby source code is 100% free and open source however we use highcharts 
-    for metrics and reporting. Please make sure you review the 
-    [highcharts](http://www.highcharts.com) licensing in detail 
-    [here](http://www.highcharts.com/license). The license above 
-    only applies to snorby source code (contact the Dustin Willis 
-    Webber if you have futher questions).
-För mer information, se snorbylicens.
-Snorby innehåller en komponent kallad "highcharts" som är licensierad enligt Creative Common Attribution Non-commercial. För mer information, se CCBYNC3
-Barnyard
-Programvaran Barnyard som ingår som en komponent i IDS-lösningen Snort är licensierad enligt GPL2. Det medför därmed inga problem att vidaredistribuera Barnyardkomponenten i plattformen.
-För mer information, se barnyardlicens
-Tcpdump
-Vi har använt oss av programvaran tcpdump för att kunna spela in nätverkstrafik. Tcpdump använder sig av en så kallad 3-clause BSD-license, vilket är en väldigt öppen och flexibel mjukvarulicens.
-För detaljinformation om programvarans licensbestämmelser, se tcpdumplicens.
-
-Ordlista
-AFörklaringAngreppEtt sätt att mot en IT-resurs göra någon typ av anfall, attack med hjälp av olika tekniska metoder.Antagonistiska angreppAntagonistiska angrepp är en form av aktörsdrivna hot.ApachePopulär webbserver med avancerad funktionalitet.AttackvektorEn attackvektor är en väg eller sätt på vilket en antagonist kan få genomföra skadliga attacker mot sårbarheter. Angreppsvägar gör det möjligt för exempelvis hackare att utnyttja sårbarheter i ett system vilket även inkluderar sårbarheter som den mänskliga faktorn.AttackytaDen yta (antal sårbarheter) som exponeras för en antagonist.AutentiseringKontroll av uppgiven identitet.Avsiktligt skadlig kod(Eng. malicious code, hostile code eller malware.) En fackterm och ett samlingsnamn på en mängd säkerhetsproblem som är förknippade med program som består av, eller innehåller, avsiktligt skadliga program- och programdelar.BFörklaringBarriärSkyddsanordning, säkerhetskontroll eller skyddsprincip som måste forceras.BIOS(Eng. Basic InputOutput System.) En specifikation som beskriver gränssnitt mellan operativsystem och hårdvaruplattform på låg nivå, så kallad firmware. BIOS utvecklades för, och var standard på, de ursprungliga IBM-kompatibla persondatorerna och många generationer av efterföljande persondatorer.Brandvägg(Eng. firewall.) Inom IT-teknik en säkerhetsfunktion som har som särskild uppgift att på ett säkerhetsmässigt sätt styra, kontrollera och rapportera datorkommunikation och nätverkstrafik.CFörklaringCAAllmänt vedertagen förkortning för Certification Authority.CentOSFritt operativsystem baserat på Linux. CentOS är ett derivat av RedHat Enterprise Linux, RHEL. Bakom CentOS projektet står företaget RedHat, som både stödjer den fria CentOS-versionen och den kommersiella RHEL-versionen av Linux.COTS(Eng. Commercial off-the-shelf.) Färdiga standardkomponenter till skillnad mot skräddarsydda produkter eller leverantörsunika lösningar.CyberattackAlla typer av offensiva attacker utförda av enskilda eller organisationer som har enskilda datorer, IT-infrastruktur, datornätverk eller utrustning med IT-koppling, exempelvis styrsystem eller styrsystemskomponenter som mål.DFörklaringDataintegritetEgenskap i ett informationssystem eller hos information med skydd mot förvanskning och oönskad förändring.DataintrångBrott enligt 4 kapitlet § 9c i brottsbalken. Brottet avser den som olovligen bereder sig tillgång till en uppgift som är avsedd för automatisk behandling eller olovligen ändrar, utplånar, blockerar eller i register för in sådan uppgift, om inte brottet uppfyller villkoren för något av brotten brytande av post- eller telehemlighet, intrång i förvar eller olovlig avlyssning.DCSDistributed Control System.DMZDMZ. Demilitariserad zon. Koncept inom brandväggsteknik som bestämmer och beskriver hur servrar och tjänster som inte tillhör ”utsida” eller ”insida” ska placeras. Genom att placera servrar och tjänster på ett DMZ så slipper man släppa igenom trafik hela vägen från utsidan till insidan när man ska erbjuda en extern tjänst. Trafiken stannar i stället på ett isolerat tjänstenät som separat skyddas av brandväggen.DVD(Eng. ”digital versatile disc” eller ”digital video disc”.) En optisk informationsbärare, som utvecklades av Philips, Sony, Toshiba och Panasonic i mitten av 1990-talet. Går att använda för att ”bränna” ned information på, för att sedan läsa tillbaka flera gånger. Kan användas som installations-media för operativsystemsinstallation.EFörklaringElektroniskt certifikatDigital information som knyter ihop information med en viss utställare eller utgivare.FFörklaringFjärråtkomstMetod att på distans nå ett system, en applikation, en utrustning eller komponent. Termen används i dessa sammanhang ofta för att beteckna extern åtkomst mot en organisations nätverk vid exempelvis hemarbete, jour, diagnostik- eller service av hård eller mjukvara.GFörklaringGithubInternettjänst med webbplats och stöd för protokollet git. Centralt programarkiv där många projekt inom fri- och öppen källkod finns tillgängliga.Gnu Public LicenseEn licens för fri och öppen källkod. För detaljinformation och mer beskrivning av GPL-licenser, se gnulicens.GPLPopulär förkortning för GNU Public License. En licens som ofta används för fri- och öppen programvara.HFörklaringHashfunktion(Eng. hash function.) Matematisk funktion som utifrån en informationsmängd framställer ett kondensat eller datasträng med fast längd. För att hashfunktionen ska vara användbar för säkerhetsteknik krävs det goda kvaliteter vad det gäller att två informationsmängder inte resulterar i samma hashvärde samt att det utifrån hashvärdet inte baklänges ska gå att bestämma eller få fram själva informationsmängden.Hashvärde(Eng. hash sum eller hash value.) Det värde som producerats av en hashfunktion. Används inom säkerhetsteknik, men ställer då vissa krav på säkerhetskvaliteten hos hashfunktionen.HotEn möjlig, oönskad händelse med negativa konsekvenser för verksamheten.HTTP(Eng. Hypertext Transfer Protocol.) Applikationsnivåprotokoll för att skapa distribuerade, kollaboriativa multimediala informationssystem. Den nuvarande mest spridda versionen, version 1.1, specificeras i RFC-2616.HTTPSHTTP-trafik som skickas via en krypterad tunnel baserad på SSL/TLS.Härdning(Eng. Hardening.) Ett härdat system är ett system där funktioner i operativsystem är anpassade till att stödja systemets primära funktion och administrativa åtgärder. Övriga funktioner är avslagna, nedlåsta och på annat sätt konfigurerade för att förhindra att systemet används på ett oönskat sätt. Systemets primära funktion är även mycket begränsat så att den primära funktionen endast får genomföra de förändringar som det är designat för och att dessa kontroller inte främst kontrolleras av programmet, utan av operativsystemet.IFörklaringIACS(Eng. Industrial automation and control system.) Förkortning som återkommande används i IEC 62443-standarden för att beteckna industriella informations- och styrsystem.ICMP(Eng. Internet Control Message Protocol.) Ett nätverksprotokoll för att skicka kontroll- och statusmeddelanden mellan nätverksansluten utrustning.ICS(Eng. Industrial Control System.) En vanligt förekommande förkortning som ibland används synonymt med industriella informations- och styrsystem.IcingaVerktyg för att monitorera, övervaka och larma om avvikelser. Icinga är ett ramverk som bygger på öppen källkod.IDS(Eng. Intrusion detection system.) En säkerhetsfunktion eller en utrustning som övervakar nätverk, systemaktiviteter och applikationer för att upptäcka antagonistiska aktiviteter, policyöverträdelser eller andra avvikelser.InformationEtt uttryck av kunskap eller budskap i konkret form som ofta, men inte alltid, innehåller en samling fakta.InformationsläckageHotet att information lämnas ut av behöriga som medvetet överträder sina befogenheter och det förtroende som de tilldelats. Kan också vara automatiskt uthämtning eller utlämning, av ett program eller ett system som är felaktigt.InformationstillgångEn organisations eller persons informationsrelaterade tillgångar såsom dokument, strukturerad elektronisk och digital data, tjänster, datorer och applikationer.InformationsstöldStöld av informationstillgångar.InformationssäkerhetBevarande av konfidentialitet (sekretess), riktighet och tillgänglighet hos information. Andra egenskaper såsom autenticitet, spårbarhet, oavvislighet och tillförlitlighet inbegrips vanligen också.IntrångOönskad interaktion med system i strid med systemets policy eller som kan medföra förändring, störning eller skada. Det kan förekomma både fysiskt eller logiskt intrång.IntrångsdetekteringssystemAutomatiserad upptäckt och analys av händelser som kan uppfattas som säkerhetsöverträdelser, intrångsförsök eller liknande.KFörklaringKlartext(Eng. Plaintext.) Icke-krypterad information vars innebörd är direkt förståelig eller användbar.Kryptering(Eng. Encryption.) Processen för att omvandla klartext till kryptotext.Krypteringsnyckel(Eng. encryption key.) Den information som tillsammans med en kryptoalgoritm omvandlar från klartext till kryptotext, eller omvänt.Kryptosystem(Eng. encryption system.) Utrustning eller program som, inklusive nyckelhantering, som används för kryptografisk tillämpning – omvandling mellan klartext och kryptotext.Kryptotext(Eng. Ciphertext.) Den för obehöriga oåtkomliga information som skapas av en krypteringsalgoritm med en tillämpad krypteringsnyckel tillsammans med klartext.LFörklaringLAN(Eng. Local Area Network.) Ett lokalt datornätverk.Link-localEngelskt utryck som syftar på en speciell typ av IP-adress som enbart fungerar på det lokala nätverket.LighttpdEn enkel webbserver. Ingår i vissa av programpaketen för att hantera åtkomst till insamlad information.Logisk säkerhet(Eng. logical security.) Alla aspekter av säkerhet som är relaterade till elektroniska, digitala objekt.NFörklaringNAT(Eng. Network Address Translation.) Adressöversättningsfunktionalitet som översätter mellan nätverksadresser. Metod som oftast används för att kunna använda IP-adresser som inte är nåbara och användbara på det publika Internet.NIDSNätverksbaserat intrångsdetekteringssystem (Eng. Network Intrusion Detection System.) Säkerhetskontroll för att upptäcka och larma om säkerhetshändelser, säkerhetsöverträdelser, policybrott och liknande utifrån analys av nätverkstrafik.OFörklaringOLE(Eng. Object Linking and Embedding.) Företagsspecifik (proprietär) teknologi utvecklad av företaget [Microsoft] för att möjliggöra att data som hanteras av en programkomponent kan byggas in i en annan programvara, för hantering av datan/informationen/dokumentet.OPC(Eng. OLE for Process Control och senare Open Platform Communications.) En serie standarder och specifikationer för utökning och anpassning av OLE för att användas i industriella tillämpningar. Skapades under mitten av 1990-talet och förvaltas och vidareutvecklas av OPC Foundation.PFörklaringpandocVerktyg för att omvandla dokumentation skriven i ett format till ett eller flera andra format.PatchProgramuppdatering för att fixa enstaka eller fåtal fel i programkod. Det finns såväl källkodspatchar som binärpatchar som utför rättningar i ursprungskällkoden respektive i redan kompilerad och installerad programvara. Att inte installera en patch medför att man har en kvarvarande risk då programfelet, exempelvis ett säkerhetsrelaterat programfel, är latent och möjligt att missbruka.PC(Eng. personal computer.) En persondator, vilket är en dator för generell användning, med ett pris som gör den allmänt tillgänglig och som används direkt av en slutanvändare.pfsenseAvancerad brandvägg byggd på öppen källkod, med grafiskt användargränssnitt. För mer info se pfSense hemsida.pingKommando som skickar nätverkspaketet ICMP echo request till en annan nätutrustning, för att se om denna utrustning fungerar och är åtkomlig via nätverket. Om utrustningen fungerar skickar den tillbaka ICMP echo reply.PLC(Eng. Programmable Logic Controller.) Specialhårdvara, ofta ett inbyggt system med nätverksåtkomst, som sköter kontrolloopar och datainsamling för automationsutrustning. Har ofta digitala och analoga utgångar för att styra exempelvis motorer eller pumpar, eller ingångar för att ta in värden från givare.QFörklaringQuickDrawEn samling regler och protokollfilter för IDS- och IPS-system. Samlingen är utvecklad av företaget DigitalBond och sedan släppt fritt för allmän användning. För mer information, se Quickdraw-sidan på webbplatsen github.com.RFörklaringREST(Eng. REST som betyder Representational State Transfer.) Ett gränssnitt med webbaserad mjukvaruarkitektur utvecklat enligt REST-principerna.RHELFritt operativsystem baserat på Linux. Bakom RedHat Enterprise Linux står företaget RedHat, som både stödjer den fria CentOS-versionen och den kommersiella RHEL-versionen av Linux.RiktighetSkyddsmål att information inte förändras, vare sig obehörigen, av misstag eller på grund av en funktionsstörning.RiskSannolikheten för att ett givet hot realiseras och den skadekostnad detta skulle leda till.RPM(Eng. RPM Package Manager.) Ett programsystem för programpakethantering, för att paketera, installera, uppdatera, kunna hantera beroenden på andra filer eller programpaket, eller radera grupper av filer som logiskt hör ihop i ett programpaket.RsyslogEn utökad variant av syslog, se rsyslog.RTU(Eng. RTU betyder Remote Terminal Unit.) En RTU är ett enklare inbyggt system för inhämtning av värden eller styrning av fältutrustning. Enligt den traditionella definitionen av en RTU är de till skillnad från en PLC enklare och har inte möjlighet att köra egen styrprogramvara, kontrolloopar eller autonom styrning. Moderna RTU:er har dock suddat ut gränserna mellan RTU och PLC eftersom RTU-utrustningen blir mer avancerad och får större möjligheter att agera på händelser, styra kontrollen eller agera autonomt.SFörklaringSAMLSe Security Assertion Markup Language. SAML finns antagen som en standard av samarbetsorganisationen OASIS och har givits ut i flera versioner, bland annat 1.0, 1.1 och 2.0.SCADASCADA är en vedertagen förkortning för Supervisory Control And Data Acquisition. SCADA beskriver ett överliggande, ofta geografiskt distribuerat, system för styrning, kontroll och övervakning av fysiska processer.Security Assertion Markup LanguageEn XML-baserad öppen standard för att specificera dataformat för att utbyta information rörande behörigheter och behörighetskontroll.Security by obscurityEtt vanligt förekommande problem inom säkerhetsområdet. Denna term kommer av att man i stället för att skapa reell säkerhet försöker skydda systemet genom att hemlighålla kunskap om system och tillämpningar. Man hoppas med andra ord att säkerheten stärks genom att man döljer något, till exempel hur en viss säkerhetsfunktion är implementerad.Sekretess(Eng. confidentiality.) Att innehållet i ett informationsobjekt, ibland även dess existens, inte görs tillgängligt eller avslöjas för obehöriga. Andra namn för sekretess är konfidentialitet och insynsskydd.SELinuxSecurity Enhanced Linux är ett ramverk med säkerhetsfunktioner för att policymässigt kunna styra operativsystemet, applikationer och användare och kontrollera deras respektive åtkomst och möjligheter i systemet. För mer information, se SELinux.ShellskriptKommandofil med ett eller flera kommandon vars exekveringflöde går att styra. Ett sätt att automatisera vissa programfunktioner genom att skapa enkla program sammansatta från kommandon.SID(Eng. Snort ID.) Ett sätt att unikt identifiera individuella snortregler.SkadaFel som uppstått eller orsakats vid ett särskilt tillfälle.SkadekostnadSammanlagt värde av ett angrepps konsekvenser.Skadlig kod(Eng. malicious code eller malware.) Samlingsnamn för program som vid exekvering orsakar avsiktlig skada eller störning. Andra namn för skadlig kod är illasinnad kod, datorvirus, datavirus och malware.SkivavbildningEn fil vars innehåll är en avspegling av en CD/DVD-skiva. En skivavbildning används ofta som distributionsformat för program, som historiskt sett skulle varit distribuerade via CD-ROM-skivor eller DVD-skivor. En skivavbildning är ofta en så kallad ”ISO-fil”, vilken sparas över till en CD-skiva via ett CD-brännarprogram eller skrivs till ett USB-minne med specialprogram, så att USB-minnet blir ett installationsmedia.SkyddHdlingar, rutiner och tekniska arrangemang som syftar till att minska sårbarhet.Sms(Eng. Short message service.) En metod för att skicka korta textmeddelanden till mobiltelefoner. Sms används bland annat i övervakningssammanhang, där ett meddelande skickas från övervakningsservern.SNMP(Eng. Simple Network Management Protocol.) Ett applikationsnivåprotokoll för att utbyta övervaknings- och statusinformation mellan nätverksenheter. Protokollet detiniferas i RFC 1157.SnortNätverksorienterat intrångsdetekteringssystem. En av de komponenter som använts i de verktyg som projektet paketerat och tagit fram för att skapa grundskydd för svenska bolag.SnorbyGrafiskt användargränssnitt till intrångsdetekteringssystemet snort.SPAN-port(Eng. Switched Port Analyzer.) En speciell inställning för en logisk eller fysisk nätverksport på en så kallad nätverksswitch. Med hjälp av denna inställning skickas kopior av nätverkstrafik från en eller fler övervakade portar till en annan utpekad switchport. Denna kopiering av nättrafik görs ofta för att skicka kopierad trafik till en trafikanalysator eller säkerhetsfunktion som genom att studera nätverkstrafiken kan dra slutsatser för felsökning eller säkerhetsproblem.SSH(Eng. Secure Shell.) Protokoll och säkerhetsverktyg för att etablera krypterade nätverkskopplingar.SSL(Eng. Secure Sockets Layer.) Protokoll för att etablera krypterade nätverkskopplingar. Är ersatt med den nyare protokollvarianten TLS, transport layer security.Spårbarhet(Eng. Accountability.) Att i efterhand entydigt kunna härleda specifika aktiviteter eller händelser till ett identifierad objekt, oftast en användare.Stark autentiseringAutentisering som innebär att identiteten kontrolleras på två olika sätt.SyslogEn spridd standard som definierar protokoll, dataformat och tillämpning för att skicka loggmeddelanden. För mer information, se syslog.systemdCentral kontroll- och konfigurationstjänst i Linux-systemet. Ersättare till programmet init. Många systemuppsättningar och systemändringar sker via systemtjänstens olika delar.Systemintegritet(Eng. system integrity.) Att tillståndet för ett IT-system hålls inom de driftskriterier och tekniska specifikationer som systemet är avsett att operera under. Att dessa förutsättningar bibehålls under tid.Sårbarhet(Eng. Vulnerability.) Kritiskt beroende av en informationstillgång, latent brist i informationstillgång. Sårbarheten öppnar upp för olika typer av missbruk av informationstillgången såsom dataintrång eller otillåten behörighetseskalering.Säker kommunikationKommunikationsmekanismer, som har kvaliteter för att skydda, överför information från avlyssning, manipulation, åverkan, återsändning med mera.SäkerhetsarkitekturStrategiskt ramverk, byggt på en enhetlig struktur och sammanhållande principer för de säkerhetsfunktioner som finns och den säkerhetsnivå dessa ska hålla.SäkerhetshålSvaghet i ett system som tillåter att obehöriga kan påverka integriteten av systemet.SäkerhetsåtgärdMedel för hantering av risk, innefattandes policyer, rutiner, riktlinjer, förfaranden eller organisationsstrukturer vilka kan vara av administrativ, teknisk, ledningsmässig eller juridisk karaktär.TFörklaringTCP/IP(Eng. Transmission Control Protocol / Internet Protocol.) Standardiserat datakommunikationsprotokoll som används som bärartjänster såväl på internet som inom industriella lösningar.tcpdumpVerktyg för att spela in och analysera nätverkstrafik. Tcpdump klarar av att avkoda och analysera många olika typer av nätverkstrafik. För mer information se tcpdump.Tillgänglighet(Eng. Availability.) Möjligheten att efter behov kunna nyttja IT- och informationstillgångar i förväntad utsträckning samt inom önskad tid. Angrepp mot tillgänglighet kallas ofta DoS-attacker, eller i större skala, DDoS-attacker.Tillgänglighetsförlust(Eng. denial-of-service). Angrepp mot tillgänglighet med resulterande driftstörning. Kallas ofta DoS-attacker, eller i större skala, DDoS-attacker.TLSAllmänt vedertagen förkortning för Transport Layer Security. Se Transport layer security.Transport layer securityEtt kommunikationsprotokoll med fokus på säkerhet. Genom att bygga på kryptografiska algoritmer uppnås skydd mot insyn och förändring av information. TLS är en öppen standard för säkert utbyte av krypterad information mellan datorsystem och är en vidareutveckling av version 3 av SSL-protokollet. Ett av de vanligaste användningsområdena för TLS är tillsammans med http-protokollet för överförande av webbtrafik. Standarderna för specifikation av TLS är RFC-2246 (TLS version 1.0), RFC-4346 (TLS version 1.1), RFC-5246 (TLS version 1.2).Trojansk hästEtt datorprogram som utger sig för en sak, men som i själva verket har dold funktionalitet som lurar användare. Se även skadlig kod.UFörklaringUEFI(Eng. Unified Extensible Firmware Interface.) En specifikation som beskriver gränssnittet mellan operativsystem och hårdvaruplattform på låg nivå, så kallad firmware. UEFI ersätter den gamla BIOS-standarden som lågnivågränssnitt för persondatorer.USB(Eng. Universal Serial Bus[O48].)VFörklaringVirtuellt lokalt nätverkEn metod för att på nivå 2 i ett nätverk göra en logisk uppdelning mellan olika nätverkadressrymder. Ofta kallat VLAN.Virtuellt privat nätverkEn metod för att utsträcka lokala nätverk över ett publikt nätverk, oftast i form av krypterade tunnlar. Ofta kallat VPN.VLAN(Eng. Virtual Local Area Network.) Se virtuellt lokalt nätverk.VPN(Eng. Virtual Private Network.) Se virtuellt privat nätverk.WFörklaringWAN(Eng. Wide Area Network.) Geografiskt utspritt nätverk, ofta över större områden såsom landsdelar eller över landsgränser.WiresharkEtt välkänt program för nätverksanalys. Programmet spelar in och analyserar olika typer av datorkommunikation. Wireshark har analysstöd för en stor mängd olika typer av nätverksprotokoll. För mer information, se Wireshark.XFörklaringXML(Eng. Extensible Markup Language, XML.) Ett beskrivningsspråk och regler för att koda dokument på ett sätt som både är läsbart för människor och datorprogram.YFörklaringyumVerktyg för att installera, ta bort eller göra uppdateringar av programpaket i CentOS.ZFörklaringZonindelningLogisk separation mellan nätverk.ZonmodellEtt sätt att dela upp ett nätverk i mindre delar, så kallade zoner, som är avskilda från varandra. En zon ska ha en klar och väldefinierad avgränsning. Säkerheten i en zon hanteras både vid zongränsen, där man avgränsar mot andra zoner, och inom själva zonen.ÅFörklaringÅterstartOmstart av en dator, nätverksutrustning eller en tjänst.ÅtkomstkontrollSe behörighetskontroll.ÖFörklaringÖppen källkod(Eng. open source.) Även kallad öppen programvara är datorprogram vars källkod inte är leverantörsspecifik utan är tillgänglig att använda, läsa, modifiera och vidaredistribuera för den som vill.Öppna nyckelsystemKryptosystem där olika nycklar används beroende på om man avser att kryptera (skydda) information eller dekryptera (ta bort skyddet) informationen. Den ena av de två nycklarna – den som används för kryptering av information – kan göras publikt tillgänglig, därav namnet. Öppna nyckelsystem löser ett klassiskt problem inom kryptografik – förmedling av nycklar mellan de parter som avser kommunicera säkert.Öppna systemEtt system som har hög grad av interoperabilitet (kan fungera tillsammans med andra system) och portabilitet (fungerar på olika plattformar) samt följer öppna standarder i hög utsträckning.ÖverbelastningsattackEtt angrepp som har som avsikt att hindra normal användning, störa eller helt slå ut funktioner och system.ÖvervakningsserverFunktion för att övervaka andra system, tjänster, applikationer och liknande för att se ifall de avviker från uppsatta regler och hur dessa ska bete sig.
-Referenser
-ReferensLänkApachehttps://httpd.apache.org/Basic InputOutput Systemhttps://en.wikipedia.org/wiki/BIOSBeepsendhttp://www.beepsend.se/CCBYNC3https://creativecommons.org/licenses/by-nc/3.0/COTShttps://en.wikipedia.org/wiki/Commercial_off-the-shelfCentOShttps://www.centos.org/Chaosreaderhttp://www.brendangregg.com/chaosreader.htmlCommercial off-the-shelfhttps://en.wikipedia.org/wiki/Commercial_off-the-shelfCreative Commonshttps://creativecommons.org/licenses/by/4.0/legalcodeEmergingThreatshttps://rules.emergingthreats.net/open/snort-2.9.0/rules/emerging-scada.rulesExtensible Markup Languagehttps://en.wikipedia.org/wiki/XMLFedora projektets instruktion för CD-bränninghttps://docs.fedoraproject.org/sv-SE/Fedora/13/html-single/Burning_ISO_images_to_disc/index.htmlFreeBSDhttps://www.freebsd.org/Get-FileHash.ps1https://gallery.technet.microsoft.com/scriptcenter/Get-Hashes-of-Files-1d85de46/file/107948/1/Get-FileHash.ps1IEC 62443https://en.wikipedia.org/wiki/Cyber_security_standards#ISA.2FIEC-62443_.28formerly_ISA-99.29ISOhttps://sv.wikipedia.org/wiki/ISO-avbildIT-sakerhetsarkitektur[O49]http://www.svk.se/siteassets/aktorsportalen/sakerhetsskydd/dokument/vagledning-it-sakerhetsarkitektur-final.pdfIndustrial Control Systemhttps://en.wikipedia.org/wiki/Industrial_control_systemIntrusion detection systemhttps://en.wikipedia.org/wiki/Intrusion_detection_systemLinuxhttp://www.linux.orgMicrosofts instruktion för CD-bränninghttp://windows.microsoft.com/sv-se/windows7/burn-a-cd-or-dvd-from-an-iso-fileMySQLhttps://mariadb.org/Netsniff-NGhttps://github.com/netsniff-ng/netsniff-ngNetwork Address Translationhttps://en.wikipedia.org/wiki/Network_address_translationNetwork Intrusion Detection Systemhttps://en.wikipedia.org/wiki/Network_intrusion_detection_systemNetworkManagerhttps://en.wikipedia.org/wiki/NetworkManagerOLE for Process Controlhttps://en.wikipedia.org/wiki/Open_Platform_CommunicationsOPC foundationhttps://opcfoundation.org/Object Linking and Embeddinghttps://en.wikipedia.org/wiki/Object_Linking_and_EmbeddingPassengerhttps://en.wikipedia.org/wiki/Phusion_PassengerPostgreSQLhttps://sv.wikipedia.org/wiki/PostgreSQLProgrammable Logic Controllerhttps://en.wikipedia.org/wiki/Programmable_logic_controllerQuickdrawhttps://github.com/digitalbond/quickdrawRESThttps://en.wikipedia.org/wiki/Representational_state_transferRFC-2246http://www.rfc-base.org/rfc-2246.htmlRFC-2616http://www.rfc-base.org/rfc-2616.htmlRFC-4346http://www.rfc-base.org/rfc-4346.htmlRFC-5246http://www.rfc-base.org/rfc-5246.htmlRTUhttps://en.wikipedia.org/wiki/Remote_terminal_unitRedHat Enterprise Linuxhttps://www.redhat.com/en/technologies/linux-platforms/enterprise-linuxRubyhttps://www.ruby-lang.org/en/SCADAhttps://en.wikipedia.org/wiki/SCADASELinuxhttps://en.wikipedia.org/wiki/Security-Enhanced_LinuxSEMhttps://en.wikipedia.org/wiki/Security_event_managerSIEMhttps://en.wikipedia.org/wiki/Security_information_and_event_managementSIMhttps://en.wikipedia.org/wiki/Security_information_managementSecurity Onionhttps://security-onion-solutions.github.io/security-onion/Software Collectionshttps://www.softwarecollections.org/en/Systemdhttps://sv.wikipedia.org/wiki/SystemdTLShttps://sv.wikipedia.org/wiki/Transport_Layer_SecurityTerminalhttps://en.wikipedia.org/wiki/Terminal_(OS_X)Unified Extensible Firmware Interfacehttps://en.wikipedia.org/wiki/Unified_Extensible_Firmware_InterfaceUniversal Serial Bushttps://sv.wikipedia.org/wiki/Universal_Serial_BusWiresharkhttps://wireshark.org/barnyardhttps://github.com/firnsy/barnyard2barnyardlicenshttps://github.com/firnsy/barnyard2/blob/master/LICENSEconfidentialityhttps://en.wikipedia.org/wiki/Confidentialitydokumentationhttps://wiki.centos.org/Documentationelkhttps://www.elastic.co/productsenergisakerhetsportalenhttp://www.energisakerhetsportalen.sefirewallhttps://en.wikipedia.org/wiki/Firewall_(computing)githubhttps://github.com/gnulicenshttp://www.gnu.org/licenses/grephttps://sv.wikipedia.org/wiki/Grep_%28program%29greyloghttps://www.graylog.org/icingahttps://www.icinga.org/lighttpdhttp://www.lighttpd.net/malwarehttps://en.wikipedia.org/wiki/Malwarengrephttps://en.wikipedia.org/wiki/Ngrepntophttp://www.ntop.org/products/traffic-analysis/ntop/open sourcehttps://sv.wikipedia.org/wiki/%C3%96ppen_k%C3%A4llkodpersonal computerhttps://en.wikipedia.org/wiki/Personal_computerpfSensehttps://www.pfsense.org/pfsensedlhttps://www.pfsense.org/download/pinghttps://sv.wikipedia.org/wiki/Pingquickdrawlicensehttps://github.com/digitalbond/quickdraw/blob/master/LICENSEqwertyhttps://sv.wikipedia.org/wiki/QWERTYromabhttps://www.romab.comrsysloghttps://en.wikipedia.org/wiki/Rsyslogskivavbildninghttps://sv.wikipedia.org/wiki/Skivavbildsnorbylicenshttps://github.com/Snorby/snorby/blob/master/LICENSEsnortlicenshttps://www.snort.org/licensesplunkhttp://www.splunk.com/svkhttp://www.svk.sesysloghttps://en.wikipedia.org/wiki/Syslogtcpdumphttp://tcpdump.orgtcpdumplicenshttp://www.tcpdump.org/license.htmlwww.svk.sehttp://www.svk.se
-Bilaga. Byggdetaljer för IDS-Server
-Den här bilagan beskriver i mer detaljnivå vad som behöver göras för att kunna bygga den IDS-funktion som skapats. Det finns två syften med bilagan: (1) att fungera som dokumentation för det arbete som lagts ner, men kanske viktigare (2) att fungera som instruktion för de som vill göra ändringar, utökningar eller på annat sätt återskapa samma grundförutsättningar för att kunna bygga de programpaket som ingår i IDS-lösningen.
-Snort
-Snort har inte sina paketfiler för Linux CentOS i något repository[O50]. Det innebär att uppdateringar måste laddas ner direkt från deras hemsida: https://snort.org/. För att uppdatera IDS-Servern räcker det med att ladda ner RPM:erna snort och daq från https://snort.org/#centos, kopiera dem till IDS-servern och köra följande i en Terminal som root-användare i den katalogen dit filerna kopierades:
-    rpm -i snort*.rpm daq*.rpm
-Snort-regler
-Det medföljer inga regler till Snort-paketen utan de måste laddas ner separat. Vi har därför paketerat med två grupperingar av regler med denna installation: Community-regler och ICS/SCADA-reglerna från Quickdraw. Community-reglerna är en samling regler som vanliga användare av Snort har skickat in. Dessa regler passar inte alltid i alla miljöer men i en relativt tyst ICS/SCADA-miljö borde de aldrig larma då de flesta reglerna är skrivna för Internet och kontorsmiljöer. Quickdraw-reglerna däremot är utvecklade specifikt för att larma om trafik mot SCADA-system. Dessa regler har några variabler som måste justeras för att de inte ska larma på normal trafik. Nedan följer ett exempel:
-    alert tcp $MODBUS_CLIENT any -> $MODBUS_SERVER 502 ( \
-        flow:from_client, established; \
-        content:"|00 00|"; \
-        offset:2;  \
-        depth:2; \
-        content:"|08 00 04|"; \
-        offset:7; \
-        depth:3; \
-        msg:"SCADA_IDS: Modbus TCP - Force Listen Only Mode"; \
-        reference:url,digitalbond.com/tools/quickdraw/modbus-tcp-rules; \
-        classtype:attempted-dos; \
-        sid:1111001; \
-        rev:2; \
-        priority:1; \
-    )
-MODBUS_CLIENT och MODBUS_SERVER är variabler som sätts i filen: /etc/snort/snort.conf. Dessa variabler bör ändras så att de reflekterar verkligheten i den miljö där IDS-servern sitter.
-Det går att registrera sig på Snorts hemsida för att få tillgång till fler regler och sedan får uppdateringar till dessa automatiskt.
-Barnyard2
-Barnyard2 är den process som läser från Snorts loggar och stoppar in dem i en databas. Den finns inte som paket utan den har för denna server laddats ner från https://github.com/firnsy/barnyard2/releases. Den har sedan kompilerats enligt följande:
-    $ tar xvzf barnyard2-v2-1.13.tar.gz
-    $ cd barnyard2-2-1.13/
-    $ /configure --with-mysql --with-mysql-libraries=/usr/lib64/mysql/
-    $ make -j4
-Sedan har den resulterande binären, vars SHA256-checksumma är
-e803874cdc0dd8a6f6edd5d6a5473ec5cda793793f4dbeae8b09b7a9371821c9
-kopierats in under filkatalogen: /usr/local/bin/.
-Snorby
-Snorby klonades direkt från sin master-branch eftersom de har gjort flera säkerhetsfixar där sedan sin senaste release. För att få exakt samma version som användes för IDS-servern, använd följande instruktioner:
-    $ git clone https://github.com/Snorby/snorby
-    $ cd snorby
-    $ git checkout 5a3a33cf496b66be7ef4bd7d3cce0a996e1d2112
-Snorby har ett beroende på Ruby version 1.9.x vilket innebär att det inte går att använda den Ruby-version som följer med CentOS 7. Dessutom behövs det då en annan webbserverversion och tillhörande modul för Passenger. En lösning på detta är att använda färdiga byggen från Software Collections. Installera följande RPM-paket för att få tillgång till dessa:
-    # yum install scl-utils
-    $ export RHSCL=https://www.softwarecollections.org/en/scls/rhscl/
-    $ wget $RHSCL/v8314/epel-7-x86_64/download/rhscl-v8314-epel-7-x86_64.noarch.rpm
-    $ wget $RHSCL/ruby193/epel-7-x86_64/download/rhscl-ruby193-epel-7-x86_64.noarch.rpm
-    $ wget \
-       $RHSCL/rh-passenger40/epel-7-x86_64/download/rhscl-rh-passenger40-epel-7-x86_64.noarch.rpm 
-    $ wget $RHSCL/httpd24/epel-7-x86_64/download/rhscl-httpd24-epel-7-x86_64.noarch.rpm
-    $ sudo rpm -i rhscl*.rpm
-Sedan går det installera de nödvändiga paketen genom följande:
-    $ sudo yum install -y v8314 ruby193 ruby193-ruby-devel
-    $ sudo yum install -y rh-passenger40 rh-passenger40-ruby193 httpd24
-Efter detta steg går det att fortsätta med Snorby-installationen. Flytta snorby-katalogen till webbkatalogen, till exempel: /var/www/html/snorby, gå in i katalogen och justera följande:
-1. Ändra i Gemfile: "gem 'rake', '0.9.2'" till "gem 'rake', '>0.9.2'".
-2. Ändra i Gemfile.lock: "rake (0.9.2)" till "rake (0.9.2.2)".
-För att få ner de Ruby-paket som Snorby behöver måste du dessutom göra följande (fortfarande i samma katalog):
-    # yum install -y git 
-    # yum install -y ruby193-ruby-devel
-    # yum install -y gcc-c++-4.8.3-9.el7.x86_64
-    # yum install -y libxml2-devel libxslt-devel
-    # yum install -y mariadb-devel
-    # bundle install --deployment
-    # RAILS_ENV=production bundle exec rake snorby:setup
-Utöver dessa steg behöver dess databas, login och lösenord konfigureras vilket görs i config/snorby_config.yml och config/database.yml.
-Databasen
-Under kickstart-installationen genererades det nya lösenord till databasanvändarna root och snort. Dessa sparas i /root/.mariadb_pass respektive /etc/snort/.mariadb_pass med filrättigheterna satta så att enbart rätt användare får läsa dem. För att koppla sig till databasen som root:
-    # mysql -uroot -p$(</root/.mariadb_pass)
-Systemd
-Vi har under /etc/systemd/system/ skapat systemd-servicefiler vilka används av systemet för att starta och stoppa de installerade tjänsterna.
-• snort@.service, används av NetworkManager för att starta och stoppa snort på rätt nätverkskort.
-• barnyard2.service, används av systemd för att starta barnyard2 efter att MySQL startat.
-• snorby.service, används av systemd för att starta Snorby efter att barnyard2 startat. Detta skript använder sig i sin tur av två skript vi skrivit /var/www/html/snorby/: snorby-start och snorby-stop.
-[O1]Eftersom detta är ett ofullbordat utkast av förordet har jag inte granskat det.
-[BK2]Kom ihåg at tlägga in juristernas ”feriskrivning etc”. kör sedan språkgraniskning i 2 steg.
-[O3]vad menas här? Vad är det som byggs/bygger? Som det står nu syftar det på att programmen bygger något i den skapande miljön.
-[O4]Här står det om flera programpaket, i stycket nedan står det om detta (ett) programpaket. Vad gäller?
-[O5]Jag stryker gärna hela denna bisats.
-[O6]Jag förstår inte detta.
-[O7]Rätt ordval?
-[O8]Ska inte vara bindestreck i loggserver i illustrationen.
-[O9]Ska inte vara bindestreck i koncernnät i illustrationen ovan.
-[O10]Ska stå: Larm- och övervakningsserver 
-i ill. ovan.
-[O11]rätt ord? Vad betyder det?
-[O12]Skriv ihop Koncernnät i ill. ovan.
-[O13]Ersätt alla skall med ska i flödesschemat ovan.
-[O14]Ska man inte välja en flik då?
-[O15]? 
-[O16]Är inte punkt 16 och 17 egentligen samma?
-Antingen automatisk inställning eller manuell.
-Mitt förslag på text I så fall:
-
-Om du ska använda DHCP kan du låta programmet göra inställningen automatiskt vilket är det valvalda alteranativet. Om i stället en fast IP-adress ska användas ska metod ändras till Manuell enligt bilden nedan, en del installationstyper kräver att det åtminstone är konfigurerat med en så kallad link-local-adress.[O16]
-
-[O17]Vilka val bör väl stå.
-[O18]Syftning. Vad är det som skickas?
-[O19]Jag är inte säker på att jag fattar detta. Är det korrekt beskrivet?
-[O20]Tidigare har det stått se exemplet nedan. Bättre vara konsekvent. VIlket föredrar ni?
-[O21]Vad får man garanti på? Det saknas ett ord här.
-[O22]skriver man så?
-[O23]Vedertaget att skriva detta med versaler?
-[O24]Riktigt?
-[O25]heter det så?
-[O26]Syftning? De automatiska inställningarna eller något annat. Oklart vad som avses.
-[O27]inte exempel på lokal dator väl?
-[O28]skriv hellre när så det inte blir inaktuellt direkt.
-[O29]?
-[O30]Hr jag förstått det rätt?
-[O31]här saknas något ord.
-[O32]koncernnät ska inte avstavas i illustrationen ovan.
-[O33]rätt ord?
-[O34]Före ska det väl vara?
-[O35]Korrekt?
-[O36]En begriplig fackterm? Jag vill helst byta ut den. Kan det I stället stå:
-förhandla med
-[O37]En begriplig fackterm? Jag vill helst byta ut den. Kan det I stället stå:
-förhandla om
-[O38]Oavslutad mening, något saknas.
-[O39]Ev. Förklaring redan här:
-En ISO-fil, även kallad en skivavbildning, är en fil som är en kopia av en hel CD eller DVD med data.
-[O40]inte ska du nu se?
-[O41]Vad vill ni kalla denna? Ni varierar er mellan USB-minne, USB-sticka och här USB-minnessticka. Välj ett och var konsekvent.
-[O42]Ordval?
-[O43]Ska detta vara kvar ska det förstås också vara en länk och hakparenteserna ska bort.
-[O44]etablerad fackterm?
-[O45]rätt?
-[O46]Använd svensk term om det finns någon: kataloger?
-[O47]Varför har ni valt att ha dessa delar på engelska istället för att översätta dem?
-[O48]Förklaring behövs väl?
-[O49]går det att få detta utan avstavning?
-[O50]rätt ord?
