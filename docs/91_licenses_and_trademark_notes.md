@@ -202,10 +202,12 @@ För mer information, se [snorbylicens].
 
 Snorby innehåller en komponent kallad "highcharts" som är licensierad enligt Creative Common
 Attribution Non-commercial för redistribution i icke vinstdrivande syfte. För mer information, se [CCBYNC3]  
-<https://www.highcharts.com/>  
+Däremot så gäller andra licensformer vid användande. Läs mer om licenser för highcharts för att ta reda på vilken licensform som gäller för dig:  
+<https://shop.highsoft.com/highcharts>  
 <https://www.highcharts.com/license>  
-//TODO: Kan vi verkligen använda denna komponent?
-(https://shop.highsoft.com/faq#Non-Commercial-0). Förslag från Joachim är att ha komponenten avaktiverad från start och användarna får välja om den ska aktiveras.
+<https://shop.highsoft.com/faq>  
+Om det är så att du behöver köpa en licens men av någon anledning inte har möjlighet till det går det att antingen [deaktivera highcharts](/docs/60_ids_server.md#deaktivera-highcharts) eller deaktivera Snorby.
+
 
 ### Barnyard
 

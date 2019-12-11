@@ -94,6 +94,40 @@ Bland reglerna som larmar syns att någon försökt skicka Modbus-trafik och DNP
 
 ![IDS-regler som matchat attacker mot ICS/SCADA-system.](images/ids_list_scada_rules_matching.png "Snorby ICS/SCADA händelser.")
 
+### Viktigt att veta om Snorby och Highcharts
+Snorby innehåller en komponent kallad "highcharts" som är licensierad enligt Creative Common
+Attribution Non-commercial för redistribution i icke vinstdrivande syfte. För mer information, se [CCBYNC3]  
+Däremot så gäller andra licensformer vid användande. Läs mer om licenser för highcharts för att ta reda på vilken licensform som gäller för dig:  
+<https://shop.highsoft.com/highcharts>  
+<https://www.highcharts.com/license>  
+<https://shop.highsoft.com/faq>  
+
+Om det är så att du behöver köpa en licens men av någon anledning inte har möjlighet till det går det att deaktivera highcharts eller Snorby:  
+
+#### Deaktivera Highcharts
+```
+	$ sudo mv /opt/snorby/public/javascripts/highcharts.js /opt/snorby/public/javascripts/highcharts.js.DISABLED
+```
+
+#### Deaktivera Snorby
+1. Deaktivera Snorby i Apache konfigurationen:
+  ```
+  $ sudo a2dissite snorby
+  ```
+2. Ladda om Apache konfigurationen:
+  ```
+  $ sudo service apache2 reload
+  ```
+3. Förhindra att Snoby startar vid boot genom att sätta `SNORBY_ENABLED=no` i `/etc/nsm/securityonion.conf`
+4. Kommentera bort raderna med *output database* i alla barnyard2.conf fileran för ALLA sensorer:
+  ```
+  sudo sed -i 's|output database: alert, mysql, user=root dbname=snorby host=127.0.0.1|#output database: alert, mysql, user=root dbname=snorby host=127.0.0.1|g' /etc/nsm/*/barnyard2*.conf
+  ```
+5. Starta om barnyard2 på alla sensorer:
+  ```
+  sudo nsm_sensor_ps-restart --only-barnyard2
+  ```
+
 ## Placering
 
 För att fungera på rätt sätt måste IDS-servern anslutas till ett nätverk. En IDS-server bör nättopologiskt
