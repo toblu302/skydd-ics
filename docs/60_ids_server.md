@@ -202,6 +202,7 @@ beskrivningarna i regler. Den skapar en mappnings-fil mellan regel-identifiering
     # perl create-sidmap.pl /etc/snort/rules/ \
              /etc/snort/andra_regler > /etc/snort/rules/sid-msg.map
 
+Var noga med att kontrollera vilka licenser som eventuella andra regler lyder under, då detta kan varierar från fall till fall.
 
 ### Extern åtkomst till webben
 

@@ -13,7 +13,7 @@ Snort har inte sina paketfiler för Linux CentOS i något repository. Det inneb�
 ### Snort-regler
 
 Det medföljer inga regler till Snort-paketen utan de måste laddas ner separat. Vi har därför paketerat med två grupperingar av regler med denna
-installation: Community-regler och ICS/SCADA-reglerna från Quickdraw. Community-reglerna är en samling regler som vanliga användare av Snort har
+installation: Community-regler från Snort och ICS/SCADA-reglerna från Quickdraw. Community-reglerna är en samling regler som vanliga användare av Snort har
 skickat in. Dessa regler passar inte alltid i alla miljöer men i en relativt tyst ICS/SCADA-miljö borde de aldrig larma då de flesta reglerna är
 skrivna för Internet och kontorsmiljöer. Quickdraw-reglerna däremot är utvecklade specifikt för att larma om trafik mot SCADA-system. Dessa regler
 har några variabler som måste justeras för att de inte ska larma på normal trafik. Nedan följer ett exempel:

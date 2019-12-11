@@ -22,7 +22,7 @@ har, främst krav på tillgänglighet av källkoden, kommer denna att göras til
 ## Egenutvecklad kod
 
 Paketeringen innehåller mer än enbart programvara skapad av andra parter. De skript och de
-program som vi utvecklat som en del av detta projekt är släppt under GPL-licens //TODO: Ange GPL version//, vilket innebär
+program som vi utvecklat som en del av detta projekt är släppt under GPL-licens, vilket innebär
 att vem som helst får ta del av, modifiera och vidaredistribuera källkoden så länge de vidareför dessa licenskrav
 i ytterligare led mot andra personer och parter.
 
@@ -68,7 +68,7 @@ GPL version 2.
 	this license in the LICENSE file included in the source package.
 ```
 
-För det grafiska gränssittet används icingaweb2 som även den är licenserad enligt GPL verision 2.
+För det grafiska gränssittet används icingaweb2 som även den är licenserad enligt GPL verision 2.  
 <https://icinga.com/>  
 <https://icinga.com/docs/icinga2/latest/#license>  
 <https://github.com/Icinga/icinga2/blob/master/COPYING>
@@ -76,8 +76,10 @@ För det grafiska gränssittet används icingaweb2 som även den är licenserad 
 
 ### Snort
 Snort ägs av Cisco och består av två huvudkomponenter. Dessa är detekteringsprogramvaran och en uppsättning regler. Reglerna är uppdelade i *Community Snort Rules* och *Proprietary Snort Rules*.  
-Detekteringsprogramvaran och *Community Snort Rules* är [GPL]-licensierad enligt version 2. *Proprietary Snort Rules* är licensierade enligt en speciell icke-kommersiell licens. Snorts olika licenser finns närmare beskrivna på [snortlicens].
-//TODO: Synka med kommentarer från RÄTTS.
+Detekteringsprogramvaran och *Community Snort Rules* är [GPL]-licensierad enligt version 2. *Proprietary Snort Rules* är inte inkluderade i denna paketering då de lyder under en annan licensmodell som bland annat kräver användarregistrering.  
+<https://www.snort.org/>  
+<https://www.snort.org/license>  
+<https://www.snort.org/downloads/#rule-downloads>
 
 ### Quickdraw
 Quickdraw är en samling protokollbeskrivningar, regler och IDS/IPS-specifika beskrivningar av ICS/SCADA-protokoll.
@@ -108,50 +110,6 @@ att använda, ändra och vidaredistribuera reglerna. För mer detaljerad informa
 ```
 https://github.com/digitalbond/Quickdraw-Snort  
 https://github.com/digitalbond/Quickdraw-Snort/blob/master/LICENSE
-
-### Emerging Threats
-
-Emerging Threats SCADA-regler är en samling protokollbeskrivningar, regler och IDS/IPS-specifika beskrivningar av ICS/SCADA-protokoll.
-Samlingen är framtagen av företaget Emerging Threats Inc. Emerging Threats regler kan lyda under 2 olika licenser, GPL version 2 eller BSD.
-För mer detaljerad information, se [emergingthreats].
-
-```
-	Emerging Threats
-
-	This distribution may contain rules under two different licenses.
-
-	Rules with sids 1 through 3464, and 100000000 through 100000908 are under the GPLv2.
-	A copy of that license is available at http://www.gnu.org/licenses/gpl-2.0.html
-
-	Rules with sids 2000000 through 2799999 are from Emerging Threats and are covered under the BSD License
-	as follows:
-
-	Copyright (c) 2003-2019, Emerging Threats
-	All rights reserved.
-
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
-	following conditions are met:
-
-	* Redistributions of source code must retain the above copyright notice,
-	  this list of conditions and the following disclaimer.
-	* Redistributions in binary form must reproduce the above copyright notice,
-	  this list of conditions and the following disclaimer in the documentation
-	  and/or other materials provided with the distribution.
-	* Neither the name of the nor the names of its contributors may be used to
-	  endorse or promote products derived from this software without specific prior
-	  written permission.
-
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
-	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-	DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-	SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-	SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-	WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
-	USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-```
-<https://rules.emergingthreats.net/open/snort-2.9.0/rules/LICENSE>  
-<https://opensource.org/licenses/BSD-3-Clause>  
-<https://en.wikipedia.org/wiki/BSD_licenses>
 
 ### Snorby
 

@@ -296,9 +296,7 @@ inte att vara aktuella för den IT-miljö som de installeras i.
 
 ### Finns det andra SCADA-regler, som inte är medpaketerade?
 
-Exempelvis så finns Emerging Threats SCADA-regler. De är inte medpaketerade, då vi inte hunnit
-göra extra testning med dessa regler. De kan dock hämtas hem från [EmergingThreats] webbplats
-och läggas till i IDS-sensorn.
+Exempelvis så finns Emerging Threats SCADA-regler. De kan hämtas hem från [EmergingThreats] webbplats och läggas till i IDS-sensorn.
 
 ### Hur ser regelverket ut, finns det något exempel på hur IDS-reglerna är utformade?
 
