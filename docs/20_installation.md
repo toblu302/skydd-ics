@@ -9,7 +9,7 @@ av installationsmediet från en distributionsserver eller, om du är en avancera
 
 Nedanstående flödesdiagram visar grafiskt översiktligt de olika stegen som behövs för att hämta programvaran, utföra de olika momenten för att installera och konfigurerar servern samt börja använda den. Vi har i själva paketeringen förenklat och automatiserat för att så få steg som möjligt skall behövas för att komma igång.
 
-![Flödesdiagram för att installera och använda programvaran](images/spics-flowchart.png "Flödesdiagram för att installera och använda programvaran.")
+![Flödesdiagram för att installera och använda programvaran](images/install_flow.png "Flödesdiagram för att installera och använda programvaran.")
 
 Första steget med att installera en server är att ha tillgång till själva installationsfilen, vanligtvis en så kallad [iso]-fil.
 Information om var och hur installations-filen kan hämtas finns på <https://www.informationssakerhet.se>.  
