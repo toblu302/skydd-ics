@@ -165,7 +165,7 @@ Däremot så gäller andra licensformer vid användande. Läs mer om licenser f�
 <https://www.highcharts.com/license>  
 <https://shop.highsoft.com/faq>  
 
-Om det är så att du behöver köpa en licens men av någon anledning inte har möjlighet till det går det att antingen deaktivera highcharts eller deaktivera Snorby. Se avsnittet *Viktigt att veta om Snorby och Highcharts* i kapitlet *IDS server* i dokumentationen för hur det går till.
+Om det är så att du behöver köpa en licens men av någon anledning inte har möjlighet till det går det att antingen deaktivera highcharts eller deaktivera Snorby. Se avsnittet [Viktigt att veta om Snorby och Highcharts] i kapitlet [IDS server] i dokumentationen för hur det går till.
 
 ### Barnyard
 
