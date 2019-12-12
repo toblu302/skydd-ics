@@ -1,69 +1,37 @@
 # Introduktion
 
+## Förord
+Skyddspaket ICD/SCADA är en samling mjukvaruverktyg som underlättar för operatörer av industriella informations- och styrsystem att ha en ändamålsenlig informationssäkerhet. Målgrupp för skyddspaketet är de operatörer som i en del av sitt kontinuerliga säkerhetsarbete behöver ett tekniskt verktyg med låg finansiell och kunskapsmässig tröskel.
+
+Avsikten med paketet är att det ska användas som ett instegsprogram för lärande och behovsprövning hos operatörer som i en del av sitt kontinuerliga säkerhetsarbete behöver ett tekniskt verktyg med låg finansiell och kunskapsmässig tröskel. Efter utvärdering kan behovsbilden av mer potenta verktyg och eller analysstöd värderas.
+
+Även leverantörer av programvaror eller tjänster kan använda verktygen som instegsprogram.
+
+Programvarorna som ingår paketet baseras på öppen källkod och finns således tillgängliga för nerladdning var och en för sig. MSB står för paketering, tillgängliggörande och uppdatering och tillför ingen väsentlig funktionalitet.
+
+Programmen/paketet levereras som det är. Det åligger den som installerar att försäkra sig om att funktion, konfiguration etc är den förväntade.
+
+MSB avser hålla programvaran uppdaterad med nya versioner i viss omfattning. Uppdaterade versioner kan hämtas på samma sätt som ursprunglig version. Det åligger användaren att själv bedöma om uppdatering till ny version är nödvändig.
+
 ## Bakgrund
-Svenska kraftnät, SvK, har sedan 2011 genomfört en serie olika projekt med målet att införa ett
-antal olika säkerhetshöjande åtgärder, främst inom IT- och informationssäkerhet, relaterat till
-säkerhetskydd för den svenska elbranschen. Många av de projektresultat som tagits fram under
-åren i flera delprojekt finns tillgängliga i form av vägledningar, checklistor, mallar, med
-mera från Svenska kraftnäts webb, [www.svk.se], eller från energisäkerhetsportalens webbplats [energisakerhetsportalen].
+Under 2015 initierade Svenska kraftnät, inom ramen för sitt säkerhetshöjande arbete inom den svenska elbranschen, ett projekt för att skapa ett antal säkerhetskomponenter baserade på öppen källkod, alltså fria att använda utan kostnad. Primära målgruppen var svenska elbolag som av ekonomiska eller andra skäl saknar möjlighet att skaffa tekniska skyddsmekanismer. Dessa skulle då kunna skaffa sig ett grundskydd i sina ICS- och SCADA-miljöer samt få tillgång till verktyg för att enkelt och snabbt komma igång med säkerhetshöjande åtgärder.
 
-Under 2014 utkom en vägledning om [IT-sakerhetsarkitektur] från Svenska kraftnät. Det är en
-vägledning med inriktning mot informations- och IT-säkerhet, med målet att flera organisationer inom den
-svenska elbranschen skall kunna bygga säkrare IT-miljöer. Dessa IT-miljöer används ofta inom
-automation eller inom andra stödfunktioner inom elbolag och är därför viktiga eller tillochmed
-kritiska för att lokala, regionala eller tillochmed nationella delar av elförsörjningen fungerar.
+Svenska kraftnät gav 2014 ut en vägledning om IT-säkerhetsarkitektur. I denna beskrivs ett antal säkerhetskomponenter, säkerhetskontroller och funktionaliteter som bör finnas i en IT-miljö för att hålla en viss nivå av grundskydd. Relationsdiagrammet nedan visar vad IT-säkerhetsarkitektur är för något och hur det i sin tur relaterar till, och i vissa fall styr, andra delar av IT.
 
-![Omslag till vägledningen IT-säkerhetsarkitektur](images/itsecarch.png "Omslag till vägledningen IT-säkerhetsarkitektur")
+Det programpaket som tagits fram – paketering av mjukvara som kan installeras på en PC-server – är tänkt att underlätta för svenska elbolag att upprätta och förvalta en IT-säkerhetsarkitektur, såsom den beskrivs i vägledningen från 2014, med fokus på säkerhetskontroller, det vill säga olika säkerhetsmekanismer och tekniska skydd.
 
-För att fortsätta säkerhetsarbetet mot svenska elbolag, och för att ta ytterliggare steg när väl IT-säkerhetsarkitektur 
-blivit identifierat och definierat, så har fokusen kommit till säkerhetskontroller - det vill säga olika säkerhetsmekanismer och tekniska skydd.
+Eftersom detta programpaket är värdefullt även för andra branscher än elbranschen har Myndigheten för samhällsskydd och beredskap (MSB) valt att ansvara för förvaltning och spridning till motsvarande målgrupper inom övriga branscher i Sverige. Målsättningen är att höja säkerhetsnivån hos de bolag som av ekonomiska eller andra skäl saknar möjlighet att på annat vis skaffa tekniska skyddsmekanismer.
 
-Denna vägledning beskrev ett antal säkerhetskomponenter,  säkerhetskontroller och funktionalitet som bör finnas i en IT-miljö för att hålla en viss
-nivå av grundskydd. Dessa programpaket är ett sätt att underlätta för svenska elbolag att
-upprätta och förvalta en IT-säkerhetsarkitektur, såsom den beskrivs i vägledningen.
+![Relationsdiagram mellan olika viktiga begrepp.](images/itsecarch-metamodell.png "Relationsdiagram mellan olika viktiga begrepp.")
 
-För att lättare förstå de olika begreppen och dess relation till varandra så har vi inkluderat ett
-relationsdiagram som bättre visar vad IT-säkerhetsarkitektur är för något och hur det i sin tur
-relaterar, och i vissa fall styr andra delar av IT.
+Detta dokument beskriver hur man installerar och använder de ingående komponenterna, samt deras syfte och funktionalitet.
 
-![Relationsdiagram mellan olika viktiga begrepp](images/itsecarch-metamodell.png "Relationsdiagram mellan olika viktiga begrepp")
+## Begränsningar av garantier och ansvar
+MSB påtar sig inget ansvar för eventuella skador på användarens hårdvara, mjukvara eller data som kan uppstå till följd av nedladdning, installation och användning av Skyddspaket ICS/SCADA.
+Paketet levereras med de ingående delpaketen som är programvaror baserade på öppen källkod. Det åligger den som installerar att försäkra sig om att funktion, konfiguration etc. är den förväntade. Det åligger även användaren att använda de ingående komponenterna i enlighet med dessa komponenters licenser.
 
-Förutom en allmän kompetenshöjning i form av råd, vägledningar och information, så finns det
-ett generellt behov att få hjälp på traven att bygga säkrare och bättre system och IT-miljöer. 
+MSB avser hålla programvaran uppdaterad med nya versioner i viss omfattning. Uppdaterade versioner kan hämtas på samma sätt som ursprunglig version. Det åligger användaren att själv kontrollera om nya uppdateringar finns och bedöma om uppdatering till ny version är nödvändig. 
 
-I detta projekt så har ett antal konkreta hjälpmedel, i form av paketering av mjukvara som
-kan installeras på en PC-server, tagits fram för att kunna bistå den svenska elbranschen med praktiska
-verktyg för att kunna införa en grundsäkerhetsnivå i sina ICS- och SCADA-miljöer.
-
-## Projekt
-Under 2015 initierades ett projekt av Svenska kraftnät och dess säkerhetschef Alireza Hafezi inom ramen för deras säkerhetshöjande arbete inom den svenska elbranschen.
-
-Projektets arbete är att skapa ett antal säkerhetskomponenter baserade på öppen källkod som skall kunna användas av svenska elbolag i första hand, men eftersom de är
-fritt tillgängliga, så är de även möjliga att använda för andra också.
-
-* Som grundskydd för svenska elbolag som inte har budget eller möjlighet att skaffa tekniska skyddsmekanismer
-* Som kompletterande delar till demonstratorn för att visa på hur skyddsmekanismer fungerar
-* Ge verktyg för att enkelt och snabbt komma igång med säkerhetshöjande hjälpmedel
-
-### Projektmål
-Att utan kostnad kunna tillhandahålla och tillgängliggöra olika tekniska säkerhetskomponenter till i första hand aktörer på svenska elmarknaden, men som även kan användas av alla andra också, då de görs fritt tillgängliga via [energisakerhetsportalen].
-
-Projektets mål har varit att 
-
-* skapa säkerhetsfunktioner, som är komponenter i en IT-säkerhetsarkitektur, och som hjälper elbolag att införa en IT-säkerhetsarkitektur
-* skapa säkerhetsfunktioner som kan fungera som grundskydd för svenska elbolag som inte har budget eller möjlighet att skaffa tekniska skyddsmekanismer
-* kompletterande delar till SvK:s demonstrator för att visa på hur skyddsmekanismer fungerar, vart i IT-säkerhetsarkitekturen dessa komponenter kan användas och fungera.
-* ta fram verktyg och en verktygslåda för att låta intresserade personer och organisationer enkelt och snabbt komma igång med säkerhetshöjande hjälpmedel
-* skapa verktyg och dokumentation som är fritt tillgängliga för maximal spridning
-
-### Projektmedlemmar
-
-Följande personer har varit involverade direkt i projektet:
-
-* Robert Malmgren, rom@romab.com, projektledning, dokumentation, testning
-* Tobias Norrbomm, tobias@romab.com, systemutveckling och programmering
-* Gabriel Kihlman, gk@romab.com, systemutveckling och programmering
-* Simon Gustafsson, simon@simongustafsson.com, grafisk formgivning
-
+MSB tillför dokumentation och ett samlat installationsmedium. MSB tar inget ansvar för programmens kompabilitet med existerande program och system hos användaren eller mellan de ingående komponenterna i paketet. Det åligger användaren att tillse att de system, brandväggar och andra säkerhetsfunktioner som finns inte kommer i konflikt med varandra. MSB tar inget ansvar för de säkerhetsfunktioner som organisationen har i sina system eller andra funktioner som påverkas av detta direkt eller indirekt. MSB tar inget ansvar för eventuella problem som uppstår i användarens system till följd av installationsprocessen av skyddspaketet.
 
 \clearpage

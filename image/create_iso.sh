@@ -97,7 +97,6 @@ cp -rp ${iso_root}/EFI ${iso_dir}
 # Create iso image
 /bin/mkisofs -U -A 'FOSS collection' -V 'FOSS' -volset 'FOSS' -J -joliet-long -r -v -T -x ./lost+found -o ${iso_root}/${iso} -b isolinux/isolinux.bin -c isolinux/boot.cat -input-charset utf-8 -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot ${iso_dir}
 
-
 # Make the iso image hybrid, allows cd and usb installtions
 /usr/bin/isohybrid --uefi ${iso_root}/${iso}
 
