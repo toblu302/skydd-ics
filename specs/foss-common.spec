@@ -47,16 +47,21 @@ cp -r boot opt %{buildroot}
 if [ $1 -eq 1 ];then
     # install
 	echo 'GRUB_BACKGROUND="/boot/splash.png"' >> /etc/default/grub
-	sed -i s/GRUB_TERMINAL_OUTPUT=\"console\"/GRUB_TERMINAL_OUTPUT=\"gfxterm\"/g /etc/default/grub
+	perl -p -i -e "s/GRUB_TERMINAL_OUTPUT=\"console\"/GRUB_TERMINAL_OUTPUT=\"gfxterm\"/g" /etc/default/grub
 	grub2-mkconfig -o /boot/grub2/grub.cfg
-
-	# Change default kickstart root password to a random password
-	pwgen -1 48 | passwd root --stdin > /dev/null
+        if [ ! -f /boot/efi/EFI/centos/grub.cfg ]; then
+            if [ ! -d /boot/efi/EFI/BOOT/x86_64-efi ]; then
+                mkdir -p /boot/efi/EFI/BOOT/x86_64-efi
+            fi
+            cp -f /usr/lib/grub/x86_64-efi/gfxterm_background.mod /boot/efi/EFI/BOOT/x86_64-efi
+            perl -p -i -e "s/insmod gfxterm$/insmod gfxterm;insmod gfxterm_background/g" /etc/grub.d/00_header
+	    grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+        fi
+else
+    # run ansible with provided inventory which could have beeen changed by the user
+    /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/foss.yml
 fi
-
 touch /opt/.foss-common
-# run ansible with provided inventory which could have beeen changed by the user
-/usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/foss.yml
 
 %clean
 rm -rf %{buildroot}
@@ -68,7 +73,7 @@ rm -f /opt/.foss-common
 %defattr(-,root,root)
      %attr(0644, root, root) /boot/splash.png
 %dir %attr(0755, root, root) /opt/ansible
-     %attr(0644, root, root) %config(noreplace) /opt/ansible/inventory
+     %attr(0644, root, root) %config(noreplace) /opt/ansible/inventory.yml
 %dir %attr(0755, root, root) /opt/ansible/playbooks
      %attr(0644, root, root) /opt/ansible/playbooks/foss.yml
      %attr(0644, root, root) /opt/ansible/playbooks/ids.yml
@@ -84,7 +89,7 @@ rm -f /opt/.foss-common
      %attr(0644, root, root) /opt/ansible/playbooks/roles/common/defaults/main.yml
      %attr(0644, root, root) /opt/ansible/playbooks/roles/common/tasks/main.yml
 %dir %attr(0755, root, root) /opt/ansible/playbooks/roles/common/templates
-     %attr(0644, root, root) /opt/ansible/playbooks/roles/common/templates/iptables.j2
+     %attr(0644, root, root) /opt/ansible/playbooks/roles/common/templates/etc/sysconfig/iptables.j2
      %attr(0644, root, root) /opt/ansible/playbooks/roles/ids/tasks/main.yml
      %attr(0644, root, root) /opt/ansible/playbooks/roles/ids_repo/tasks/main.yml
      %attr(0644, root, root) /opt/ansible/playbooks/roles/ids_repo/files/*
@@ -94,11 +99,15 @@ rm -f /opt/.foss-common
 %dir %attr(0755, root, root) /opt/ansible/playbooks/roles/httpd/tasks
      %attr(0644, root, root) /opt/ansible/playbooks/roles/httpd/tasks/main.yml
 %dir %attr(0755, root, root) /opt/ansible/playbooks/roles/simple_log
+%dir %attr(0755, root, root) /opt/ansible/playbooks/roles/simple_log/handlers
+     %attr(0644, root, root) /opt/ansible/playbooks/roles/simple_log/handlers/main.yml
 %dir %attr(0755, root, root) /opt/ansible/playbooks/roles/simple_log/tasks
      %attr(0644, root, root) /opt/ansible/playbooks/roles/simple_log/tasks/main.yml
 %dir %attr(0755, root, root) /opt/ansible/playbooks/roles/traffic_capture
 %dir %attr(0755, root, root) /opt/ansible/playbooks/roles/traffic_capture/tasks
      %attr(0644, root, root) /opt/ansible/playbooks/roles/traffic_capture/tasks/main.yml
+%dir %attr(0755, root, root) /opt/ansible/playbooks/roles/traffic_capture/handlers
+     %attr(0644, root, root) /opt/ansible/playbooks/roles/traffic_capture/handlers/main.yml
      %attr(0644, root, root) /opt/ansible/playbooks/httpd.yml
      %attr(0644, root, root) /opt/ansible/playbooks/monitor.yml
      %attr(0644, root, root) /opt/ansible/playbooks/roles/monitor/tasks/main.yml

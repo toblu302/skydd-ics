@@ -1,18 +1,26 @@
 ---
+- name: check if foss_snort.pp exist
+  stat:
+    path: /usr/share/selinux/packages/foss-monitor/icinga.pp
+  register: s
 - name: Install the icinga selinux policy package
-  shell: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-monitor/icinga.pp
-
+  command: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-monitor/icinga.pp
+  when: s.stat.exists
 - name: Run restore context to reload selinux
-  shell: restorecon -R -v "{{ item }}"
-  with_items:
-  - /etc
-  - /var
-  - /usr
+  command: /sbin/restorecon -R -v "{{ item }}"
+  loop:
+    - /etc
+    - /var
+    - /usr
+  when: s.stat.exists
 
 # apache talks to postgres over a localhost socket (maybe should be a unix domain socket?)
 - name: set required sebooleans..
-  seboolean: name="{{ item }}" state=yes persistent=yes
-  with_items:
+  seboolean:
+    name: "{{ item }}"
+    state: yes
+    persistent: yes
+  loop:
     - httpd_can_network_connect
     - httpd_can_network_connect_db
 
@@ -23,18 +31,41 @@
     append: yes
 
 - name: Fix permissions on files now that the icinga user exists
-  file: dest=/etc/icinga2/conf.d owner=icinga group=icinga mode=0640 recurse=yes
+  file:
+    dest: /etc/icinga2/conf.d
+    owner: icinga
+    group: icinga
+    mode: 0640
+    recurse: yes
 - name: Fix permissions on dir
-  file: dest=/etc/icinga2/conf.d owner=icinga group=icinga mode=0755
+  file:
+    dest: /etc/icinga2/conf.d
+    owner: icinga
+    group: icinga
+    mode: 0755
 
 - name: Enable icinga services
-  service: name="{{ item }}" enabled=yes
-  with_items:
+  service:
+    name: "{{ item }}"
+    enabled: yes
+  loop:
     - icinga2
     - httpd
     - rh-php71-php-fpm
+- name: check if php.ini exists
+  stat:
+    path: /etc/php.ini
+  register: t
 - name: Get current time zone
-  shell: /bin/timedatectl | /bin/awk '/Time zone:/{print $3}'
+  shell: |
+    set -o pipefail
+    /bin/timedatectl | /bin/awk '/Time zone:/{print $3}'
   register: time_zone
+  when: t.stat.exists
 - name: set time zone in php.ini
-  ini_file: path=/etc/php.ini section=Date option=date.timezone value={{ time_zone.stdout }}
+  ini_file:
+    path: /etc/php.ini
+    section: Date
+    option: date.timezone
+    value: "{{ time_zone.stdout }}"
+  when: t.stat.exists

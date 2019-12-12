@@ -62,7 +62,7 @@ fi
 %post
 touch /opt/.foss-httpd
 # run ansible with provided inventory which could have beeen changed by the user
-/usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/httpd.yml > /root/ansible-run-$$
+/usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/httpd.yml > /root/ansible-run-$$
 
 %clean
 rm -rf %{buildroot}

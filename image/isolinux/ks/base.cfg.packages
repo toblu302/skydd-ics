@@ -129,6 +129,7 @@ e2fsprogs
 e2fsprogs-libs
 ebtables
 ed
+efibootmgr
 elfutils
 elfutils-libelf
 elfutils-libs
@@ -238,6 +239,8 @@ grep
 groff-base
 grub2
 grub2-tools
+grub2-efi-x64
+grub2-efi-x64-modules
 grubby
 gsettings-desktop-schemas
 gssdp
@@ -778,6 +781,7 @@ sgabios-bin
 sgpio
 shadow-utils
 shared-mime-info
+shim-x64 
 sil-abyssinica-fonts
 sil-nuosu-fonts
 sil-padauk-fonts

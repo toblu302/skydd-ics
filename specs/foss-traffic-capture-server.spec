@@ -26,7 +26,7 @@ License:   %{license}
 Group:     %{group}
 Source0:   %{source}
 BuildArch: noarch
-Requires:  foss-httpd, foss-common, foss-docs, tcpdump, wireshark, ngrep, perl-URI-Encode, perl-IO-Zlib, perl-Net-DNS
+Requires:  foss-httpd, foss-common, foss-docs, tcpdump, wireshark, ngrep, perl-URI-Encode, perl-IO-Zlib, perl-Net-DNS, python-inotify
 Requires(pre): shadow-utils
 Provides:  %{name}
 URL:       %{url}
@@ -54,8 +54,10 @@ cp -r opt var usr etc home %{buildroot}
 
 %post
 touch /opt/.foss-traffic
-# run ansible with provided inventory which could have beeen changed by the user
-/usr/bin/ansible-playbook -i /opt/ansible/inventory /opt/ansible/playbooks/traffic.yml > /root/ansible-run-$$
+if [ $1 -ne 1 ];then
+    # run ansible with provided inventory which could have beeen changed by the user
+    /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/traffic.yml > /root/ansible-run-$$
+fi
 
 %clean
 rm -rf %{buildroot}

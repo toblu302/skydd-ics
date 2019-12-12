@@ -1,7 +1,14 @@
 ---
+- name: check dir
+  find:
+    paths: /root/rpm
+    patterns: '*.*'
+  register: found_files
 - name: create local repo
   command: /bin/createrepo /root/rpm
-  chdir: /root/rpm
+  args:
+    chdir: /root/rpm
+  when: found_files > 0
 - name: copy local repo conf
   copy:
     src: local.repo

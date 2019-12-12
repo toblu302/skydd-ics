@@ -4,7 +4,7 @@
 # download them and the dependencies. When download is complete
 # will a repository database be created
 iso_root=$(dirname $0)
-packages="$iso_root/isolinux/Packages"
+packages="${iso_root}/isolinux/Packages"
 
 # Sanity
 if [ ! -f /bin/createrepo ];then
@@ -12,34 +12,33 @@ if [ ! -f /bin/createrepo ];then
     echo "ERROR: run 'yum -y install createrepo'"
     exit 1
 fi
-if [ ! -d "$packages" ]; then
-    mkdir -p "$packages"
+if [ ! -d "${packages}" ]; then
+    mkdir -p "${packages}"
 else
     # remove packages before adding new
-    rm "$packages" -rf
+    rm "${packages}" -rf
 fi
 
 # Check if kickstart directory exist
-if [ ! -d "$iso_root/isolinux/ks" ]; then
-    echo "Directory $iso_root/isolinux/ks/ is missing, exit"
+if [ ! -d "${iso_root}/isolinux/ks" ]; then
+    echo "Directory ${iso_root}/isolinux/ks/ is missing, exit"
     exit 1
 fi
 
 # Check if isolinux directory exist
-if [ ! -d "$iso_root/isolinux" ];then
-    echo "Directory $iso_root/isolinux is missing, exit"
+if [ ! -d "${iso_root}/isolinux" ];then
+    echo "Directory ${iso_root}/isolinux is missing, exit"
     exit 1
 fi
 
 # Get a list of all packages needed to build all type installations
-needed_packages=$(cat $iso_root/isolinux/ks/*.packages|sort|uniq|tr '\n' ' ')
+needed_packages=$(cat ${iso_root}/isolinux/ks/*.packages|sort|uniq|tr '\n' ' ')
 
 # Download all packages and the dependencies
-/usr/bin/repotrack --arch=x86_64 --download_path=$packages $needed_packages
-
+/usr/bin/repotrack --arch=x86_64 --download_path=${packages} ${needed_packages}
+cp -p ../files/ids/snort*.rpm ${packages}
 # repotrack downloads both 32 and 64 bits packages, remove all 32 bits
 rm $packages/*.i686.rpm
 
 # Create repo database
-createrepo -g comps.xml $iso_root/isolinux/
-exit 0
+createrepo -g comps.xml ${iso_root}/isolinux/

@@ -1,22 +1,30 @@
 ---
-- name: enable services
-  service:
+- name: enable and start services
+  systemd:
     name: "{{ item }}"
     enabled: yes
     state: started
-  with_items:
+  loop:
     - mariadb
     - httpd24-httpd
 - name: run maria secure installation
   script: /root/maria_secure_installation.sh
+- name: add snort group
+  group:
+    name: snort
+    system: True
+- name: add snort user
+  user:
+    name: snort
+    system: True
 - name: run barnyard and snorby install
   script: /root/barn_snor.sh
 - name: ensure dir exist
   file:
-    path: /var/log/barnyard2
+    path: "{{ item }}"
     state: directory
     mode: 0755
-  with_items:
+  loop:
     - /var/log/barnyard2
     - /var/log/snort
 - name: set dir owner
@@ -25,30 +33,22 @@
     owner: snort
     group: snort
     state: directory
-    #- name: set file owner
-    #file:
-    #    path: "{{ item }}"
-    #    owner: snort
-    #    group: snort
-    #  with_items:
-    #    - /etc/snort/.mariadb_snortpw
-    #    - /var/log/snort/barnyward2.waldo
-    #- name: ensure file exist
-    #  file:
-    #    path: /var/log/snort/barnyward2.waldo
-    #    state: touch
-    #    mode: 0755
 - name: set file perms
   file:
     path: /etc/snort/.mariadb_snortpw
     mode: 0600
+- name: check if foss_snort.pp exist
+  stat:
+    path: /usr/share/selinux/packages/foss-ids/foss_snort.pp
+  register: s
 - name: Install selinux policy to allow NetWorkManager to start a snort service
-  shell: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-ids/foss_snort.pp
+  command: /usr/sbin/semodule -i /usr/share/selinux/packages/foss-ids/foss_snort.pp
+  when: s.stat.exists
 - name: enable services
-  service:
+  systemd:
     name: "{{ item }}"
     enabled: yes
     state: started
-  with_items:
+  loop:
     - barnyard2
     - snorby

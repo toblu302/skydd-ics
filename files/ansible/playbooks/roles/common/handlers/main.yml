@@ -1,7 +1,6 @@
 ---
 - name: reload iptables
-  action: shell /sbin/{{ item }}-restore
+  command: /sbin/{{ item }}-restore
   with_items:
     - "iptables"
     - "ip6tables"
-

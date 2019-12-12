@@ -8,6 +8,7 @@ ENV['TEST_IP']    = '192.168.0.29'
 
 Vagrant.configure("2") do |config|
   config.vm.box = "centos/7"
+  config.vm.box_version = ">=1905.1"
   config.vm.synced_folder "..", "/vagrant", type: "rsync", rsync__exclude: ".git/", "rsync__args": "-a"
   config.vm.provider "vmware_fusion" do |v|
     v.vmx["memsize"]  = "2048"
@@ -21,102 +22,141 @@ Vagrant.configure("2") do |config|
   config.vm.provider :libvirt do |libvirt|
     libvirt.memory = "2048"
   end
+  config.vm.provision "file", source: "RPM-GPG-KEY-EPEL-7", destination: "/home/vagrant/RPM-GPG-KEY-EPEL-7"
   config.vm.provision "shell", inline: <<-SHELL
     # we need to install epel first
+    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+    cp /home/vagrant/RPM-GPG-KEY-EPEL-7 /etc/pki/rpm-gpg
+    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
     yum install -y epel-release
-    yum upgrade -y
     yum install -y perl rpm-build selinux-policy-devel pandoc texlive pdflatex mg vim
     cd /vagrant
     make all
     cd /vagrant/rpms
     yum install -y foss-docs-*.noarch.rpm foss-common-*.noarch.rpm foss-httpd-*.noarch.rpm   
     cd ..
+    /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/foss.yml
+
   SHELL
 #################
 # dump server
   config.vm.define "dump" do |dump|
-    dump.vm.network :private_network,
-	    #:auto_config      => false,
-	    :ip		          => ENV['DUMP_IP'],
-	    :virtualbox__ip   => "192.168.0.30/24",
-	    :libvirt__host_ip => ENV['DUMP_IP'],
-	    :libvirt__netmask => "255.255.255.0"
+    dump.vm.network "public_network",
+	  auto_config: false,
+	  ip: "#{ENV['DUMP_IP']}",
+      bridge: "virbr2",
+      dev: "virbr2",
+      mode: "bridge",
+      type: "bridge",
+      use_dhcp_assigned_default_route: true
+    dump.vm.provision :shell do |s|
+      s.path = "ipconf.sh"
+      s.env  = {IP:ENV['DUMP_IP']}
+    end
     dump.vm.provision "shell", inline: <<-SHELL
       hostnamectl set-hostname dump
       cd /vagrant/rpms
       yum install -y foss-traffic-capture-*.noarch.rpm
+      /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/traffic.yml
       # restart network to start the tcpdump service
       systemctl restart network
-      systemctl start reaper
     SHELL
   end
 #################
 # log server
   config.vm.define "log" do |log|
-    log.vm.network :private_network,
-	    #:auto_config      => false,
-	    :ip		          => ENV['LOG_IP'],
-	    :virtualbox__ip   => "192.168.0.31/24",
-	    :libvirt__host_ip => ENV['LOG_IP'],
-	    :libvirt__netmask => "255.255.255.0"
+    log.vm.network "public_network",
+	  auto_config: false,
+	  ip: "#{ENV['LOG_IP']}",
+      bridge: "virbr2",
+      dev: "virbr2",
+      mode: "bridge",
+      type: "bridge",
+      use_dhcp_assigned_default_route: true
+    log.vm.provision :shell do |s|
+      s.path = "ipconf.sh"
+      s.env  = {IP:ENV['LOG_IP']}
+    end
     log.vm.provision "shell", inline: <<-SHELL
       hostnamectl set-hostname log
       cd /vagrant/rpms
       yum install -y foss-simple-log-server-*.noarch.rpm
-      systemctl restart rsyslog
+      /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/simple_log.yml
     SHELL
   end
 #################
 # ids server
   config.vm.define "ids" do |ids|
-    ids.vm.network :private_network,
-	    #:auto_config      => false,
-	    :ip		          => ENV['IDS_IP'],
-	    :virtualbox__ip   => "192.168.0.33/24",
-	    :libvirt__host_ip => ENV['LOG_IP'],
-	    :libvirt__netmask => "255.255.255.0"
+    ids.vm.network "public_network",
+	  auto_config: false,
+	  ip: "#{ENV['IDS_IP']}",
+      bridge: "virbr2",
+      dev: "virbr2",
+      mode: "bridge",
+      type: "bridge",
+      use_dhcp_assigned_default_route: true
+    ids.vm.provision :shell do |s|
+      s.path = "ipconf.sh"
+      s.env  = {IP:ENV['IDS_IP']}
+    end
     ids.vm.provision "shell", inline: <<-SHELL
       hostnamectl set-hostname ids
       cd /vagrant/rpms
+      rpm --import /vagrant/files/monitor_server/RPM-GPG-KEY-CentOS-SIG-SCLo
+      yum install -y /vagrant/files/ids/snort-2.9.7.6-1.centos7.x86_64.rpm
       yum install -y foss-ids-repo-*.noarch.rpm
       yum install -y foss-ids-*.x86_64.rpm
-      systemctl restart httpd
+      /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/ids-repo.yml
+      /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/ids.yml
     SHELL
   end
 #################
 # monitor server
   config.vm.define "monitor" do |monitor|
-    monitor.vm.network :private_network,
-	    #:auto_config      => false,
-	    :ip		          => ENV['MONITOR_IP'],
-	    :virtualbox__ip   => "192.168.0.32/24",
-	    :libvirt__host_ip => ENV['MONITOR_IP'],
-	    :libvirt__netmask => "255.255.255.0"
+    monitor.vm.network "public_network",
+	  auto_config: false,
+	  ip: "#{ENV['MONITOR_IP']}",
+      bridge: "virbr2",
+      dev: "virbr2",
+      mode: "bridge",
+      type: "bridge",
+      use_dhcp_assigned_default_route: true
+    monitor.vm.provision :shell do |s|
+      s.path = "ipconf.sh"
+      s.env  = {IP:ENV['MONITOR_IP']}
+    end
     monitor.vm.provision "shell", inline: <<-SHELL
       hostnamectl set-hostname monitor
       cd /vagrant/rpms
       yum install -y foss-icinga-repo-*.noarch.rpm
       yum install -y foss-monitor-server-*.noarch.rpm
-      # first-boot requires firstboot-graphical.service
-      # this is not always enabled during vagrant testing
-      # we will manual exec the stuff anyway
-      /bin/bash /root/init_pg.sh
-      /bin/systemctl start rh-php71-php-fpm
-      /bin/systemctl restart httpd
+      /usr/bin/ansible-playbook -i /opt/ansible/inventory.yml /opt/ansible/playbooks/monitor.yml
+      ## first-boot requires firstboot-graphical.service
+      ## this is not always enabled during vagrant testing
+      ## we will manual exec the stuff anyway
+      #/bin/bash /root/init_pg.sh
+      #/bin/systemctl start rh-php71-php-fpm
+      #/bin/systemctl restart httpd
     SHELL
   end
 #################
 # test server
   config.vm.define "test" do |test|
-    test.vm.network :private_network,
-	    #:auto_config      => false,
-	    :ip		          => ENV['TEST_IP'],
-	    :virtualbox__ip   => "192.168.0.29/24",
-	    :libvirt__host_ip => ENV['TEST_IP'],
-	    :libvirt__netmask => "255.255.255.0"
+    test.vm.network "public_network",
+	  auto_config: false,
+	  ip: "#{ENV['TEST_IP']}",
+      bridge: "virbr2",
+      dev: "virbr2",
+      mode: "bridge",
+      type: "bridge",
+      use_dhcp_assigned_default_route: true
+    test.vm.provision :shell do |s|
+      s.path = "ipconf.sh"
+      s.env  = {IP:ENV['TEST_IP']}
+    end
     test.vm.provision "shell", inline: <<-SHELL
         hostnamectl set-hostname test
-        yum install -y initscripts bats
+        yum install -y initscripts bats ansible-lint
         echo "dump_ip=#{ENV['DUMP_IP']}
 log_ip=#{ENV['LOG_IP']}
 monitor_ip=#{ENV['MONITOR_IP']}
@@ -219,8 +259,11 @@ PItLjBQAXIhJBBgRAgAJBQJSh85OAhsMAAoJEMbjGcM0QQaCzpAAmwUNoRyySf9p
 -----END PGP PUBLIC KEY BLOCK-----
 " > /etc/pki/rpm-gpg/RPM-GPG-KEY-icinga
     yum clean all
-    yum install -y syslinux mkisofs createrepo
+    yum install -y syslinux mkisofs isomd5sum createrepo grub2-efi-x64-modules dosfstools genisoimage repotrack
     mkdir /vagrant/image/DVD
+    cd /vagrant
+    make clean
+    make all
     SHELL
   end
 end
