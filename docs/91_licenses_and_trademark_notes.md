@@ -157,10 +157,21 @@ För mer information, se [snorbylicens].
 <https://github.com/Snorby/snorby>  
 <https://github.com/Snorby/snorby/blob/master/LICENSE>
 
-
+#### Highcharts
 Snorby innehåller en komponent kallad "highcharts" som är licensierad enligt Creative Common
 Attribution Non-commercial för redistribution i icke vinstdrivande syfte. För mer information, se [CCBYNC3]  
-Däremot så gäller andra licensformer vid användande. Läs mer om licenser för highcharts för att ta reda på vilken licensform som gäller för dig:  
+
+**När kan jag använda den icke kommersiella licensen?**  
+Den icke kommersiella licensen är tillgänglig för:
+* statligt finansierade skolor
+* universitet
+* icke vinstdrivande organisationer
+* studenter
+* individer som använder mjukvaran för personligt bruk, testning och demonstration  
+
+Denna licens inkluderar inte kommersiellt bruk av Highsoft-mjukvaran för ovannämnda aktörer.
+
+Läs mer om licenser för highcharts för att ta reda på vilken licensform som gäller för dig:  
 <https://shop.highsoft.com/highcharts>  
 <https://www.highcharts.com/license>  
 <https://shop.highsoft.com/faq>  
