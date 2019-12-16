@@ -35,7 +35,7 @@ Filkatalogen **pictures/** innehåller bilder som används
 Länk till ZIP-fil och adress för kloning finns under "Clone or download"-knappen i detta GiHub repository:
 ![Download](/pictures/klona.jpg)
     ```console
-    $ git clone https://github.com/romab/fluffy-barnacle.git
+    $ git clone https://github.com/CS-CY/skydd-ics.git
     ```
 
 2. Starta ett terminal-fönster om inte redan gjort under steg 1
