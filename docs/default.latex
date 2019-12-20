@@ -81,7 +81,7 @@ $if(graphics)$
 \let\Oldincludegraphics\includegraphics
 {%
  \catcode`\@=11\relax%
- \gdef\includegraphics{\@ifnextchar[{\Oldincludegraphics}{\Oldincludegraphics[width=\ScaleIfNeeded]}}%
+ \gdef\includegraphics{\@ifnextchar[{\Oldincludegraphics}{\Oldincludegraphics[width=\ScaleIfNeeded, height=\textheight, keepaspectratio]}}%
 }%
 $endif$
 \ifxetex
